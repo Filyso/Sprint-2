@@ -11,7 +11,8 @@
         <meta http-equiv="" content="">
         <title></title>
         <meta name="" content="">
-        <link rel="stylesheet" href="style_select_game.css">
+        <!--<link rel="stylesheet" href="../css/style.css">-->
+        <link rel="stylesheet" href="../css/style_select_game.css">
     </head>
 
     <body>
