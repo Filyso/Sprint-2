@@ -87,6 +87,7 @@
                 <div class="popup-content">
                     <span class="close">&times;</span>
                     <h2>CONNECTEZ-VOUS</h2>
+                    <a href="sign_up.php">inscrivez-vous</a>
                     <form action="<?php echo($_SERVER["SCRIPT_NAME"]);?>" method="post">
                         <input id="pseudo" type="text" required="required" name="pseudo" placeholder="Pseudo...">
                         <input id="passwd" type="password" required="required" name="pass" placeholder="Mot de passe...">
