@@ -27,6 +27,10 @@
 
     var open = false;
     $('.trigger').click(function () {
+        
+        $('nav').toggleClass("menuHidden");
+        $('nav').toggleClass("menuShown");
+        
         if (!open) {
             Moveit.animate(first, {
                 start: '78%',

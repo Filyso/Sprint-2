@@ -89,8 +89,10 @@ body {
 }
 
 .mainHeader {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
     margin: 0;
-    padding-top: 10px;
     background-color: white;
     position: relative;
 }
@@ -102,9 +104,6 @@ body {
     width: 100px;
     height: 100px;
     display: block; 
-    margin-left: 50px;
-    margin-top: 50px;
-    transform: translate(-50%, -50%);
 }
 
 .container svg {
@@ -129,9 +128,37 @@ svg path, svg line {
   left: 0;
 }
 
-.mainHeader .menu {
+.menuHidden {
+    transform: translateX(-400px);
+    position: fixed;
+    top : 100px;
+    width: 300px;
+    height: 500px;
     background-color: #000000;
+    padding: 30;
+    transition: transform 0.7s ease-in-out ;
+}
+
+.menuShown {
+    transform: translateX(0);
+    position: fixed;
+    top : 100px;
+    left: 0px;
+    width: 300px;
+    height: 500px;
+    background-color: #000000;
+    
+    transition: transform 0.7s  ease-in-out ;
+}
+
+.mainHeader ul{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+    padding : 0; 
     margin: 0;
+    height: 100%;
 }
 
 .mainHeader a {
@@ -157,19 +184,6 @@ svg path, svg line {
 
 .mainHeader .login:hover {
     color: lightgrey;
-}
-
-.mainHeader ul {
-    margin: 0;
-    padding: 20px 5% 20px 6%;
-    list-style-type: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    height: 24px;
-    font-weight: 300;
-    font-family: 'Raleway', sans-serif;
 }
 
 .mainSelect,

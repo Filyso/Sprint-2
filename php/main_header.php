@@ -5,12 +5,12 @@
     <head>
         <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" />
         <link href="https://fonts.googleapis.com/css?family=Raleway:300,500,700" rel="stylesheet">
-        
+
     </head>
 
     <body>
         <header class="mainHeader">
-            
+
             <!-- Icône Menu Burger -->
             <div class="container">
                 <svg>
@@ -21,30 +21,31 @@
                 <div class="trigger"></div>
             </div>
 
-            <div class="menu">
-                <nav>
+            <nav class="menuHidden">
 
-                    <ul>
+                <ul>
 
-                        <li>
-                            <a href="index.php">ACCUEIL</a>
-                        </li>
+                    <li>
+                        <a href="index.php">ACCUEIL</a>
+                    </li>
 
-                        <li>
-                            <a href="./select_game.php">JOUER</a>
-                        </li>
+                    <li>
+                        <a href="./select_game.php">JOUER</a>
+                    </li>
 
-                        <li>
-                            <a href="rank.php">CLASSEMENT</a>
-                        </li>
+                    <li>
+                        <a href="rank.php">CLASSEMENT</a>
+                    </li>
 
-                        <li>
-                            <p class="login">CONNEXION</p>
-                        </li>
+                    <li>
+                        <p class="login">CONNEXION</p>
+                    </li>
 
-                    </ul>
-                </nav>
-            </div>
+                </ul>
+            </nav>
+            
+            <button>Connexion</button>
+
             <div class="popup">
                 <div class="popup-content">
                     <span class="close">&times;</span>
@@ -57,7 +58,7 @@
                 </div>
             </div>
         </header>
-        
+
         <script src="https://kodhus.com/moveit.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
