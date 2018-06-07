@@ -1,19 +1,88 @@
-/* couleurs */
+/* POLICES */
+
+@font-face {
+    font-family: "Norwester";
+    src: url("../fonts/norwester.otf");
+}
+
+/* COULEURS */
 
 main {
-    --jaune-color: #FEC65C;
+    --jaune: #FEC65C;
     --rouge: #ED1B70;
     --orange: #F79754;
     --noir: #231F20;
 }
 
 /* PAGE INDEX */
+
+body {
+    margin: 0;
+}
+
 .divVideo {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
+
+.mainIndex section {
+    height: 100vh;
+}
+
 #video {
+    margin-top: 100px;
+    max-width: 80%;
+    min-width: 10%;
+    max-height: 80%;
+    min-height: 40%;
+}
+
+.mainIndex {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.welcomeIndex {
+    text-align: justify;
+    min-width: 10%;
     max-width: 100%;
-    max-height: 100%;
-    z-index: -1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.welcomeIndex p {
+    max-width: 40%;
+    min-width: 10%;
+}
+
+.divVideo a {
+    z-index: 1;
+    text-decoration: none;
+    font-family: "Raleway", sans-serif;
+    font-size: 30px;
+    color: var(--rouge);
+    padding: 15px;
+    border: 3px solid var(--rouge);
+}
+
+.mainIndex h1 {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    font-family: "Norwester";
+    color: var(--jaune);
+    font-size: 120px;
+    margin-top: 1%;
+}
+
+.mainIndex a:hover {
+    color: var(--jaune);
+    border: 3px solid var(--jaune);
 }
