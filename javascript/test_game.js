@@ -63,14 +63,11 @@ if(document.location.toString().indexOf('?') !== -1) {
         console.log($_GET['categorie']);
     }
 
-//    function swap(evt) {
-//
-//    }
-
     $.post(
-        '../php/musique.php', 
+        '../php/Musique.php', 
         {
-            cat: $_GET['categorie'],
+            function: 'getMusique',
+            categorie: $_GET['categorie'],
             lang: $_GET['lang']
         },
         function (data) {

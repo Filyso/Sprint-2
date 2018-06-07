@@ -1,5 +1,22 @@
-<?php
-    /*function getMusique($categorie, $lang) {
+<?php    
+    if (isset($_POST['function'])) {
+        switch($_POST['function']) {
+            case 'getMusique':
+                if(isset($_POST['categorie']) && isset($_POST['lang'])) {
+                    getMusique($_POST['categorie'], $_POST['lang']);
+                }
+                break;
+            case 'getTimeCodeAnswer'
+                if(isset($_POST['categorie']) && isset($_POST['lang'])) {
+                    getMusiqueAnswer($_POST['idTimeCode']);
+                }
+                break;
+            default:
+                echo "Fonction non défini";
+        }
+    }
+
+    function getMusique($categorie, $lang) {
         // ETAPE 1 : Se connecter au serveur de base de données
         try {
             require("./param.inc.php");
@@ -8,37 +25,86 @@
             $pdo->query("SET CHARACTER SET 'utf8'");
             
         // ETAPE 2 : Envoyer une requête SQL
-
             // conditions pour l'envoi de la requête en fonction du choix du joueur
             
+            if($categorie != 0 && $lang != "bilingue"){
                 // cas où la catégorie est choisie et la langue est choisie
-            $requeteSQL = "SELECT APPARTIENT_A_UNE.idCat, CHANSONS.lang, CHANSONS.nameSong, ARTISTES.nameArtist, CHANSONS.linkVideo, TIMECODES.startTimeCode, TIMECODES.timeCode, TIMECODES.previousLyrics, TIMECODES.trueRep, TIMECODES.falseRep1, TIMECODES.falseRep2, TIMECODES.falseRep3 FROM CHANSONS INNER JOIN APPARTIENT_A_UNE ON CHANSONS.idSong = APPARTIENT_A_UNE.idSong INNER JOIN TIMECODES ON CHANSONS.idSong = TIMECODES.idSong INNER JOIN A_UN ON CHANSONS.idSong = A_UN.idArtist INNER JOIN ARTISTES ON A_UN.idArtist = ARTISTES.idArtist WHERE lang =:paramLangue and idCat=:paramCategorie ORDER BY RAND() LIMIT 7";
-            $statement = $pdo->prepare($requeteSQL);
-            $statement->execute(array(":paramLangue" => $_GET["langue"],
-                                      ":paramCategorie" => $_GET["categorie"]));
+                $requeteSQL = "SELECT APPARTIENT_A_UNE.idCat, CHANSONS.lang, CHANSONS.nameSong, ARTISTES.nameArtist, CHANSONS.linkVideo, TIMECODES.idTimeCode, TIMECODES.startTimeCode, TIMECODES.timeCode, TIMECODES.previousLyrics, TIMECODES.trueRep, TIMECODES.falseRep1, TIMECODES.falseRep2, TIMECODES.falseRep3 FROM CHANSONS INNER JOIN APPARTIENT_A_UNE ON CHANSONS.idSong = APPARTIENT_A_UNE.idSong INNER JOIN TIMECODES ON CHANSONS.idSong = TIMECODES.idSong INNER JOIN A_UN ON CHANSONS.idSong = A_UN.idArtist INNER JOIN ARTISTES ON A_UN.idArtist = ARTISTES.idArtist WHERE lang =:paramLangue and idCat=:paramCategorie ORDER BY RAND() LIMIT 1";
+                $statement = $pdo->prepare($requeteSQL);
+                $statement->execute(array(":paramLangue" => $lang,
+                                          ":paramCategorie" => $categorie));
+
+            } else if($categorie == 0 && $lang != "bilingue") { 
+                // cas où la catégorie n'est pas choisie et la langue est choisie
+                $requeteSQL = "SELECT CHANSONS.lang, CHANSONS.nameSong, ARTISTES.nameArtist, CHANSONS.linkVideo, TIMECODES.idTimeCode, TIMECODES.startTimeCode, TIMECODES.timeCode, TIMECODES.previousLyrics, TIMECODES.trueRep, TIMECODES.falseRep1, TIMECODES.falseRep2, TIMECODES.falseRep3 FROM CHANSONS INNER JOIN APPARTIENT_A_UNE ON CHANSONS.idSong = APPARTIENT_A_UNE.idSong INNER JOIN TIMECODES ON CHANSONS.idSong = TIMECODES.idSong INNER JOIN A_UN ON CHANSONS.idSong = A_UN.idArtist INNER JOIN ARTISTES ON A_UN.idArtist = ARTISTES.idArtist WHERE lang =:paramLangue ORDER BY RAND() LIMIT 1";
+                $statement = $pdo->prepare($requeteSQL);
+                $statement->execute(array(":paramLangue" => $lang));
+
+            } else if($categorie == 0 && $lang == "bilingue"){
+                // cas où la catégorie n'est pas choisie et la langue n'est pas choisie
+                $requeteSQL = "SELECT CHANSONS.nameSong, ARTISTES.nameArtist, CHANSONS.linkVideo, TIMECODES.idTimeCode, TIMECODES.startTimeCode, TIMECODES.timeCode, TIMECODES.previousLyrics, TIMECODES.trueRep, TIMECODES.falseRep1, TIMECODES.falseRep2, TIMECODES.falseRep3 FROM CHANSONS INNER JOIN TIMECODES ON CHANSONS.idSong = TIMECODES.idSong INNER JOIN A_UN ON CHANSONS.idSong = A_UN.idArtist INNER JOIN ARTISTES ON A_UN.idArtist = ARTISTES.idArtist ORDER BY RAND() LIMIT 1";
+                $statement = $pdo->query($requeteSQL);
+
+            } else if ($categorie != 0 && $lang == "bilingue"){
+                // cas où la catégorie est choisie et la langue n'est pas choisie
+                $requeteSQL = "SELECT APPARTIENT_A_UNE.idCat, CHANSONS.nameSong, ARTISTES.nameArtist, CHANSONS.linkVideo, TIMECODES.idTimeCode, TIMECODES.startTimeCode, TIMECODES.timeCode, TIMECODES.previousLyrics, TIMECODES.trueRep, TIMECODES.falseRep1, TIMECODES.falseRep2, TIMECODES.falseRep3 FROM CHANSONS INNER JOIN APPARTIENT_A_UNE ON CHANSONS.idSong = APPARTIENT_A_UNE.idSong INNER JOIN TIMECODES ON CHANSONS.idSong = TIMECODES.idSong INNER JOIN A_UN ON CHANSONS.idSong = A_UN.idArtist INNER JOIN ARTISTES ON A_UN.idArtist = ARTISTES.idArtist WHERE idCat=:paramCategorie ORDER BY RAND() LIMIT 1";
+                $statement = $pdo->prepare($requeteSQL);
+                $statement->execute(array(":paramCategorie" => $categorie));
+            }
+               
+            $ligne = $statement->fetch(PDO::FETCH_ASSOC); 
+            $currentMusic = 0;
+            
+            //Conversion des time codes en secondes
+                $time0 = $ligne["startTimeCode"];
+                $timeSegment0 = explode(":",$time0);
+                $minute0 = intval($timeSegment0[1]);
+                $seconde0 = intval($timeSegment0[2]);
+                $startTime = 60*$minute0 + $seconde0;
+                
+                $time1 = $ligne["timeCode"];
+                $timeSegment1 = explode(":",$time1);
+                $minute1 = intval($timeSegment1[1]);
+                $seconde1 = intval($timeSegment1[2]);
+                $endTime = 60*$minute1 + $seconde1;      
+                
+                //Récupère la partie de l'URL qui nous intéresse
+                
+                $url = $ligne["linkVideo"];
+                $urlSegment = explode("=",$url);
+                $url = $urlSegment[1];
+                
+                $currentMusic += 1;
+            
+            $retour = array(
+                'idTimeCode'     => $ligne["idTimeCode"],
+                'nameSong'       => $ligne["nameSong"],
+                'nameArtist'     => $ligne["nameArtist"],
+                'url'            => $ligne["linkVideo"],
+                'timeCodeStart'  => $ligne["startTimeCode"],
+                'timeCodeEnd'    => $ligne["timeCode"],
+                'previousLyrics' => $ligne["previousLyrics"],
+                'rep1'           => $ligne["trueRep"],
+                'rep2'           => $ligne["falseRep1"],
+                'rep3'           => $ligne["falseRep2"],
+                'rep4'           => $ligne["falseRep3"]
+            );
+            
+        // ETAPE 3 : Déconnecter du serveur                        
+            $pdo = null;
         } catch (Exception $e){
             echo($e);
         }
+        
+        // Envoi du retour (on renvoi le tableau $retour encodé en JSON)
+        header('Content-type: application/json');
+        echo json_encode($retour);
+                                           
     }
 
-    function getTimeStart($idTimeCode, idSong) {
+    }
+
+    function getTimeCodeAnswer($idTimeCode) {
         echo "test";
-    }*/
-
-    // Récupération des paramètres
-    $chaine = 0;
-    if( isset($_POST['cat']) ){
-        $chaine = $_POST['cat'];
     }
-
-    // Traitements
-    $retour = array(
-        'chaine'    => strtoupper($chaine),
-        'date'      => date('d/m/Y H:i:s'),
-        'phpversion'=> phpversion()
-    );
-
-    // Envoi du retour (on renvoi le tableau $retour encodé en JSON)
-    header('Content-type: application/json');
-    echo json_encode($retour);
 ?>
