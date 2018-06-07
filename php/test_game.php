@@ -12,34 +12,6 @@
         <meta name="description" content="Jouez !">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:600,900" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="../style.css" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script type="text/javascript" src="../javascript/test_game.js"></script>
-
-<?php
-    if(isset($_GET["categorie"])){
-    // ETAPE 1 : Se connecter au serveur de base de données
-        try {
-            require("./param.inc.php");
-            $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
-            $pdo->query("SET NAMES utf8");
-            $pdo->query("SET CHARACTER SET 'utf8'");
-            
-    // ETAPE 2 : Envoyer une requête SQL
-               
-            $ligne = $statement->fetch(PDO::FETCH_ASSOC);
-                                  
-        // ETAPE 3 : Déconnecter du serveur
-                                           
-            $pdo = null;
-        
-        } catch (Exception $e) {
-            echo($e);
-        }
-
-    }
-
-?>
-            <script type="text/javascript" src="../javascript/test_game.js"></script>
     </head>
 
     <body>
@@ -91,6 +63,9 @@
         </main>
 
         <?php include("./main_footer.php");?>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="../javascript/test_game.js"></script>
     </body>
 
     </html>

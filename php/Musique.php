@@ -1,20 +1,26 @@
-<?php    
-    if (isset($_POST['function'])) {
-        switch($_POST['function']) {
-            case 'getMusique':
+<?php
+    header('Content-type: application/json');
+    
+    
+
+    if (isset($_POST["function"])) {
+        
+        switch ($_POST["function"]) {
+            case "getMusique":
                 if(isset($_POST['categorie']) && isset($_POST['lang'])) {
                     getMusique($_POST['categorie'], $_POST['lang']);
-                }
+                };
                 break;
-            case 'getTimeCodeAnswer'
+            case "getTimeCodeAnswer":
                 if(isset($_POST['categorie']) && isset($_POST['lang'])) {
                     getMusiqueAnswer($_POST['idTimeCode']);
-                }
+                };
                 break;
             default:
-                echo "Fonction non défini";
+                echo "{error: Fonction non défini}";
         }
     }
+
 
     function getMusique($categorie, $lang) {
         // ETAPE 1 : Se connecter au serveur de base de données
@@ -92,19 +98,16 @@
             
         // ETAPE 3 : Déconnecter du serveur                        
             $pdo = null;
-        } catch (Exception $e){
-            echo($e);
+        } catch (Exception $e) {
         }
         
+        
         // Envoi du retour (on renvoi le tableau $retour encodé en JSON)
-        header('Content-type: application/json');
         echo json_encode($retour);
                                            
     }
 
-    }
-
-    function getTimeCodeAnswer($idTimeCode) {
+    /*function getTimeCodeAnswer($idTimeCode) {
         echo "test";
-    }
+    }*/
 ?>
