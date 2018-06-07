@@ -1,0 +1,1539 @@
+main {
+    background: linear-gradient(90deg, #8F8F8F, #F6F6F6, #8F8F8F);
+    min-height: calc(100vh - 74px);
+    box-sizing: border-box;
+}
+
+h1 {
+    margin-top: 0px;
+}
+
+/********************/
+
+/*****    INDEX  ****/
+
+/********************/
+
+.mainIndex {
+    height: 54vh;
+    margin: 0;
+    padding: 120px 50px 50px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mainIndex h1 {
+    margin-top: 0;
+    font-family: 'Raleway', sans-serif;
+}
+.mainIndex p {
+    font-size: 20px;
+}
+.mainIndex h2 {
+        font-weight: normal;
+}
+.mainIndex section {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    text-align: center;
+    justify-content: center;
+    margin: 20px 0 50px 0;
+    font-weight: 300;
+    font-family: 'Raleway', sans-serif;
+}
+
+.mainIndex a {
+    background-color: #784199;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-size: 32px;
+
+    width: 150px;
+    padding: 20px 0 20px 0;
+    border-radius: 20px;
+    transition: 0.2s ;
+    font-weight: 300;
+    font-family: 'Raleway', sans-serif;
+}
+
+.mainIndex a:hover {
+    background-color: #4CD1CB;
+    transform-origin: center;
+    box-shadow: 0px 0px 0px 10px #85e0db;
+    transition: 0.2s ;
+    font-weight: 500;
+}
+
+/*************************/
+
+/*****    HEADER    ******/
+
+/*************************/
+
+body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.mainHeader {
+    margin: 0;
+    padding-top: 10px;
+    background-color: #784199;
+
+    position: relative;
+}
+
+.mainHeader nav {
+    background-color: #2D2D2D;
+    margin: 0;
+}
+
+.mainHeader img {
+    width: 200px;
+    height: 155px;
+
+    position: absolute;
+    top: 0px;
+    left: calc(50% - 100px);
+
+    z-index: 2;
+}
+
+.mainHeader a {
+    color: white;
+    text-decoration: none;
+    font-size: 28px;
+}
+.mainHeader p:hover{
+    cursor: pointer;
+}
+.mainHeader a:hover {
+    color: lightgrey;
+}
+.mainHeader .login {
+    color: white;
+    text-decoration: none;
+    font-size: 28px;
+    margin: 0;
+}
+.mainHeader .login:hover {
+    color: lightgrey;
+}
+.mainHeader ul {
+    margin: 0;
+    padding: 20px 5% 20px 6%;
+    list-style-type: none;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+
+    height: 24px;
+    font-weight: 300;
+    font-family: 'Raleway', sans-serif;
+}
+
+.mainHeader ul::after {
+    content: '';
+    height: 40px;
+    width: 3px;
+    background: white;
+    display: inline-block;
+
+    position: absolute;
+    top: 22px;
+    left: 20%;
+}
+
+.mainHeader ul::before {
+    content: '';
+    height: 40px;
+    width: 3px;
+    background: white;
+    display: inline-block;
+
+    position: absolute;
+    top: 22px;
+    right: 20%;
+}
+
+.mainLogo::after {
+    content: '';
+    width: 0;
+    height: 0;
+    display: inline-block;
+    border-style: solid;
+    border-width: 110px 151px 110px 0;
+    border-color: transparent #784199 transparent transparent;
+
+    position: absolute;
+    top: -35px;
+    left: calc(50% - 150px);
+
+    z-index: 1;
+}
+
+.mainLogo::before {
+    content: '';
+    width: 0;
+    height: 0;
+    display: inline-block;
+    border-style: solid;
+    border-width: 110px 0 110px 151px;
+    border-color: transparent transparent transparent #784199;
+
+    position: absolute;
+    top: -35px;
+    left: 50%;
+
+    z-index: 1;
+}
+
+.mainSelect,
+.mainIndex,
+.mainRank
+{
+    margin: 0;
+    padding: 120px 50px 50px 50px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-family: Helvetica;
+}
+
+.mainSelect h1,
+.mainIndex h1,
+.mainAdmin h1,
+.mainRank h1{
+    margin-top: 0;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+}
+
+
+
+/********************/
+
+/****   SELECT  *****/
+
+/********************/
+.mainSelect{
+    height: 48vh;
+    padding-top: 170px;
+}
+.mainSelect h1{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+}
+.mainSelect div {
+    width: 60%;
+    text-align: justify;
+    margin: 20px 0 50px 0;
+    font-weight: 300;
+    font-size: 18px;
+   font-family: 'Raleway', sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttonSolo a {
+    background-color: #784199;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-size: 32px;
+    width: 180px;
+    padding: 20px 0 20px 0;
+    border-radius: 20px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    transition: 0.2s;
+}
+
+.buttonMulti a {
+    background-color: #4CD1CB;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-size: 42px;
+    width: 220px;
+    padding: 20px 0 20px 0;
+    border-radius: 30px;
+    font-weight: 300;
+    transition: 0.2s;
+    font-family: 'Raleway', sans-serif;
+}
+
+.buttonSolo a:hover {
+    transition: 0.2s;
+    box-shadow: 0px 0px 0px 10px #a470c2;
+    font-weight: 500;
+}
+.buttonMulti a:hover {
+    transition: 0.2s;
+    box-shadow: 0px 0px 0px 10px #85e0db;
+    font-weight:500;
+}
+
+.selectMulti{
+    height: calc(100vh - 74px);
+    display: flex;
+}
+.selectMulti h1{
+    margin: auto;
+    text-align: center;
+    padding:20px;
+    background-color : #2D2D2D;
+    border-radius: 20px;
+    color:white;
+    font-weight: 300;
+    font-family: 'Raleway', sans-serif;
+}
+/*************************/
+
+/***  CHOIX CATEGORIE ****/
+
+/*************************/
+
+.preGamePage{
+    height: 80vh;
+    padding: 50px;
+    padding-top:150px;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+}
+.preGamePage h1{
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.preGamePage form {
+    margin: auto;
+    max-width: 35%;
+    min-height: 300px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.preGamePage fieldset {
+    box-shadow: 0px 0px 0px 5px #a470c2;
+    height: 30%;
+    border: none;
+    background-color: #784199;
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+}
+.preGamePage img{
+    max-width: 50px;
+    vertical-align: center
+}
+
+
+.preGamePage fieldset:first-child div{
+    max-width: 200px;
+    display: inline-block;
+}
+.preGamePage fieldset:first-child div input{
+    vertical-align: middle;
+    margin: 0;
+    margin-top: 7px;
+}
+.preGamePage fieldset:first-child div img{
+    vertical-align: middle;
+}
+.preGamePage fieldset:first-child div img:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.2s;
+}
+.preGamePage label {
+    padding: 0px 5px 0 5px;
+    vertical-align: middle;
+    font-weight: 500;    
+}
+
+.preGamePage button[type="button"] {
+    margin-top: 10px;
+    padding: 5px 15px 5px 15px;
+    border-radius: 20px;
+    background-color: #4CD1CB;
+    color: white;
+    font-weight: 300;
+    border:none;
+    font-family: inherit;
+    font-size: 20px;
+    transition: 0.2s;
+    outline:none;
+}
+
+.preGamePage button[type="button"]:hover {
+    transform-origin: center;
+    transition: 0.2s;
+    cursor: pointer;
+    font-weight: 500;
+    color: #2D2D2D;
+    box-shadow: 0px 0px 0px 5px #85e0db;
+}
+
+.preGamePage input[type=radio] {
+    width: 15px;
+    height: 15px;
+    opacity: 0;
+}
+.preGamePage input[type=radio] + label:after{
+    background: #fff;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    margin-left: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    content: '';
+    width: 17px;
+    height: 17px;
+}
+.preGamePage input[type=radio]:checked + label:after {
+    background: #4CD1CB;
+    border-color: #4CD1CB;
+    transition: 0.1s;
+    box-shadow: inset 0px 0px 0px 2px #fff;
+}
+
+.preGamePage input[type=radio]:hover{
+     cursor: pointer;
+}
+.preGamePage button[type=submit] {
+    min-width: 30%;
+    height: 20%;
+    align-self: center;
+    background-color:transparent;
+    font-family: inherit;
+    font-size: 30px;
+    border :none;
+    font-weight: 300;
+    outline: none;
+    padding: 5px 0px 5px 0px;
+    color: #2D2D2D;
+    border-radius: 20px;
+    transition: 0.2s;
+    background-color: #784199;
+    color:white;
+}
+
+.preGamePage button[type=submit]:hover {
+    
+    transform-origin: center;
+    box-shadow: 0px 0px 0px 10px #a470c2;
+    transition: 0.2s;
+    cursor: pointer;
+    font-weight: 500;
+    
+}
+
+.preGamePage select {
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-family: inherit;
+    outline: none;
+    font-size: 18px;
+    border-bottom: white 2px solid; 
+    
+}
+.preGamePage select option{
+    background-color: #2D2D2D;
+}
+
+/**************************************/
+
+/**************************/
+/******  PAGE ADMIN  ******/
+/**************************/
+
+.mainAdmin {
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.headerAdmin {
+    display: flex;
+    justify-content: space-between;
+    background-color: #2d2d2d;
+    padding: 0 15% 0 8%;
+}
+.headerAdmin div{
+    text-align: center;
+}
+.headerAdmin input{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    border: none;
+    background-color: #784199;
+    color: white;
+    padding: 0 10px 0 10px;
+    font-size: 15px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    height: 30px;
+    border-radius: 15px;
+    transition: 0.2s;
+}
+.headerAdmin input:hover{
+    background-color: #4CD1CB;
+    transform-origin: center;
+    font-weight: 500;
+    transform: scale(1.05);
+    transition: 0.2s;
+    cursor:pointer;
+}
+
+
+/**************************************/
+/********* Style Jeu en Solo **********/
+/**************************************/
+
+/*****Général*****/
+.ytplayer{
+    pointer-events: none;
+}
+
+.sectionSolo {
+    display: flex;
+    font-family: 'Raleway', sans-serif;
+    min-height: calc(100vh - 74px);
+}
+
+/***Photo Profil*****/
+
+.score figure img {
+    width: 100%;
+}
+
+.score figure {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border: solid 8px #4cd1cb;
+    border-radius: 50%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+/******Score*****/
+
+.barScoreMax {
+    width: 20px;
+    height: 500px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: calc(50% + 130px);
+    left: calc(50% - 10px);
+    background-color: aliceblue;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.barScore {
+    width: 20px;
+    height: 0%;
+    background-color: #4cd1cb;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+}
+
+.score {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 25s%;
+    min-width: 170px;
+    position: absolute;
+}
+
+/******Contenu******/
+
+.contenu {
+    width: 50%;
+    min-width: 450px;
+    height: 50%;
+    min-height: 450px;
+    margin: auto;
+    margin-top: 70px;
+    marging-bottom: 100px;
+    display:none;
+}
+.ytplayer{
+    margin:auto;
+    margin-top: 150px;
+}
+
+/*****Numéro question et tuto*****/
+
+.numEtTuto {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.tutoButton {
+    height: 50px;
+    outline: none;
+    width: 50px;
+    background-color: #4cd1cb;
+    font-size: 40px;
+    color: white;
+    border-radius: 50%;
+    border: none;
+    transition: 0.2s;
+}
+
+.tutoButton:hover {
+    transform-origin: center;
+    transition: 0.2s;
+    box-shadow: 0px 0px 0px 5px #85e0db;
+}
+
+/*****Phrase à compléter***/
+
+.phraseACompleter {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 10%;
+}
+
+/*****Div des Reponses*****/
+
+.reponses {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.reponseButton {
+    margin: 10px;
+    width: 40%;
+    height: 100px;
+    min-width: 200px;
+    border-radius: 20px;
+    border: none;
+    background-color: #784199;
+    color: white;
+    font-size: 25px;
+    outline: none;
+    transition: 0.2s;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    white-space: normal;
+}
+
+.Sousreponses {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.reponseButton:hover {
+    background-color: #4cd1cb;
+    box-shadow: 0px 0px 0px 7px #85e0db;
+    transition: 0.2s;
+    color: black;
+}
+
+/*****Timer*****/
+
+.divTimer {
+    width: 100px;
+    min-width: 100px;
+    height: 100px;
+    border: solid 8px #4cd1cb;
+    border-radius: 50%;
+    margin: auto;
+    background-color: aliceblue;
+    position: absolute;
+    top: calc(50% - 54px);
+    left: calc(50% - 54px);
+}
+
+.timer {
+    margin-top: calc(50% - 29px);
+    text-align: center;
+    font-size: 50px;
+
+}
+
+
+/**** 4cd1cb bleu
+784199 violet ****/
+
+/**********/
+
+/* Footer */
+
+/**********/
+
+.footer {
+    background-color: #2D2D2D;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    width: 100%;
+    font: 16px sans-serif;
+    font-family: 'Raleway', sans-serif;
+    text-align: left;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+/* Footer left */
+
+.footerGauche {
+    float: left;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+    max-width: 50vw;
+
+
+}
+
+.logo {
+    max-height: 10vw;
+}
+
+.footer .footer-links {
+    color: darkgrey;
+    margin: 0;
+    padding: 0;
+    width: 40vw;
+    text-align: center;
+    height: 30px;
+    font-size: 1.3vw;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    min-width: 200px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.footer .footer-links a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 300;
+
+}
+
+.footer .footer-links a:hover {
+    color: lightgrey;
+    transition: 0.2s;
+}
+
+.footerReseaux img {
+    max-width: 3vw;
+    padding: 5px;
+}
+
+.footerReseaux img:hover {
+    transform: scale(1.1);
+    transition: 0.2s;
+}
+
+.footer .footerReseaux {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+/* Footer Right */
+
+.footer .footerDroite {
+    float: right;
+    display: inline-block;
+    padding-bottom: 20px;
+}
+
+.footer .footerDroite p {
+    vertical-align: top;
+    margin-bottom: 20px;
+    color: darkgrey;
+}
+
+/* The contact form */
+
+.footer form {
+    display: inline-block;
+}
+
+.footer form input,
+.footer form textarea {
+    display: block;
+    border-radius: 3px;
+    box-sizing: border-box;
+    background-color: #1f2022;
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+    border: none;
+    resize: none;
+    outline: none;
+    font: inherit;
+    font-size: 14px;
+    font-weight: normal;
+    color: darkgrey;
+    width: 400px;
+    padding: 18px;
+}
+
+.footer ::-webkit-input-placeholder {
+    color: #5c666b;
+}
+
+.footer ::-moz-placeholder {
+    color: #5c666b;
+    opacity: 1;
+}
+
+.footer :-ms-input-placeholder {
+    color: #5c666b;
+}
+
+
+.footer form input {
+    height: 55px;
+    margin-bottom: 15px;
+
+}
+
+.footer form textarea {
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.footer form button {
+    border-radius: 3px;
+    background-color: #33383b;
+    color: darkgrey;
+    border: 0;
+    outline: none;
+    padding: 15px 50px;
+    float: right;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer form button:hover {
+    background-color: dimgray;
+    transition: 0.2s;
+    transform: scale(1.02);
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 1000px) {
+
+    .footer {
+        font: bold 14px sans-serif;
+    }
+
+    .footer .footerNom {
+        font-size: 12px;
+    }
+
+    .footer form input,
+    .footer form textarea {
+        width: 250px;
+    }
+
+    .footer form button {
+        padding: 10px 35px;
+    }
+
+}
+
+@media (max-width: 800px) {
+
+    .footer {
+        padding: 30px;
+    }
+
+    .footer .footerGauche,
+    .footer .footerDroite {
+        float: none;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .footer .footerGauche {
+        margin-bottom: 40px;
+    }
+
+    .footer form {
+        margin-top: 30px;
+    }
+
+    .footer form {
+        display: block;
+    }
+
+    .footer form button {
+        float: none;
+    }
+}
+
+/************ about.php ****************/
+
+.equipe {
+    padding: 10vh 10vw 0 10vw;
+    text-align: left;
+    font-family: 'Raleway', sans-serif;
+    color: #2D2D2D;
+}
+
+.equipe h2 {
+    padding-left: 18vw;
+    font-weight: 500;
+}
+
+.lesPhotos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: center;
+    max-width: 50vw;
+    min-width: 500px;
+    margin: auto;
+}
+
+.unePhoto {
+    max-width: 10vw;
+    min-width: 150px;
+    background-color: #2D2D2D;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px black;
+}
+
+.unePhoto:hover {
+    transform: scale(1.05);
+    transition: 0.2s;
+}
+
+.unePhoto img {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    border-radius: 5px;
+}
+
+.unePhoto figcaption h3 {
+    margin: 10px;
+    font-weight: normal;
+    font-weight: 500;
+}
+
+.unePhoto figcaption {
+    color: white;
+    font-weight: 300;
+    padding-bottom: 15px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.enDessous {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 50 10vw 0 10vw;
+   font-family: 'Raleway', sans-serif;
+    padding-bottom: 10vh;
+}
+
+.BoiteAIdee {
+    padding: 3vh 3vw 3vh 3vw;
+    border-radius: 5px;
+    background-color: #2D2D2D;
+    margin-top: 50px;
+}
+
+.BoiteAIdee h2 {
+    font-weight: normal;
+    margin: 0;
+    font-weight: 500;
+    color: white;
+}
+
+.BoiteAIdee p {
+    color: white;
+    font-weight: 300;
+}
+
+.BoiteAIdee form textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
+    resize: none;
+    outline: none;
+    border-radius: 3px;
+    box-sizing: border-box;
+    background-color: #1f2022;
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    padding: 10px;
+}
+
+.BoiteAIdee form {
+    width: 100%;
+    margin: 0;
+
+}
+
+.BoiteAIdee form input {
+    width: 100%;
+    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    outline: none;
+    border-radius: 3px;
+    box-sizing: border-box;
+    background-color: #1f2022;
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    padding: 10px;
+}
+
+.BoiteAIdee button {
+    cursor: pointer;
+    font-family: 'Raleway', sans-serif;
+    border-radius: 3px;
+    background-color: #33383b;
+    color: white;
+    border: 0;
+    font-weight: 700;
+    outline: none;
+    padding: 10px;
+
+}
+
+.BoiteAIdee button:hover {
+    background-color: dimgray;
+    transition: 0.2s;
+    transform: scale(1.02);
+}
+
+.AVenir {
+    padding: 3vh 3vw 3vh 3vw;
+    border-radius: 5px;
+    background-color: #2D2D2D;
+    margin-top: 50px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.AVenir h2 {
+    color: white;
+    font-weight: normal;
+    margin: 0;
+    font-weight: 500;
+}
+.AVenir p{
+    font-weight: 500;
+}
+.AVenir p,
+.AVenir ul {
+    color: white;
+}
+
+.AVenir li {
+    padding-top: 10px;
+    color: darkgrey;
+    font-weight: 300;
+}
+
+/* === rank.php === */
+
+.mainRank table {
+    font-family: 'Raleway', sans-serif;
+    width: 50%;
+    border-collapse: collapse;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.mainRank tr {
+    padding-top: 15px;
+}
+
+.mainRank th {
+    font-weight: normal;
+    font-size: 30px;
+    padding: 10px 20px 10px 20px;
+}
+
+.mainRank td {
+    font-weight: 300;
+    padding: 5px 20px 5px 20px;
+}
+
+.mainRank th:first-child,
+.mainRank td:first-child {
+    text-align: left;
+}
+
+.mainRank th:last-child,
+.mainRank td:last-child {
+    text-align: right;
+}
+
+.mainRank tr:nth-child(even) {
+    background-color: #4CD1CB;
+}
+
+.mainRank tr:nth-child(odd) {
+    background-color: #85e0db;
+}
+
+/* ===================== */
+/* === ADD SONG PAGE === */
+/* ===================== */
+.addSongSection {
+    background-color: #2D2D2D;
+    border-radius: 15px;
+    margin: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5vh;
+    max-width: 60vw;
+    text-align: center;
+    padding: 10px 30px 10px 30px;
+}
+.addSongSection h3{
+    color:white;
+    font-weight: 500;
+}
+.addSongForm div {
+    text-align: right;
+    font-weight: 300;
+    display: flex;
+    margin: 0.5em 0;
+}
+.addSongForm div option{
+    outline:none;
+}
+.addSongForm fieldset {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+.addSongForm>fieldset {
+    margin: 2em 0 0 0;
+}
+
+.addSongForm>fieldset::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 5px;
+    position: absolute;
+    top: -5px;
+    background-color: #4cd1cb;
+    border-radius: 50px;
+}
+
+.addSongForm>fieldset>legend {
+    padding: 5px 0 0 0;
+    font-weight: 500;
+}
+
+.addSongForm>fieldset>fieldset label {
+    text-align: right;
+    font-style: italic;
+}
+
+.addSongForm label:first-child, span {
+    min-width: 10em;
+}
+
+.addSongForm input, select {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    border:none;
+    border-radius: 5px;
+    padding:3px;
+    outline:none;
+    background-color: dimgrey;
+    color:white;
+    margin: 0 0 0 1em;
+}
+.addSongForm input[type=button],
+.addSongForm input[type=submit]{
+    background-color: #4cd1cb;
+    padding: 2px 7px 2px 7px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+.addSongForm input[type=button]:hover,
+.addSongForm input[type=submit]:hover{
+    transform-origin: center;
+    border: #B6FEF5 3px solid;
+    font-weight: 500;
+    transition: 0.2s;
+}
+.addSongForm input[type="text"], .addSongForm input[type="number"], .addSongForm input[type="url"], select {
+    flex: 1;
+}
+.inputMasque{
+    display: none;
+}
+.adminLangues input {
+    margin-top: 3px;
+    margin-right: 5px; 
+    
+}
+.addSongForm input[type="number"] {
+    width: 3em;
+    text-align: center;
+    margin-right: 0.5em;
+}
+
+.timeForm {
+    display: flex;
+}
+
+.timeForm span {
+    text-align: right;
+}
+
+.timeForm div {
+    margin: 0;
+}
+
+
+
+/***********************************************/
+/***************** PAGE RESULTAT ***************/
+/***********************************************/
+
+.mainResultat{
+    height: calc(80vh - 74px);
+    padding-top: 20vh;
+}
+.mainResultat .resultat{
+/*    box-shadow: 0px 0px 0px 5px grey;*/
+    border-radius: 30px;
+    padding: 40px;
+/*    background-color: #2D2D2D;*/
+    display: flex;
+    width: 40vw;
+    margin: auto;
+    justify-content: space-between;
+}
+.mainResultat .partieGauche{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+.cercleScore {
+    border-radius: 100%;
+    width: 300px;
+    height: 300px;
+    background-color: #4CD1CB;
+     transition: 0.2s;
+    box-shadow: 0px 0px 0px 8px #85e0db;
+}
+.cercleScore:hover{
+    box-shadow: 0px 0px 0px 15px #85e0db;
+    transition: 0.2s;
+    font-weight: 500;
+}
+.scoreResultat{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    font-size: 35;
+    color:white;
+    margin:0;
+    transition: 0.2s;
+    padding-top: 25px;
+}
+.cercleScore:hover .scoreResultat, .cercleScore:hover .chiffreScoreResultat{
+    font-weight: 500;
+    transition: 0.2s;
+}
+.chiffreScoreResultat{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    font-size: 120px;
+    color:white;
+    margin:0;
+    transition: 0.2s;
+    
+}
+.btnSaveScore{
+    margin:0;
+    font-family: 'Raleway', sans-serif;
+    margin-top: 30px;
+    font-size: 18px;
+    border-radius: 10px;
+    outline: none;
+    border:none;
+    padding: 5px 10px 5px 10px;
+    background-color: #a470c2;
+    color: white;
+    font-weight: 300;
+    transition: 0.2s;
+}
+.btnSaveScore:hover{
+    cursor: pointer;
+    transition: 0.2s;
+    font-weight: 500;
+    box-shadow: 0px 0px 0px 5px #784199;
+}
+.partageReseaux{
+    margin-top: 4vh;
+    width: 20vw;
+}
+.partageReseaux img{
+    width: 100%;
+    transition: 0.2s;
+    opacity:0.9;
+}
+.partageReseaux img:hover{
+    transform: scale(1.02);
+    transition: 0.2s;
+    opacity: 1;
+    cursor: pointer;
+}
+.mainResultat .partieDroite{
+    padding-top: 2vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.bonnesReponses{
+    background-color: #4CD1CB;
+    box-shadow: 0px 0px 0px 8px #85e0db;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 60px;
+    border-radius:100%;
+    height: 200px;
+    width: 200px; 
+}
+
+
+.nbBonneReponse{
+    font-family: 'Raleway', sans-serif;
+    color:white;
+    font-size: 100px;
+    margin: 0;
+    font-weight: 300;
+    padding-top: 30px;
+    
+}
+.txtBonnesReponses{
+    font-family: 'Raleway', sans-serif;
+    color:white;
+    margin: 0;
+    font-size: 16px;
+}
+
+.mainResultat .partieDroite button{
+    display: flex;
+    height: 90px;
+    width: 250px;
+    justify-content:space-around;
+    align-items: center;
+    border-radius: 20px;
+    border:none;
+    outline: none;
+    padding: 5px 20px 5px 20px;
+    background-color:#a470c2;
+    transition: 0.2s;
+}
+.mainResultat .partieDroite a{
+    text-decoration: none;
+    outline: none;
+}
+.mainResultat .partieDroite button p{
+    font-family: 'Raleway', sans-serif;
+    color:white;
+    font-size: 30px;
+    font-weight: 300;
+    margin: 0;
+    padding-left:10px;
+    transition: 0.2s;
+}
+.mainResultat .partieDroite .imgReplay{
+    height: 60px;
+    width: 60px;
+    transform: rotate(90deg);
+    transition:0.2s;
+}
+.mainResultat .partieDroite button:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 0px 10px #784199;
+    transition: 0.2s;
+}
+.mainResultat .partieDroite button:hover p{
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+.mainResultat .partieDroite button:hover .imgReplay{
+    transform: rotate(-90deg);
+    transition:0.3s ease;
+}
+.badgesObtenus{
+    text-align: center;
+}
+.badgesObtenus img{
+    margin-top:30px;
+    width:200px;
+}
+.badgesObtenus p{
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+    color: #2D2D2D;
+    font-size: 20px;
+    font-weight: 300;
+    padding-top:20px;
+}
+
+
+/***************************/
+
+/***    POPUP TUTO   **/
+
+/***************************/
+
+.popup,
+.popup_regle{
+    display: block;
+    opacity: 0;
+    transition: opacity linear .2s;
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    animation-play-state: running;
+}
+
+.is-open {
+    opacity: 1;
+}
+
+.popup-content,
+.popup-content_regle{
+    background-color: #fefefe;
+    margin: 15% auto;
+    border: 2px solid #888;
+    width: 40%;
+    height: 50%;
+    border-radius: 18px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popup-content form {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+}
+
+.popup-content h2,
+.popup-content_regle h2{
+    padding-top: 10%;
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    font-size: 28px;
+    font-weight: 300;
+}
+
+.popup-content input {
+    height: 10%;
+    margin-bottom: 10%;
+    font-family: 'Raleway', sans-serif;
+}
+
+.popup-content input:first-child {
+    margin-top: 10%;
+}
+
+.popup-content button {
+    height: 20%;
+    width: 50%;
+    align-self: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    background-color: #4CD1CB;
+    border: none;
+    border-radius: 20px;
+    color: white;
+}
+
+.popup-content button:hover {
+    background-color: #4CD1CB;
+    transform-origin: center;
+    box-shadow: 0px 0px 0px 10px #85e0db;
+    transition: 0.2s;
+    font-weight: 700;
+}
+
+.close,
+.close_regle{
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+
+    position: absolute;
+    top: 0;
+    left: calc(100% - 28px);
+}
+
+.close:hover,
+.close:focus,
+.close_regle:hover,
+.close_regle:focus {
+    color: #784199;
+    text-decoration: none;
+    cursor: pointer;
+}
+.popup-content_regle ul{
+    font-family: 'Raleway', sans-serif;
+    font-size: 25px;
+    font-weight: 300;
+    list-style-image: url(images/list.png);
+}
