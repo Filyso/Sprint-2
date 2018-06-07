@@ -1,0 +1,19 @@
+/* couleurs */
+
+main {
+    --jaune-color: #FEC65C;
+    --rouge: #ED1B70;
+    --orange: #F79754;
+    --noir: #231F20;
+}
+
+/* PAGE INDEX */
+.divVideo {
+    display: flex;
+    justify-content: center;
+}
+#video {
+    max-width: 100%;
+    max-height: 100%;
+    z-index: -1;
+}
