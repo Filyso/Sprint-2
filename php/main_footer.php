@@ -27,9 +27,9 @@
 
                 <div class="footerReseaux">
                     <!- lier les réseaux sociaux ->
-                    <a href=""><img src="../images/Facebook.png"></a>
-                    <a href=""><img src="../images/Twitter.png"></a>
-                    <a href=""><img src="../images/Instagram.png"></a>
+                    <a href="" target="_blank"><img src="../images/Facebook.png"></a>
+                    <a href="" target="_blank"><img src="../images/Twitter.png" ></a>
+                    <a href="https://www.instagram.com/filysogame" target="_blank"><img src="../images/Instagram.png"></a>
 
                 </div>
 
