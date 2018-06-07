@@ -1,5 +1,5 @@
 main {
-    background: linear-gradient(90deg, #8F8F8F, #F6F6F6, #8F8F8F);
+    background-color: white;
     min-height: calc(100vh - 74px);
     box-sizing: border-box;
 }
@@ -8,13 +8,17 @@ h1 {
     margin-top: 0px;
 }
 
+
 /********************/
 
+
 /*****    INDEX  ****/
+
 
 /********************/
 
 .mainIndex {
+    
     height: 54vh;
     margin: 0;
     padding: 120px 50px 50px 50px;
@@ -23,16 +27,21 @@ h1 {
     align-items: center;
 }
 
+
 .mainIndex h1 {
     margin-top: 0;
+    color:white;
     font-family: 'Raleway', sans-serif;
 }
+
 .mainIndex p {
     font-size: 20px;
 }
+
 .mainIndex h2 {
-        font-weight: normal;
+    font-weight: normal;
 }
+
 .mainIndex section {
     display: flex;
     flex-direction: column;
@@ -50,11 +59,10 @@ h1 {
     text-decoration: none;
     text-align: center;
     font-size: 32px;
-
     width: 150px;
     padding: 20px 0 20px 0;
     border-radius: 20px;
-    transition: 0.2s ;
+    transition: 0.2s;
     font-weight: 300;
     font-family: 'Raleway', sans-serif;
 }
@@ -63,13 +71,16 @@ h1 {
     background-color: #4CD1CB;
     transform-origin: center;
     box-shadow: 0px 0px 0px 10px #85e0db;
-    transition: 0.2s ;
+    transition: 0.2s;
     font-weight: 500;
 }
 
+
 /*************************/
 
+
 /*****    HEADER    ******/
+
 
 /*************************/
 
@@ -83,7 +94,6 @@ body {
     margin: 0;
     padding-top: 10px;
     background-color: #784199;
-
     position: relative;
 }
 
@@ -95,11 +105,9 @@ body {
 .mainHeader img {
     width: 200px;
     height: 155px;
-
     position: absolute;
     top: 0px;
     left: calc(50% - 100px);
-
     z-index: 2;
 }
 
@@ -108,31 +116,34 @@ body {
     text-decoration: none;
     font-size: 28px;
 }
-.mainHeader p:hover{
+
+.mainHeader p:hover {
     cursor: pointer;
 }
+
 .mainHeader a:hover {
     color: lightgrey;
 }
+
 .mainHeader .login {
     color: white;
     text-decoration: none;
     font-size: 28px;
     margin: 0;
 }
+
 .mainHeader .login:hover {
     color: lightgrey;
 }
+
 .mainHeader ul {
     margin: 0;
     padding: 20px 5% 20px 6%;
     list-style-type: none;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
-
     height: 24px;
     font-weight: 300;
     font-family: 'Raleway', sans-serif;
@@ -144,7 +155,6 @@ body {
     width: 3px;
     background: white;
     display: inline-block;
-
     position: absolute;
     top: 22px;
     left: 20%;
@@ -156,7 +166,6 @@ body {
     width: 3px;
     background: white;
     display: inline-block;
-
     position: absolute;
     top: 22px;
     right: 20%;
@@ -170,11 +179,9 @@ body {
     border-style: solid;
     border-width: 110px 151px 110px 0;
     border-color: transparent #784199 transparent transparent;
-
     position: absolute;
     top: -35px;
     left: calc(50% - 150px);
-
     z-index: 1;
 }
 
@@ -186,60 +193,58 @@ body {
     border-style: solid;
     border-width: 110px 0 110px 151px;
     border-color: transparent transparent transparent #784199;
-
     position: absolute;
     top: -35px;
     left: 50%;
-
     z-index: 1;
 }
 
 .mainSelect,
 .mainIndex,
-.mainRank
-{
+.mainRank {
     margin: 0;
     padding: 120px 50px 50px 50px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-
     font-family: Helvetica;
 }
 
 .mainSelect h1,
 .mainIndex h1,
 .mainAdmin h1,
-.mainRank h1{
+.mainRank h1 {
     margin-top: 0;
     font-family: 'Raleway', sans-serif;
     font-weight: 500;
 }
 
 
-
 /********************/
+
 
 /****   SELECT  *****/
 
+
 /********************/
-.mainSelect{
+
+.mainSelect {
     height: 48vh;
     padding-top: 170px;
 }
-.mainSelect h1{
+
+.mainSelect h1 {
     font-family: 'Raleway', sans-serif;
     font-weight: 500;
 }
+
 .mainSelect div {
     width: 60%;
     text-align: justify;
     margin: 20px 0 50px 0;
     font-weight: 300;
     font-size: 18px;
-   font-family: 'Raleway', sans-serif;
-
+    font-family: 'Raleway', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -278,40 +283,47 @@ body {
     box-shadow: 0px 0px 0px 10px #a470c2;
     font-weight: 500;
 }
+
 .buttonMulti a:hover {
     transition: 0.2s;
     box-shadow: 0px 0px 0px 10px #85e0db;
-    font-weight:500;
+    font-weight: 500;
 }
 
-.selectMulti{
+.selectMulti {
     height: calc(100vh - 74px);
     display: flex;
 }
-.selectMulti h1{
+
+.selectMulti h1 {
     margin: auto;
     text-align: center;
-    padding:20px;
-    background-color : #2D2D2D;
+    padding: 20px;
+    background-color: #2D2D2D;
     border-radius: 20px;
-    color:white;
+    color: white;
     font-weight: 300;
     font-family: 'Raleway', sans-serif;
 }
+
+
 /*************************/
+
 
 /***  CHOIX CATEGORIE ****/
 
+
 /*************************/
 
-.preGamePage{
+.preGamePage {
     height: 80vh;
     padding: 50px;
-    padding-top:150px;
+    padding-top: 150px;
     font-family: 'Raleway', sans-serif;
     text-align: center;
 }
-.preGamePage h1{
+
+.preGamePage h1 {
     margin-bottom: 30px;
     font-weight: 300;
 }
@@ -336,33 +348,37 @@ body {
     border-radius: 20px;
     margin-bottom: 30px;
 }
-.preGamePage img{
+
+.preGamePage img {
     max-width: 50px;
     vertical-align: center
 }
 
-
-.preGamePage fieldset:first-child div{
+.preGamePage fieldset:first-child div {
     max-width: 200px;
     display: inline-block;
 }
-.preGamePage fieldset:first-child div input{
+
+.preGamePage fieldset:first-child div input {
     vertical-align: middle;
     margin: 0;
     margin-top: 7px;
 }
-.preGamePage fieldset:first-child div img{
+
+.preGamePage fieldset:first-child div img {
     vertical-align: middle;
 }
-.preGamePage fieldset:first-child div img:hover{
+
+.preGamePage fieldset:first-child div img:hover {
     cursor: pointer;
     transform: scale(1.05);
     transition: 0.2s;
 }
+
 .preGamePage label {
     padding: 0px 5px 0 5px;
     vertical-align: middle;
-    font-weight: 500;    
+    font-weight: 500;
 }
 
 .preGamePage button[type="button"] {
@@ -372,11 +388,11 @@ body {
     background-color: #4CD1CB;
     color: white;
     font-weight: 300;
-    border:none;
+    border: none;
     font-family: inherit;
     font-size: 20px;
     transition: 0.2s;
-    outline:none;
+    outline: none;
 }
 
 .preGamePage button[type="button"]:hover {
@@ -393,7 +409,8 @@ body {
     height: 15px;
     opacity: 0;
 }
-.preGamePage input[type=radio] + label:after{
+
+.preGamePage input[type=radio] + label:after {
     background: #fff;
     border: 2px solid #ccc;
     border-radius: 50%;
@@ -404,6 +421,7 @@ body {
     width: 17px;
     height: 17px;
 }
+
 .preGamePage input[type=radio]:checked + label:after {
     background: #4CD1CB;
     border-color: #4CD1CB;
@@ -411,17 +429,18 @@ body {
     box-shadow: inset 0px 0px 0px 2px #fff;
 }
 
-.preGamePage input[type=radio]:hover{
-     cursor: pointer;
+.preGamePage input[type=radio]:hover {
+    cursor: pointer;
 }
+
 .preGamePage button[type=submit] {
     min-width: 30%;
     height: 20%;
     align-self: center;
-    background-color:transparent;
+    background-color: transparent;
     font-family: inherit;
     font-size: 30px;
-    border :none;
+    border: none;
     font-weight: 300;
     outline: none;
     padding: 5px 0px 5px 0px;
@@ -429,17 +448,15 @@ body {
     border-radius: 20px;
     transition: 0.2s;
     background-color: #784199;
-    color:white;
+    color: white;
 }
 
 .preGamePage button[type=submit]:hover {
-    
     transform-origin: center;
     box-shadow: 0px 0px 0px 10px #a470c2;
     transition: 0.2s;
     cursor: pointer;
     font-weight: 500;
-    
 }
 
 .preGamePage select {
@@ -449,17 +466,23 @@ body {
     font-family: inherit;
     outline: none;
     font-size: 18px;
-    border-bottom: white 2px solid; 
-    
+    border-bottom: white 2px solid;
 }
-.preGamePage select option{
+
+.preGamePage select option {
     background-color: #2D2D2D;
 }
 
+
 /**************************************/
 
+
 /**************************/
+
+
 /******  PAGE ADMIN  ******/
+
+
 /**************************/
 
 .mainAdmin {
@@ -475,10 +498,12 @@ body {
     background-color: #2d2d2d;
     padding: 0 15% 0 8%;
 }
-.headerAdmin div{
+
+.headerAdmin div {
     text-align: center;
 }
-.headerAdmin input{
+
+.headerAdmin input {
     font-family: 'Raleway', sans-serif;
     font-weight: 300;
     border: none;
@@ -492,22 +517,29 @@ body {
     border-radius: 15px;
     transition: 0.2s;
 }
-.headerAdmin input:hover{
+
+.headerAdmin input:hover {
     background-color: #4CD1CB;
     transform-origin: center;
     font-weight: 500;
     transform: scale(1.05);
     transition: 0.2s;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 
 /**************************************/
+
+
 /********* Style Jeu en Solo **********/
+
+
 /**************************************/
 
+
 /*****Général*****/
-.ytplayer{
+
+.ytplayer {
     pointer-events: none;
 }
 
@@ -516,6 +548,7 @@ body {
     font-family: 'Raleway', sans-serif;
     min-height: calc(100vh - 74px);
 }
+
 
 /***Photo Profil*****/
 
@@ -527,11 +560,12 @@ body {
     width: 150px;
     height: 150px;
     overflow: hidden;
-    border: solid 8px #4cd1cb;
+    border: solid 8px #FEC;
     border-radius: 50%;
     margin: auto;
     margin-top: 20px;
 }
+
 
 /******Score*****/
 
@@ -551,7 +585,7 @@ body {
 .barScore {
     width: 20px;
     height: 0%;
-    background-color: #4cd1cb;
+    background-color: #ED1B70;
     border-radius: 10px;
     position: absolute;
     bottom: 0;
@@ -567,6 +601,7 @@ body {
     position: absolute;
 }
 
+
 /******Contenu******/
 
 .contenu {
@@ -577,12 +612,14 @@ body {
     margin: auto;
     margin-top: 70px;
     marging-bottom: 100px;
-    display:none;
+    display: none;
 }
-.ytplayer{
-    margin:auto;
+
+.ytplayer {
+    margin: auto;
     margin-top: 150px;
 }
+
 
 /*****Numéro question et tuto*****/
 
@@ -597,7 +634,7 @@ body {
     height: 50px;
     outline: none;
     width: 50px;
-    background-color: #4cd1cb;
+    background-color: #FEC65C;
     font-size: 40px;
     color: white;
     border-radius: 50%;
@@ -611,6 +648,7 @@ body {
     box-shadow: 0px 0px 0px 5px #85e0db;
 }
 
+
 /*****Phrase à compléter***/
 
 .phraseACompleter {
@@ -619,6 +657,7 @@ body {
     font-weight: 500;
     margin-bottom: 10%;
 }
+
 
 /*****Div des Reponses*****/
 
@@ -638,7 +677,7 @@ body {
     min-width: 200px;
     border-radius: 20px;
     border: none;
-    background-color: #784199;
+    background-color: #F79754;
     color: white;
     font-size: 25px;
     outline: none;
@@ -655,11 +694,10 @@ body {
 }
 
 .reponseButton:hover {
-    background-color: #4cd1cb;
-    box-shadow: 0px 0px 0px 7px #85e0db;
+    box-shadow: 0px 0px 0px 7px #FEC65C;
     transition: 0.2s;
-    color: black;
 }
+
 
 /*****Timer*****/
 
@@ -667,10 +705,10 @@ body {
     width: 100px;
     min-width: 100px;
     height: 100px;
-    border: solid 8px #4cd1cb;
+    border: solid 8px #FEC65C;
     border-radius: 50%;
     margin: auto;
-    background-color: aliceblue;
+    background-color: #fff9cc;
     position: absolute;
     top: calc(50% - 54px);
     left: calc(50% - 54px);
@@ -680,16 +718,18 @@ body {
     margin-top: calc(50% - 29px);
     text-align: center;
     font-size: 50px;
-
 }
 
 
 /**** 4cd1cb bleu
 784199 violet ****/
 
+
 /**********/
 
+
 /* Footer */
+
 
 /**********/
 
@@ -707,6 +747,7 @@ body {
     flex-wrap: wrap;
 }
 
+
 /* Footer left */
 
 .footerGauche {
@@ -716,8 +757,6 @@ body {
     align-items: center;
     flex-wrap: nowrap;
     max-width: 50vw;
-
-
 }
 
 .logo {
@@ -744,7 +783,6 @@ body {
     text-decoration: none;
     color: inherit;
     font-weight: 300;
-
 }
 
 .footer .footer-links a:hover {
@@ -768,6 +806,7 @@ body {
     flex-wrap: nowrap;
 }
 
+
 /* Footer Right */
 
 .footer .footerDroite {
@@ -781,6 +820,7 @@ body {
     margin-bottom: 20px;
     color: darkgrey;
 }
+
 
 /* The contact form */
 
@@ -806,24 +846,22 @@ body {
     padding: 18px;
 }
 
-.footer ::-webkit-input-placeholder {
+.footer::-webkit-input-placeholder {
     color: #5c666b;
 }
 
-.footer ::-moz-placeholder {
+.footer::-moz-placeholder {
     color: #5c666b;
     opacity: 1;
 }
 
-.footer :-ms-input-placeholder {
+.footer:-ms-input-placeholder {
     color: #5c666b;
 }
-
 
 .footer form input {
     height: 55px;
     margin-bottom: 15px;
-
 }
 
 .footer form textarea {
@@ -849,58 +887,49 @@ body {
     transform: scale(1.02);
 }
 
+
 /* If you don't want the footer to be responsive, remove these media queries */
 
 @media (max-width: 1000px) {
-
     .footer {
         font: bold 14px sans-serif;
     }
-
     .footer .footerNom {
         font-size: 12px;
     }
-
     .footer form input,
     .footer form textarea {
         width: 250px;
     }
-
     .footer form button {
         padding: 10px 35px;
     }
-
 }
 
 @media (max-width: 800px) {
-
     .footer {
         padding: 30px;
     }
-
     .footer .footerGauche,
     .footer .footerDroite {
         float: none;
         max-width: 300px;
         margin: 0 auto;
     }
-
     .footer .footerGauche {
         margin-bottom: 40px;
     }
-
     .footer form {
         margin-top: 30px;
     }
-
     .footer form {
         display: block;
     }
-
     .footer form button {
         float: none;
     }
 }
+
 
 /************ about.php ****************/
 
@@ -964,7 +993,7 @@ body {
     flex-wrap: wrap;
     justify-content: space-around;
     margin: 50 10vw 0 10vw;
-   font-family: 'Raleway', sans-serif;
+    font-family: 'Raleway', sans-serif;
     padding-bottom: 10vh;
 }
 
@@ -1006,7 +1035,6 @@ body {
 .BoiteAIdee form {
     width: 100%;
     margin: 0;
-
 }
 
 .BoiteAIdee form input {
@@ -1034,7 +1062,6 @@ body {
     font-weight: 700;
     outline: none;
     padding: 10px;
-
 }
 
 .BoiteAIdee button:hover {
@@ -1057,9 +1084,11 @@ body {
     margin: 0;
     font-weight: 500;
 }
-.AVenir p{
+
+.AVenir p {
     font-weight: 500;
 }
+
 .AVenir p,
 .AVenir ul {
     color: white;
@@ -1070,6 +1099,7 @@ body {
     color: darkgrey;
     font-weight: 300;
 }
+
 
 /* === rank.php === */
 
@@ -1114,9 +1144,15 @@ body {
     background-color: #85e0db;
 }
 
+
 /* ===================== */
+
+
 /* === ADD SONG PAGE === */
+
+
 /* ===================== */
+
 .addSongSection {
     background-color: #2D2D2D;
     border-radius: 15px;
@@ -1129,19 +1165,23 @@ body {
     text-align: center;
     padding: 10px 30px 10px 30px;
 }
-.addSongSection h3{
-    color:white;
+
+.addSongSection h3 {
+    color: white;
     font-weight: 500;
 }
+
 .addSongForm div {
     text-align: right;
     font-weight: 300;
     display: flex;
     margin: 0.5em 0;
 }
-.addSongForm div option{
-    outline:none;
+
+.addSongForm div option {
+    outline: none;
 }
+
 .addSongForm fieldset {
     position: relative;
     padding: 0;
@@ -1174,46 +1214,56 @@ body {
     font-style: italic;
 }
 
-.addSongForm label:first-child, span {
+.addSongForm label:first-child,
+span {
     min-width: 10em;
 }
 
-.addSongForm input, select {
+.addSongForm input,
+select {
     font-family: 'Raleway', sans-serif;
     font-weight: 300;
-    border:none;
+    border: none;
     border-radius: 5px;
-    padding:3px;
-    outline:none;
+    padding: 3px;
+    outline: none;
     background-color: dimgrey;
-    color:white;
+    color: white;
     margin: 0 0 0 1em;
 }
+
 .addSongForm input[type=button],
-.addSongForm input[type=submit]{
+.addSongForm input[type=submit] {
     background-color: #4cd1cb;
     padding: 2px 7px 2px 7px;
     transition: 0.2s;
     cursor: pointer;
 }
+
 .addSongForm input[type=button]:hover,
-.addSongForm input[type=submit]:hover{
+.addSongForm input[type=submit]:hover {
     transform-origin: center;
     border: #B6FEF5 3px solid;
     font-weight: 500;
     transition: 0.2s;
 }
-.addSongForm input[type="text"], .addSongForm input[type="number"], .addSongForm input[type="url"], select {
+
+.addSongForm input[type="text"],
+.addSongForm input[type="number"],
+.addSongForm input[type="url"],
+select {
     flex: 1;
 }
-.inputMasque{
+
+.inputMasque {
     display: none;
 }
+
 .adminLangues input {
     margin-top: 3px;
-    margin-right: 5px; 
-    
+    margin-right: 5px;
 }
+
 .addSongForm input[type="number"] {
     width: 3em;
     text-align: center;
@@ -1233,206 +1283,233 @@ body {
 }
 
 
-
 /***********************************************/
+
+
 /***************** PAGE RESULTAT ***************/
+
+
 /***********************************************/
 
-.mainResultat{
+.mainResultat {
     height: calc(80vh - 74px);
     padding-top: 20vh;
 }
-.mainResultat .resultat{
-/*    box-shadow: 0px 0px 0px 5px grey;*/
+
+.mainResultat .resultat {
+    /*    box-shadow: 0px 0px 0px 5px grey;*/
     border-radius: 30px;
     padding: 40px;
-/*    background-color: #2D2D2D;*/
+    /*    background-color: #2D2D2D;*/
     display: flex;
     width: 40vw;
     margin: auto;
     justify-content: space-between;
 }
-.mainResultat .partieGauche{
+
+.mainResultat .partieGauche {
     display: flex;
     flex-direction: column;
     text-align: center;
     align-items: center;
 }
+
 .cercleScore {
     border-radius: 100%;
     width: 300px;
     height: 300px;
     background-color: #4CD1CB;
-     transition: 0.2s;
+    transition: 0.2s;
     box-shadow: 0px 0px 0px 8px #85e0db;
 }
-.cercleScore:hover{
+
+.cercleScore:hover {
     box-shadow: 0px 0px 0px 15px #85e0db;
     transition: 0.2s;
     font-weight: 500;
 }
-.scoreResultat{
+
+.scoreResultat {
     font-family: 'Raleway', sans-serif;
     font-weight: 300;
     font-size: 35;
-    color:white;
-    margin:0;
+    color: white;
+    margin: 0;
     transition: 0.2s;
     padding-top: 25px;
 }
-.cercleScore:hover .scoreResultat, .cercleScore:hover .chiffreScoreResultat{
+
+.cercleScore:hover .scoreResultat,
+.cercleScore:hover .chiffreScoreResultat {
     font-weight: 500;
     transition: 0.2s;
 }
-.chiffreScoreResultat{
+
+.chiffreScoreResultat {
     font-family: 'Raleway', sans-serif;
     font-weight: 300;
     font-size: 120px;
-    color:white;
-    margin:0;
+    color: white;
+    margin: 0;
     transition: 0.2s;
-    
 }
-.btnSaveScore{
-    margin:0;
+
+.btnSaveScore {
+    margin: 0;
     font-family: 'Raleway', sans-serif;
     margin-top: 30px;
     font-size: 18px;
     border-radius: 10px;
     outline: none;
-    border:none;
+    border: none;
     padding: 5px 10px 5px 10px;
     background-color: #a470c2;
     color: white;
     font-weight: 300;
     transition: 0.2s;
 }
-.btnSaveScore:hover{
+
+.btnSaveScore:hover {
     cursor: pointer;
     transition: 0.2s;
     font-weight: 500;
     box-shadow: 0px 0px 0px 5px #784199;
 }
-.partageReseaux{
+
+.partageReseaux {
     margin-top: 4vh;
     width: 20vw;
 }
-.partageReseaux img{
+
+.partageReseaux img {
     width: 100%;
     transition: 0.2s;
-    opacity:0.9;
+    opacity: 0.9;
 }
-.partageReseaux img:hover{
+
+.partageReseaux img:hover {
     transform: scale(1.02);
     transition: 0.2s;
     opacity: 1;
     cursor: pointer;
 }
-.mainResultat .partieDroite{
+
+.mainResultat .partieDroite {
     padding-top: 2vh;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
-.bonnesReponses{
+
+.bonnesReponses {
     background-color: #4CD1CB;
     box-shadow: 0px 0px 0px 8px #85e0db;
     display: flex;
     flex-direction: column;
     text-align: center;
     margin-bottom: 60px;
-    border-radius:100%;
+    border-radius: 100%;
     height: 200px;
-    width: 200px; 
+    width: 200px;
 }
 
-
-.nbBonneReponse{
+.nbBonneReponse {
     font-family: 'Raleway', sans-serif;
-    color:white;
+    color: white;
     font-size: 100px;
     margin: 0;
     font-weight: 300;
     padding-top: 30px;
-    
 }
-.txtBonnesReponses{
+
+.txtBonnesReponses {
     font-family: 'Raleway', sans-serif;
-    color:white;
+    color: white;
     margin: 0;
     font-size: 16px;
 }
 
-.mainResultat .partieDroite button{
+.mainResultat .partieDroite button {
     display: flex;
     height: 90px;
     width: 250px;
-    justify-content:space-around;
+    justify-content: space-around;
     align-items: center;
     border-radius: 20px;
-    border:none;
+    border: none;
     outline: none;
     padding: 5px 20px 5px 20px;
-    background-color:#a470c2;
+    background-color: #a470c2;
     transition: 0.2s;
 }
-.mainResultat .partieDroite a{
+
+.mainResultat .partieDroite a {
     text-decoration: none;
     outline: none;
 }
-.mainResultat .partieDroite button p{
+
+.mainResultat .partieDroite button p {
     font-family: 'Raleway', sans-serif;
-    color:white;
+    color: white;
     font-size: 30px;
     font-weight: 300;
     margin: 0;
-    padding-left:10px;
+    padding-left: 10px;
     transition: 0.2s;
 }
-.mainResultat .partieDroite .imgReplay{
+
+.mainResultat .partieDroite .imgReplay {
     height: 60px;
     width: 60px;
     transform: rotate(90deg);
-    transition:0.2s;
+    transition: 0.2s;
 }
-.mainResultat .partieDroite button:hover{
+
+.mainResultat .partieDroite button:hover {
     cursor: pointer;
     box-shadow: 0px 0px 0px 10px #784199;
     transition: 0.2s;
 }
-.mainResultat .partieDroite button:hover p{
+
+.mainResultat .partieDroite button:hover p {
     font-weight: 500;
     transition: 0.3s ease;
 }
-.mainResultat .partieDroite button:hover .imgReplay{
+
+.mainResultat .partieDroite button:hover .imgReplay {
     transform: rotate(-90deg);
-    transition:0.3s ease;
+    transition: 0.3s ease;
 }
-.badgesObtenus{
+
+.badgesObtenus {
     text-align: center;
 }
-.badgesObtenus img{
-    margin-top:30px;
-    width:200px;
+
+.badgesObtenus img {
+    margin-top: 30px;
+    width: 200px;
 }
-.badgesObtenus p{
+
+.badgesObtenus p {
     font-family: 'Raleway', sans-serif;
     margin: 0;
     color: #2D2D2D;
     font-size: 20px;
     font-weight: 300;
-    padding-top:20px;
+    padding-top: 20px;
 }
 
 
 /***************************/
 
+
 /***    POPUP TUTO   **/
+
 
 /***************************/
 
 .popup,
-.popup_regle{
+.popup_regle {
     display: block;
     opacity: 0;
     transition: opacity linear .2s;
@@ -1451,7 +1528,7 @@ body {
 }
 
 .popup-content,
-.popup-content_regle{
+.popup-content_regle {
     background-color: #fefefe;
     margin: 15% auto;
     border: 2px solid #888;
@@ -1474,7 +1551,7 @@ body {
 }
 
 .popup-content h2,
-.popup-content_regle h2{
+.popup-content_regle h2 {
     padding-top: 10%;
     margin: 0;
     font-family: 'Raleway', sans-serif;
@@ -1513,11 +1590,10 @@ body {
 }
 
 .close,
-.close_regle{
+.close_regle {
     color: #aaa;
     font-size: 28px;
     font-weight: bold;
-
     position: absolute;
     top: 0;
     left: calc(100% - 28px);
@@ -1531,7 +1607,8 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
-.popup-content_regle ul{
+
+.popup-content_regle ul {
     font-family: 'Raleway', sans-serif;
     font-size: 25px;
     font-weight: 300;
