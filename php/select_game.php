@@ -13,10 +13,11 @@
         <meta name="" content="">
         <!--<link rel="stylesheet" href="../css/style.css">-->
         <link rel="stylesheet" href="../css/style_select_game.css">
+        <link rel="stylesheet" href="../css/style_index.css">
     </head>
 
     <body>
-       <?php include("./main_header.php")?>
+<!--       <?php //include("./main_header.php")?>-->
        
         <main class="mainSelect">
             <h1>Choisir le mode de jeu</h1>
