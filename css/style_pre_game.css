@@ -1,0 +1,154 @@
+.preGamePage {
+    background: linear-gradient(to right,#ed1b70,#f79764,#fec65c);
+    height: 80vh;
+    padding: 50px;
+    padding-top: 150px;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+}
+
+.preGamePage h1 {
+    margin-bottom: 30px;
+    font-weight: 500;
+    color: white;
+}
+
+.preGamePage form {
+    margin: auto;
+    max-width: 35%;
+    min-height: 300px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.preGamePage fieldset {
+    height: 30%;
+    border: 3px solid white;
+    /*background-color: ##fec65c;*/
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+    border-radius: 3px;
+    margin-bottom: 30px;
+}
+
+.preGamePage img {
+    max-width: 50px;
+    vertical-align: center;
+}
+
+.preGamePage fieldset:first-child div {
+    max-width: 200px;
+    display: inline-block;
+}
+
+.preGamePage fieldset:first-child div input {
+    vertical-align: middle;
+    margin: 0;
+    margin-top: 7px;
+}
+
+.preGamePage fieldset:first-child div img {
+    vertical-align: middle;
+}
+
+.preGamePage fieldset:first-child div img:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.2s;
+}
+
+.preGamePage label {
+    padding: 0px 5px 0 5px;
+    vertical-align: middle;
+    font-weight: 500;
+}
+
+.preGamePage button[type="button"] {
+    margin-top: 10px;
+    padding: 5px 15px 5px 15px;
+    border-radius: 3px;
+    background-color: #ed1b70;
+    color: white;
+    font-weight: 300;
+    border: 3px solid white;
+    font-family: inherit;
+    font-size: 20px;
+    transition: 0.2s;
+    outline: none;
+    width: 120px;
+}
+
+.preGamePage button[type="button"]:hover {
+    transition: 0.2s;
+    width: 150px;
+}
+
+.preGamePage input[type=radio] {
+    width: 15px;
+    height: 15px;
+    opacity: 0;
+}
+
+.preGamePage input[type=radio] + label:after {
+    background: #fff;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    margin-left: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    content: '';
+    width: 17px;
+    height: 17px;
+}
+
+.preGamePage input[type=radio]:checked + label:after {
+    background: #ed1b70;
+    border-color: #ed1b70;
+    transition: 0.1s;
+    box-shadow: inset 0px 0px 0px 2px #fff;
+}
+
+.preGamePage input[type=radio]:hover {
+    cursor: pointer;
+}
+
+.preGamePage button[type=submit] {
+    width: 150px;
+    min-width: 30%;
+    height: 20%;
+    align-self: center;
+    font-family: inherit;
+    font-size: 40px;
+    border: 3px solid white;
+    font-weight: 300;
+    outline: none;
+    padding: 5px 0px 5px 0px;
+    border-radius: 3px;
+    transition: 0.2s;
+    color: white;
+    background-color: transparent;
+}
+
+.preGamePage button[type=submit]:hover {
+    transition: 0.2s;
+    width: 200px;
+    border: 3px solid #ed1b70;
+    color: #ed1b70;
+    
+}
+
+.preGamePage select {
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-family: inherit;
+    outline: none;
+    font-size: 18px;
+    border-bottom: white 2px solid;
+}
+
+.preGamePage select option {
+    background-color: #2D2D2D;
+}

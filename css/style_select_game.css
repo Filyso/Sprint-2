@@ -8,7 +8,7 @@ body{
 .mainSelect{
     margin: 0;
     padding-top: 0px;
-    background: linear-gradient(to right,#ed1b70,#f79764); 
+    background: linear-gradient(to right,#ed1b70,#f79764,#fec65c); 
     height: 80vh;
     padding-top: 100px;
 }
