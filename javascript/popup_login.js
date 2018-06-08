@@ -6,10 +6,13 @@
 
     function initialiser(evt) {
         popup = document.querySelector(".popup");
-
         popup.style.visibility = "hidden";
-        var btn = document.querySelector(".login");
-        btn.addEventListener("click", show);
+        
+        var btn = document.querySelectorAll(".login");
+        for(var currentBtn of btn){
+            currentBtn.addEventListener("click", show);
+        }
+        
     }
 
     function show(evt) {

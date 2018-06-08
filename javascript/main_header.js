@@ -4,7 +4,7 @@
 
     $(document).ready(initialiser);
 
-    //variables gloables
+    //variables globales
     var animationTo = document.getElementById("animation-to");
     var animationFrom = document.getElementById("animation-from");
 
@@ -29,7 +29,7 @@
 
         var open = false;
 
-        //Clic sur l'icône burger du menu + animation du burger
+        //Clic sur l'icône burger du menu & animation du burger (fonction anonyme)
         $('.container').click(function () {
 
             $('nav').toggleClass("menuHidden");
@@ -84,7 +84,7 @@
 
     } //Fin de la fonction initialiser
 
-    //Plein écran
+    //Fonction plein écran
     function goFullScreen(evt) {
 
         //Animation du bouton
@@ -96,7 +96,7 @@
             animationTo.beginElement();
         }
 
-        //Activation du plein écran
+        //Activation/Désactivation du mode plein écran avec le clic
 
         evt.preventDefault();
         var doc = window.document;
@@ -107,10 +107,22 @@
 
         if (!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
             requestFullScreen.call(docEl);
+            window.addEventListener("webkitFullscreenEnabled", escapeFullScreen);
+
         } else {
             cancelFullScreen.call(doc);
+
         }
 
     }
 
+    function escapeFullScreen(evt) {
+        var fullScreenButton = document.getElementById("fullScreenButton");
+       // if (evt.keyCode == 27) {
+            //window.alert("igiy");
+            fullScreenButton.classList.remove("animated");
+            animationFrom.beginElement();
+            document.removeEventListener("keydown", escapeFullScreen);
+       // }
+    }
 }());

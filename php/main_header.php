@@ -44,6 +44,13 @@
             </nav>
 
             <div class="rightHeader">
+
+                <div class="connect">
+                    <p class="login">CONNEXION</p>
+                </div>
+                <div class="connect">
+                    <a href="inscription.php">INSCRIPTION</a>
+                </div>
                 <div id="fullScreenButton">
                     <svg viewBox="0 0 24 24">
 
@@ -55,13 +62,9 @@
                             <animate id="animation-from" begin="indefinite" fill="freeze" attributeName="d" dur="0.15s" to="m 3.4285714,15.428571 -3.42857145,0 0,8.571429 8.57142905,0 0,-3.428571 -5.1428577,0 0,-5.142858 z M -5e-8,8.5714287 l 3.42857145,0 0,-5.1428573 5.1428577,0 L 8.5714291,0 -4.9999999e-8,0 l 0,8.5714287 z M 20.571428,20.571429 l -5.142857,0 0,3.428571 L 24,24 l 0,-8.571429 -3.428572,0 0,5.142858 z M 15.428571,2e-7 l 0,3.4285714 5.142857,0 0,5.1428571 3.428572,0 L 24,2e-7 l -8.571429,0 z" />
 
                         </path>
-
                     </svg>
                 </div>
-                <div id="connect">
-                    <button>CONNEXION</button>
-                    <button>INSCRIPTION</button>
-                </div>
+
             </div>
             <div class="popup">
                 <div class="popup-content">
@@ -80,6 +83,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
         <script type="text/javascript" src="../javascript/popup_login.js"></script>
-        <script type="text/javascript" src="../javascript/mainHeader.js"></script>
+        <script type="text/javascript" src="../javascript/main_header.js"></script>
 
     </body>

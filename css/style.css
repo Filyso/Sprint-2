@@ -118,7 +118,7 @@ body {
 
 .container svg path,
 .container svg line {
-    stroke: red;
+    stroke: #ED1B70;
     stroke-width: 6px;
     stroke-linecap: round;
     fill: none;
@@ -131,7 +131,7 @@ body {
     width: 300px;
     height: 500px;
     background-color: #2D2D2D;
-    transition: transform 0.7s ease-in-out;
+    transition: transform 0.7s 0.1s ease-in-out;
     padding-top: 110px;
     padding-bottom: 110px;
 }
@@ -142,7 +142,7 @@ body {
     width: 300px;
     height: 500px;
     background-color: #2D2D2D;
-    transition: transform 0.7s ease-in-out;
+    transition: transform 0.7s 0.1s ease-in-out;
     padding-top: 110px;
     padding-bottom: 110px;
 }
@@ -174,9 +174,9 @@ body {
 }
 
 #fullScreenButton svg path, #fullScreenButton svg line {
-    stroke: red;
+    stroke: #ED1B70;
     stroke-width: 0px;
-    fill: red;
+    fill: #ED1B70;
 }
 
 .mainHeader a {
@@ -185,22 +185,21 @@ body {
     font-size: 28px;
 }
 
+li .login{
+    color: white;
+    text-decoration: none;
+    font-size: 28px;
+}
+
+li .login:hover {
+    color: lightgrey;
+}
+
 .mainHeader p:hover {
     cursor: pointer;
 }
 
 .mainHeader a:hover {
-    color: lightgrey;
-}
-
-.mainHeader .login {
-    color: white;
-    text-decoration: none;
-    font-size: 28px;
-    margin: 0;
-}
-
-.mainHeader .login:hover {
     color: lightgrey;
 }
 
@@ -227,8 +226,26 @@ body {
 .rightHeader{
     display: flex;
     align-items: center;
-    width: 300px;
+    width: 400px;
     justify-content: space-around;
+}
+
+.connect a{
+    font-size: 22px;
+    color: #ED1B70;
+}
+
+.connect a:hover{
+    color: dimgrey;
+}
+
+.login{
+    font-size: 22px;
+    color: #ED1B70;
+}
+
+.login:hover{
+    color: dimgrey;
 }
 
 
