@@ -13,14 +13,14 @@ puis mettre dans la div qu'on veut l'id "particle"
 var options = {
     "particles": {
         "number": {
-            "value": 100, //nb de particule
+            "value": 40, //nb de particule
             "density": {
                 "enable": true,
-                "value_area": 552.4033491425909
+                "value_area": 1000
             }
         },
         "color": {
-            "value": "#ffffff" //couleur
+            "value": "random" //couleur
         },
         "shape": {
             "type": "circle",
@@ -30,6 +30,11 @@ var options = {
             },
             "polygon": {
                 "nb_sides": 3
+            },
+            "image":{
+                "src" : "../images/note_music - Copie.png",
+                "width" : 150,
+                "height" : 150
             }
         },
         "opacity": {
@@ -43,25 +48,25 @@ var options = {
             }
         },
         "size": {
-            "value": 3,
+            "value": 5,
             "random": true,
             "anim": {
-                "enable": false,
-                "speed": 40,
+                "enable": true,
+                "speed": 1,
                 "size_min": 0.1,
                 "sync": false
             }
         },
         "line_linked": {
-            "enable": true,  // mettre true si on veut des liens entre les points
+            "enable": false,  // mettre true si on veut des liens entre les points
             "distance": 150,
-            "color": "#ffffff",
+            "color": "#f4be09", //couleur des lignes
             "opacity": 0.4,
             "width": 1
         },
         "move": {
             "enable": true,
-            "speed": 1.5782952832645452,
+            "speed": 1,       //vitesse des boules
             "direction": "none",
             "random": true,
             "straight": false,
@@ -78,8 +83,8 @@ var options = {
         "detect_on": "canvas",
         "events": {
             "onhover": {
-                "enable": false,  //mettre en true si on veut que les boules dégagent au passage de la souris
-                "mode": "repulse"
+                "enable": true,  //mettre en true si on veut que les boules dégagent au passage de la souris
+                "mode": "grab"
             },
             "onclick": {
                 "enable": true,
@@ -89,7 +94,7 @@ var options = {
         },
         "modes": {
             "grab": {
-                "distance": 40,
+                "distance": 150,
                 "line_linked": {
                     "opacity": 1
                 }
