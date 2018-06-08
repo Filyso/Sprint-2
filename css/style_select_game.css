@@ -1,32 +1,44 @@
-
-
-
-/************************************************************/
+.mainSelect h1 {
+    margin-bottom: auto;
+    text-align: center
+}
+body{
+    margin: 0;
+}
 .mainSelect{
-    height: 48vh;
-    padding-top: 170px;
+    margin: 0;
+    padding-top: 0px;
+    background: linear-gradient(to right,#ed1b70,#f79764); 
+    height: 80vh;
+    padding-top: 100px;
 }
 .mainSelect h1{
+    margin-bottom: 100px;
+    color: white;
     font-family: 'Raleway', sans-serif;
+    font-size: 40px;
     font-weight: 500;
 }
-.mainSelect div {
+.mainSelect div{
+    color: white;
     width: 60%;
     text-align: justify;
-    margin: 20px 0 50px 0;
+    margin: auto;
     font-weight: 300;
     font-size: 18px;
     font-family: 'Raleway', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 0px;
+    margin-bottom: 80px;
 }
 
 .buttonSolo a{
-    border: 3px solid #ed1b70;
+    border: 3px solid white;
     box-sizing: border-box;
     border-radius: 3px;
-    color: #ed1b70;
+    color: white;
     text-decoration: none;
     text-align: center;
     font-size: 32px;
@@ -38,13 +50,13 @@
 
 /*#ed1b70,#f79764,#fec65c*/
 
-.buttonMulti a {
-    border: 3px solid #f79764;
-    color: #f79764;
+.buttonMulti a{
+    border: 3px solid white;
+    color: white;
     text-decoration: none;
     text-align: center;
     font-size: 42px;
-    width: 220px;
+    width: 250px;
     padding: 20px 0 20px 0;
     border-radius: 3px;
     font-weight: 300;
@@ -62,9 +74,8 @@
     transition: 0.2s;
     border: 3px solid #fec65c;
     color: #fec65c;
-    width: 280px;
+    width: 300px;
 }
-
 .selectMulti{
     height: calc(100vh - 74px);
     display: flex;
@@ -78,4 +89,4 @@
     color:white;
     font-weight: 300;
     font-family: 'Raleway', sans-serif;
-}
+}ss
