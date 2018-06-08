@@ -14,7 +14,7 @@ if (document.location.toString().indexOf('?') !== -1) {
     }
 }
 
-"use strict";
+//"use strict";
 
 // Variable Song
 var currentSong;
@@ -27,6 +27,8 @@ var scoreGeneralPourcent = 0;
 
 document.addEventListener("DOMContentLoaded", initialiser);
 
+getNewSong();
+console.log(currentSong);
 
 // Load the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
@@ -38,8 +40,6 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var player;
 
 function onYouTubePlayerAPIReady() {
-    getNewSong();
-    console.log(currentSong);
     player = new YT.Player('ytplayer', {
         height: '360',
         width: '640',
@@ -190,6 +190,7 @@ function getNewSong() {
 function majSong(data) {
     currentSong = data;
     tabTimeCode.push(data.idTimeCode);
+    console.log(currentSong);
 }
 
 // ********************* //

@@ -6,7 +6,6 @@
     <html lang="fr">
 
     <head>
-
         <meta charset="utf-8">
         <title>Jeu en Solo</title>
         <meta name="description" content="Jouez !">
@@ -78,7 +77,6 @@
 
                             <button id="reponse4Button" class="reponseButton"></button>
                         </div>
-
                     </div>
                 
                 </div>
@@ -113,6 +111,9 @@
         </main>
         
         <?php include("./main_footer.php");?>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="../javascript/test_game.js"></script>
     </body>
 
     </html>
