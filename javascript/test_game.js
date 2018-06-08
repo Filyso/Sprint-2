@@ -14,21 +14,34 @@ if (document.location.toString().indexOf('?') !== -1) {
     }
 }
 
-//"use strict";
+"use strict";
 
 // Variable Song
 var currentSong;
 var tabTimeCode = [];
 
+// Variable Timer
+var encours;
+var milli;
+var timerMilli;
+var timerSec;
+
 // Variable Game
+var niv;
+var score = 0;
+var numQuest = 0;
+var stopTimerBool = false;
+var reps;
+var stateChangeTamponMemory = [];
+var verifMemory = false;
+var timeOut = false;
 var scoreGeneral = 0;
 var scoreGeneralPourcent = 0;
+var nbGoodAnswer = 0;
 
 
 document.addEventListener("DOMContentLoaded", initialiser);
 
-getNewSong();
-console.log(currentSong);
 
 // Load the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
@@ -40,34 +53,44 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var player;
 
 function onYouTubePlayerAPIReady() {
-    player = new YT.Player('ytplayer', {
-        height: '360',
-        width: '640',
-        videoId: currentSong.url,
-        // PARAMETRES DU LECTEUR
-        playerVars: {
-            'autoplay': 1,
-            /* lance la vidéo automatiquement */
-            'controls': 0,
-            /* cache l'interférence controles */
-            'disabledkb': 1,
-            /* empeche l'utilisation des controles */
-            'iv_load_policy': 3,
-            /* supprime les annotations */
-            'rel': 0,
-            /* Le lecteur n'affiche pas de vidéo similaire à la fin */
-            'showinfo': 0,
-            /* n'affiche pas les infos de la vidéo */
-            'start': currentSong.timeCodeStart,
-            /* seconde début */
-            'end': currentSong.timeCodeEnd /* seconde fin */
+    $.post(
+        '../php/Musique.php', {
+            function: 'getMusique',
+            categorie: $_GET['categorie'],
+            lang: $_GET['langue']
         },
-        events: {
-            'onStateChange': swap
-        }
-
-    });
-
+        function (data) {
+            currentSong = data;
+            tabTimeCode.push(data.idTimeCode);
+            player = new YT.Player('ytplayer', {
+                height: '360',
+                width: '640',
+                videoId: data.url,
+                // PARAMETRES DU LECTEUR
+                playerVars: {
+                    'autoplay': 1,
+                    /* lance la vidéo automatiquement */
+                    'controls': 0,
+                    /* cache l'interférence controles */
+                    'disabledkb': 1,
+                    /* empeche l'utilisation des controles */
+                    'iv_load_policy': 3,
+                    /* supprime les annotations */
+                    'rel': 0,
+                    /* Le lecteur n'affiche pas de vidéo similaire à la fin */
+                    'showinfo': 0,
+                    /* n'affiche pas les infos de la vidéo */
+                    'start': data.timeCodeStart,
+                    /* seconde début */
+                    'end': data.timeCodeEnd /* seconde fin */
+                },
+                events: {
+                    'onStateChange': swap
+                }
+            });
+        },
+        'json'
+    );
 }
 
 function initialiser(evt) {
@@ -84,7 +107,6 @@ function swap(evt) {
     for (var z = 0; z < stateChangeTamponMemory.length; z++) {
         if (stateChangeTamponMemory[z] == 3) {
             verifMemory = true;
-
         }
     }
 
@@ -96,7 +118,7 @@ function swap(evt) {
         document.getElementsByClassName("contenu")[0].style.display = "block";
         timerStart();
         document.getElementById("numQuestion").textContent = "Question n° " + (numQuest + 1);
-        document.getElementById("phraseACompleter").textContent = tabMusique[numQuest].quest;
+        document.getElementById("phraseACompleter").textContent = currentSong.previousLyrics;
 
         reps = document.querySelectorAll(".reponses button");
 
@@ -114,16 +136,55 @@ function swap(evt) {
             reps[2].style.margin = "10px";
             reps[3].style.display = "block";
         }
+        
+        // Ajout de l'eventListener sur les boutons
         for (var rep of reps) {
-            rep.addEventListener("click", verfierReps);
+            rep.addEventListener("click", verifierReps);
         }
     }
+}
+
+function melangerReps() {
+
+    if (numQuest < 2) {
+        var bonneRepPositionAlea = Math.floor(Math.random() * 2);
+    } else if (numQuest < 4) {
+        var bonneRepPositionAlea = Math.floor(Math.random() * 3);
+    } else if (numQuest < 7) {
+        var bonneRepPositionAlea = Math.floor(Math.random() * 4);
+    }
+
+    var tabReps = [-1, -1, -1, -1];
+
+    tabReps[0] = bonneRepPositionAlea;
+
+    for (var m = 1; m < 4; m++) {
+
+        var questAlea = Math.floor(Math.random() * 4);
+
+        while (tabReps[0] == questAlea || tabReps[1] == questAlea || tabReps[2] == questAlea) {
+            questAlea = Math.floor(Math.random() * 4);
+        }
+        tabReps[m] = questAlea;
+    }
+    console.log(tabReps);
+
+    reps[tabReps[0]].value = currentSong.answers.rep1;
+    reps[tabReps[1]].value = currentSong.answers.rep2;
+    reps[tabReps[2]].value = currentSong.answers.rep3;
+    reps[tabReps[3]].value = currentSong.answers.rep4;
+
+    reps[tabReps[0]].textContent = currentSong.answers.rep1;
+    reps[tabReps[1]].textContent = currentSong.answers.rep2;
+    reps[tabReps[2]].textContent = currentSong.answers.rep3;
+    reps[tabReps[3]].textContent = currentSong.answers.rep4;
+
 }
 
 function verifierReps(evt) {
     // Suppression des eventListener sur les boutons de réponse
     for (var rep of reps) {
-        rep.removeEventListener("click", verfierReps);
+        rep.removeEventListener("click", verifierReps);
     }
 
     // Vérification de la réponse
@@ -141,7 +202,6 @@ function verifierReps(evt) {
     } else {
         document.getElementsByClassName("divTimer")[0].style.borderColor = "red";
     }
-
 
     setTimeout(function () {
         if (numQuest < 6) {
@@ -229,7 +289,7 @@ function decrement(evt) {
         clearInterval(encours);
         if (timer.textContent = "0.0") {
             timeOut = true;
-            verfierReps();
+            verifierReps();
         }
     }
 }

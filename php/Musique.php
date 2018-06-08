@@ -86,14 +86,16 @@
                 'idTimeCode'     => $ligne["idTimeCode"],
                 'nameSong'       => $ligne["nameSong"],
                 'nameArtist'     => $ligne["nameArtist"],
-                'url'            => $ligne["linkVideo"],
-                'timeCodeStart'  => $ligne["startTimeCode"],
-                'timeCodeEnd'    => $ligne["timeCode"],
+                'url'            => $url,
+                'timeCodeStart'  => $startTime,
+                'timeCodeEnd'    => $endTime,
                 'previousLyrics' => $ligne["previousLyrics"],
-                'rep1'           => $ligne["trueRep"],
-                'rep2'           => $ligne["falseRep1"],
-                'rep3'           => $ligne["falseRep2"],
-                'rep4'           => $ligne["falseRep3"]
+                'answers'        => array(
+                    'rep1'           => $ligne["trueRep"],
+                    'rep2'           => $ligne["falseRep1"],
+                    'rep3'           => $ligne["falseRep2"],
+                    'rep4'           => $ligne["falseRep3"]
+                )
             );
             
         // ETAPE 3 : Déconnecter du serveur                        
