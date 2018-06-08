@@ -1,131 +1,132 @@
-/* POLICES */
-
-@font-face {
-    font-family: "Norwester";
-    src: url("../fonts/norwester.otf");
-}
-
-/* COULEURS */
- 
-html { 
-    --jaune: #FEC65C;
-    --rouge: #ED1B70;
-    --orange: #F79754;
-    --noir: #231F20;    
-} 
-
-/* PAGE INDEX */
-
-@keyframes spriteSliding {
-    from {
-        background-position: calc(-70vh * 24);
-    }
-    to {
-        background-position: 0;
-    }
-}
-
-body {
-    margin: 0;
-}
-canvas{
-    height: 100%;
-}
-
-.mainIndex section {
-    height: 100vh;
-    width: 100vw; 
-
-    display: flex;
-    justify-content: center;
-
-    position: relative;
-}
-
-.indexLink::after {
-    content: '';
-    display: block;
-
-    width: 70vh;
-    height: 70vh;
-    position: absolute;
-    top: 15vh;
-    left: calc(50vw - 35vh);
-
-    background-image: url(../images/sprite_1.png);
-    background-repeat: no-repeat;
-    background-size: auto 100%;
-    overflow: hidden;
-
-    animation: spriteSliding 0.7s steps(24, start) infinite;
-     animation-play-state: running;
-}
-
-
-
-.mainIndex {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.welcomeIndex {
-    text-align: justify;
-    min-width: 10%;
-    max-width: 100%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    background-image: linear-gradient(90deg, var(--rouge), var(--jaune));
-    color: white;
-}
-
-.welcomeIndex p {
-    max-width: 40%;
-    min-width: 10%;
-    font-family: "Montserrat";
-    font-size: 18px;
-    line-height: 1.5;
-}
-
-.welcomeIndex h2 {
-    font-family: "Norwester";
-    font-size: 50px;
-}
-
-.welcomeIndex strong {
-    font-size: 22px;
-}
-
-.indexLink a {
-    position: absolute;
-    top: 80vh;
-    z-index: 1;
-    text-decoration: none;
-    font-family: "Raleway", sans-serif;
-    font-size: 30px;
-    color: var(--rouge);
-    padding: 15px;
-    border: 3px solid var(--rouge);
-    background-color: white;
-}
-
-.mainIndex h1 {
-    position: absolute;
-    top: 0;
-    z-index: 1;
-    font-family: "Norwester";
-    color: var(--jaune);
-    font-size: 120px;
-    margin-top: 1%;
-    padding: 0 300px 0 300px;
-}
-
-.mainIndex a:hover {
-    color: var(--jaune);
-    border: 3px solid var(--jaune);
-}
+/* POLICES */
+
+@font-face {
+    font-family: "Norwester";
+    src: url("../fonts/norwester.otf");
+}
+@font-face{
+    font-family: "FuturaBold";
+    src: url("../fonts/futuraBold.otf");
+}
+
+/* COULEURS */
+ 
+html { 
+    --jaune: #FEC65C;
+    --rouge: #ED1B70;
+    --orange: #F79754;
+    --noir: #231F20;    
+} 
+
+/* PAGE INDEX */
+
+@keyframes spriteSliding {
+    from {
+        background-position: calc(-70vh * 24);
+    }
+    to {
+        background-position: 0;
+    }
+}
+
+body {
+    margin: 0;
+}
+canvas{
+    height: 100%;
+}
+
+.mainIndex section {
+    height: 100vh;
+    width: 100vw; 
+
+    display: flex;
+    justify-content: center;
+
+    position: relative;
+}
+
+.indexLink::after {
+    content: '';
+    display: block;
+
+    width: 70vh;
+    height: 70vh;
+    position: absolute;
+    top: 15vh;
+    left: calc(50vw - 35vh);
+    z-index: 1;
+
+    background-image: url(../images/sprite_1.png);
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    overflow: hidden;
+
+    animation: spriteSliding 0.7s steps(24, start) infinite;
+     animation-play-state: running;
+}
+
+
+
+.mainIndex {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.welcomeIndex {
+    text-align: justify;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    background-image: linear-gradient(90deg, var(--rouge), var(--jaune));
+    color: white;
+}
+
+.welcomeIndex p {
+    max-width: 40%;
+    min-width: 10%;
+    font-family: "Raleway";
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.welcomeIndex h2 {
+    font-family: "FuturaBold";
+    font-size: 50px;
+}
+
+.welcomeIndex strong {
+    font-size: 22px;
+}
+
+.indexLink a {
+    position: absolute;
+    top: 85vh;
+    z-index: 1;
+    text-decoration: none;
+    font-family: "FuturaBold", sans-serif;
+    font-size: 30px;
+    color: var(--rouge);
+    padding: 15px;
+    border: 3px solid var(--rouge);
+    background-color: white;
+}
+
+.mainIndex h1 {
+    position: absolute;
+    top: 0;
+    font-family: "Norwester";
+    color: var(--jaune);
+    font-size: 120px;
+    margin-top: 1%;
+}
+
+.mainIndex a:hover {
+    color: var(--jaune);
+    border: 3px solid var(--jaune);
+}

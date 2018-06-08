@@ -6,7 +6,7 @@
     <html lang="fr">
 
     <head>
-        <link rel="stylesheet" href="../css/style.css" type="text/css" />
+<!--        <link rel="stylesheet" href="../style.css" type="text/css" />-->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:600,900" rel="stylesheet">
     </head>
 

@@ -11,7 +11,6 @@
         <title></title>
         <meta name="" content="">
         <link rel="stylesheet" href="../css/style_index.css">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:600,900" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Raleway:300,500,700" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     </head>
