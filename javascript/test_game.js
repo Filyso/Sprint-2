@@ -136,7 +136,7 @@ function swap(evt) {
             reps[2].style.margin = "10px";
             reps[3].style.display = "block";
         }
-        
+
         // Ajout de l'eventListener sur les boutons
         for (var rep of reps) {
             rep.addEventListener("click", verifierReps);
@@ -189,7 +189,7 @@ function verifierReps(evt) {
 
     // Vérification de la réponse
     if (!timeOut) {
-        if (this.value == tabMusique[numQuest].reponse) {
+        if (this.value == currentSong.reponse) {
             nbGoodAnswer = nbGoodAnswer + 1;
             this.style.backgroundColor = "#3df22d";
             stopTimer();
@@ -209,16 +209,32 @@ function verifierReps(evt) {
             document.getElementsByClassName("contenu")[0].style.display = "none";
             document.getElementById("ytplayer").style.display = "block";
 
-            player.loadVideoById({
-                videoId: tabMusique[numQuest].url,
-                startSeconds: tabMusique[numQuest].timeCodeStart,
-                endSeconds: tabMusique[numQuest].timeCodeEnd,
-            });
-            player.playVideo();
-            reps[0].style.backgroundColor = "#784199";
-            reps[1].style.backgroundColor = "#784199";
-            reps[2].style.backgroundColor = "#784199";
-            reps[3].style.backgroundColor = "#784199";
+
+            $.post(
+                '../php/Musique.php', {
+                    function: 'getMusique',
+                    categorie: $_GET['categorie'],
+                    lang: $_GET['langue'],
+                    forbiddenTimeCode: tabTimeCode
+                },
+                function (data) {
+                    currentSong = data;
+                    tabTimeCode.push(data.idTimeCode);
+                    player.loadVideoById({
+                        videoId: data.url,
+                        startSeconds: data.timeCodeStart,
+                        endSeconds: data.timeCodeEnd,
+                    });
+
+                    player.playVideo();
+                    reps[0].style.backgroundColor = "#784199";
+                    reps[1].style.backgroundColor = "#784199";
+                    reps[2].style.backgroundColor = "#784199";
+                    reps[3].style.backgroundColor = "#784199";
+                },
+                'json'
+            );
+
         } else {
             var childMain = document.querySelectorAll(".mainJeuSolo > *");
             for (var currentElem of childMain) {

@@ -6,11 +6,14 @@
     <html lang="fr">
 
     <head>
+
         <meta charset="utf-8">
         <title>Jeu en Solo</title>
         <meta name="description" content="Jouez !">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:600,900" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="../style.css" />
+        <script type="text/javascript" src="../javascript/popup_regles.js"></script>
+        <script type="text/javascript" src="../javascript/game.js"></script>
     </head>
 
     <body>
@@ -77,6 +80,7 @@
 
                             <button id="reponse4Button" class="reponseButton"></button>
                         </div>
+
                     </div>
                 
                 </div>
