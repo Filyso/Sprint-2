@@ -2,9 +2,12 @@
 
 session_start();
 
-if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["name"]) && isset($_POST["email"]) && isset($_POST["passSignUp"]) && isset($_POST["passverif"]) && ($_POST["passSignUp"] == $_POST["passverif"])){
+if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["name"]) && isset($_POST["email"]) && isset($_POST["passSignUp"]) && isset($_POST["passverif"]) && ($_POST["passSignUp"] == $_POST["passverif"]) && isset($_FILES["icon"])){
     
-    
+    echo($_FILES["icon"]["name"]."<br/>");
+    echo($_FILES["icon"]["size"]."<br/>");
+    echo($_FILES["icon"]["type"]."<br/>");
+
     require("./param.inc.php");
     $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
     $pdo->query("SET NAMES utf8");
@@ -19,14 +22,38 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
     echo($ligne["pseudoMbr"]."  ".$ligne["mailMbr"]."<br/>");
     echo($_POST["pseudoSignUp"]."  ".$_POST["email"]."<br/>");
     
-    // le pseudo ou le mail ne doit pas être déjà utilisé
-    if(!empty($ligne["pseudoMbr"]) || !empty($ligne["mailMbr"])){
+    
+    // le pseudo ou le mail ne doit pas être déjà utilisé, l'image doit être en jpeg ou png, la taille de l'image ne doit pas dépassé 3Mo, 
+    $extensions_valides = array('jpg', 'jpeg','png');
+    
+    $extension_upload = strtolower(substr(strrchr($_FILES['icon']['name'],'.'),1));
+
+    echo($extension_upload."<br/>");
+    
+    if(!empty($ligne["pseudoMbr"]) || !empty($ligne["mailMbr"]) || !(in_array($extension_upload,$extensions_valides)) || $_FILES["icon"]["name"] == ".htacces" || $_FILES["icon"]["size"] > 3000000){
         //inscription invalide
         echo("Pseudo ou mail invalide");
     }else{
         //inscription valide
-        $requeteSQL = "INSERT INTO `MEMBRES` (`pseudoMbr`, `nameMbr`, `prenomMbr`, `mailMbr`, `mdpMbr`,  `isVerif`) VALUES ('1', '-èu', '-èu', '-èu', '-èu', '-èu', '-èu', '0')
-";
+        $requeteSQL = "INSERT INTO `membres` (`pseudoMbr`, `nameMbr`, `prenomMbr`, `mailMbr`, `mdpMbr`,  `isVerif`) VALUES (:pseudoSignUp, :lastname, :name, :email, :passSignUp,'0')";
+        $statement = $pdo->prepare($requeteSQL);
+        $statement->execute(array(":pseudoSignUp" => $_POST["pseudoSignUp"], 
+                                  ":lastname" => $_POST["lastname"],
+                                 ":name" => $_POST["name"],
+                                 ":email" => $_POST["email"],
+                                 ":passSignUp" => $_POST["passSignUp"]));
+        
+        
+        $requeteSQL = "SELECT idMbr FROM membres WHERE mailMbr= ".$_POST["email"]." AND pseudoMbr= ".$_POST["pseudoSignUp"];
+        $statement = $pdo->query($requeteSQL);
+        $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        copy($_FILES["icon"]["tmp_name"],"../icons/img_avatar_".$ligne["idMbr"].$extension_upload);
+        
+        $requeteSQL = "INSERT INTO `membres` (`linkIconMbr`) VALUES ('../icons/img_avatar_".$ligne["idMbr"].$extension_upload."') WHERE mail= ".$_POST["email"]." AND pseudoMbr= ".$_POST["pseudoSignUp"];
+        $statement = $pdo->query($requeteSQL);
+        
+        echo("Inscription réussie");
     }
 
 
@@ -35,7 +62,7 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
     
     
 }else{
-    echo("C PA BN"); 
+    echo("bidule");
 }
 
 ?>
@@ -58,7 +85,7 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
 
     <main class="signUpPage">
         <h1>Sélectionnez la langue et la catégorie</h1>
-        <form action="./sign_up.php" method="post"  style="margin-top:200px">
+        <form action="./sign_up.php" method="post"  style="margin-top:200px"  enctype="multipart/form-data">
             <fieldset>
                 <div>
                     <label for="pseudoSignUp">Pseudo</label>
@@ -79,9 +106,10 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
                     <label for="passverif">Vérification du mot de passe</label>
                     <input name="passverif" type="password" id="passverif" required="required"></input>
 
+                    <input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
 
-                    <!-- <label for="iconPath">Choississez une icône de joueur !</label>
-                    <input name="iconPath" type="file" id="iconPath" required="required"></input> -->                 
+                    <label for="icon">Icône de joueur (JPG ou PNG | max. 3Mo)</label>
+                    <input name="icon" type="file" id="icon" required="required" />                 
                 </div>
             </fieldset>
             <button type="submit">Terminer</button>
