@@ -10,29 +10,31 @@
         <meta http-equiv="" content="">
         <title></title>
         <meta name="" content="">
-        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/style_index.css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:600,900" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Raleway:300,500,700" rel="stylesheet">
         
     </head>
 
     <body>
-       
-        <?php include("./main_header.php")?>
-        <main class="mainIndex particle-net" id="particle">
-            <h1>Bienvenue sur</h1>
+        <?php /*include("./main_header.php") */?>
 
-            <section>
-<!--                <h2>Qu'est-ce que Filsyo ?</h2>-->
-<!--                <p>Filyso est né dans le cadre d'un projet étudiant en 2018. Il s'agit d'un site vous proposant quelques jeux basés sur les paroles de chansons. Les jeux sont répartis en modes de jeu, en solo ou en multijoueur.<br/> Notre application est développée au département MMI de l'IUT de Laval, en France. Le but est d'imaginer et de concevoir une application en rapport avec un certain sujet et présentant certaines fonctionnalités. La première version que nous vous présentons ici est un prototype dans lequel seul le mode de jeu en solo n'est disponible.</p>-->
+        <main class="mainIndex">
+            <h1>FILYSO</h1>
+            
+            <section class="indexLink">
+                <a href="./select_game.php">JOUER</a>
             </section>
-            <a href="./select_game.php">JOUER</a>
+
+            <section class="welcomeIndex">
+                <h2>Qu'est-ce que Filyso ?</h2>
+                <p>Filyso est né dans le cadre d'un <strong>projet étudiant en 2018</strong>. Il s'agit d'un site vous proposant quelques <strong>jeux basés sur les paroles de chansons</strong>. Les jeux sont répartis en modes de jeu, en <strong>solo ou en multijoueur</strong>.<br/> Notre application est développée au département MMI de l'IUT de Laval, en France.</p>
+            </section>
+
         </main>
          
 
-        <?php include("./main_footer.php")?>
-        
-
+        <?php /*include("./main_footer.php")*/?>
     </body>
 
     </html>
