@@ -1,53 +1,40 @@
 <?php
-
-
 ?>
-    <!DOCTYPE html>
-    <html lang="fr">
 
-    <head>
-        <link rel="stylesheet" href="../css/style.css" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:600,900" rel="stylesheet">
-    </head>
-
-    <body>
-        <footer class="footer">
-
-            <div class="footerGauche">
-
+    <link rel="stylesheet" href="../css/style_footer.css" type="text/css" />
+    <footer class="footer">
+        <a href="./index.php">
                 <img class="logo" src="../images/logo_texte_sans_fond.png" alt="logo">
+        </a>
+        <div class="footerGauche">
 
+            <p class="footer-links">
+                <a href="./about.php#equipe">L'ÉQUIPE</a> ·
+                <a href="./about.php#idee">BOÎTE À IDÉE</a> ·
+                <a href="./about.php#avenir">À VENIR</a>
 
-                <p class="footer-links">
-                    <a href="./about.php#equipe">L'ÉQUIPE</a> ·
-                    <a href="./about.php#idee">BOÎTE À IDÉE</a> ·
-                    <a href="./about.php#avenir">À VENIR</a>
+            </p>
 
-                </p>
-
-                <div class="footerReseaux">
-                    <!- lier les réseaux sociaux ->
-                    <a href="" target="_blank"><img src="../images/Facebook.png"></a>
-                    <a href="" target="_blank"><img src="../images/Twitter.png" ></a>
-                    <a href="https://www.instagram.com/filysogame" target="_blank"><img src="../images/Instagram.png"></a>
-
-                </div>
+            <div class="footerReseaux">
+                <a href="https://twitter.com/Filyso1" target="_blank"><img src="../images/Twitter.png" ></a>
+                <a href="https://www.instagram.com/filysogame" target="_blank"><img src="../images/Instagram.png"></a>
 
             </div>
 
-            <div class="footerDroite">
+        </div>
 
-                <p>CONTACTEZ-NOUS</p>
+        <div class="footerDroite">
 
-                <form action="#" method="post">
+            <h3>CONTACTEZ-NOUS</h3>
 
-                    <input type="email" name="email" placeholder="Email" required />
-                    <textarea name="message" placeholder="Message" required></textarea>
-                    <button>Envoyer</button>
+            <form action="#" method="post">
 
-                </form>
+                <input type="email" name="email" placeholder="Email" required />
+                <textarea name="message" placeholder="Message" required></textarea>
+                <button>Envoyer</button>
 
-            </div>
+            </form>
 
-        </footer>
-    </body>
+        </div>
+
+    </footer>

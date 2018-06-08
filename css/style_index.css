@@ -8,7 +8,10 @@
     font-family: "FuturaBold";
     src: url("../fonts/futuraBold.otf");
 }
-
+@font-face {
+    font-family: "Raleway";
+    src: url("../fonts/ralewayRegular.ttf");
+}
 /* COULEURS */
 
 html {
@@ -69,7 +72,7 @@ main{
 }
 
 .mainIndex {
-    position: absolute;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;

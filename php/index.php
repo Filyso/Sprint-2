@@ -1,18 +1,15 @@
 <?php
 	header("Content-type: text/html; charset: UTF-8");
 ?>
-
-    <!DOCTYPE html>
-    <html lang="fr">
-
+<!DOCTYPE html>
+<html lang="fr">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="" content="">
         <title></title>
         <meta name="" content="">
         <link rel="stylesheet" href="../css/style_index.css">
-        <link href="https://fonts.googleapis.com/css?family=Raleway:300,500,700" rel="stylesheet">
-        
+
     </head>
 
     <body>
@@ -20,7 +17,7 @@
 
         <main class="mainIndex">
             <h1>FILYSO</h1>
-            
+
             <section class="indexLink">
                 <a href="./select_game.php">JOUER</a>
             </section>
@@ -31,9 +28,7 @@
             </section>
 
         </main>
-         
-
-        <?php /*include("./main_footer.php")*/?>
+        <?php include("./main_footer.php"); ?>
     </body>
 
-    </html>
+</html>
