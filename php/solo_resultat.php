@@ -2,7 +2,7 @@
 	header("Content-type: text/html; charset: UTF-8");
 ?>
 <head>
-    <link rel="stylesheet" href="../style.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/style_resultat.css" type="text/css" media="screen" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat:600,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,500,700" rel="stylesheet">
 </head>
