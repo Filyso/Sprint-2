@@ -1,17 +1,14 @@
 <?php
 	header("Content-type: text/html; charset: UTF-8");
 ?>
-
-    <!DOCTYPE html>
-    <html lang="fr">
-
+<!DOCTYPE html>
+<html lang="fr">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="" content="">
         <title></title>
         <meta name="" content="">
         <link rel="stylesheet" href="../css/style_index.css">
-        <link href="https://fonts.googleapis.com/css?family=Raleway:300,500,700" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     </head>
 
@@ -31,11 +28,9 @@
             </section>
 
         </main>
-         
-
-        <?php /*include("./main_footer.php")*/?>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <?php include("./main_footer.php"); ?>
         <script type="text/javascript" src="../javascript/jsAnimParticules.js"></script>
     </body>
 
-    </html>
+</html>
