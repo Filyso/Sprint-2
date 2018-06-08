@@ -4,6 +4,10 @@
     font-family: "Norwester";
     src: url("../fonts/norwester.otf");
 }
+@font-face{
+    font-family: "FuturaBold";
+    src: url("../fonts/futuraBold.otf");
+}
 
 /* COULEURS */
 
@@ -28,10 +32,12 @@ html {
 body {
     margin: 0;
 }
-
+main{
+    width: 100%;
+}
 .mainIndex section {
     height: 100vh;
-    width: 100vw;
+    width: 100%;
 
     display: flex;
     justify-content: center;
@@ -48,6 +54,7 @@ body {
     position: absolute;
     top: 15vh;
     left: calc(50vw - 35vh);
+    z-index: 1;
 
     background-image: url(../images/sprite_1.png);
     background-repeat: no-repeat;
@@ -70,8 +77,6 @@ body {
 
 .welcomeIndex {
     text-align: justify;
-    min-width: 10%;
-    max-width: 100%;
 
     display: flex;
     justify-content: center;
@@ -85,13 +90,13 @@ body {
 .welcomeIndex p {
     max-width: 40%;
     min-width: 10%;
-    font-family: "Montserrat";
+    font-family: "Raleway";
     font-size: 18px;
     line-height: 1.5;
 }
 
 .welcomeIndex h2 {
-    font-family: "Norwester";
+    font-family: "FuturaBold";
     font-size: 50px;
 }
 
@@ -101,10 +106,10 @@ body {
 
 .indexLink a {
     position: absolute;
-    top: 80vh;
+    top: 85vh;
     z-index: 1;
     text-decoration: none;
-    font-family: "Raleway", sans-serif;
+    font-family: "FuturaBold", sans-serif;
     font-size: 30px;
     color: var(--rouge);
     padding: 15px;
@@ -114,12 +119,10 @@ body {
 .mainIndex h1 {
     position: absolute;
     top: 0;
-    z-index: 1;
     font-family: "Norwester";
     color: var(--jaune);
     font-size: 120px;
     margin-top: 1%;
-    padding: 0 300px 0 300px;
 }
 
 .mainIndex a:hover {
