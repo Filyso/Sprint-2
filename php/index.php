@@ -6,19 +6,20 @@
     <html lang="fr">
 
     <head>
-
         <meta charset="utf-8">
         <meta http-equiv="" content="">
         <title></title>
         <meta name="" content="">
-        <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" href="../css/style.css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:600,900" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Raleway:300,500,700" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     </head>
 
     <body>
+       
         <?php include("./main_header.php")?>
-        <main class="mainIndex">
+        <main class="mainIndex particle-net" id="particle">
             <h1>Bienvenue sur</h1>
 
             <section>
@@ -27,8 +28,12 @@
             </section>
             <a href="./select_game.php">JOUER</a>
         </main>
+         
 
         <?php include("./main_footer.php")?>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="../javascript/jsmaintest.js"></script>
+
     </body>
 
     </html>

@@ -3,7 +3,7 @@
 ?>
 
     <head>
-        <link rel="stylesheet" href="../style.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" />
         <link href="https://fonts.googleapis.com/css?family=Raleway:300,500,700" rel="stylesheet">
         <script type="text/javascript" src="../javascript/popup_login.js"></script>
     </head>
