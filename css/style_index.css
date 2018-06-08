@@ -18,11 +18,11 @@
 /* COULEURS */
 
 html {
+    --jaune: #FEC65C;
     --rouge: #ED1B70;
     --orange: #F79754;
     --noir: #231F20;
 }
-
 /* PAGE INDEX */
 
 @keyframes spriteSliding {
@@ -51,7 +51,7 @@ canvas {
 
 .mainIndex section {
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
     position: relative;
