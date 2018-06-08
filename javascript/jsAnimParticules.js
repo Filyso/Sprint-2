@@ -1,14 +1,26 @@
+/* 
+tuto utiliser ce truc : 
+ coller ça dans le head :
+ <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+ 
+  et ça avant la fin du body:  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="../javascript/jsAnimParticules.js"></script>
+    
+puis mettre dans la div qu'on veut l'id "particle"    
+*/
+
 var options = {
     "particles": {
         "number": {
-            "value": 100,
+            "value": 100, //nb de particule
             "density": {
                 "enable": true,
                 "value_area": 552.4033491425909
             }
         },
         "color": {
-            "value": "#ffffff"
+            "value": "#ffffff" //couleur
         },
         "shape": {
             "type": "circle",

@@ -19,9 +19,9 @@ h1 {
 
 
 .mainIndex {
-    background-color: black;
+    background-color: white;
     height: 54vh;
-    margin: 0;                
+    margin: 0;      
     padding: 0;
     display: flex;
     flex-direction: column;
