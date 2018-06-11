@@ -1,0 +1,82 @@
+/*#ed1b70,#f79764,#fec65c*/
+
+.mainRank {
+    background: linear-gradient(to right,#ed1b70,#f79764,#fec65c);
+    margin: 0;
+    padding: 120px 50px 50px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Raleway';
+    min-height: 100vh;
+}
+.mainRank h1 {
+    color: white;
+    margin-top: 0;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+}
+
+.mainRank table {
+    border: 3px solid white;
+    font-family: 'Raleway', sans-serif;
+    width: 50%;
+    border-collapse: collapse;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.mainRank tr {
+    border: 3px solid white;
+    padding-top: 15px;
+
+}
+
+.mainRank th {
+    font-weight: normal;
+    font-size: 30px;
+    padding: 10px 20px 10px 20px;
+}
+
+.mainRank td {
+    font-weight: 300;
+    padding: 5px 20px 5px 20px;
+    height: 100%;
+}
+
+.mainRank th:first-child,
+.mainRank td:first-child {
+    color: white;
+}
+
+.mainRank th:last-child,
+.mainRank td:last-child {
+    color: white;
+    text-align: right;
+}
+
+.mainRank tr+tr:hover td:last-child{
+    background: white;
+    color: #fec65c;
+}
+.mainRank tr+tr:hover td:first-child{
+    background: white;
+    color: #ed1b70;
+}
+.mainRank figure{
+    width: 60px;
+    float: left;
+    margin: 5px 50px 5px 20px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.mainRank tr:nth-child(even) {
+/*    background: rgba(255,255,255,0.5);*/
+/*    background:#ed1b70;*/
+}
+
+.mainRank tr:nth-child(odd) {
+/*    background: rgba(255,255,255,0.8);*/
+/*    background:#f79764;*/
+}
