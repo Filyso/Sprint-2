@@ -2,7 +2,7 @@
 
 session_start();
 
-if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["name"]) && isset($_POST["email"]) && isset($_POST["passSignUp"]) && isset($_POST["passverif"]) && ($_POST["passSignUp"] == $_POST["passverif"]) && isset($_FILES["icon"])){
+if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["name"]) && isset($_POST["emailSignUp"]) && isset($_POST["passSignUp"]) && isset($_POST["passverif"]) && ($_POST["passSignUp"] == $_POST["passverif"]) && isset($_FILES["icon"])){
     
     echo($_FILES["icon"]["name"]."<br/>");
     echo($_FILES["icon"]["size"]."<br/>");
@@ -13,14 +13,14 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
     $pdo->query("SET NAMES utf8");
     $pdo->query("SET CHARACTER SET 'utf8'");
 
-    $requeteSQL = "SELECT pseudoMbr, mailMbr FROM MEMBRES WHERE UPPER(pseudoMbr)= UPPER(:pseudo) OR mailMbr= :email";
+    $requeteSQL = "SELECT pseudoMbr, mailMbr FROM MEMBRES WHERE UPPER(pseudoMbr)= UPPER(:pseudo) OR mailMbr= :emailSignUp";
     $statement = $pdo->prepare($requeteSQL);
-    $statement->execute(array(":pseudo" => $_POST["pseudoSignUp"], ":email" => $_POST["email"]));
+    $statement->execute(array(":pseudo" => $_POST["pseudoSignUp"], ":emailSignUp" => $_POST["emailSignUp"]));
     
     $ligne = $statement->fetch(PDO::FETCH_ASSOC);
     
     echo($ligne["pseudoMbr"]."  ".$ligne["mailMbr"]."<br/>");
-    echo($_POST["pseudoSignUp"]."  ".$_POST["email"]."<br/>");
+    echo($_POST["pseudoSignUp"]."  ".$_POST["emailSignUp"]."<br/>");
     
     
     // le pseudo ou le mail ne doit pas être déjà utilisé, l'image doit être en jpeg ou png, la taille de l'image ne doit pas dépassé 3Mo, 
@@ -35,22 +35,23 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
         echo("Pseudo ou mail invalide");
     }else{
         //inscription valide
-        $requeteSQL = "INSERT INTO `membres` (`pseudoMbr`, `nameMbr`, `prenomMbr`, `mailMbr`, `mdpMbr`,  `isVerif`) VALUES (:pseudoSignUp, :lastname, :name, :email, :passSignUp,'0')";
+        $requeteSQL = "INSERT INTO `membres` (`pseudoMbr`, `nameMbr`, `prenomMbr`, `mailMbr`, `mdpMbr`,  `isVerif`) VALUES (:pseudoSignUp, :lastname, :name, :emailSignUp, :passSignUp,'0')";
         $statement = $pdo->prepare($requeteSQL);
         $statement->execute(array(":pseudoSignUp" => $_POST["pseudoSignUp"], 
                                   ":lastname" => $_POST["lastname"],
                                  ":name" => $_POST["name"],
-                                 ":email" => $_POST["email"],
+                                 ":emailSignUp" => $_POST["emailSignUp"],
                                  ":passSignUp" => $_POST["passSignUp"]));
         
         
-        $requeteSQL = "SELECT idMbr FROM membres WHERE mailMbr= ".$_POST["email"]." AND pseudoMbr= ".$_POST["pseudoSignUp"];
+        $requeteSQL = "SELECT LAST_INSERT_ID() AS idMbr";
         $statement = $pdo->query($requeteSQL);
         $ligne = $statement->fetch(PDO::FETCH_ASSOC);
         
-        copy($_FILES["icon"]["tmp_name"],"../images/icons/img_avatar_".$ligne["idMbr"].$extension_upload);
         
-        $requeteSQL = "INSERT INTO `membres` (`linkIconMbr`) VALUES ('../icons/img_avatar_".$ligne["idMbr"].$extension_upload."') WHERE mail= ".$_POST["email"]." AND pseudoMbr= ".$_POST["pseudoSignUp"];
+        move_uploaded_file($_FILES["icon"]["tmp_name"],"../images/icons/"."img_avatar_".$ligne["idMbr"].".".$extension_upload);
+        
+        $requeteSQL = "UPDATE `membres` SET `linkIconMbr` = '../images/icons/img_avatar_".$ligne["idMbr"].$extension_upload."' WHERE idMbr='".$ligne["idMbr"]."'";
         $statement = $pdo->query($requeteSQL);
         
         echo("Inscription réussie");
@@ -97,8 +98,8 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
                     <label for="name">Prénom</label>
                     <input name="name" type="text" id="name" required="required"></input>
         
-                    <label for="email">Mail</label>
-                    <input name="email" type="email" id="email" required="required"></input>
+                    <label for="emailSignUp">Mail</label>
+                    <input name="emailSignUp" type="emailSignUp" id="emailSignUp" required="required"></input>
     
                     <label for="passSignUp">Mot de passe</label>
                     <input name="passSignUp" type="password" id="passSignUp" required="required"></input>
