@@ -1,12 +1,8 @@
 <?php
-
+$erreur = "";
 session_start();
 
-if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["name"]) && isset($_POST["emailSignUp"]) && isset($_POST["passSignUp"]) && isset($_POST["passverif"]) && ($_POST["passSignUp"] == $_POST["passverif"]) && isset($_FILES["icon"])){
-    
-    echo($_FILES["icon"]["name"]."<br/>");
-    echo($_FILES["icon"]["size"]."<br/>");
-    echo($_FILES["icon"]["type"]."<br/>");
+if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["name"]) && isset($_POST["emailSignUp"]) && isset($_POST["passSignUp"]) && isset($_POST["passverif"]) && isset($_FILES["icon"])){
 
     require("./param.inc.php");
     $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
@@ -19,8 +15,7 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
     
     $ligne = $statement->fetch(PDO::FETCH_ASSOC);
     
-    echo($ligne["pseudoMbr"]."  ".$ligne["mailMbr"]."<br/>");
-    echo($_POST["pseudoSignUp"]."  ".$_POST["emailSignUp"]."<br/>");
+    
     
     
     // le pseudo ou le mail ne doit pas être déjà utilisé, l'image doit être en jpeg ou png, la taille de l'image ne doit pas dépassé 3Mo, 
@@ -28,12 +23,73 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
     
     $extension_upload = strtolower(substr(strrchr($_FILES['icon']['name'],'.'),1));
 
-    echo($extension_upload."<br/>");
+
     
-    if(!empty($ligne["pseudoMbr"]) || !empty($ligne["mailMbr"]) || !(in_array($extension_upload,$extensions_valides)) || $_FILES["icon"]["name"] == ".htacces" || $_FILES["icon"]["size"] > 3000000){
-        //inscription invalide
-        echo("Pseudo ou mail invalide");
+    
+
+    $password = $_POST["passSignUp"];
+    
+    if(strlen($password)>=8){
+        
+        if(preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])#', $password)){
+            $mdpConforme = true;
+        }else{
+            $mdpConforme = false;
+        }
+           
     }else{
+        $mdpConforme = false;
+    }
+           
+    $pseudo = $_POST["pseudoSignUp"];
+           
+    if(strlen($pseudo) >= 4){
+        $pseudoConforme = true;
+    }else{
+        $pseudoConforme = false;
+    }
+    
+    
+    
+    
+    
+    if(!empty($ligne["pseudoMbr"]) || !empty($ligne["mailMbr"]) || !(in_array($extension_upload,$extensions_valides)) || $_FILES["icon"]["name"] == ".htacces" || $_FILES["icon"]["size"] > 3000000 || !$mdpConforme || !$pseudoConforme || !($password == $_POST["passverif"])){
+        
+        //inscription invalide
+        
+        if(!$mdpConforme){
+            $erreur = $erreur."Le mot de passe doit contenir une majuscule, une miniscule, un chiffre et au moins 8 caractères"."<br/>";
+        }
+        if(!$pseudoConforme){
+            $erreur = $erreur."Le pseudo doit contenir au moins 4 caractères"."<br/>";
+        }
+        if(!empty($ligne["pseudoMbr"])){
+            $erreur = $erreur."Pseudo déjà utilisé"."<br/>";
+        }
+        if(!empty($ligne["mailMbr"])){
+            $erreur = $erreur."Mail déjà utilisé"."<br/>";
+        }
+        if(!(in_array($extension_upload,$extensions_valides))){
+            $erreur = $erreur."Le fichier doit être un fichier PNG,JPG ou JPEG"."<br/>";
+        }
+        if($_FILES["icon"]["size"] > 3000000){
+            $erreur = $erreur."Le fichier est trop volumineux"."<br/>";
+        }
+        if($_FILES["icon"]["name"] == ".htacces"){
+            $erreur = $erreur."Pas de fichier .htaccess (on tiens au bon fonctionnement du site)"."<br/>";
+        }
+        if($password != $_POST["passverif"]){
+            $erreur = $erreur."La vérification mot de passe n'est pas valide"."<br/>";
+        }
+        echo($erreur);
+        
+        $pdo = null;
+        
+        
+    }else{
+        $erreur = "Inscription réussie";
+        
+        $passSha1 = sha1("cle".$_POST["passSignUp"]."hya");
         //inscription valide
         $requeteSQL = "INSERT INTO `membres` (`pseudoMbr`, `nameMbr`, `prenomMbr`, `mailMbr`, `mdpMbr`,  `isVerif`) VALUES (:pseudoSignUp, :lastname, :name, :emailSignUp, :passSignUp,'0')";
         $statement = $pdo->prepare($requeteSQL);
@@ -41,7 +97,7 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
                                   ":lastname" => $_POST["lastname"],
                                  ":name" => $_POST["name"],
                                  ":emailSignUp" => $_POST["emailSignUp"],
-                                 ":passSignUp" => $_POST["passSignUp"]));
+                                 ":passSignUp" => $passSha1));
         
         
         $requeteSQL = "SELECT LAST_INSERT_ID() AS idMbr";
@@ -54,16 +110,16 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
         $requeteSQL = "UPDATE `membres` SET `linkIconMbr` = '../images/icons/img_avatar_".$ligne["idMbr"].$extension_upload."' WHERE idMbr='".$ligne["idMbr"]."'";
         $statement = $pdo->query($requeteSQL);
         
-        echo("Inscription réussie");
+        $pdo = null;
+        
+        //header("Location : PAGESPECIALE");
     }
 
 
-    $pdo = null;
     
     
     
-}else{
-    echo("bidule");
+    
 }
 
 ?>
@@ -78,7 +134,6 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
     <meta name="description" content="Inscrivez-vous."/>
     <title>Inscrivez-vous</title>
     <link rel="stylesheet" type="text/css" href="../style.css" />
-    <script type="text/javascript" src="../javascript/selectAlea.js"></script>
 </head>
 
 <body>
@@ -87,6 +142,11 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
     <main class="signUpPage">
         <h1>Sélectionnez la langue et la catégorie</h1>
         <form action="./sign_up.php" method="post"  style="margin-top:200px"  enctype="multipart/form-data">
+            <?php 
+            if($erreur != ""){ 
+                echo($erreur);
+            } 
+            ?>
             <fieldset>
                 <div>
                     <label for="pseudoSignUp">Pseudo</label>
@@ -110,7 +170,7 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
                     <input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
 
                     <label for="icon">Icône de joueur (JPG ou PNG | max. 3Mo)</label>
-                    <input name="icon" type="file" id="icon" required="required" />                 
+                    <input name="icon" type="file" id="icon" required="required" />   
                 </div>
             </fieldset>
             <button type="submit">Terminer</button>
