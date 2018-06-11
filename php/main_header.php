@@ -49,7 +49,7 @@
                     <p class="login">CONNEXION</p>
                 </div>
                 <div class="connect">
-                    <a href="inscription.php">INSCRIPTION</a>
+                    <a href="inscription.php" class="signup"><p class="login">INSCRIPTION</p></a>
                 </div>
                 <div id="fullScreenButton">
                     <svg viewBox="0 0 24 24">
