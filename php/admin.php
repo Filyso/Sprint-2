@@ -19,7 +19,7 @@
             <header class="headerAdmin">
 
                 <div>
-                    <h2>Gestion de contenu</h2>
+                    <h2>GESTION DE CONTENU</h2>
                     <form action="./admin.php" method="get">
                         <input type="submit" value="Ajout de chansons" name="admin"/>
                         <input type="submit" value="Modification/Suppression de chansons" name="admin"/>
@@ -27,7 +27,7 @@
                 </div>
 
                 <div>
-                    <h2>Gestion d'utilisateurs</h2>
+                    <h2>GESTION D'UTILISATEURS</h2>
                     <form action="./admin.php" method="get">
                         <input type="submit" value="Suppression d'utilisateurs" name="admin"/>
                     </form>

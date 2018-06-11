@@ -1,8 +1,114 @@
 .headerAdmin {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .mainAdmin {
     background-image: linear-gradient(90deg, var(--rouge), var(--jaune));
+    padding-bottom: 10vh;
+}
+
+.headerAdmin h2 {
+    color: white;
+    font-family: "FuturaBold";
+    font-size: 28px;
+}
+
+.headerAdmin div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mainAdmin h3 {
+    text-align: center;
+    font-family: "FuturaBold";
+    font-size: 24px;
+    color: white;
+}
+
+.addSongForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    font-family: "Raleway";
+}
+
+.addSongForm fieldset {
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid white;
+    margin: 10px;
+}
+
+.addSongForm legend {
+    color: white;
+    font-family: "FuturaBold";
+    font-size: 22px;
+}
+
+#chansonForm div {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 5px;
+}
+
+#timeCode div {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 5px;
+}
+
+#reponsesForm div {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 5px;
+}
+
+#reponsesForm label {
+    margin-right: 20px;
+}
+
+#timeCode span,
+#timeCode label {
+    margin: 0 10px;
+}
+
+.addSongForm input[type=number],
+.addSongForm input[type=text],
+.addSongForm input[type=url],
+.addSongForm select {
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.addSongForm input[type=text],
+.addSongForm input[type=url],
+.addSongForm select {
+    width: 60%;
+}
+
+.addSongForm input[type=number] {
+    width: 20%;
+}
+
+.addSongForm input[type="button"],
+.addSongForm input[type="submit"] {
+    border: 2px solid white;
+    border-radius: 5px;
+    background-color: rgba(255,255,255,0);
+    height: 30px;
+    margin: 0 20px;
+    color: white;
 }
