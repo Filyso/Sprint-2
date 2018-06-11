@@ -46,6 +46,7 @@ body{
     padding: 20px 0 20px 0;
     font-family: 'Raleway', sans-serif;
     font-weight: 300;
+    transition : 0.2s;
 }
 
 /*#ed1b70,#f79764,#fec65c*/
