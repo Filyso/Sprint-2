@@ -37,7 +37,7 @@
                 if (isset($_GET["admin"])) {
                     if ($_GET["admin"] == "Suppression d'utilisateurs") {
                         include("./rm_user.php");
-                    } else if ($_GET["admin"] == "Modification/Suppression de médias" || $_GET["admin"] == "Modifier" || $_GET["admin"] == "Supprimer") {
+                    } else if ($_GET["admin"] == "Modification/Suppression de chansons" || $_GET["admin"] == "Modifier" || $_GET["admin"] == "Supprimer") {
                         include("./modify_song_admin.php");
                     } else {
                         include("./add_song_admin.php");
