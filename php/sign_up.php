@@ -48,7 +48,7 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
         $statement = $pdo->query($requeteSQL);
         $ligne = $statement->fetch(PDO::FETCH_ASSOC);
         
-        copy($_FILES["icon"]["tmp_name"],"../icons/img_avatar_".$ligne["idMbr"].$extension_upload);
+        copy($_FILES["icon"]["tmp_name"],"../images/icons/img_avatar_".$ligne["idMbr"].$extension_upload);
         
         $requeteSQL = "INSERT INTO `membres` (`linkIconMbr`) VALUES ('../icons/img_avatar_".$ligne["idMbr"].$extension_upload."') WHERE mail= ".$_POST["email"]." AND pseudoMbr= ".$_POST["pseudoSignUp"];
         $statement = $pdo->query($requeteSQL);
