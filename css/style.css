@@ -1,5 +1,5 @@
 main {
-    background-color: white;
+    background: linear-gradient(90deg, #8F8F8F, #F6F6F6, #8F8F8F);
     min-height: calc(100vh - 74px);
     box-sizing: border-box;
 }
@@ -17,24 +17,17 @@ h1 {
 
 /********************/
 
-
 .mainIndex {
-    background-color: white;
     height: 54vh;
-    margin: 0;      
-    padding: 0;
+    margin: 0;
+    padding: 120px 50px 50px 50px;
     display: flex;
     flex-direction: column;
-    align-items: center
-
-}
-.mainIndex canvas{
-    
+    align-items: center;
 }
 
 .mainIndex h1 {
     margin-top: 0;
-    color:white;
     font-family: 'Raleway', sans-serif;
 }
 
@@ -91,34 +84,117 @@ h1 {
 body {
     margin: 0;
     padding: 0;
+    background-color: white;
     position: relative;
 }
 
 .mainHeader {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
     margin: 0;
-    padding-top: 10px;
-    background-color: #784199;
+    background-color: transparent;
     position: relative;
 }
 
-.mainHeader nav {
-    background-color: #2D2D2D;
-    margin: 0;
+.mainHeader .container {
+    width: 100px;
+    height: 100px;
+    display: block;
+    z-index: 1000;
+    cursor: pointer;
+    transition: transform .2s;
 }
 
-.mainHeader img {
-    width: 200px;
-    height: 155px;
-    position: absolute;
-    top: 0px;
-    left: calc(50% - 100px);
-    z-index: 2;
+.mainHeader .container:hover {
+   transform: scale(1.15);
+}
+
+
+.container svg {
+    width: 100px;
+    height: 100px;
+}
+
+.container svg path,
+.container svg line {
+    stroke: #ED1B70;
+    stroke-width: 6px;
+    stroke-linecap: round;
+    fill: none;
+}
+
+
+.menuHidden {
+    transform: translateX(-400px);
+    position: fixed;
+    width: 300px;
+    height: 100vh;
+    background-color: #2D2D2D;
+    transition: transform 0.7s 0.1s ease-in-out;
+    padding-top: 110px;
+    padding-bottom: 110px;
+    box-sizing: border-box;
+}
+
+.menuShown {
+    transform: translateX(0);
+    position: fixed;
+    width: 300px;
+    height: 100vh;
+    background-color: #2D2D2D;
+    transition: transform 0.7s 0.1s ease-in-out;
+    padding-top: 110px;
+    padding-bottom: 110px;
+    box-sizing: border-box;
+}
+
+.mainHeader ul {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+#fullScreenButton{
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+#fullScreenButton:hover{
+    transform: scale(1.15);
+}
+
+
+#fullScreenButton svg {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+}
+
+#fullScreenButton svg path, #fullScreenButton svg line {
+    stroke: #ED1B70;
+    stroke-width: 0px;
+    fill: #ED1B70;
 }
 
 .mainHeader a {
     color: white;
     text-decoration: none;
     font-size: 28px;
+}
+
+li .login{
+    color: white;
+    text-decoration: none;
+    font-size: 28px;
+}
+
+li .login:hover {
+    color: lightgrey;
 }
 
 .mainHeader p:hover {
@@ -129,85 +205,11 @@ body {
     color: lightgrey;
 }
 
-.mainHeader .login {
-    color: white;
-    text-decoration: none;
-    font-size: 28px;
-    margin: 0;
-}
-
-.mainHeader .login:hover {
-    color: lightgrey;
-}
-
-.mainHeader ul {
-    margin: 0;
-    padding: 20px 5% 20px 6%;
-    list-style-type: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    height: 24px;
-    font-weight: 300;
-    font-family: 'Raleway', sans-serif;
-}
-
-.mainHeader ul::after {
-    content: '';
-    height: 40px;
-    width: 3px;
-    background: white;
-    display: inline-block;
-    position: absolute;
-    top: 22px;
-    left: 20%;
-}
-
-.mainHeader ul::before {
-    content: '';
-    height: 40px;
-    width: 3px;
-    background: white;
-    display: inline-block;
-    position: absolute;
-    top: 22px;
-    right: 20%;
-}
-
-.mainLogo::after {
-    content: '';
-    width: 0;
-    height: 0;
-    display: inline-block;
-    border-style: solid;
-    border-width: 110px 151px 110px 0;
-    border-color: transparent #784199 transparent transparent;
-    position: absolute;
-    top: -35px;
-    left: calc(50% - 150px);
-    z-index: 1;
-}
-
-.mainLogo::before {
-    content: '';
-    width: 0;
-    height: 0;
-    display: inline-block;
-    border-style: solid;
-    border-width: 110px 0 110px 151px;
-    border-color: transparent transparent transparent #784199;
-    position: absolute;
-    top: -35px;
-    left: 50%;
-    z-index: 1;
-}
-
 .mainSelect,
 .mainIndex,
 .mainRank {
     margin: 0;
-       
+    padding: 120px 50px 50px 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -221,6 +223,31 @@ body {
     margin-top: 0;
     font-family: 'Raleway', sans-serif;
     font-weight: 500;
+}
+
+.rightHeader{
+    display: flex;
+    align-items: center;
+    width: 400px;
+    justify-content: space-around;
+}
+
+.connect a{
+    font-size: 22px;
+    color: #ED1B70;
+}
+
+.connect a:hover{
+    color: dimgrey;
+}
+
+.login{
+    font-size: 22px;
+    color: #ED1B70;
+}
+
+.login:hover{
+    color: dimgrey;
 }
 
 
@@ -564,7 +591,7 @@ body {
     width: 150px;
     height: 150px;
     overflow: hidden;
-    border: solid 8px #FEC;
+    border: solid 8px #4cd1cb;
     border-radius: 50%;
     margin: auto;
     margin-top: 20px;
@@ -589,7 +616,7 @@ body {
 .barScore {
     width: 20px;
     height: 0%;
-    background-color: #ED1B70;
+    background-color: #4cd1cb;
     border-radius: 10px;
     position: absolute;
     bottom: 0;
@@ -615,7 +642,7 @@ body {
     min-height: 450px;
     margin: auto;
     margin-top: 70px;
-    marging-bottom: 100px;
+    margin-bottom: 100px;
     display: none;
 }
 
@@ -638,7 +665,7 @@ body {
     height: 50px;
     outline: none;
     width: 50px;
-    background-color: #FEC65C;
+    background-color: #4cd1cb;
     font-size: 40px;
     color: white;
     border-radius: 50%;
@@ -681,7 +708,7 @@ body {
     min-width: 200px;
     border-radius: 20px;
     border: none;
-    background-color: #F79754;
+    background-color: #784199;
     color: white;
     font-size: 25px;
     outline: none;
@@ -698,8 +725,10 @@ body {
 }
 
 .reponseButton:hover {
-    box-shadow: 0px 0px 0px 7px #FEC65C;
+    background-color: #4cd1cb;
+    box-shadow: 0px 0px 0px 7px #85e0db;
     transition: 0.2s;
+    color: black;
 }
 
 
@@ -709,10 +738,10 @@ body {
     width: 100px;
     min-width: 100px;
     height: 100px;
-    border: solid 8px #FEC65C;
+    border: solid 8px #4cd1cb;
     border-radius: 50%;
     margin: auto;
-    background-color: #fff9cc;
+    background-color: aliceblue;
     position: absolute;
     top: calc(50% - 54px);
     left: calc(50% - 54px);
@@ -1295,6 +1324,213 @@ select {
 
 /***********************************************/
 
+.mainResultat {
+    height: calc(80vh - 74px);
+    padding-top: 20vh;
+}
+
+.mainResultat .resultat {
+    /*    box-shadow: 0px 0px 0px 5px grey;*/
+    border-radius: 30px;
+    padding: 40px;
+    /*    background-color: #2D2D2D;*/
+    display: flex;
+    width: 40vw;
+    margin: auto;
+    justify-content: space-between;
+}
+
+.mainResultat .partieGauche {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.cercleScore {
+    border-radius: 100%;
+    width: 300px;
+    height: 300px;
+    background-color: #4CD1CB;
+    transition: 0.2s;
+    box-shadow: 0px 0px 0px 8px #85e0db;
+}
+
+.cercleScore:hover {
+    box-shadow: 0px 0px 0px 15px #85e0db;
+    transition: 0.2s;
+    font-weight: 500;
+}
+
+.scoreResultat {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    font-size: 35;
+    color: white;
+    margin: 0;
+    transition: 0.2s;
+    padding-top: 25px;
+}
+
+.cercleScore:hover .scoreResultat,
+.cercleScore:hover .chiffreScoreResultat {
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.chiffreScoreResultat {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    font-size: 120px;
+    color: white;
+    margin: 0;
+    transition: 0.2s;
+}
+
+.btnSaveScore {
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    margin-top: 30px;
+    font-size: 18px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    background-color: #a470c2;
+    color: white;
+    font-weight: 300;
+    transition: 0.2s;
+}
+
+.btnSaveScore:hover {
+    cursor: pointer;
+    transition: 0.2s;
+    font-weight: 500;
+    box-shadow: 0px 0px 0px 5px #784199;
+}
+
+.partageReseaux {
+    margin-top: 4vh;
+    width: 20vw;
+}
+
+.partageReseaux img {
+    width: 100%;
+    transition: 0.2s;
+    opacity: 0.9;
+}
+
+.partageReseaux img:hover {
+    transform: scale(1.02);
+    transition: 0.2s;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.mainResultat .partieDroite {
+    padding-top: 2vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.bonnesReponses {
+    background-color: #4CD1CB;
+    box-shadow: 0px 0px 0px 8px #85e0db;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 60px;
+    border-radius: 100%;
+    height: 200px;
+    width: 200px;
+}
+
+.nbBonneReponse {
+    font-family: 'Raleway', sans-serif;
+    color: white;
+    font-size: 100px;
+    margin: 0;
+    font-weight: 300;
+    padding-top: 30px;
+}
+
+.txtBonnesReponses {
+    font-family: 'Raleway', sans-serif;
+    color: white;
+    margin: 0;
+    font-size: 16px;
+}
+
+.mainResultat .partieDroite button {
+    display: flex;
+    height: 90px;
+    width: 250px;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    padding: 5px 20px 5px 20px;
+    background-color: #a470c2;
+    transition: 0.2s;
+}
+
+.mainResultat .partieDroite a {
+    text-decoration: none;
+    outline: none;
+}
+
+.mainResultat .partieDroite button p {
+    font-family: 'Raleway', sans-serif;
+    color: white;
+    font-size: 30px;
+    font-weight: 300;
+    margin: 0;
+    padding-left: 10px;
+    transition: 0.2s;
+}
+
+.mainResultat .partieDroite .imgReplay {
+    height: 60px;
+    width: 60px;
+    transform: rotate(90deg);
+    transition: 0.2s;
+}
+
+.mainResultat .partieDroite button:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 0px 10px #784199;
+    transition: 0.2s;
+}
+
+.mainResultat .partieDroite button:hover p {
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.mainResultat .partieDroite button:hover .imgReplay {
+    transform: rotate(-90deg);
+    transition: 0.3s ease;
+}
+
+.badgesObtenus {
+    text-align: center;
+}
+
+.badgesObtenus img {
+    margin-top: 30px;
+    width: 200px;
+}
+
+.badgesObtenus p {
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+    color: #2D2D2D;
+    font-size: 20px;
+    font-weight: 300;
+    padding-top: 20px;
+}
 
 
 /***************************/
