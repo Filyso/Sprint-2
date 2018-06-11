@@ -75,24 +75,25 @@
     <script type="text/javascript" src="../javascript/valid_time_code.js"></script>
     <section class="addSongSection">
 
-        <h3>Ajouter une chanson</h3>
+        <h3>AJOUTER UNE CHANSON</h3>
 
         <form action="add_song_admin.php" method="post" id="addSongForm" class="addSongForm">
+            <fieldset id="chansonForm">
+                <legend>Chanson</legend>
+                <div>
+                    <label for="song">Nom de la chanson</label>
+                    <input type="text" name="song" id="song" required="required" maxlength="75" />
+                </div>
 
-            <div>
-                <label for="song">Nom de la chanson</label>
-                <input type="text" name="song" id="song" required="required" maxlength="75" />
-            </div>
+                <div>
+                    <label for="artistSong">Nom de l'interprète</label>
+                    <input type="text" name="artistSong" id="artistSong" required="required" maxlength="50" />
+                </div>
 
-            <div>
-                <label for="artistSong">Nom de l'interprète</label>
-                <input type="text" name="artistSong" id="artistSong" required="required" maxlength="50" />
-            </div>
+                <div>
 
-            <div>
-
-                <label for="catSong">Catégorie</label>
-                <select id="catSong" size="1" type="text" name="catSong" required>
+                    <label for="catSong">Catégorie</label>
+                    <select id="catSong" size="1" type="text" name="catSong" required>
                         
                     <option value="" disabled selected>Choisissez une catégorie</option>
                     <?php
@@ -122,92 +123,84 @@
                             echo($e);
                         }
                     ?>
-
                 </select>
+                </div>
 
-            </div>
+                <div class="adminLangues">
+                    <span>Langue</span>
 
-            <div class="adminLangues">
-                <span>Langue</span>
+                    <input type="radio" id="langSongFR" name="langSong" value="fr" required>
+                    <label for="langSongFR">FR</label>
 
-                <input type="radio" id="langSongFR" name="langSong" value="fr" required>
-                <label for="langSongFR">FR</label>
+                    <input type="radio" id="langSongEN" name="langSong" value="en">
+                    <label for="langSongEN">EN</label>
+                </div>
 
-                <input type="radio" id="langSongEN" name="langSong" value="en">
-                <label for="langSongEN">EN</label>
-            </div>
+                <div>
+                    <label for="linkVideo">URL</label>
+                    <input type="url" name="linkVideo" id="linkVideo" required="required" pattern="^https://www.youtube.com/watch?.+" placeholder="https://www.youtube.com/watch?..." />
+                </div>
 
-            <div>
-                <label for="linkVideo">URL</label>
-                <input type="url" name="linkVideo" id="linkVideo" required="required" pattern="^https://www.youtube.com/watch?.+" placeholder="https://www.youtube.com/watch?..." />
-            </div>
+                <input id="nbTimecode" type="hidden" name="nbTimecode" value="1" class="inputMasque" />
 
-            <input id="nbTimecode" name="nbTimecode" value="1" class="inputMasque" />
-
-            <fieldset class="timeCode">
+            </fieldset>
+            <fieldset id="timeCode">
                 <legend>Timecode</legend>
 
-                <div class="timeForm">
-                    <!-- De tant de minutes à tant de minutes ???? -->
-                    <div>
-                        <span>De</span>
-                        <input id="minStart_1" type="number" name="minStart_1" required="required" min="0" max="10">
-                        <label for="minStart_1">min</label>
-                    </div>
+                <div>
+                    <span>De</span>
+                    <input id="minStart_1" type="number" name="minStart_1" required="required" min="0" max="10">
+                    <label for="minStart_1">min</label>
 
-                    <div>
-                        <input id="secStart_1" type="number" name="secStart_1" required="required" min="00" max="59">
-                        <label for="secStart_1">s</label>
-                    </div>
-
-                    <div>
-                        <span>A</span>
-                        <input id="minEnd_1" type="number" name="minEnd_1" required="required" min="0" max="10">
-                        <label for="minEnd_1">min</label>
-                    </div>
-
-                    <div>
-                        <input id="secEnd_1" type="number" name="secEnd_1" required="required" min="00" max="59">
-                        <label for="secEnd_1">s</label>
-                    </div>
-
+                    <input id="secStart_1" type="number" name="secStart_1" required="required" min="00" max="59">
+                    <label for="secStart_1">s</label>
                 </div>
 
                 <div>
-                    <label for="prevLyrics_1">Paroles</label>
-                    <input id="prevLyrics_1" type="text" name="prevLyrics_1" required="required" maxlength="100" maxlength="250">
-                </div>
+                    <span>À</span>
+                    <input id="minEnd_1" type="number" name="minEnd_1" required="required" min="0" max="10">
+                    <label for="minEnd_1">min</label>
 
-                <div>
-                    <label for="goodRep_1">Réponse</label>
-                    <input id="goodRep_1" type="text" name="goodRep_1" required="required" maxlength="75" maxlength="250">
-                </div>
-
-                <fieldset>
-                    <legend>Autres réponses</legend>
+                    <input id="secEnd_1" type="number" name="secEnd_1" required="required" min="00" max="59">
+                    <label for="secEnd_1">s</label>
+                    <div>
+                        <label for="prevLyrics_1">Paroles précédentes</label>
+                        <input id="prevLyrics_1" type="text" name="prevLyrics_1" required="required" maxlength="100" maxlength="250">
+                    </div>
 
                     <div>
-                        <label for="badRep1_1">1</label>
+                        <label for="goodRep_1">Bonne réponse</label>
+                        <input id="goodRep_1" type="text" name="goodRep_1" required="required" maxlength="75" maxlength="250">
+                    </div>
+                </div>
+
+
+
+                <fieldset id="reponsesForm">
+                    <legend>Réponses</legend>
+
+                    <div>
+                        <label for="badRep1_1">Autre réponse 1</label>
                         <input id="badRep1_1" type="text" name="badRep1_1" required="required" maxlength="75" maxlength="250">
                     </div>
 
                     <div>
-                        <label for="badRep2_1">2</label>
+                        <label for="badRep2_1">Autre réponse 2</label>
                         <input id="badRep2_1" type="text" name="badRep2_1" required="required" maxlength="75" maxlength="250">
                     </div>
 
                     <div>
-                        <label for="badRep3_1">3</label>
+                        <label for="badRep3_1">Autre réponse 3</label>
                         <input id="badRep3_1" type="text" name="badRep3_1" required="required" maxlength="75" maxlength="250">
                     </div>
 
                 </fieldset>
-
             </fieldset>
 
+
             <div>
-                <input type="button" id="addTCBtn" value="Ajouter un TimeCode" />
-                <input type="submit" value="Ajouter la chanson" />
+                <input type="button" id="addTCBtn" value="AJOUTER UN TIMECODE" />
+                <input type="submit" value="AJOUTER LA CHANSON" />
             </div>
 
         </form>
