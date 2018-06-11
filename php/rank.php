@@ -22,97 +22,118 @@
                 <table>
                     <tr>
                         <th>Joueur</th>
+                        <th>Score</th>
                         <th>Classement</th>
                     </tr>
                     <tr>
                         <td>
                             <figure>
-                                <img style="width:100%" alt="Photo de profil joueur" src="../images/chat.jpg"/>
+                                <img  alt="Photo de profil joueur" src="../images/chat.jpg"/>
                             </figure>
                             <p>Michel</p>
                         </td>
+                        <td>10.000</td>
                         <td>1</td>
                     </tr>
                     <tr>
                         <td>
                             <figure>
-                                <img style="width:100%" alt="Photo de profil joueur" src="../images/chat.jpg"/>
+                                <img  alt="Photo de profil joueur" src="../images/chat.jpg"/>
                             </figure>
                             <p>Samuel</p>
                         </td>
+                        <td>9.000</td>
                         <td>2</td>
                     </tr>
                     <tr>
                         <td>
                             <figure>
-                                <img style="width:100%" alt="Photo de profil joueur" src="../images/chat.jpg"/>
+                                <img  alt="Photo de profil joueur" src="../images/chat.jpg"/>
                             </figure>
                             <p>Francis</p>
                         </td>
+                        <td>8.000</td>
                         <td>3</td>
                     </tr>
                     <tr>
                         <td>
                             <figure>
-                                <img style="width:100%" alt="Photo de profil joueur" src="../images/chat.jpg"/>
+                                <img  alt="Photo de profil joueur" src="../images/chat.jpg"/>
                             </figure>
                             <p>Antonin54</p>
                         </td>
+                        <td>7.000</td>
                         <td>4</td>
                     </tr>
                     <tr>
                         <td>
                             <figure>
-                                <img style="width:100%" alt="Photo de profil joueur" src="../images/chat.jpg"/>
+                                <img  alt="Photo de profil joueur" src="../images/chat.jpg"/>
                             </figure>
                             <p>ElRodriguo</p>
                         </td>
+                        <td>6.000</td>
                         <td>5</td>
                     </tr>
                     <tr>
                         <td>
                             <figure>
-                                <img style="width:100%" alt="Photo de profil joueur" src="../images/chat.jpg"/>
+                                <img  alt="Photo de profil joueur" src="../images/chat.jpg"/>
                             </figure>
                             <p>MasutaSama</p>
                         </td>
+                        <td>5.000</td>
                         <td>6</td>
                     </tr>
                     <tr>
                         <td>
                             <figure>
-                                <img style="width:100%" alt="Photo de profil joueur" src="../images/chat.jpg"/>
+                                <img  alt="Photo de profil joueur" src="../images/chat.jpg"/>
                             </figure>
                             <p>Philippe</p>
                         </td>
+                        <td>4.000</td>
                         <td>7</td>
                     </tr>
                     <tr>
                         <td>
                             <figure>
-                                <img style="width:100%" alt="Photo de profil joueur" src="../images/chat.jpg"/>
+                                <img  alt="Photo de profil joueur" src="../images/chat.jpg"/>
                             </figure>
                             <p>Duschmol</p>
                         </td>
+                        <td>3.000</td>
                         <td>8</td>
                     </tr>
                     <tr>
                         <td>
                             <figure>
-                                <img style="width:100%" alt="Photo de profil joueur" src="../images/chat.jpg"/>
+                                <img  alt="Photo de profil joueur" src="../images/chat.jpg"/>
                             </figure>
                             <p>Dudule</p>
                         </td>
+                        <td>2.000</td>
                         <td>9</td>
                     </tr>
                     <tr>
                         <td>
                             <figure>
-                                <img style="width:100%" alt="Photo de profil joueur" src="../images/chat.jpg"/>
+                                <img  alt="Photo de profil joueur" src="../images/chat.jpg"/>
                             </figure>
                             <p>TontonJC</p>
                         </td>
+                        <td>1.000</td>
                         <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <figure>
+                                <img  alt="Photo de profil joueur" src="../images/chat.jpg"/>
+                            </figure>
+                            <p>Toi</p>
+                        </td>
+                        <td>870</td>
+                        <td>22</td>
                     </tr>
                 </table>
         </main>

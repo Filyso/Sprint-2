@@ -3,18 +3,20 @@
 .mainRank {
     background: linear-gradient(to right,#ed1b70,#f79764,#fec65c);
     margin: 0;
-    padding: 120px 50px 50px 50px;
+    padding: 50px 50px 50px 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family: 'Raleway';
     min-height: 100vh;
+    color: white;
 }
 .mainRank h1 {
-    color: white;
     margin-top: 0;
     font-family: 'Raleway', sans-serif;
     font-weight: 500;
+    font-size: 50px;
+    margin-bottom: 50px;
 }
 
 .mainRank table {
@@ -29,7 +31,6 @@
 .mainRank tr {
     border: 3px solid white;
     padding-top: 15px;
-
 }
 
 .mainRank th {
@@ -39,6 +40,9 @@
 }
 
 .mainRank td {
+    flex-flow: 3;
+    text-align: center;
+    font-size: 25px;
     font-weight: 300;
     padding: 5px 20px 5px 20px;
     height: 100%;
@@ -46,13 +50,17 @@
 
 .mainRank th:first-child,
 .mainRank td:first-child {
-    color: white;
+    text-align: center;
 }
 
 .mainRank th:last-child,
 .mainRank td:last-child {
-    color: white;
     text-align: right;
+}
+
+.mainRank tr+tr:hover td{
+    background: white;
+    color: #f79764;
 }
 
 .mainRank tr+tr:hover td:last-child{
@@ -64,19 +72,16 @@
     color: #ed1b70;
 }
 .mainRank figure{
-    width: 60px;
-    float: left;
-    margin: 5px 50px 5px 20px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
+    float: left;
+    margin: 5px 0px 5px 20px;
     overflow: hidden;
 }
-
-.mainRank tr:nth-child(even) {
-/*    background: rgba(255,255,255,0.5);*/
-/*    background:#ed1b70;*/
+.mainRank img{
+    width: 100%;
 }
-
-.mainRank tr:nth-child(odd) {
-/*    background: rgba(255,255,255,0.8);*/
-/*    background:#f79764;*/
+.mainRank p{
+    margin-top: 30px;
 }
