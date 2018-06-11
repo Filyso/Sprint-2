@@ -8,20 +8,21 @@
         <meta charset="utf-8">
         <meta name="description" content="">
         <title>Choix des options de jeu</title>
-        <link rel="stylesheet" type="text/css" href="../style.css" />
+        <link rel="stylesheet" type="text/css" href="../css/style_admin.css" />
+        <link rel="stylesheet" type="text/css" href="../css/style_index.css" />
     </head>
 
     <body>
 
-        <?php include("./main_header.php"); ?>
+        <?php /* include("./main_header.php"); */ ?>
         <main class="mainAdmin">
             <header class="headerAdmin">
 
                 <div>
                     <h2>Gestion de contenu</h2>
                     <form action="./admin.php" method="get">
-                        <input type="submit" value="Ajout de médias" name="admin"/>
-                        <input type="submit" value="Modification/Suppression de médias" name="admin"/>
+                        <input type="submit" value="Ajout de chansons" name="admin"/>
+                        <input type="submit" value="Modification/Suppression de chansons" name="admin"/>
                     </form>
                 </div>
 
