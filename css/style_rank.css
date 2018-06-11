@@ -1,0 +1,87 @@
+/*#ed1b70,#f79764,#fec65c*/
+
+.mainRank {
+    background: linear-gradient(to right,#ed1b70,#f79764,#fec65c);
+    margin: 0;
+    padding: 50px 50px 50px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Raleway';
+    min-height: 100vh;
+    color: white;
+}
+.mainRank h1 {
+    margin-top: 0;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 50px;
+    margin-bottom: 50px;
+}
+
+.mainRank table {
+    border: 3px solid white;
+    font-family: 'Raleway', sans-serif;
+    width: 50%;
+    border-collapse: collapse;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.mainRank tr {
+    border: 3px solid white;
+    padding-top: 15px;
+}
+
+.mainRank th {
+    font-weight: normal;
+    font-size: 30px;
+    padding: 10px 20px 10px 20px;
+}
+
+.mainRank td {
+    flex-flow: 3;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 300;
+    padding: 5px 20px 5px 20px;
+    height: 100%;
+}
+
+.mainRank th:first-child,
+.mainRank td:first-child {
+    text-align: center;
+}
+
+.mainRank th:last-child,
+.mainRank td:last-child {
+    text-align: right;
+}
+
+.mainRank tr+tr:hover td{
+    background: white;
+    color: #f79764;
+}
+
+.mainRank tr+tr:hover td:last-child{
+    background: white;
+    color: #fec65c;
+}
+.mainRank tr+tr:hover td:first-child{
+    background: white;
+    color: #ed1b70;
+}
+.mainRank figure{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    float: left;
+    margin: 5px 0px 5px 20px;
+    overflow: hidden;
+}
+.mainRank img{
+    width: 100%;
+}
+.mainRank p{
+    margin-top: 30px;
+}
