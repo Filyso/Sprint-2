@@ -1,0 +1,224 @@
+@font-face {
+    font-family: "FuturaBold";
+    src: url("../fonts/futuraBold.otf");
+}
+
+html {
+    --jaune: #FEC65C;
+    --rouge: #ED1B70;
+    --orange: #F79754;
+    --noir: #231F20;
+}
+
+main {
+    background: linear-gradient(341deg, #ed1b70, #f79764, #fec65c);
+    -webkit-animation: background 20s ease infinite;
+    -moz-animation: background 20s ease infinite;
+    animation: background 20s ease infinite;
+}
+
+@-webkit-keyframes background {
+    0% {
+        background-position: 0% 62%
+    }
+    50% {
+        background-position: 100% 39%
+    }
+    100% {
+        background-position: 0% 62%
+    }
+}
+
+@-moz-keyframes background {
+    0% {
+        background-position: 0% 62%
+    }
+    50% {
+        background-position: 100% 39%
+    }
+    100% {
+        background-position: 0% 62%
+    }
+}
+
+@keyframes background {
+    0% {
+        background-position: 0% 62%
+    }
+    50% {
+        background-position: 100% 39%
+    }
+    100% {
+        background-position: 0% 62%
+    }
+}
+
+.equipe {
+    padding-top: 5vh;
+    text-align: center;
+    font-family: 'FuturaBold';
+    color: #2D2D2D;
+}
+
+.equipe h2 {
+    font-size: 30;
+    color: white;
+    font-family: 'FuturaBold';
+}
+
+.lesPhotos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: center;
+    max-width: 50vw;
+    min-width: 500px;
+    margin: auto;
+}
+
+.unePhoto {
+    max-width: 10vw;
+    min-width: 150px;
+    border-radius: 5px;
+    border: 3px white solid;
+}
+
+.unePhoto:hover {
+    transform: scale(1.02);
+    transition: 0.2s;
+}
+
+.unePhoto img {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.unePhoto figcaption h3 {
+    margin: 10px;
+    font-weight: normal;
+    font-weight: 500;
+}
+
+.unePhoto figcaption {
+    color: white;
+    text-align: center;
+    font-weight: 300;
+    padding: 0px 10px 15px 10px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.enDessous {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 50 10vw 0 10vw;
+    font-family: 'Raleway', sans-serif;
+    padding-bottom: 10vh;
+}
+
+.BoiteAIdee {
+    padding: 3vh 3vw 3vh 3vw;
+    border-radius: 5px;
+    margin-top: 50px;
+    border : 3px solid white
+}
+
+.BoiteAIdee h2 {
+    font-weight: normal;
+    margin: 0;
+    font-weight: 500;
+    color: white;
+    font-family: 'FuturaBold';
+}
+
+.BoiteAIdee p {
+    color: white;
+    font-weight: 300;
+}
+
+.BoiteAIdee form textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    font-family: 'Raleway', sans-serif;
+    resize: none;
+    outline: none;
+    border-radius: 3px;
+    font-size: 14px;
+    box-sizing: border-box;
+    background-color: white;
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+    color: black;
+    border: none;
+    padding: 10px;
+}
+
+.BoiteAIdee form {
+    width: 100%;
+    margin: 0;
+}
+
+.BoiteAIdee form input {
+    width: 100%;
+    margin-bottom: 10px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    outline: none;
+    border-radius: 3px;
+    box-sizing: border-box;
+    background-color: white;
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+    color: black;
+    border: none;
+    padding: 10px;
+}
+
+.BoiteAIdee button {
+    cursor: pointer;
+    font-family: 'Raleway', sans-serif;
+    border-radius: 3px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    
+    outline: none;
+    padding: 10px;
+    transition: 0.2s;
+}
+
+.BoiteAIdee button:hover {
+    font-weight: 700;
+    transition: 0.2s;
+    transform: scale(1.02);
+}
+
+.AVenir {
+    padding: 3vh 3vw 3vh 3vw;
+    border-radius: 5px;
+    border: 3px solid white;
+    margin-top: 50px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.AVenir h2 {
+    color: white;
+    font-weight: normal;
+    margin: 0;
+    font-weight: 500;
+    font-family: 'FuturaBold';
+}
+
+.AVenir p {
+    font-weight: 500;
+}
+
+.AVenir p,
+.AVenir ul {
+    color: white;
+}
+
+.AVenir li {
+    padding-top: 10px;
+    font-weight: 300;
+}

@@ -2,7 +2,7 @@
 	header("Content-type: text/html; charset: UTF-8");
 ?>
 <head>
-    <link rel="stylesheet" href="../style.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/style_about.css" type="text/css" media="screen" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat:600,900" rel="stylesheet">
 </head>
 
@@ -15,7 +15,7 @@
                 <figure class="unePhoto">
                     <img src="../images/avatar.png" alt="Photo de Yoan">
                     <figcaption>
-                        <h3>Yoan</h3> blablabla
+                        <h3>Yoan</h3> une bonne description
                     </figcaption>
                 </figure>
                 <figure class="unePhoto">
@@ -27,13 +27,13 @@
                 <figure class="unePhoto">
                     <img src="../images/avatar.png" alt="Photo de Tristan">
                     <figcaption>
-                        <h3>Tristan</h3> blablabla
+                        <h3>Tristan</h3> le graphiste fou
                     </figcaption>
                 </figure>
                 <figure class="unePhoto">
                     <img src="../images/avatar.png" alt="Photo de Clément">
                     <figcaption>
-                        <h3>Clément</h3> blablabla
+                        <h3>Clément</h3> j'écris un truc plutôt long pour voir si ça dépasse ... apparament non
                     </figcaption>
                 </figure>
                 <figure class="unePhoto">
