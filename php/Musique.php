@@ -1,7 +1,7 @@
 <?php
+    echo "test";
     header('Content-type: application/json');
-    
-    
+
 
     if (isset($_POST["function"])) {
         
@@ -9,12 +9,12 @@
             case "getMusique":
                 if(isset($_POST['categorie']) && isset($_POST['lang'])) {
                     getMusique($_POST['categorie'], $_POST['lang']);
-                };
+                }
                 break;
             case "getTimeCodeAnswer":
-                if(isset($_POST['categorie']) && isset($_POST['lang'])) {
+                if(isset($_POST['idTimeCode'])) {
                     getMusiqueAnswer($_POST['idTimeCode']);
-                };
+                }
                 break;
             default:
                 echo "{error: Fonction non défini}";
@@ -103,13 +103,36 @@
         } catch (Exception $e) {
         }
         
-        
         // Envoi du retour (on renvoi le tableau $retour encodé en JSON)
         echo json_encode($retour);
                                            
     }
 
-    /*function getTimeCodeAnswer($idTimeCode) {
-        echo "test";
-    }*/
+    function getTimeCodeAnswer($idTimeCode) {
+        // ETAPE 1 : Se connecter au serveur de base de données
+        try {
+            require("./param.inc.php");
+            $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
+            $pdo->query("SET NAMES utf8");
+            $pdo->query("SET CHARACTER SET 'utf8'");
+            
+        // ETAPE 2 : Envoyer une requête SQL
+            // conditions pour l'envoi de la requête en fonction du choix du joueur
+            
+            $requeteSQL = "SELECT trueRep FROM TIMECODES WHERE TIMECODES.idTimeCode = :paramIdTimeCode";
+            
+            $statement = $pdo->prepare($requeteSQL);
+            $statement->execute(array(":paramIdTimeCode" => $idTimeCode));
+            $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+            
+            $retour = array('trueRep' => $ligne["trueRep"]);
+            
+        // ETAPE 3 : Déconnecter du serveur                        
+            $pdo = null;
+            
+            // Envoi du retour (on renvoi le tableau $retour encodé en JSON)
+            echo json_encode($retour);
+        } catch (Exception $e) {
+        }
+    }
 ?>

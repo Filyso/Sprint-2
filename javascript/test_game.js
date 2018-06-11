@@ -57,7 +57,7 @@ function onYouTubePlayerAPIReady() {
         '../php/Musique.php', {
             function: 'getMusique',
             categorie: $_GET['categorie'],
-            lang: $_GET['langue']
+            lang: $_GET['langue'],
         },
         function (data) {
             currentSong = data;
@@ -189,16 +189,25 @@ function verifierReps(evt) {
 
     // Vérification de la réponse
     if (!timeOut) {
-        if (this.value == currentSong.reponse) {
-            nbGoodAnswer = nbGoodAnswer + 1;
-            this.style.backgroundColor = "#3df22d";
-            stopTimer();
-            calculScore();
-            document.getElementsByClassName("barScore")[0].style.height = Math.round(scoreGeneralPourcent) + "%";
-        } else {
-            stopTimer();
-            this.style.backgroundColor = "red";
-        }
+        $.post(
+            '../php/Musique.php', {
+                function: 'getTimeCodeAnswer',
+                idTimeCode: tabTimeCode[numQuest],
+            },
+            function (data) {
+                if (this.value == data.trueRep) {
+                    nbGoodAnswer = nbGoodAnswer + 1;
+                    this.style.backgroundColor = "#3df22d";
+                    stopTimer();
+                    calculScore();
+                    document.getElementsByClassName("barScore")[0].style.height = Math.round(scoreGeneralPourcent) + "%";
+                } else {
+                    stopTimer();
+                    this.style.backgroundColor = "red";
+                }
+            },
+            'json'
+        );
     } else {
         document.getElementsByClassName("divTimer")[0].style.borderColor = "red";
     }
