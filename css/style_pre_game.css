@@ -1,3 +1,9 @@
+html {
+    --jaune: #FEC65C;
+    --rouge: #ED1B70;
+    --orange: #F79754;
+    --noir: #231F20;
+}
 .preGamePage {
     background: linear-gradient(to right,#ed1b70,#f79764,#fec65c);
     height: 80vh;

@@ -1,0 +1,153 @@
+.bodyHeader {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+
+.mainHeader {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top:0;
+    left: 0;
+    margin: 0;
+
+}
+
+.mainHeader .container {
+    width: 100px;
+    height: 100px;
+    display: block;
+    z-index: 1000;
+    position: fixed;
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+.mainHeader .container:hover {
+   transform: scale(1.1);
+}
+
+
+.container svg {
+    width: 100px;
+    height: 100px;
+}
+
+.container svg path,
+.container svg line {
+    stroke: #ED1B70;
+    stroke-width: 6px;
+    stroke-linecap: round;
+    fill: none;
+}
+
+
+.menuHidden {
+    transform: translateX(-400px);
+    position: fixed;
+    width: 300px;
+    height: 100vh;
+    background-color: #2D2D2D;
+    transition: transform 0.7s 0.1s ease-in-out;
+    padding-top: 15vh;
+    padding-bottom: 15vh;
+    box-sizing: border-box;
+}
+
+.menuShown {
+    transform: translateX(0);
+    position: fixed;
+    width: 300px;
+    height: 100vh;
+    background-color: #2D2D2D;
+    transition: transform 0.7s 0.1s ease-in-out;
+    padding-top: 15vh;
+    padding-bottom: 15vh;
+    box-sizing: border-box;
+}
+
+.mainHeader ul {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+#fullScreenButton{
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+#fullScreenButton:hover{
+    transform: scale(1.15);
+}
+
+
+#fullScreenButton svg {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+}
+
+#fullScreenButton svg path, #fullScreenButton svg line {
+    stroke: #ED1B70;
+    stroke-width: 0px;
+    fill: #ED1B70;
+}
+
+.mainHeader a {
+    color: white;
+    text-decoration: none;
+    font-size: 28px;
+}
+
+li .login{
+    color: white;
+    text-decoration: none;
+    font-size: 28px;
+}
+
+li .login:hover {
+    color: lightgrey;
+}
+
+.mainHeader p:hover {
+    cursor: pointer;
+}
+
+.mainHeader a:hover {
+    color: lightgrey;
+}
+
+.rightHeader{
+    position: fixed;
+    top : 20px;
+    right: 0px;
+    display: flex;
+    align-items: center;
+    width: 400px;
+    justify-content: space-around;
+}
+
+.connect a{
+    font-size: 22px;
+    color: #ED1B70;
+}
+
+.connect a:hover{
+    color: dimgrey;
+}
+
+.login{
+    font-size: 22px;
+    color: #ED1B70;
+}
+
+.login:hover{
+    color: dimgrey;
+}

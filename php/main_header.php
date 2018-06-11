@@ -3,12 +3,12 @@
 ?>
 
     <head>
-        <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="../css/style_header.css" type="text/css" media="screen" />
         <link href="https://fonts.googleapis.com/css?family=Raleway:300,500,700" rel="stylesheet">
 
     </head>
 
-    <body>
+    <body class="bodyHeader">
         <header class="mainHeader">
 
             <!-- Icône Menu Burger -->

@@ -1,3 +1,9 @@
+html {
+    --jaune: #FEC65C;
+    --rouge: #ED1B70;
+    --orange: #F79754;
+    --noir: #231F20;
+}
 .footer {
     max-width: 100vw;
     overflow: hidden;
@@ -9,7 +15,13 @@
 
 }
 
-
+.footer img:hover{
+    transform: scale(1.02);
+    transition: 0.2s;
+}
+.footer img{
+    transition: 0.2s;
+}
 /* Footer left */
 
 .footerGauche {
