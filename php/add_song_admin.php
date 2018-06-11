@@ -142,7 +142,7 @@
                 </div>
 
                 <input id="nbTimecode" type="hidden" name="nbTimecode" value="1" class="inputMasque" />
-            </fieldset>
+           
 
             <fieldset id="timeCode">
                 <legend>Timecode</legend>
@@ -163,36 +163,39 @@
 
                     <input id="secEnd_1" type="number" name="secEnd_1" required="required" min="00" max="59">
                     <label for="secEnd_1">s</label>
+                    <div>
+                        <label for="prevLyrics_1">Paroles précédentes</label>
+                        <input id="prevLyrics_1" type="text" name="prevLyrics_1" required="required" maxlength="100" maxlength="250">
+                    </div>
+
+                    <div>
+                        <label for="goodRep_1">Bonne réponse</label>
+                        <input id="goodRep_1" type="text" name="goodRep_1" required="required" maxlength="75" maxlength="250">
+                    </div>
                 </div>
 
-            </fieldset>
+    
             <fieldset id="reponsesForm">
                 <legend>Réponses</legend>
-                <div>
-                    <label for="prevLyrics_1">Paroles</label>
-                    <input id="prevLyrics_1" type="text" name="prevLyrics_1" required="required" maxlength="100" maxlength="250">
-                </div>
 
                 <div>
-                    <label for="goodRep_1">Réponse</label>
-                    <input id="goodRep_1" type="text" name="goodRep_1" required="required" maxlength="75" maxlength="250">
-                </div>
-                <div>
-                    <label for="badRep1_1">1</label>
+                    <label for="badRep1_1">Autre réponse 1</label>
                     <input id="badRep1_1" type="text" name="badRep1_1" required="required" maxlength="75" maxlength="250">
                 </div>
 
                 <div>
-                    <label for="badRep2_1">2</label>
+                    <label for="badRep2_1">Autre réponse 2</label>
                     <input id="badRep2_1" type="text" name="badRep2_1" required="required" maxlength="75" maxlength="250">
                 </div>
 
                 <div>
-                    <label for="badRep3_1">3</label>
+                    <label for="badRep3_1">Autre réponse 3</label>
                     <input id="badRep3_1" type="text" name="badRep3_1" required="required" maxlength="75" maxlength="250">
                 </div>
 
             </fieldset>
+            </fieldset>
+             </fieldset>
 
             <div>
                 <input type="button" id="addTCBtn" value="AJOUTER UN TIMECODE" />
