@@ -7,7 +7,7 @@
     <meta name="description" content="Choisissez vos options de jeu et lancer votre partie ! Sur cette page vous pouvez choisir la catégorie de hanson sur la quelle vous voulez être testé.">
     <title>Choix des options de jeu</title>
     <!--<link rel="stylesheet" type="text/css" href="../css/style.css" />-->
-    <link rel="stylesheet" type="text/css" href="../css/style_pre_game.css" />
+    <link rel="stylesheet" type="text/css" href="../css/new_style.css" />
     <script type="text/javascript" src="../javascript/selectAlea.js"></script>
 </head>
 

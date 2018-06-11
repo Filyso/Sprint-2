@@ -1,7 +1,7 @@
 <?php
 ?>
 
-    <link rel="stylesheet" href="../css/style_footer.css" type="text/css" />
+    <link rel="stylesheet" href="../css/new_style.css" type="text/css" />
     <footer class="footer">
         <a href="./index.php">
                 <img class="logo" src="../images/logo_texte_sans_fond.png" alt="logo">

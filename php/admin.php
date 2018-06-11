@@ -4,12 +4,10 @@
     <html>
 
     <head>
-        <link href="https://fonts.googleapis.com/css?family=Raleway:300,500,700" rel="stylesheet">
         <meta charset="utf-8">
         <meta name="description" content="">
         <title>Choix des options de jeu</title>
-        <link rel="stylesheet" type="text/css" href="../css/style_admin.css" />
-        <link rel="stylesheet" type="text/css" href="../css/style_index.css" />
+        <link rel="stylesheet" type="text/css" href="../css/new_style.css" />
     </head>
 
     <body>
