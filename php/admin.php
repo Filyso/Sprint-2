@@ -21,20 +21,19 @@
                 <div>
                     <h2>GESTION DE CONTENU</h2>
                     <form action="./admin.php" method="get">
-                        <input type="submit" value="Ajout de chansons" name="admin"/>
-                        <input type="submit" value="Modification/Suppression de chansons" name="admin"/>
+                        <input type="submit" value="Ajout de chansons" name="admin" />
+                        <input type="submit" value="Modification/Suppression de chansons" name="admin" />
                     </form>
                 </div>
 
                 <div>
                     <h2>GESTION D'UTILISATEURS</h2>
                     <form action="./admin.php" method="get">
-                        <input type="submit" value="Suppression d'utilisateurs" name="admin"/>
+                        <input type="submit" value="Suppression d'utilisateurs" name="admin" />
                     </form>
                 </div>
             </header>
-            
-            <?php 
+                <?php 
                 if (isset($_GET["admin"])) {
                     if ($_GET["admin"] == "Suppression d'utilisateurs") {
                         include("./rm_user.php");
@@ -47,7 +46,6 @@
                     include("./add_song_admin.php");
                 }
             ?>
-
         </main>
 
         <?php include("./main_footer.php"); ?>
