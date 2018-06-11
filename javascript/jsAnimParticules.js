@@ -87,7 +87,7 @@ var options = {
                 "mode": "grab"
             },
             "onclick": {
-                "enable": true,
+                "enable": false,
                 "mode": "repulse"
             },
             "resize": true
@@ -102,13 +102,13 @@ var options = {
             "bubble": {
                 "distance": 400,
                 "size": 40,
-                "duration": 2,
+                "duration": 5,
                 "opacity": 8,
                 "speed": 3
             },
             "repulse": {
                 "distance": 200,
-                "duration": 0.2
+                "duration": 0.1
             },
             "push": {
                 "particles_nb": 4

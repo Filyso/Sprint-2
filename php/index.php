@@ -12,8 +12,8 @@
         <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     </head>
 
-    <body >
-        <?php //include("./main_header.php") ?>
+    <body class="indexColor">
+        <?php include("./main_header.php") ?>
 
         <main class="mainIndex" >
             <h1>FILYSO</h1>

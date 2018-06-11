@@ -17,7 +17,7 @@
     </head>
 
     <body>
-<!--       <?php //include("./main_header.php")?>-->
+     <?php include("./main_header.php")?>
        
         <main class="mainSelect">
             <h1>Choisir le mode de jeu</h1>

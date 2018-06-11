@@ -15,6 +15,7 @@ main {
     -webkit-animation: background 20s ease infinite;
     -moz-animation: background 20s ease infinite;
     animation: background 20s ease infinite;
+   
 }
 
 @-webkit-keyframes background {
