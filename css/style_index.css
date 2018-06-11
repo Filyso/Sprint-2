@@ -23,6 +23,7 @@ html {
     --orange: #F79754;
     --noir: #231F20;
 }
+
 /* PAGE INDEX */
 
 @keyframes spriteSliding {
@@ -87,116 +88,47 @@ canvas {
     background-image: linear-gradient(90deg, var(--rouge), var(--jaune));
     color: white;
 }
+
 .welcomeIndex p {
-
-
     max-width: 40%;
-
-
     min-width: 10%;
-
-
     font-family: "Raleway";
-
-
     font-size: 18px;
-
-
     line-height: 1.5;
-
-
 }
-
-
-
-
 
 .welcomeIndex h2 {
-
-
     font-family: "FuturaBold";
-
-
     font-size: 50px;
-
-
 }
+
 .welcomeIndex strong {
-
-
     font-size: 22px;
-
-
 }
+
 .indexLink a {
-
-
     position: absolute;
-
-
     top: 85vh;
-
-
     z-index: 1;
-
-
     text-decoration: none;
-
-
     font-family: "FuturaBold", sans-serif;
-
-
     font-size: 30px;
-
-
     color: var(--rouge);
-
-
     padding: 15px;
-
-
     border: 3px solid var(--rouge);
-
-
     background-color: white;
-
-
 }
 
 .mainIndex h1 {
-
-
     position: absolute;
-
-
     top: 0;
-
-
     font-family: "Norwester";
-
-
     color: var(--jaune);
-
-
     font-size: 120px;
-
-
     margin-top: 1%;
-
-
 }
 
-
-
-
-
 .mainIndex a:hover {
-
-
     color: var(--jaune);
-
-
     border: 3px solid var(--jaune);
-
-
 }
