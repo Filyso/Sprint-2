@@ -13,7 +13,7 @@
     </head>
 
     <body >
-        <?php include("./main_header.php") ?>
+        <?php //include("./main_header.php") ?>
 
         <main class="mainIndex" >
             <h1>FILYSO</h1>
