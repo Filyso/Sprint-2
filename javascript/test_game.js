@@ -57,8 +57,10 @@ function onYouTubePlayerAPIReady() {
         '../php/Musique.php', {
             function: 'getMusique',
             categorie: $_GET['categorie'],
-            lang: $_GET['langue']
-        }, function (data) {
+            lang: $_GET['langue'],
+            forbiddenTimeCode: JSON.stringify(tabTimeCode)
+        },
+        function (data) {
             currentSong = data;
             tabTimeCode.push(data.idTimeCode);
             player = new YT.Player('ytplayer', {
@@ -101,7 +103,7 @@ function initialiser(evt) {
     // Replace the 'ytplayer' element with an <iframe> and
     // YouTube player after the API code downloads.
     var player;
-    
+
     document.getElementsByClassName("barScore")[0].style.height = 0 + "%";
     document.querySelector(".resultat").style.display = "none";
 }
@@ -153,43 +155,53 @@ function swap(evt) {
 }
 
 function melangerReps() {
+    $.post(
+        '../php/Musique.php', {
+            function: 'getTimeCodeAnswers',
+            idTimeCode: tabTimeCode[numQuest]
+        },
+        function (data) {
+            if (numQuest < 2) {
+                var bonneRepPositionAlea = Math.floor(Math.random() * 2);
+            } else if (numQuest < 4) {
+                var bonneRepPositionAlea = Math.floor(Math.random() * 3);
+            } else if (numQuest < 7) {
+                var bonneRepPositionAlea = Math.floor(Math.random() * 4);
+            }
 
-    if (numQuest < 2) {
-        var bonneRepPositionAlea = Math.floor(Math.random() * 2);
-    } else if (numQuest < 4) {
-        var bonneRepPositionAlea = Math.floor(Math.random() * 3);
-    } else if (numQuest < 7) {
-        var bonneRepPositionAlea = Math.floor(Math.random() * 4);
-    }
+            var tabReps = [-1, -1, -1, -1];
 
-    var tabReps = [-1, -1, -1, -1];
+            tabReps[0] = bonneRepPositionAlea;
 
-    tabReps[0] = bonneRepPositionAlea;
+            for (var m = 1; m < 4; m++) {
 
-    for (var m = 1; m < 4; m++) {
+                var questAlea = Math.floor(Math.random() * 4);
 
-        var questAlea = Math.floor(Math.random() * 4);
+                while (tabReps[0] == questAlea || tabReps[1] == questAlea || tabReps[2] == questAlea) {
+                    questAlea = Math.floor(Math.random() * 4);
+                }
+                tabReps[m] = questAlea;
+            }
+            console.log(tabReps);
 
-        while (tabReps[0] == questAlea || tabReps[1] == questAlea || tabReps[2] == questAlea) {
-            questAlea = Math.floor(Math.random() * 4);
-        }
-        tabReps[m] = questAlea;
-    }
-    console.log(tabReps);
+            reps[tabReps[0]].value = data.answers.rep1;
+            reps[tabReps[1]].value = data.answers.rep2;
+            reps[tabReps[2]].value = data.answers.rep3;
+            reps[tabReps[3]].value = data.answers.rep4;
 
-    reps[tabReps[0]].value = currentSong.answers.rep1;
-    reps[tabReps[1]].value = currentSong.answers.rep2;
-    reps[tabReps[2]].value = currentSong.answers.rep3;
-    reps[tabReps[3]].value = currentSong.answers.rep4;
-
-    reps[tabReps[0]].textContent = currentSong.answers.rep1;
-    reps[tabReps[1]].textContent = currentSong.answers.rep2;
-    reps[tabReps[2]].textContent = currentSong.answers.rep3;
-    reps[tabReps[3]].textContent = currentSong.answers.rep4;
+            reps[tabReps[0]].textContent = data.answers.rep1;
+            reps[tabReps[1]].textContent = data.answers.rep2;
+            reps[tabReps[2]].textContent = data.answers.rep3;
+            reps[tabReps[3]].textContent = data.answers.rep4;
+        },
+        'json'
+    );
 
 }
 
 function verifierReps(evt) {
+    var btnThis = this;
+
     // Suppression des eventListener sur les boutons de réponse
     for (var rep of reps) {
         rep.removeEventListener("click", verifierReps);
@@ -198,21 +210,20 @@ function verifierReps(evt) {
     // Vérification de la réponse
     if (!timeOut) {
         $.post(
-        '../php/Musique.php', {
-            function: 'getMusique',
-            idTimeCode: tabTimeCode[numQuest],
-            lang: $_GET['langue']
-        }, function (data) {
-                console.log("test");
-                if (this.value == data.trueRep) {
+            '../php/Musique.php', {
+                function: 'getTimeCodeAnswer',
+                idTimeCode: tabTimeCode[numQuest],
+            },
+            function (data) {
+                if (btnThis.value == data.trueRep) {
                     nbGoodAnswer = nbGoodAnswer + 1;
-                    this.style.backgroundColor = "#3df22d";
+                    btnThis.style.backgroundColor = "#3df22d";
                     stopTimer();
                     calculScore();
                     document.getElementsByClassName("barScore")[0].style.height = Math.round(scoreGeneralPourcent) + "%";
                 } else {
                     stopTimer();
-                    this.style.backgroundColor = "red";
+                    btnThis.style.backgroundColor = "red";
                 }
             },
             'json'
@@ -233,7 +244,7 @@ function verifierReps(evt) {
                     function: 'getMusique',
                     categorie: $_GET['categorie'],
                     lang: $_GET['langue'],
-                    forbiddenTimeCode: tabTimeCode
+                    forbiddenTimeCode: JSON.stringify(tabTimeCode)
                 },
                 function (data) {
                     currentSong = data;
@@ -249,6 +260,9 @@ function verifierReps(evt) {
                     reps[1].style.backgroundColor = "#784199";
                     reps[2].style.backgroundColor = "#784199";
                     reps[3].style.backgroundColor = "#784199";
+
+                    console.log(JSON.stringify(tabTimeCode));
+                    console.log(data.conditionSQL);
                 },
                 'json'
             );
