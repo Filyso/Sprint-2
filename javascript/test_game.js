@@ -43,23 +43,22 @@ var nbGoodAnswer = 0;
 document.addEventListener("DOMContentLoaded", initialiser);
 
 
-// Load the IFrame Player API code asynchronously.
-var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/player_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-// Replace the 'ytplayer' element with an <iframe> and
-// YouTube player after the API code downloads.
-var player;
+//// Load the IFrame Player API code asynchronously.
+//var tag = document.createElement('script');
+//tag.src = "https://www.youtube.com/player_api";
+//var firstScriptTag = document.getElementsByTagName('script')[0];
+//firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+//// Replace the 'ytplayer' element with an <iframe> and
+//// YouTube player after the API code downloads.
+//var player;
 
 function onYouTubePlayerAPIReady() {
     $.post(
         '../php/Musique.php', {
             function: 'getMusique',
             categorie: $_GET['categorie'],
-            lang: $_GET['langue'],
-        },
-        function (data) {
+            lang: $_GET['langue']
+        }, function (data) {
             currentSong = data;
             tabTimeCode.push(data.idTimeCode);
             player = new YT.Player('ytplayer', {
@@ -94,6 +93,15 @@ function onYouTubePlayerAPIReady() {
 }
 
 function initialiser(evt) {
+    // Load the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/player_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    // Replace the 'ytplayer' element with an <iframe> and
+    // YouTube player after the API code downloads.
+    var player;
+    
     document.getElementsByClassName("barScore")[0].style.height = 0 + "%";
     document.querySelector(".resultat").style.display = "none";
 }
@@ -190,11 +198,12 @@ function verifierReps(evt) {
     // Vérification de la réponse
     if (!timeOut) {
         $.post(
-            '../php/Musique.php', {
-                function: 'getTimeCodeAnswer',
-                idTimeCode: tabTimeCode[numQuest],
-            },
-            function (data) {
+        '../php/Musique.php', {
+            function: 'getMusique',
+            idTimeCode: tabTimeCode[numQuest],
+            lang: $_GET['langue']
+        }, function (data) {
+                console.log("test");
                 if (this.value == data.trueRep) {
                     nbGoodAnswer = nbGoodAnswer + 1;
                     this.style.backgroundColor = "#3df22d";

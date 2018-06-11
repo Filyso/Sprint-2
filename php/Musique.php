@@ -1,5 +1,4 @@
 <?php
-    echo "test";
     header('Content-type: application/json');
 
 
@@ -9,16 +8,17 @@
             case "getMusique":
                 if(isset($_POST['categorie']) && isset($_POST['lang'])) {
                     getMusique($_POST['categorie'], $_POST['lang']);
-                }
+                };
                 break;
             case "getTimeCodeAnswer":
                 if(isset($_POST['idTimeCode'])) {
                     getMusiqueAnswer($_POST['idTimeCode']);
-                }
+                };
                 break;
             default:
                 echo "{error: Fonction non défini}";
         }
+        
     }
 
 
@@ -100,11 +100,11 @@
             
         // ETAPE 3 : Déconnecter du serveur                        
             $pdo = null;
+            
+            // Envoi du retour (on renvoi le tableau $retour encodé en JSON)
+            echo json_encode($retour);
         } catch (Exception $e) {
         }
-        
-        // Envoi du retour (on renvoi le tableau $retour encodé en JSON)
-        echo json_encode($retour);
                                            
     }
 
