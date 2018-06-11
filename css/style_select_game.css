@@ -1,16 +1,14 @@
 .mainSelect h1 {
     margin-bottom: auto;
-    text-align: center
+    text-align: center;
 }
 body{
     margin: 0;
 }
 .mainSelect{
     margin: 0;
-    padding-top: 0px;
     background: linear-gradient(to right,#ed1b70,#f79764,#fec65c); 
-    height: 80vh;
-    padding-top: 100px;
+    height: 100vh;
 }
 .mainSelect h1{
     margin-bottom: 100px;
@@ -18,11 +16,13 @@ body{
     font-family: 'Raleway', sans-serif;
     font-size: 40px;
     font-weight: 500;
+    padding-top: 20vh;;
+    margin-top: 0px;
 }
 .mainSelect div{
     color: white;
     width: 60%;
-    text-align: justify;
+    text-align: center;
     margin: auto;
     font-weight: 300;
     font-size: 18px;
@@ -90,4 +90,4 @@ body{
     color:white;
     font-weight: 300;
     font-family: 'Raleway', sans-serif;
-}ss
+}
