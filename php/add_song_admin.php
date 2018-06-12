@@ -127,12 +127,13 @@
 
                 <div class="adminLangues">
                     <span>Langue</span>
-
+                    <div class="choixLangue">
                     <input type="radio" id="langSongFR" name="langSong" value="fr" required>
                     <label for="langSongFR">FR</label>
 
                     <input type="radio" id="langSongEN" name="langSong" value="en">
                     <label for="langSongEN">EN</label>
+                        </div>
                 </div>
 
                 <div>
