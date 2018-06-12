@@ -24,16 +24,7 @@ html {
     --noir: #231F20;
 }
 
-/*************************************** PAGE INDEX ***************************************************/
-
-@keyframes spriteSliding {
-    from {
-        background-position: calc(-70vh * 24);
-    }
-    to {
-        background-position: 0;
-    }
-}
+/**************************************** PROPRIETES SUR TOUT *****************************************/
 
 body {
     margin: 0;
@@ -47,6 +38,17 @@ canvas {
     height: 100%;
     z-index: 0;
     position: absolute;
+}
+
+/*************************************** PAGE INDEX ***************************************************/
+
+@keyframes spriteSliding {
+    from {
+        background-position: calc(-70vh * 24);
+    }
+    to {
+        background-position: 0;
+    }
 }
 
 .mainIndex {
@@ -149,6 +151,7 @@ canvas {
     flex-wrap: nowrap;
     align-items: center;
     font-family: "FuturaBold";
+    background-color: white;
 
 }
 
@@ -773,7 +776,7 @@ canvas {
     position: fixed;
     width: 300px;
     height: 100vh;
-    background-color: #2D2D2D;
+    background-color: var(--noir);
     transition: transform 0.7s 0.1s ease-in-out;
     padding-top: 15vh;
     padding-bottom: 15vh;
@@ -785,7 +788,7 @@ canvas {
     position: fixed;
     width: 300px;
     height: 100vh;
-    background-color: #2D2D2D;
+    background-color: var(--noir);
     transition: transform 0.7s 0.1s ease-in-out;
     padding-top: 15vh;
     padding-bottom: 15vh;
@@ -838,14 +841,14 @@ canvas {
     font-size: 28px;
 }
 
-li .login {
+li .loginMenu {
     color: white;
     text-decoration: none;
     font-size: 28px;
 }
 
-li .login:hover {
-    color: lightgrey;
+li .loginMenu:hover {
+    color: var(--jaune);
 }
 
 .mainHeader p:hover {
@@ -853,7 +856,7 @@ li .login:hover {
 }
 
 .mainHeader a:hover {
-    color: lightgrey;
+    color: var(--jaune);
 }
 
 .rightHeader {
@@ -887,11 +890,6 @@ li .login:hover {
     position: relative;
 }
 
-.login:hover {
-    color: var(--rouge);
-    transition: .2s;
-}
-
 .login::after {
     position: absolute;
     transition: .3s;
@@ -900,7 +898,7 @@ li .login:hover {
     left: 50%;
     bottom: 0;
     height: 3px;
-    background: #ED1B70;
+    background: white;
 }
 
 .login:hover::after {
@@ -910,6 +908,22 @@ li .login:hover {
 
 .indexColor .login {
     color: var(--rouge);
+}
+
+.indexColor .login::after {
+    position: absolute;
+    transition: .3s;
+    content: '';
+    width: 0;
+    left: 50%;
+    bottom: 0;
+    height: 3px;
+    background: var(--rouge);
+}
+
+.login:hover::after {
+    width: 100%;
+    left: 0;
 }
 
 /********************************************** POPUP CONNEXION **************************************/
@@ -1036,6 +1050,7 @@ li .login:hover {
     margin-bottom: 30px;
     font-weight: 500;
     color: white;
+    font-family: "FuturaBold";
 }
 
 .preGamePage form {
@@ -1094,7 +1109,7 @@ li .login:hover {
     margin-top: 10px;
     padding: 5px 15px 5px 15px;
     border-radius: 3px;
-    background-color: #ed1b70;
+    background-color: transparent;
     color: white;
     font-weight: 300;
     border: 3px solid white;
@@ -1109,6 +1124,8 @@ li .login:hover {
 .preGamePage button[type="button"]:hover {
     transition: 0.2s;
     width: 150px;
+    border: 3px solid var(--rouge);
+    color: var(--rouge);
 }
 
 .preGamePage input[type=radio] {
@@ -1486,15 +1503,6 @@ li .login:hover {
 
 /**************************************************** SELEC GAME PAGE ********************************/
 
-.mainSelect h1 {
-    margin-bottom: auto;
-    text-align: center;
-}
-
-body {
-    margin: 0;
-}
-
 .mainSelect {
     margin: 0;
     background: linear-gradient(to right, #ed1b70, #f79764, #fec65c);
@@ -1502,13 +1510,13 @@ body {
 }
 
 .mainSelect h1 {
+    text-align: center;
     margin-bottom: 100px;
     color: white;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'FuturaBold', sans-serif;
     font-size: 40px;
     font-weight: 500;
     padding-top: 20vh;
-    ;
     margin-top: 0px;
 }
 
@@ -1551,22 +1559,22 @@ body {
     width: 250px;
     padding: 20px 0 20px 0;
     border-radius: 3px;
-    font-weight: 300;
+    font-weight: 30px;
     transition: 0.2s;
     font-family: 'Raleway', sans-serif;
 }
 
 .buttonSolo a:hover {
     transition: 0.2s;
-    border: 3px solid #fec65c;
-    color: #fec65c;
+    border: 3px solid var(--rouge);
+    color: var(--rouge);
     width: 230px;
 }
 
 .buttonMulti a:hover {
     transition: 0.2s;
-    border: 3px solid #fec65c;
-    color: #fec65c;
+    border: 3px solid var(--rouge);
+    color: var(--rouge);
     width: 300px;
 }
 

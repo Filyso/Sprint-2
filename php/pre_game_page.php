@@ -19,19 +19,19 @@
         <form action="./solo_game.php" method="get">
 
             <fieldset class="section">
-                <div class="container">
+                <div>
 
                     <input type="radio" name="langue" id="français" value="fr" class="inputRadio" required />
                     <label for="français"><img src="../images/FR.png" alt="drapeau français"></label>
                 </div>
 
-                <div class="container">
+                <div>
 
                     <input type="radio" name="langue" id="anglais" value="en" class="inputRadio" />
                     <label for="anglais"><img src="../images/UK.png" alt="drapeau anglais"></label>
                 </div>
 
-                <div class="container">
+                <div>
 
                     <input type="radio" name="langue" id="bilingue" value="bilingue" class="inputRadio" checked/>
                     <label for="bilingue"><img src="../images/FRUK.png" alt="drapeau bilingue"></label>

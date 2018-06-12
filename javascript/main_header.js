@@ -54,6 +54,7 @@
                     duration: 1,
                     timing: timing,
                 });
+                
             } else {
                 Moveit.animate(first, {
                     start: '0%',

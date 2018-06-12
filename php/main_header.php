@@ -35,7 +35,7 @@
                     </li>
 
                     <li>
-                        <p class="login">CONNEXION</p>
+                        <p class="loginMenu">CONNEXION</p>
                     </li>
 
                 </ul>
