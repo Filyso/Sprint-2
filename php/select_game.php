@@ -5,10 +5,9 @@
     <html lang="fr">
 
     <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <meta http-equiv="" content="">
-        <title></title>
+        <title>Filyso - Sélectionnez le mode de jeu</title>
         <meta name="" content="">
         <!--<link rel="stylesheet" href="../css/style.css">-->
         <link rel="stylesheet" href="../css/new_style.css">

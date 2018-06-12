@@ -8,7 +8,7 @@
     <title>Choix des options de jeu</title>
     <!--<link rel="stylesheet" type="text/css" href="../css/style.css" />-->
     <link rel="stylesheet" type="text/css" href="../css/new_style.css" />
-    <script type="text/javascript" src="../javascript/selectAlea.js"></script>
+    
 </head>
 
 <body>
@@ -77,10 +77,12 @@
                     <button id="btnAlea" type="button">Aléatoire</button>
                 </div>
             </fieldset>
-            <button type="submit">Jouer</button>
+            <button type="submit">JOUER</button>
         </form>
     </main>
+    <script type="text/javascript" src="../javascript/selectAlea.js"></script>
     <?php include("./main_footer.php"); ?>
+    
 </body>
 
 </html>

@@ -99,8 +99,8 @@
 
                 <div class="catSong">
 
-                    <label for="catSong_1">Catégorie</label>
-                    <select id="catSong_1" size="1" type="text" name="catSong_1" required>
+                    <label for="catSong">Catégorie</label>
+                    <select id="catSong" size="1" name="catSong" required>
                         
                     <option value="" disabled selected>Choisissez une catégorie</option>
                     <?php
@@ -176,12 +176,12 @@
                     <label for="secEnd_1">s</label>
                     <div>
                         <label for="prevLyrics_1">Paroles précédentes</label>
-                        <input id="prevLyrics_1" type="text" name="prevLyrics_1" required="required" maxlength="100" maxlength="250">
+                        <input id="prevLyrics_1" type="text" name="prevLyrics_1" required="required" maxlength="200">
                     </div>
 
                     <div>
                         <label for="goodRep_1">Bonne réponse</label>
-                        <input id="goodRep_1" type="text" name="goodRep_1" required="required" maxlength="75" maxlength="250">
+                        <input id="goodRep_1" type="text" name="goodRep_1" required="required" maxlength="200">
                     </div>
                 </div>
 
@@ -192,17 +192,17 @@
 
                     <div>
                         <label for="badRep1_1">Autre réponse 1</label>
-                        <input id="badRep1_1" type="text" name="badRep1_1" required="required" maxlength="75" maxlength="250">
+                        <input id="badRep1_1" type="text" name="badRep1_1" required="required" maxlength="200">
                     </div>
 
                     <div>
                         <label for="badRep2_1">Autre réponse 2</label>
-                        <input id="badRep2_1" type="text" name="badRep2_1" required="required" maxlength="75" maxlength="250">
+                        <input id="badRep2_1" type="text" name="badRep2_1" required="required" maxlength="200">
                     </div>
 
                     <div>
                         <label for="badRep3_1">Autre réponse 3</label>
-                        <input id="badRep3_1" type="text" name="badRep3_1" required="required" maxlength="75" maxlength="250">
+                        <input id="badRep3_1" type="text" name="badRep3_1" required="required" maxlength="200">
                     </div>
 
                 </fieldset>
