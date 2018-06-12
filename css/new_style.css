@@ -362,7 +362,7 @@ h1{
 /************************************************** ABOUT *************************************/
 
 .mainAbout {
-    background: linear-gradient(341deg, var(--rouge), #f79764, #fec65c);
+    background: linear-gradient(341deg, #ED1B70, #f79764, #fec65c);
     -webkit-animation: background 20s ease infinite;
     -moz-animation: background 20s ease infinite;
     animation: background 20s ease infinite;
@@ -406,10 +406,11 @@ h1{
 }
 
 .equipe {
-    padding-top: 5vh;
+    padding-top: 6vh;
     text-align: center;
     font-family: 'FuturaBold';
     color: #2D2D2D;
+    margin-top: 5vh;
 }
 
 .equipe h2 {
@@ -856,17 +857,44 @@ h1{
     left: 0;
 }
 
-.mainHeader ul {
+.mainHeader ul{
     display: flex;
     flex-direction: column;
-    text-align: center;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: space-around; 
+    list-style: none;
     padding: 0;
     margin: 0;
-    height: 100%;
-    list-style-type: none;
+    height: 100%;   
 }
-
+.mainHeader li:hover{
+    cursor: pointer;
+}
+.mainHeader a:hover{
+    color:var(--jaune);
+}
+.mainHeader li:nth-child(1){
+    background-image: url(../images/icon_accueil.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-left: 40px;
+}
+.mainHeader li:nth-child(2){
+    background-image: url(../images/icon_play.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-left: 40px;
+}
+.mainHeader li:nth-child(3){
+    background-image: url(../images/icon_rank.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-left: 40px;
+}
+.mainHeader li:nth-child(4) p{
+    padding: 0;
+    margin: 0;
+}
 #fullScreenButton {
     cursor: pointer;
     transition: transform .2s;
@@ -907,10 +935,6 @@ li .loginMenu:hover {
 
 .mainHeader p:hover {
     cursor: pointer;
-}
-
-.mainHeader a:hover {
-    color: var(--jaune);
 }
 
 .rightHeader {
@@ -1236,7 +1260,7 @@ li .loginMenu:hover {
 .mainRank {
     background: linear-gradient(to right, var(--rouge), #f79764, #fec65c);
     margin: 0;
-    padding: 50px 50px 50px 50px;
+    padding: 150px 50px 50px 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
