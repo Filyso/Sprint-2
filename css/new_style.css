@@ -635,7 +635,6 @@ h1{
     align-items: center;
     flex-direction: column;
     width: 50%;
-
     font-family: "Raleway";
 }
 
@@ -653,6 +652,31 @@ h1{
     font-family: "FuturaBold";
     font-size: 22px;
 }
+#chansonForm .adminLangues{
+    display: inline-flex;
+    
+}
+#chansonForm .choixLangue{
+    display: flex;
+    justify-content: flex-start;
+    width: 60%;
+    padding-bottom: 5px;
+    align-items: center;
+}
+#chansonForm .choixLangue input{
+    cursor: pointer;
+    background-color: white;
+}
+#chansonForm .choixLangue img{
+    margin-right: 20px;
+    width: 40px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+#chansonForm .choixLangue img:hover{
+    transform: scale(1.1);
+    transition: 0.2s;
+}
 #chansonForm{
     margin: 0;
     padding:10px;
@@ -661,6 +685,7 @@ h1{
 #chansonForm div {
     width: 100%;
     color:white;
+    align-items: center;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -679,6 +704,7 @@ h1{
 #timeCode div {
     width: 100%;
     display: flex;
+    align-items: center;
     color:white;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -691,6 +717,10 @@ h1{
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 5px;
+}
+#reponsesForm{
+    width: 97%;
+    box-sizing:border-box;
 }
 
 #reponsesForm label {
@@ -706,12 +736,15 @@ h1{
 .addSongForm input[type=text],
 .addSongForm input[type=url],
 .addSongForm select {
-    border: none;
+    border: 2px solid white;;
     font-family: 'Raleway';
     outline: none;
     border-radius: 5px;
     padding:5px;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: transparent;
+}
+.addSongForm input::placeholder{
+    color:#dedede;
 }
 
 .addSongForm input[type=text],
