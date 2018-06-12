@@ -108,7 +108,7 @@ h1{
     color: var(--jaune);
     padding: 15px;
     border: 5px solid var(--jaune);
-    background-color: white;
+    background-color: transparent;
     transition: .1s;
     border-radius: 2px;
 }
