@@ -1,11 +1,12 @@
 <?php
 	header("Content-type: text/html; charset: UTF-8");
 ?>
-
+<!DOCTYPE html>
+<html lang="fr">
     <head>
-        <link rel="stylesheet" href="../css/new_style.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="../css/new_style.css" type="text/css" media="screen">
+        <title>A propos de l'équipe de Filyso</title>
     </head>
-
     <body>
         <?php include("./main_header.php"); ?>
         <main class="mainAbout">
@@ -55,8 +56,8 @@
                     <h2>Boîte à idées</h2>
                     <p>Une idée ? Un bug ? Une amélioration ? Dites le nous !</p>
                     <form action="#" method="post">
-                        <input type="email" name="email" placeholder="Email" required/>
-                        <textarea rows=5 name="message" placeholder="Votre idée de génie" required></textarea>
+                        <input type="email" name="email" placeholder="Email" required="required">
+                        <textarea rows=5 name="message" placeholder="Votre idée de génie" required="required"></textarea>
                         <button>Envoyer</button>
                     </form>
 
