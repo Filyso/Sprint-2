@@ -9,7 +9,7 @@
         <meta http-equiv="" content="">
         <title></title>
         <meta name="" content="">
-        <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" href="../css/new_style.css">
     </head>
 
     <body>

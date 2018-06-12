@@ -10,8 +10,7 @@
         <meta charset="utf-8">
         <title>Jeu en Solo</title>
         <meta name="description" content="Jouez !">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:600,900" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="../css/style.css" />
+        <link rel="stylesheet" type="text/css" href="../css/new_style.css" />
         <script type="text/javascript" src="../javascript/popup_regles.js"></script>
     </head>
 

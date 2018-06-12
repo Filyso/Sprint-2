@@ -54,6 +54,7 @@
                     duration: 1,
                     timing: timing,
                 });
+                
             } else {
                 Moveit.animate(first, {
                     start: '0%',
@@ -83,7 +84,7 @@
         fullScreenButton.addEventListener('click', goFullScreen, false);
 
     } //Fin de la fonction initialiser
-
+    
     //Fonction plein écran
     function goFullScreen(evt) {
 

@@ -6,14 +6,12 @@
 
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:600,900" rel="stylesheet">
         <meta charset="utf-8">
         <meta http-equiv="" content="">
         <title></title>
         <meta name="" content="">
         <!--<link rel="stylesheet" href="../css/style.css">-->
-        <link rel="stylesheet" href="../css/style_select_game.css">
-        <link rel="stylesheet" href="../css/style_index.css">
+        <link rel="stylesheet" href="../css/new_style.css">
     </head>
 
     <body>

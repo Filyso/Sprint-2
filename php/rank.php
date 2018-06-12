@@ -11,12 +11,11 @@
         <title></title>
         <meta name="" content="">
 <!--        <link rel="stylesheet" href="../style.css">-->
-        <link rel="stylesheet" href="../css/style_index.css">
-        <link rel="stylesheet" href="../css/style_rank.css">
+        <link rel="stylesheet" href="../css/new_style.css">
     </head>
 
     <body>
-        <?php //include("./main_header.php")?>
+        <?php include("./main_header.php"); ?>
         <main class="mainRank">
             <h1>Classement des joueurs</h1>
                 <table>

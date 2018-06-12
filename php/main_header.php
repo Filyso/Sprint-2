@@ -3,9 +3,7 @@
 ?>
 
     <head>
-        <link rel="stylesheet" href="../css/style_header.css" type="text/css" media="screen" />
-        <link href="https://fonts.googleapis.com/css?family=Raleway:300,500,700" rel="stylesheet">
-
+        <link rel="stylesheet" href="../css/new_style.css" type="text/css" media="screen" />
     </head>
 
     <body class="bodyHeader">
@@ -37,7 +35,7 @@
                     </li>
 
                     <li>
-                        <p class="login">CONNEXION</p>
+                        <p class="loginMenu">CONNEXION</p>
                     </li>
 
                 </ul>
