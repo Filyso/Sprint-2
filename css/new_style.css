@@ -635,7 +635,6 @@ h1{
     align-items: center;
     flex-direction: column;
     width: 50%;
-
     font-family: "Raleway";
 }
 
@@ -653,6 +652,31 @@ h1{
     font-family: "FuturaBold";
     font-size: 22px;
 }
+#chansonForm .adminLangues{
+    display: inline-flex;
+    
+}
+#chansonForm .choixLangue{
+    display: flex;
+    justify-content: flex-start;
+    width: 60%;
+    padding-bottom: 5px;
+    align-items: center;
+}
+#chansonForm .choixLangue input{
+    cursor: pointer;
+    background-color: white;
+}
+#chansonForm .choixLangue img{
+    margin-right: 20px;
+    width: 40px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+#chansonForm .choixLangue img:hover{
+    transform: scale(1.1);
+    transition: 0.2s;
+}
 #chansonForm{
     margin: 0;
     padding:10px;
@@ -661,6 +685,7 @@ h1{
 #chansonForm div {
     width: 100%;
     color:white;
+    align-items: center;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -679,6 +704,7 @@ h1{
 #timeCode div {
     width: 100%;
     display: flex;
+    align-items: center;
     color:white;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -691,6 +717,10 @@ h1{
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 5px;
+}
+#reponsesForm{
+    width: 97%;
+    box-sizing:border-box;
 }
 
 #reponsesForm label {
@@ -706,12 +736,15 @@ h1{
 .addSongForm input[type=text],
 .addSongForm input[type=url],
 .addSongForm select {
-    border: none;
+    border: 2px solid white;;
     font-family: 'Raleway';
     outline: none;
     border-radius: 5px;
     padding:5px;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: transparent;
+}
+.addSongForm input::placeholder{
+    color:#dedede;
 }
 
 .addSongForm input[type=text],
@@ -941,10 +974,9 @@ li .loginMenu:hover {
 .popup-content_regle {
     background-color: #fefefe;
     margin: 15% auto;
-    border: 2px solid #888;
     width: 40%;
     height: 50%;
-    border-radius: 18px;
+    border-radius: 10px;
     position: relative;
     display: flex;
     justify-content: space-around;
@@ -964,44 +996,48 @@ li .loginMenu:hover {
 .popup-content_regle h2 {
     padding-top: 10%;
     margin: 0;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'FuturaBold';
     font-size: 28px;
-    font-weight: 300;
+    color:var(--orange);
+    
 }
 
 .popup-content input {
     height: 10%;
+    outline: none;
     margin-bottom: 10%;
+    border: 3px solid var(--orange);
+    padding: 5px 10px 5px 10px;
+    font-size: 15px;
     font-family: 'Raleway', sans-serif;
 }
 
-.popup-content input:first-child {
-    margin-top: 10%;
-}
 
 .popup-content button {
-    height: 20%;
+    height: 15%;
     width: 50%;
+    border: 3px solid var(--rouge);
     align-self: center;
-    font-family: 'Raleway', sans-serif;
-    font-size: 15px;
-    background-color: #4CD1CB;
-    border: none;
-    border-radius: 20px;
-    color: white;
+    font-family: 'FuturaBold';
+    font-size: 18px;
+    cursor: pointer;
+    color: var(--rouge);
+    transition: 0.2s;
+    background-color: white;
 }
 
 .popup-content button:hover {
-    background-color: #4CD1CB;
     transform-origin: center;
-    box-shadow: 0px 0px 0px 10px #85e0db;
+    width: 60%;
+    border-color: var(--jaune);
+    color:var(--jaune);
     transition: 0.2s;
-    font-weight: 700;
+   
 }
 
 .close,
 .close_regle {
-    color: #aaa;
+    color: var(--orange);
     font-size: 28px;
     font-weight: bold;
     position: absolute;
@@ -1024,7 +1060,6 @@ li .loginMenu:hover {
     font-weight: 300;
     list-style-image: url(images/list.png);
 }
-
 /*********************************************** PRE GAME PAGE ****************************************/
 
 .preGamePage {
