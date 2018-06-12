@@ -926,7 +926,7 @@ li .loginMenu:hover {
 /*********************************************** PRE GAME PAGE ****************************************/
 .preGamePage {
     background: linear-gradient(to right, var(--rouge), var(--orange), #fec65c);
-    height: 80vh;
+    height: 100vh;
     padding: 50px;
     padding-top: 150px;
     font-family: 'Raleway', sans-serif;
@@ -1362,8 +1362,7 @@ li .loginMenu:hover {
     font-size: 32px;
     width: 180px;
     padding: 20px 0 20px 0;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 300;
+    font-family: 'FuturaBold', sans-serif;
     transition: 0.2s;
 }
 .buttonMulti a {
@@ -1375,9 +1374,8 @@ li .loginMenu:hover {
     width: 250px;
     padding: 20px 0 20px 0;
     border-radius: 3px;
-    font-weight: 300;
     transition: 0.2s;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'FuturaBold', sans-serif;
 }
 .buttonSolo a:hover {
     transition: 0.2s;

@@ -77,7 +77,7 @@
                     <button id="btnAlea" type="button">Aléatoire</button>
                 </div>
             </fieldset>
-            <button type="submit">Jouer</button>
+            <button type="submit">JOUER</button>
         </form>
     </main>
     <script type="text/javascript" src="../javascript/selectAlea.js"></script>
