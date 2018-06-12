@@ -743,14 +743,6 @@ h1{
 
 /*************************************************** HEADER **************************************/
 
-.bodyHeader {
-    z-index: 10;
-    margin: 0;
-    padding: 0;
-    position: relative;
-}
-
-
 .mainHeader {
     display: flex;
     justify-content: space-between;

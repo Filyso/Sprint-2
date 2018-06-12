@@ -1,12 +1,6 @@
 <?php
 	header("Content-type: text/html; charset: UTF-8");
 ?>
-
-    <head>
-        <link rel="stylesheet" href="../css/new_style.css" type="text/css" media="screen" />
-    </head>
-
-    <body class="bodyHeader">
         <header class="mainHeader">
 
             <!-- Icône Menu Burger -->
@@ -82,5 +76,3 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
         <script type="text/javascript" src="../javascript/popup_login.js"></script>
         <script type="text/javascript" src="../javascript/main_header.js"></script>
-
-    </body>

@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="" content="">
-        <title></title>
+        <title>Bienvenue sur Filyso</title>
         <meta name="" content="">
         <link rel="stylesheet" href="../css/new_style.css">
         <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
