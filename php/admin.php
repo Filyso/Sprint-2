@@ -12,7 +12,7 @@
 
     <body>
 
-        <?php /* include("./main_header.php"); */ ?>
+        <?php include("./main_header.php"); ?>
         <main class="mainAdmin">
             <header class="headerAdmin">
 

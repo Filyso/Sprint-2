@@ -15,7 +15,7 @@
     </head>
 
     <body>
-        <?php //include("./main_header.php")?>
+        <?php include("./main_header.php"); ?>
         <main class="mainRank">
             <h1>Classement des joueurs</h1>
                 <table>

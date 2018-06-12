@@ -84,7 +84,7 @@
         fullScreenButton.addEventListener('click', goFullScreen, false);
 
     } //Fin de la fonction initialiser
-
+    
     //Fonction plein écran
     function goFullScreen(evt) {
 
