@@ -1,3 +1,4 @@
+//Fonction principale
 function verifForm(f) {
     
     var urlOk= verifierURL(f.url);
@@ -16,7 +17,7 @@ function verifForm(f) {
 //Fonction vérifiant le respect orthographique des URL (on ne vérifie pas l'existence de l'URL)
 function verifierURL(champ) {
     //Les slash de l'URL sont échappées grâce aux anti-slash
-    var regex = /^https:\/\/www.youtube.com\/watch?[\w]?/;
+    var regex = /^(https:\/\/www.youtube.com\/watch?)\w*?/;
     if (!regex.test(champ.value)) {
         surligne(champ, true);
         return false;
@@ -66,7 +67,7 @@ function verifierParoles(champ) {
 
 }
 
-//Fonction pointant les erreurs
+//Fonction pointant les erreurs (en couleur)
 function surligne(champ, erreur) {
     if (erreur) {
         champ.style.backgroundColor = "#fba";
