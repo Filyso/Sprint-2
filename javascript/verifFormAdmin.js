@@ -47,14 +47,23 @@ function verifierTimecodes(champ) {
 
 //Fonction vérifiant que les paroles et réponses sont différentes pour chaque champ
 function verifierParoles(champ) {
+    
     var p1 = champ.value.toLowerCase();
-    var p2 = document.getElementById("prevLyrics_1").value.toLowerCase();
-    var p3 = document.getElementById("prevLyrics_1").value.toLowerCase();
-    var p4 = document.getElementById("prevLyrics_1").value.toLowerCase();
-    var p5 = document.getElementById("prevLyrics_1").value.toLowerCase();
+    var p2 = document.getElementById("goodRep_1").value.toLowerCase();
+    var p3 = document.getElementById("badRep1_1").value.toLowerCase();
+    var p4 = document.getElementById("badRep2_1").value.toLowerCase();
+    var p5 = document.getElementById("badRep3_1").value.toLowerCase();
     
-    if(p1==p2 )
-    
+    if(p1==p2 || p1==p3 || p1==p4 || p1==p5 || p2==p3 || p2==p4 || p2==p5 || p3==p4 || p3==p5 || p4==p5){
+        surligne(p1, true);
+        surligne(p2, true);
+        surligne(p3, true);
+        surligne(p4, true);
+        surligne(p5, true);
+    } else {
+        return true;
+    }
+
 }
 
 //Fonction pointant les erreurs
