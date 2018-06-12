@@ -6,7 +6,6 @@
     <html lang="fr">
 
     <head>
-
         <meta charset="utf-8">
         <title>Jeu en Solo</title>
         <meta name="description" content="Jouez !">
