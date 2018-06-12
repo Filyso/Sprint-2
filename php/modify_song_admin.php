@@ -51,7 +51,7 @@
                             }
                     ?>
                 </tbody>
-            </table>
+            </table>    
             <input type="hidden" value="0" name="song"/>
         </form>
     </section>
