@@ -2,18 +2,16 @@
 	header("Content-type: text/html; charset: UTF-8");
 ?>
     <section class="selectMulti">
-        <form action="admin.php" method="get">
-            <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Chanson</th>
-                        <th>Artiste</th>
-                        <th colspan="2">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
+        <table>
+            <thead>
+                <tr>
+                    <th>Chanson</th>
+                    <th>Artiste</th>
+                    <th colspan="2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
                         try {
                         // ETAPE 1 : Se connecter au serveur de base de données
                             require("./param.inc.php");
@@ -31,14 +29,17 @@
                             while($ligne != false) {
                     ?>
                     <tr>
-                        <td>
-                            <?php echo($ligne["nameSong"])?>
-                        </td>
-                        <td>
-                            <?php echo($ligne["nameArtist"])?>
-                        </td>
-                        <td><input type="submit" value="Modifier" name="admin" class="editSongBtn" /></td>
-                        <td><input type="submit" value="Supprimer" name="admin" class="editSongBtn" /></td>
+                        <form action="admin.php" method="get">
+                            <td>
+                                <?php echo($ligne["nameSong"])?>
+                            </td>
+                            <td>
+                                <?php echo($ligne["nameArtist"])?>
+                            </td>
+                            <td><input type="submit" value="Modifier" name="admin" class="editSongBtn" /></td>
+                            <td><input type="submit" value="Supprimer" name="admin" class="editSongBtn" /></td>
+                            <td><input type="hidden" value="<?php echo($ligne["idSong"])?>" name="songId" /></td>
+                        </form>
                     </tr>
                     <?php
                                 $ligne = $statement->fetch(PDO::FETCH_ASSOC);
@@ -50,8 +51,7 @@
                                 echo($e);
                             }
                     ?>
-                </tbody>
-            </table>    
-            <input type="hidden" value="0" name="song"/>
-        </form>
+            </tbody>
+        </table>
+        <input type="hidden" value="0" name="song" />
     </section>
