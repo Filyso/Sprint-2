@@ -129,10 +129,10 @@
                     <span>Langue</span>
                     <div class="choixLangue">
                     <input type="radio" id="langSongFR" name="langSong" value="fr" required>
-                    <label for="langSongFR">FR</label>
+                    <label for="langSongFR"><img src="../images/FR.png" alt="drapeau FR"/></label>
 
                     <input type="radio" id="langSongEN" name="langSong" value="en">
-                    <label for="langSongEN">EN</label>
+                    <label for="langSongEN"><img src="../images/UK.png" alt="drapeau UK"/></label>
                         </div>
                 </div>
 
