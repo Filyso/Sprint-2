@@ -22,23 +22,30 @@
             $ligne = $statement->fetch(PDO::FETCH_ASSOC);
             $idSong = $ligne["idSong"];
             
-            $requeteSQL = "INSERT INTO APPARTIENT_A_UNE(idSong, idCat) VALUES (" . $idSong . ", :paramCatSong)";
-            $statement = $pdo->prepare($requeteSQL);
-            $statement->execute(array(":paramCatSong" => $_POST["catSong"]));
+            // AJOUT CATEGORIE
+            for ($i=1; $i <= $_POST["nbCat"]; $i++) {
+                if (isset($_POST["catSong_".$i])) {
+                    $requeteSQL = "INSERT INTO APPARTIENT_A_UNE(idSong, idCat) VALUES (" . $idSong . ", :paramCatSong)";
+                    $statement = $pdo->prepare($requeteSQL);
+                    $statement->execute(array(":paramCatSong" => $_POST["catSong_".$i]));
+                }
+            }
         
             // AJOUT TIMECODE
             for ($i=1; $i <= $_POST["nbTimecode"]; $i++) {
-                $startTimeCode = "00:" . ($_POST["minStart_".$i]>9 ? ($_POST["minStart_".$i]):("0" . $_POST["minStart_".$i])) . ":" . ($_POST["secStart_".$i]>9 ? ($_POST["secStart_".$i]):("0" . $_POST["secStart_".$i]));
+                if(isset($_POST["prevLyrics_".$i])) {
+                    $startTimeCode = "00:" . ($_POST["minStart_".$i]>9 ? ($_POST["minStart_".$i]):("0" . $_POST["minStart_".$i])) . ":" . ($_POST["secStart_".$i]>9 ? ($_POST["secStart_".$i]):("0" . $_POST["secStart_".$i]));
 
-                $timeCode = "00:" . ($_POST["minEnd_".$i]>9 ? ($_POST["minEnd_".$i]):("0" . $_POST["minEnd_".$i])) . ":" . ($_POST["secEnd_".$i]>9 ? ($_POST["secEnd_".$i]):("0" . $_POST["secEnd_".$i]));
+                    $timeCode = "00:" . ($_POST["minEnd_".$i]>9 ? ($_POST["minEnd_".$i]):("0" . $_POST["minEnd_".$i])) . ":" . ($_POST["secEnd_".$i]>9 ? ($_POST["secEnd_".$i]):("0" . $_POST["secEnd_".$i]));
 
-                $requeteSQL = "INSERT INTO TIMECODES(startTimeCode,timeCode,previousLyrics,trueRep,falseRep1,falseRep2,falseRep3,idSong) VALUES ('" . $startTimeCode . "','" . $timeCode . "', :paramPrevLyrics, :paramGoodRep, :paramBadRep1, :paramBadRep2, :paramBadRep3," . $idSong . ")";
-                $statement = $pdo->prepare($requeteSQL);
-                $statement->execute(array(":paramPrevLyrics" => addslashes($_POST["prevLyrics_".$i]),
-                                          ":paramGoodRep" => addslashes($_POST["goodRep_".$i]),
-                                          ":paramBadRep1" => addslashes($_POST["badRep1_".$i]),
-                                          ":paramBadRep2" => addslashes($_POST["badRep2_".$i]),
-                                          ":paramBadRep3" => addslashes($_POST["badRep3_".$i])));
+                    $requeteSQL = "INSERT INTO TIMECODES(startTimeCode,timeCode,previousLyrics,trueRep,falseRep1,falseRep2,falseRep3,idSong) VALUES ('" . $startTimeCode . "','" . $timeCode . "', :paramPrevLyrics, :paramGoodRep, :paramBadRep1, :paramBadRep2, :paramBadRep3," . $idSong . ")";
+                    $statement = $pdo->prepare($requeteSQL);
+                    $statement->execute(array(":paramPrevLyrics" => addslashes($_POST["prevLyrics_".$i]),
+                                              ":paramGoodRep" => addslashes($_POST["goodRep_".$i]),
+                                              ":paramBadRep1" => addslashes($_POST["badRep1_".$i]),
+                                              ":paramBadRep2" => addslashes($_POST["badRep2_".$i]),
+                                              ":paramBadRep3" => addslashes($_POST["badRep3_".$i])));
+                }
             }
         
             // GESTION AUTEUR
@@ -68,9 +75,10 @@
         }
         
         echo '<script type="text/javascript">alert("' . $msg . '")</script>';
+        header("Location: admin.php");
     }
 ?>
-    <script type="text/javascript" src="../javascript/add_Time_Code.js"></script>
+    <script type="text/javascript" src="../javascript/add_Song.js"></script>
     <script type="text/javascript" src="../javascript/valid_time_code.js"></script>
     <section class="addSongSection">
 
@@ -89,10 +97,10 @@
                     <input type="text" name="artistSong" id="artistSong" required="required" maxlength="50" />
                 </div>
 
-                <div>
+                <div class="catSong">
 
-                    <label for="catSong">Catégorie</label>
-                    <select id="catSong" size="1" type="text" name="catSong" required>
+                    <label for="catSong_1">Catégorie</label>
+                    <select id="catSong_1" size="1" type="text" name="catSong_1" required>
                         
                     <option value="" disabled selected>Choisissez une catégorie</option>
                     <?php
@@ -122,8 +130,11 @@
                             echo($e);
                         }
                     ?>
-                </select>
+                    </select>
+
                 </div>
+                <input id="nbCat" type="hidden" name="nbCat" value="1" class="inputMasque" />
+                <input type="button" id="addCatBtn" value="AJOUTER UNE CATEGORIE"/>
 
                 <div class="adminLangues">
                     <span>Langue</span>
@@ -144,7 +155,7 @@
                 <input id="nbTimecode" type="hidden" name="nbTimecode" value="1" class="inputMasque" />
 
             </fieldset>
-            <fieldset id="timeCode">
+            <fieldset class="timeCode">
                 <legend>Timecode</legend>
 
                 <div>
@@ -176,7 +187,7 @@
 
 
 
-                <fieldset id="reponsesForm">
+                <fieldset class="reponsesForm">
                     <legend>Réponses</legend>
 
                     <div>

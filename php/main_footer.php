@@ -16,8 +16,8 @@
             </p>
 
             <div class="footerReseaux">
-                <a href="https://twitter.com/Filyso1" target="_blank"><img src="../images/Twitter.png" ></a>
-                <a href="https://www.instagram.com/filysogame" target="_blank"><img src="../images/Instagram.png"></a>
+                <a href="https://twitter.com/Filyso1" target="_blank"><img src="../images/Twitter.png" alt="twitter" ></a>
+                <a href="https://www.instagram.com/filysogame" target="_blank"><img src="../images/Instagram.png" alt="instagram"></a>
 
             </div>
 
