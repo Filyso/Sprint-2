@@ -1,4 +1,6 @@
 <?php
+    session_start();
+	header("Content-type: text/html; charset: UTF-8");
 
     if(isset($_POST["song"])) {
         try {

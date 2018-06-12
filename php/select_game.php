@@ -1,4 +1,5 @@
 <?php
+    session_start();
 	header("Content-type: text/html; charset: UTF-8");
 ?>
     <!DOCTYPE html>
@@ -14,12 +15,23 @@
     </head>
 
     <body>
-     <?php include("./main_header.php")?>
-       
+       <?php include("./main_header.php");?>
+<?php 
+
+
+        
+if(Membre::isLogged()){
+    $destination = "./multi_game.php";
+}else{
+    
+    $destination = "./select_game.php";
+}
+                      
+?>
         <main class="mainSelect">
             <h1>Choisir le mode de jeu</h1>
             <div class="buttonMulti">
-                <a href="./multi_game.php">MULTI</a>
+                <a href=<?php echo($destination); ?>>MULTI</a>
                 <p>Jouez en ligne contre d'autres personnes.</p>
             </div>
             <div class="buttonSolo">
