@@ -25,24 +25,28 @@
             
             // AJOUT CATEGORIE
             for ($i=1; $i <= $_POST["nbCat"]; $i++) {
-                $requeteSQL = "INSERT INTO APPARTIENT_A_UNE(idSong, idCat) VALUES (" . $idSong . ", :paramCatSong)";
-                $statement = $pdo->prepare($requeteSQL);
-                $statement->execute(array(":paramCatSong" => $_POST["catSong_".$i]));
+                if (isset($_POST["catSong_".$i])) {
+                    $requeteSQL = "INSERT INTO APPARTIENT_A_UNE(idSong, idCat) VALUES (" . $idSong . ", :paramCatSong)";
+                    $statement = $pdo->prepare($requeteSQL);
+                    $statement->execute(array(":paramCatSong" => $_POST["catSong_".$i]));
+                }
             }
         
             // AJOUT TIMECODE
             for ($i=1; $i <= $_POST["nbTimecode"]; $i++) {
-                $startTimeCode = "00:" . ($_POST["minStart_".$i]>9 ? ($_POST["minStart_".$i]):("0" . $_POST["minStart_".$i])) . ":" . ($_POST["secStart_".$i]>9 ? ($_POST["secStart_".$i]):("0" . $_POST["secStart_".$i]));
+                if(isset($_POST["prevLyrics_".$i])) {
+                    $startTimeCode = "00:" . ($_POST["minStart_".$i]>9 ? ($_POST["minStart_".$i]):("0" . $_POST["minStart_".$i])) . ":" . ($_POST["secStart_".$i]>9 ? ($_POST["secStart_".$i]):("0" . $_POST["secStart_".$i]));
 
-                $timeCode = "00:" . ($_POST["minEnd_".$i]>9 ? ($_POST["minEnd_".$i]):("0" . $_POST["minEnd_".$i])) . ":" . ($_POST["secEnd_".$i]>9 ? ($_POST["secEnd_".$i]):("0" . $_POST["secEnd_".$i]));
+                    $timeCode = "00:" . ($_POST["minEnd_".$i]>9 ? ($_POST["minEnd_".$i]):("0" . $_POST["minEnd_".$i])) . ":" . ($_POST["secEnd_".$i]>9 ? ($_POST["secEnd_".$i]):("0" . $_POST["secEnd_".$i]));
 
-                $requeteSQL = "INSERT INTO TIMECODES(startTimeCode,timeCode,previousLyrics,trueRep,falseRep1,falseRep2,falseRep3,idSong) VALUES ('" . $startTimeCode . "','" . $timeCode . "', :paramPrevLyrics, :paramGoodRep, :paramBadRep1, :paramBadRep2, :paramBadRep3," . $idSong . ")";
-                $statement = $pdo->prepare($requeteSQL);
-                $statement->execute(array(":paramPrevLyrics" => addslashes($_POST["prevLyrics_".$i]),
-                                          ":paramGoodRep" => addslashes($_POST["goodRep_".$i]),
-                                          ":paramBadRep1" => addslashes($_POST["badRep1_".$i]),
-                                          ":paramBadRep2" => addslashes($_POST["badRep2_".$i]),
-                                          ":paramBadRep3" => addslashes($_POST["badRep3_".$i])));
+                    $requeteSQL = "INSERT INTO TIMECODES(startTimeCode,timeCode,previousLyrics,trueRep,falseRep1,falseRep2,falseRep3,idSong) VALUES ('" . $startTimeCode . "','" . $timeCode . "', :paramPrevLyrics, :paramGoodRep, :paramBadRep1, :paramBadRep2, :paramBadRep3," . $idSong . ")";
+                    $statement = $pdo->prepare($requeteSQL);
+                    $statement->execute(array(":paramPrevLyrics" => addslashes($_POST["prevLyrics_".$i]),
+                                              ":paramGoodRep" => addslashes($_POST["goodRep_".$i]),
+                                              ":paramBadRep1" => addslashes($_POST["badRep1_".$i]),
+                                              ":paramBadRep2" => addslashes($_POST["badRep2_".$i]),
+                                              ":paramBadRep3" => addslashes($_POST["badRep3_".$i])));
+                }
             }
         
             // GESTION AUTEUR
@@ -94,10 +98,10 @@
                     <input type="text" name="artistSong" id="artistSong" required="required" maxlength="50" />
                 </div>
 
-                <div>
+                <div class="catSong">
 
                     <label for="catSong_1">Catégorie</label>
-                    <select id="catSong_1" class="catSong" size="1" type="text" name="catSong_1" required>
+                    <select id="catSong_1" size="1" type="text" name="catSong_1" required>
                         
                     <option value="" disabled selected>Choisissez une catégorie</option>
                     <?php
@@ -128,9 +132,10 @@
                         }
                     ?>
                     </select>
-                    <input id="nbCat" type="hidden" name="nbCat" value="1" class="inputMasque" />
-                    <input type="button" id="addCatBtn" value="AJOUTER UNE CATEGORIE"/>
+
                 </div>
+                <input id="nbCat" type="hidden" name="nbCat" value="1" class="inputMasque" />
+                <input type="button" id="addCatBtn" value="AJOUTER UNE CATEGORIE"/>
 
                 <div class="adminLangues">
                     <span>Langue</span>

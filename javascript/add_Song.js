@@ -25,6 +25,14 @@ function addTC(evt) {
         currentLabel.setAttribute("for", currentLabel.getAttribute("for").slice(0,-1) + nbFieldsetInput.value);
     }
     
+    // Insertion d'un bouton de suppression
+    var deleteBtn = document.createElement("input");
+    deleteBtn.type = "button";
+    deleteBtn.value = "×";
+    deleteBtn.classList.add("delButton");
+    deleteBtn.addEventListener("click", delParent);
+    cloneTcFieldset.children[0].after(deleteBtn);
+    
     // Insertion du nouveau formulaire de timecode dans le DOM
     document.getElementById("addSongForm").insertBefore(cloneTcFieldset,this.parentNode);
 }
@@ -38,9 +46,23 @@ function addCat(evt) {
     nbCatInput.value = parseInt(nbCatInput.value) + 1;
     
     // Modification des paramètres du clone
-    cloneCat.id = cloneCat.id.slice(0,-1) + nbCatInput.value;
-    cloneCat.name = cloneCat.name.slice(0,-1) + nbCatInput.value;
+    cloneCat.querySelector("select").id = cloneCat.querySelector("select").id.slice(0,-1) + nbCatInput.value;
+    console.log(cloneCat.querySelector("select").id);
+    cloneCat.querySelector("select").name = cloneCat.querySelector("select").name.slice(0,-1) + nbCatInput.value;
+    cloneCat.querySelector("label").setAttribute("for", cloneCat.querySelector("select").id);
+
+    // Insertion d'un bouton de suppression
+    var deleteBtn = document.createElement("input");
+    deleteBtn.type = "button";
+    deleteBtn.value = "×";
+    deleteBtn.classList.add("delButton");
+    deleteBtn.addEventListener("click", delParent);
+    cloneCat.append(deleteBtn);
     
     // Insertion du nouveau formulaire de timecode dans le DOM
     nbCatInput.before(cloneCat);
+}
+
+function delParent(evt) {
+    this.parentElement.remove();
 }
