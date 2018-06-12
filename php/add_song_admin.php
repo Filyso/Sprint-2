@@ -23,9 +23,12 @@
             $ligne = $statement->fetch(PDO::FETCH_ASSOC);
             $idSong = $ligne["idSong"];
             
-            $requeteSQL = "INSERT INTO APPARTIENT_A_UNE(idSong, idCat) VALUES (" . $idSong . ", :paramCatSong)";
-            $statement = $pdo->prepare($requeteSQL);
-            $statement->execute(array(":paramCatSong" => $_POST["catSong"]));
+            // AJOUT CATEGORIE
+            for ($i=1; $i <= $_POST["nbCat"]; $i++) {
+                $requeteSQL = "INSERT INTO APPARTIENT_A_UNE(idSong, idCat) VALUES (" . $idSong . ", :paramCatSong)";
+                $statement = $pdo->prepare($requeteSQL);
+                $statement->execute(array(":paramCatSong" => $_POST["catSong_".$i]));
+            }
         
             // AJOUT TIMECODE
             for ($i=1; $i <= $_POST["nbTimecode"]; $i++) {
@@ -69,9 +72,10 @@
         }
         
         echo '<script type="text/javascript">alert("' . $msg . '")</script>';
+        header("Location: admin.php");
     }
 ?>
-    <script type="text/javascript" src="../javascript/add_Time_Code.js"></script>
+    <script type="text/javascript" src="../javascript/add_Song.js"></script>
     <script type="text/javascript" src="../javascript/valid_time_code.js"></script>
     <section class="addSongSection">
 
@@ -92,8 +96,8 @@
 
                 <div>
 
-                    <label for="catSong">Catégorie</label>
-                    <select id="catSong" size="1" type="text" name="catSong" required>
+                    <label for="catSong_1">Catégorie</label>
+                    <select id="catSong_1" class="catSong" size="1" type="text" name="catSong_1" required>
                         
                     <option value="" disabled selected>Choisissez une catégorie</option>
                     <?php
@@ -123,7 +127,9 @@
                             echo($e);
                         }
                     ?>
-                </select>
+                    </select>
+                    <input id="nbCat" type="hidden" name="nbCat" value="1" class="inputMasque" />
+                    <input type="button" id="addCatBtn" value="AJOUTER UNE CATEGORIE"/>
                 </div>
 
                 <div class="adminLangues">
@@ -144,7 +150,7 @@
                 <input id="nbTimecode" type="hidden" name="nbTimecode" value="1" class="inputMasque" />
 
             </fieldset>
-            <fieldset id="timeCode">
+            <fieldset class="timeCode">
                 <legend>Timecode</legend>
 
                 <div>
@@ -176,7 +182,7 @@
 
 
 
-                <fieldset id="reponsesForm">
+                <fieldset class="reponsesForm">
                     <legend>Réponses</legend>
 
                     <div>

@@ -3,10 +3,11 @@ document.addEventListener("DOMContentLoaded", initialiser);
 
 function initialiser(evt) {
     document.getElementById("addTCBtn").addEventListener("click", addTC);
+    document.getElementById("addCatBtn").addEventListener("click", addCat);
 }
 
 function addTC(evt) {
-    var tcFieldset = document.querySelector("fieldset");
+    var tcFieldset = document.querySelector(".timeCode");
     var cloneTcFieldset = tcFieldset.cloneNode(true);
     var nbFieldsetInput = document.getElementById("nbTimecode");
     
@@ -26,4 +27,20 @@ function addTC(evt) {
     
     // Insertion du nouveau formulaire de timecode dans le DOM
     document.getElementById("addSongForm").insertBefore(cloneTcFieldset,this.parentNode);
+}
+
+function addCat(evt) {
+    var catSelect = document.querySelector(".catSong");
+    var cloneCat = catSelect.cloneNode(true);
+    var nbCatInput = document.getElementById("nbCat");
+    
+    // Augmentation du nombre de timecode
+    nbCatInput.value = parseInt(nbCatInput.value) + 1;
+    
+    // Modification des paramètres du clone
+    cloneCat.id = cloneCat.id.slice(0,-1) + nbCatInput.value;
+    cloneCat.name = cloneCat.name.slice(0,-1) + nbCatInput.value;
+    
+    // Insertion du nouveau formulaire de timecode dans le DOM
+    nbCatInput.before(cloneCat);
 }
