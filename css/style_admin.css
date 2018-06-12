@@ -83,7 +83,7 @@
     align-self: center;
 }
 
-#timeCode div {
+.timeCode div {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -91,7 +91,7 @@
     margin: 5px;
 }
 
-#reponsesForm div {
+.reponsesForm div {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -99,12 +99,12 @@
     margin: 5px;
 }
 
-#reponsesForm label {
+.reponsesForm label {
     margin-right: 20px;
 }
 
-#timeCode span,
-#timeCode label {
+.timeCode span,
+.timeCode label {
     margin: 0 10px;
 }
 
