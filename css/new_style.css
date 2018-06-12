@@ -608,6 +608,7 @@ h1{
     background-color: transparent;
     color: white;
     padding: 5px;
+    cursor: pointer;
     font-size: 17px;
 }
 
@@ -639,12 +640,12 @@ h1{
 }
 
 .addSongForm fieldset {
-    width: 30vw;
+    width:80%;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 10px;
-    border: none;
+    border: 3px solid white;
 }
 
 .addSongForm legend {
@@ -652,22 +653,33 @@ h1{
     font-family: "FuturaBold";
     font-size: 22px;
 }
-
+#chansonForm{
+    margin: 0;
+    padding:10px;
+    margin-bottom: 20px;
+}
 #chansonForm div {
     width: 100%;
+    color:white;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 5px;
+
+    padding: 0;
 }
 
 #chansonForm legend {
     align-self: center;
 }
-
+#timeCode{
+    margin: 0;
+    padding:10px;
+    margin-bottom: 20px;
+}
 #timeCode div {
     width: 100%;
     display: flex;
+    color:white;
     flex-wrap: wrap;
     justify-content: flex-start;
     margin: 5px;
@@ -695,7 +707,10 @@ h1{
 .addSongForm input[type=url],
 .addSongForm select {
     border: none;
+    font-family: 'Raleway';
+    outline: none;
     border-radius: 5px;
+    padding:5px;
     background-color: rgba(255, 255, 255, 0.5);
 }
 
@@ -703,6 +718,7 @@ h1{
 .addSongForm input[type=url],
 .addSongForm select {
     width: 60%;
+    margin-bottom: 5px;
 }
 
 .addSongForm input[type=number] {
@@ -714,6 +730,7 @@ h1{
     border: 2px solid white;
     background-color: transparent;
     height: 30px;
+    cursor: pointer;
     margin: 0 20px;
     color: white;
 }
