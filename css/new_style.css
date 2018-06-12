@@ -737,20 +737,25 @@ h1{
 .mainHeader {
     display: flex;
     justify-content: space-between;
+    align-content: center;
     position: fixed;
     top: 0;
     left: 0;
     margin: 0;
 
     font-family: "FuturaBold";
+    background-color: white;
+    height: auto;
+    width: 100vw;
+}
+.indexColor .mainHeader{
+    background-color: transparent;
 }
 
 .mainHeader .container {
-    width: 100px;
-    height: 100px;
     display: block;
-    z-index: 1000;
-    position: fixed;
+    z-index: 5;
+   
     cursor: pointer;
     transition: transform .2s;
 }
@@ -767,20 +772,11 @@ h1{
 
 .container svg path,
 .container svg line {
-    stroke: white;
-    stroke-width: 6px;
-    stroke-linecap: round;
-    fill: none;
-}
-
-.indexColor .container svg path,
-.indexColor .container svg line {
     stroke: var(--jaune);
     stroke-width: 6px;
     stroke-linecap: round;
     fill: none;
 }
-
 
 .menuHidden {
     transform: translateX(-400px);
@@ -792,6 +788,8 @@ h1{
     padding-top: 15vh;
     padding-bottom: 15vh;
     box-sizing: border-box;
+    top: 0;
+    left: 0;
 }
 
 .menuShown {
@@ -804,6 +802,8 @@ h1{
     padding-top: 15vh;
     padding-bottom: 15vh;
     box-sizing: border-box;
+    top: 0;
+    left: 0;
 }
 
 .mainHeader ul {
@@ -834,13 +834,6 @@ h1{
 
 #fullScreenButton svg path,
 #fullScreenButton svg line {
-    stroke: white;
-    stroke-width: 0px;
-    fill: white;
-}
-
-.indexColor #fullScreenButton svg path,
-.indexColor #fullScreenButton svg line {
     stroke: var(--rouge);
     stroke-width: 0px;
     fill: var(--rouge);
@@ -871,13 +864,11 @@ li .loginMenu:hover {
 }
 
 .rightHeader {
-    position: fixed;
-    top: 10px;
-    right: 0px;
     display: flex;
     align-items: center;
     width: 350px;
     justify-content: space-around;
+    padding: 0 30px;
 }
 
 .connect a {
@@ -893,7 +884,7 @@ li .loginMenu:hover {
 
 .login {
     font-size: 18px;
-    color: white;
+    color: var(--rouge);
     margin: 0;
     padding-bottom: 2px;
     height: 25px;
@@ -909,34 +900,13 @@ li .loginMenu:hover {
     left: 50%;
     bottom: 0;
     height: 3px;
-    background: white;
+    background: var(--rouge);;
 }
 
 .login:hover::after {
     width: 100%;
     left: 0;
 }
-
-.indexColor .login {
-    color: var(--rouge);
-}
-
-.indexColor .login::after {
-    position: absolute;
-    transition: .3s;
-    content: '';
-    width: 0;
-    left: 50%;
-    bottom: 0;
-    height: 3px;
-    background: var(--rouge);
-}
-
-.login:hover::after {
-    width: 100%;
-    left: 0;
-}
-
 /********************************************** POPUP CONNEXION **************************************/
 
 .popup,
