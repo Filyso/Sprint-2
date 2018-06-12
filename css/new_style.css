@@ -869,7 +869,7 @@ h1{
     background-image: url(../images/icon_accueil.png);
     background-size: contain;
     background-repeat: no-repeat;
-    padding-left: 40px;
+    padding-left: 45px;
 }
 .mainHeader li:nth-child(2){
     background-image: url(../images/icon_play.png);
@@ -881,7 +881,7 @@ h1{
     background-image: url(../images/icon_rank.png);
     background-size: contain;
     background-repeat: no-repeat;
-    padding-left: 40px;
+    padding-left: 45px;
 }
 .mainHeader li:nth-child(4) p{
     padding: 0;
@@ -1246,6 +1246,57 @@ li .loginMenu:hover {
 .preGamePage select option {
     background-color: #2D2D2D;
 }
+/*****************************************
+***************** GAME SOLO JEU *********
+***************************************/
+.sectionSolo{
+    position: relative;
+    height: 100vh;
+}
+.sectionSolo .score{
+    top: 15vh;
+    left: 3vw;
+    width: 10vw;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.sectionSolo .score img{
+    width: 10vw;
+    border-radius: 70px;
+}
+.sectionSolo .score figure{
+    margin: 0;
+    height: 10vw;
+    margin-bottom: 50px;
+    
+}
+.sectionSolo .score .barScoreMax{
+    background-color:var(--jaune);
+    width:15px;
+    height: 40vh;
+    border-radius: 20px;
+}
+.sectionSolo .score .barScore{
+    background-color: var(--rouge);
+    width: 100%;
+    /* PROBLEME */
+}
+
+.sectionSolo .contenu{
+    display: flex;
+    margin: auto;
+    width: 50%;
+    padding-top: 25vh;
+    
+}
+.sectionSolo .contenu .numEtTuto{
+    
+}
+
+
 
 /******************************************************** RANK PAGE **********************************/
 
