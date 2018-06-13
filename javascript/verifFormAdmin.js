@@ -4,6 +4,8 @@
 
     document.addEventListener("DOMContentLoaded", initialiser);
 
+    // Variables : Noeuds éléments (.values ramènera des noeuds textes)
+
     var url;
 
     var minute1;
@@ -66,22 +68,25 @@
     //Fonction vérifiant la bonne temporalité des timecodes
     function verifierTimecodes(evt) {
 
-        var m1 = minute1.value;
-        var m2 = minute2.value;
-        var s1 = seconde1.value;
-        var s2 = seconde2.value;
-        
-        console.log((m1 == m2 && s2 < s1));
+        // parseInt : important pour comparer des Int et pas des String
+        var m1 = parseInt(minute1.value);
+        var m2 = parseInt(minute2.value);
+        var s1 = parseInt(seconde1.value);
+        var s2 = parseInt(seconde2.value);
 
         seconde1.setCustomValidity("");
         if (m1 != "" && s1 != "" && m2 != "" && s2 != "") {
             if ((m2 < m1) || (m1 == m2 && s2 < s1)) {
+                console.log(m1);
+                console.log(m2);
+                console.log(s1);
+                console.log(s2);
                 seconde1.setCustomValidity("Attention à bien respecter une logique temporelle");
                 minute1.style.backgroundColor = "red";
                 minute2.style.backgroundColor = "red";
                 seconde1.style.backgroundColor = "red";
                 seconde2.style.backgroundColor = "red";
-            }else{
+            } else {
                 minute1.style.backgroundColor = "transparent";
                 minute2.style.backgroundColor = "transparent";
                 seconde1.style.backgroundColor = "transparent";
@@ -101,21 +106,22 @@
 
         var tabParoles = [p1, p2, p3, p4, p5];
 
-
-        for (var paroles of tabParoles) {
-            let array = [];
-            for (var p of tabParoles) {
-                if (p !== paroles) {
-                    array.push(p);
+        if (p1 != "" && p2 != "" && p3 != "" && p4 != "" && p5 != "") {
+            for (var paroles of tabParoles) {
+                let array = [];
+                for (var p of tabParoles) {
+                    if (p !== paroles) {
+                        array.push(p);
+                    }
                 }
-            }
-            if (array.length !== tabParoles.length - 1) {
-                parole1.setCustomValidity("Attention à bien mettre des paroles différentes dans chaque champ");
-                parole1.style.backgroundColor = "red";
-                parole2.style.backgroundColor = "red";
-                parole3.style.backgroundColor = "red";
-                parole4.style.backgroundColor = "red";
-                parole5.style.backgroundColor = "red";
+                if (array.length !== tabParoles.length - 1) {
+                    parole1.setCustomValidity("Attention à bien mettre des paroles différentes dans chaque champ");
+                    parole1.style.backgroundColor = "red";
+                    parole2.style.backgroundColor = "red";
+                    parole3.style.backgroundColor = "red";
+                    parole4.style.backgroundColor = "red";
+                    parole5.style.backgroundColor = "red";
+                }
             }
         }
 
