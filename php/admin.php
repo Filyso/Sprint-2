@@ -1,5 +1,12 @@
 <?php
     session_start();
+    
+    require("src/Membre.php");
+
+//    if (!(Membre::isLogged()) || !(Membre::isAdmin()) || !(Membre::isModo())) {
+//        header("Location: ./index.php");
+//    }
+
 	header("Content-type: text/html; charset: UTF-8");
 ?>
    <!DOCTYPE html>
