@@ -1,3 +1,8 @@
+<?php
+    session_start();
+?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -8,7 +13,7 @@
     <title>Choix des options de jeu</title>
     <!--<link rel="stylesheet" type="text/css" href="../css/style.css" />-->
     <link rel="stylesheet" type="text/css" href="../css/new_style.css" />
-    <script type="text/javascript" src="../javascript/selectAlea.js"></script>
+    
 </head>
 
 <body>
@@ -20,7 +25,6 @@
 
             <fieldset class="section">
                 <div>
-
                     <input type="radio" name="langue" id="français" value="fr" class="inputRadio" required />
                     <label for="français"><img src="../images/FR.png" alt="drapeau français"></label>
                 </div>
@@ -58,9 +62,15 @@
                             // ETAPE 3 : Traiter les données retourner
                                 $ligne = $statement->fetch(PDO::FETCH_ASSOC);
                                 while($ligne != false) {
+                                    $newRequeteSQL = "SELECT COUNT(idSong) AS 'nbSong' FROM APPARTIENT_A_UNE WHERE idCat =" . $ligne["idCat"];
+                                    $newStatement = $pdo->query($newRequeteSQL);
+                                    $newLigne = $newStatement->fetch(PDO::FETCH_ASSOC);
+                                    
+                                    if ($newLigne["nbSong"] >= 7) {
                         ?>
                         <option value="<?php echo($ligne["idCat"]);?>"><?php echo(ucfirst($ligne["nameCat"]));?></option>
                         <?php
+                                    }
                                     $ligne = $statement->fetch(PDO::FETCH_ASSOC);
                                 }
                             // Fin de la boucle
@@ -77,10 +87,12 @@
                     <button id="btnAlea" type="button">Aléatoire</button>
                 </div>
             </fieldset>
-            <button type="submit">Jouer</button>
+            <button type="submit">JOUER</button>
         </form>
     </main>
+    <script type="text/javascript" src="../javascript/selectAlea.js"></script>
     <?php include("./main_footer.php"); ?>
+    
 </body>
 
 </html>

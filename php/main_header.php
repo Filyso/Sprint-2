@@ -1,5 +1,54 @@
 <?php
 	header("Content-type: text/html; charset: UTF-8");
+    require("src/Membre.php");
+
+    if(isset($_POST) && !empty($_POST['pseudo']) && !empty($_POST['pass'])){
+
+        require("./param.inc.php");
+        $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
+        $pdo->query("SET NAMES utf8");
+        $pdo->query("SET CHARACTER SET 'utf8'");
+        
+        $passSha1Verif = sha1("cle".$_POST["pass"]."hya");
+        $requeteSQL = "SELECT idMbr, pseudoMbr, nameMbr, prenomMbr, mailMbr, mdpMbr, linkIconMbr, isVerif FROM MEMBRES WHERE pseudoMbr= :pseudo AND mdpMbr= :pass";
+        $statement = $pdo->prepare($requeteSQL);
+        $statement->execute(array(":pseudo" => $_POST["pseudo"], ":pass" => $passSha1Verif));
+
+        $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if($_POST["pseudo"] == $ligne["pseudoMbr"] && $passSha1Verif == $ligne["mdpMbr"] && $ligne["isVerif"] == 1){
+
+            $_SESSION["id"] = $ligne["idMbr"];
+            $_SESSION["pseudo"] = $ligne["pseudoMbr"];
+            $_SESSION["icon"] = $ligne["linkIconMbr"];
+            $_SESSION["nom"] = $ligne["nameMbr"];
+            $_SESSION["prenom"] = $ligne["prenomMbr"];
+            $_SESSION["mail"] = $ligne["mailMbr"];
+
+            echo("Connecté");
+        }else{
+            if($_POST["pseudo"] == $ligne["pseudoMbr"] && $passSha1Verif == $ligne["mdpMbr"] && $ligne["isVerif"] == 0){
+                echo("L'email de vérification qui vous a été envoyé n'est pas vérifié");
+            }else{
+                echo("Mauvais Identifiants");
+            }
+            
+
+        }
+        
+        $requeteSQL = "SELECT roleMbr FROM ROLE WHERE idMbr ='".$ligne["idMbr"]."'";
+        $statement = $pdo->query($requeteSQL);
+        $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        if($ligne["roleMbr"] == "admin" || $ligne["roleMbr"] == "modo"){
+            $_SESSION["role"] = $ligne["roleMbr"];
+        }
+        
+        
+        $pdo = null;
+    }
+
+
 ?>
         <header class="mainHeader">
 
@@ -27,22 +76,60 @@
                     <li>
                         <a href="rank.php">CLASSEMENT</a>
                     </li>
-
+<?php
+    
+    if(Membre::isLogged()){               
+?>
                     <li>
-                        <p class="loginMenu">CONNEXION</p>
+                        <a href="account.php">MON COMPTE</a>
                     </li>
 
+<?php
+    }else{
+?>
+                    <li>
+                        <p id="btnPopup1" class="loginMenu">CONNEXION</p>
+                    </li>                  
+<?php
+    }
+    if(Membre::isAdmin() || Membre::isModo()){
+?>
+                    <li>
+                        <a href="admin.php">ADMINISTRATION</a>
+                    </li>
+<?php
+    }
+?>
                 </ul>
             </nav>
 
             <div class="rightHeader">
 
+<?php
+    
+    if(Membre::isLogged()){               
+?>          
+             
                 <div class="connect">
+                    <a href="logout.php"  class="login">DÉCONNEXION</a>
+                </div>  
+                <figure style="width: 100px; border-radius: 50%; overflow: hidden " >
+                    <img style="width: 100%" alt="icon joueur" src=<?php echo("\"".$_SESSION["icon"]."\""); ?>/>
+                </figure>
+                              
+<?php
+    }else{
+?>
+                <div  id="btnPopup2"  class="connect">
                     <p class="login">CONNEXION</p>
                 </div>
                 <div class="connect">
-                    <a href="inscription.php" class="signup"><p class="login">INSCRIPTION</p></a>
+                    <a href="sign_up.php" class="signup"><p class="login">INSCRIPTION</p></a>
                 </div>
+<?php
+    }
+?>     
+                
                 <div id="fullScreenButton">
                     <svg viewBox="0 0 24 24">
 
@@ -62,10 +149,10 @@
                 <div class="popup-content">
                     <span class="close">&times;</span>
                     <h2>CONNECTEZ-VOUS</h2>
-                    <form>
-                        <input id="email" type="email" required="required" name="email" placeholder="Adresse Email...">
-                        <input id="passwd" type="password" required="required" name="passwd" placeholder="Mot de passe...">
-                        <button type="submit">SE CONNECTER</button>
+                    <form action="<?php echo($_SERVER["SCRIPT_NAME"]);?>" method="post">
+                        <input id="pseudo" type="text" required="required" name="pseudo" placeholder="Pseudo...">
+                        <input id="passwd" type="password" required="required" name="pass" placeholder="Mot de passe...">
+                        <button type="submit" id="connexionBtn">SE CONNECTER</button>
                     </form>
                 </div>
             </div>
@@ -76,3 +163,4 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
         <script type="text/javascript" src="../javascript/popup_login.js"></script>
         <script type="text/javascript" src="../javascript/main_header.js"></script>
+        <script type="text/javascript" src="../javascript/verification_conexion.js"></script>

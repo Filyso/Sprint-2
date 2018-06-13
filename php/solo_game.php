@@ -1,4 +1,5 @@
 <?php
+    session_start();
 	header("Content-type: text/html; charset: UTF-8");
 ?>
 
@@ -6,7 +7,6 @@
     <html lang="fr">
 
     <head>
-
         <meta charset="utf-8">
         <title>Jeu en Solo</title>
         <meta name="description" content="Jouez !">
