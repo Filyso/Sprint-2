@@ -30,101 +30,188 @@ canvas {
     z-index: 0;
     position: absolute;
 }
-h1{
+h1 {
     font-size: 50px;
 }
-/*************************************** PAGE INDEX ***************************************************/
-@keyframes spriteSliding {
-    from {
-        background-position: calc(-70vh * 24);
-    }
-    to {
-        background-position: 0;
-    }
-}
-.mainIndex {
-    position: relative;
+/*************************************************** HEADER **************************************/
+.mainHeader {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.mainIndex section {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    position: relative;
-}
-.indexLink::after {
-    content: '';
-    display: block;
-    width: 70vh;
-    height: 70vh;
-    position: absolute;
-    top: 15vh;
-    left: calc(50vw - 35vh);
-    z-index: 1;
-
-    background-image: url(../images/sprite_1.png);
-    background-repeat: no-repeat;
-    background-size: auto 100%;
-    overflow: hidden;
-
-    animation: spriteSliding 0.7s steps(24, start) infinite;
-    animation-play-state: running;
-}
-.welcomeIndex {
-    text-align: justify;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    background-image: linear-gradient(90deg, var(--rouge), var(--jaune));
-    color: white;
-}
-.welcomeIndex p {
-    max-width: 40%;
-    min-width: 10%;
-    font-family: "Raleway";
-    font-size: 18px;
-    line-height: 1.5;
-}
-.welcomeIndex h2 {
-    font-family: "FuturaBold";
-    font-size: 50px;
-}
-.welcomeIndex strong {
-    font-size: 22px;
-}
-.indexLink a {
-    position: absolute;
-    top: 85vh;
-    z-index: 1;
-    text-decoration: none;
-    font-family: "FuturaBold", sans-serif;
-    font-size: 30px;
-    color: var(--jaune);
-    padding: 15px;
-    border: 5px solid var(--jaune);
-    background-color: transparent;
-    transition: .1s;
-    border-radius: 2px;
-}
-.mainIndex h1 {
-    position: absolute;
+    justify-content: space-between;
+    align-content: center;
+    position: fixed;
     top: 0;
-    font-family: "Norwester";
-    color: var(--jaune);
-    font-size: 120px;
-    margin-top: 1%;
+    left: 0;
+    margin: 0;
+
+    font-family: "FuturaBold";
+    background-color: white;
+    height: auto;
+    width: 100vw;
 }
-.mainIndex a:hover {
-    transition: .1s linear;
-    padding: 15px 40px;
+.indexColor .mainHeader {
+    background-color: transparent;
+}
+.mainHeader .container {
+    display: block;
+    z-index: 5;
+
+    cursor: pointer;
+    transition: transform .2s;
+}
+.mainHeader .container:hover {
+    transform: scale(1.1);
+}
+.container svg {
+    width: 100px;
+    height: 100px;
+}
+.container svg path,
+.container svg line {
+    stroke: var(--jaune);
+    stroke-width: 6px;
+    stroke-linecap: round;
+    fill: none;
+}
+.menuHidden {
+    transform: translateX(-400px);
+    position: fixed;
+    width: 300px;
+    height: 100vh;
+    background-color: var(--noir);
+    transition: transform 0.7s 0.1s ease-in-out;
+    padding-top: 15vh;
+    padding-bottom: 15vh;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+}
+.menuShown {
+    transform: translateX(0);
+    position: fixed;
+    width: 300px;
+    height: 100vh;
+    background-color: var(--noir);
+    transition: transform 0.7s 0.1s ease-in-out;
+    padding-top: 15vh;
+    padding-bottom: 15vh;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+}
+.mainHeader ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+.mainHeader li:hover {
+    cursor: pointer;
+}
+.mainHeader a:hover {
+    color: var(--jaune);
+}
+.mainHeader li:nth-child(1) {
+    background-image: url(../images/icon_accueil.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-left: 40px;
+}
+.mainHeader li:nth-child(2) {
+    background-image: url(../images/icon_play.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-left: 40px;
+}
+.mainHeader li:nth-child(3) {
+    background-image: url(../images/icon_rank.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-left: 40px;
+}
+.mainHeader li:nth-child(4) p {
+    padding: 0;
+    margin: 0;
+}
+#fullScreenButton {
+    cursor: pointer;
+    transition: transform .2s;
+}
+#fullScreenButton:hover {
+    transform: scale(1.15);
+}
+#fullScreenButton svg {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+}
+#fullScreenButton svg path,
+#fullScreenButton svg line {
+    stroke: var(--rouge);
+    stroke-width: 0px;
+    fill: var(--rouge);
+}
+.mainHeader a {
+    color: white;
+    text-decoration: none;
+    font-size: 28px;
+}
+li .loginMenu {
+    color: white;
+    text-decoration: none;
+    font-size: 28px;
+}
+li .loginMenu:hover {
+    color: var(--jaune);
+}
+.mainHeader p:hover {
+    cursor: pointer;
+}
+.mainHeader a:hover {
+    color: var(--jaune);
+}
+.rightHeader {
+    display: flex;
+    align-items: center;
+    width: 350px;
+    justify-content: space-around;
+    padding: 0 30px;
+}
+.connect a {
+    font-size: 18px;
+    color: white;
+
+}
+.indexColor .connect a {
+    font-size: 18px;
     color: var(--rouge);
-    border: 5px solid var(--rouge);
+}
+.login {
+    font-size: 18px;
+    color: var(--rouge);
+    margin: 0;
+    padding-bottom: 2px;
+    height: 25px;
+    top: 5px;
+    position: relative;
+}
+.login::after {
+    position: absolute;
+    transition: .3s;
+    content: '';
+    width: 0;
+    left: 50%;
+    bottom: 0;
+    height: 3px;
+    background: var(--rouge);
+    ;
+}
+.login:hover::after {
+    width: 100%;
+    left: 0;
 }
 /****************************************************** FOOTER ****************************************/
 .footer {
@@ -163,10 +250,10 @@ h1{
     width: 40vw;
     text-align: center;
     height: 30px;
-    font-size: 1.3vw;
+    font-size: 1.3vh;
     display: flex;
     justify-content: space-around;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     min-width: 200px;
     margin: 20px;
 }
@@ -174,7 +261,7 @@ h1{
     text-decoration: none;
     color: inherit;
     font-weight: 300;
-    font-size: 22px;
+    font-size: 1.5vh;
 }
 .footer-links a:hover {
     color: var(--rouge);
@@ -224,7 +311,7 @@ h1{
     border: 3px solid var(--rouge);
     resize: none;
     outline: none;
-    font-size: 14px;
+    font-size: 2vh;
     color: black;
     width: 20vw;
     padding: 18px;
@@ -267,46 +354,102 @@ h1{
     border: 3px solid var(--orange);
     color: var(--orange);
 }
-/* @media (max-width: 1000px) {
-    .footer {
-        font: bold 14px sans-serif;
+/*************************************** PAGE INDEX ***************************************************/
+@keyframes spriteSliding {
+    from {
+        background-position: calc(-30vw * 24);
     }
-    .footer .footerNom {
-        font-size: 12px;
-    }
-    .footer form input,
-    .footer form textarea {
-        width: 250px;
-    }
-    .footer form button {
-        padding: 10px 35px;
+    to {
+        background-position: 0;
     }
 }
+.mainIndex {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.mainIndex section {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+.indexLink::after {
+    content: '';
+    display: block;
+    width: 30vw;
+    height: 30vw;
+    position: absolute;
+    top: calc(50vh - 15vw);
+    left: calc(50vw - 15vw);
+    z-index: 1;
 
-@media (max-width: 800px) {
-    .footer {
-        padding: 30px;
-    }
-    .footer .footerGauche,
-    .footer .footerDroite {
-        float: none;
-        max-width: 300px;
-        margin: 0 auto;
-    }
-    .footer .footerGauche {
-        margin-bottom: 40px;
-    }
-    .footer form {
-        margin-top: 30px;
-    }
-    .footer form {
-        display: block;
-    }
-    .footer form button {
-        float: none;
-    }
+    background-image: url(../images/sprite_1.png);
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    overflow: hidden;
+
+    animation: spriteSliding 0.7s steps(24, start) infinite, SpriteSlidingMedia;
+    animation-play-state: running, paused;
 }
-*/
+.welcomeIndex {
+    text-align: justify;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    background-image: linear-gradient(90deg, var(--rouge), var(--jaune));
+    color: white;
+}
+.welcomeIndex p {
+    max-width: 70%;
+    min-width: 10%;
+    font-family: "Raleway";
+    font-size: 2.5vh;
+    line-height: 1.5;
+}
+.welcomeIndex h2 {
+    text-align: center;
+    font-family: "FuturaBold";
+    font-size: 6vh;
+}
+.welcomeIndex strong {
+    font-weight: 1500;
+    font-size: 2.8vh;
+}
+.indexLink a {
+    position: absolute;
+    top: 85vh;
+    z-index: 1;
+    text-decoration: none;
+    font-family: "FuturaBold", sans-serif;
+    font-size: 5vh;
+    color: var(--jaune);
+    padding: 15px;
+    border: 5px solid var(--jaune);
+    background-color: transparent;
+    transition: .1s;
+    border-radius: 2px;
+}
+.mainIndex h1 {
+    position: absolute;
+    top: 10px;
+    font-family: "Norwester";
+    color: var(--jaune);
+    font-size: 10vw;
+    margin-top: 1%;
+    margin-top: 0;
+}
+.mainIndex a:hover {
+    transition: .1s linear;
+    padding: 15px 40px;
+    color: var(--rouge);
+    border: 5px solid var(--rouge);
+}
 /************************************************** ABOUT *************************************/
 .mainAbout {
     background: linear-gradient(341deg, var(--rouge), var(--orange), #fec65c);
@@ -550,7 +693,7 @@ h1{
     font-family: "Raleway";
 }
 .addSongForm fieldset {
-    width:80%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -562,39 +705,39 @@ h1{
     font-family: "FuturaBold";
     font-size: 22px;
 }
-#chansonForm .adminLangues{
+#chansonForm .adminLangues {
     display: inline-flex;
-    
+
 }
-#chansonForm .choixLangue{
+#chansonForm .choixLangue {
     display: flex;
     justify-content: flex-start;
     width: 60%;
     padding-bottom: 5px;
     align-items: center;
 }
-#chansonForm .choixLangue input{
+#chansonForm .choixLangue input {
     cursor: pointer;
     background-color: white;
 }
-#chansonForm .choixLangue img{
+#chansonForm .choixLangue img {
     margin-right: 20px;
     width: 40px;
     cursor: pointer;
     transition: 0.2s;
 }
-#chansonForm .choixLangue img:hover{
+#chansonForm .choixLangue img:hover {
     transform: scale(1.1);
     transition: 0.2s;
 }
-#chansonForm{
+#chansonForm {
     margin: 0;
-    padding:10px;
+    padding: 10px;
     margin-bottom: 20px;
 }
 #chansonForm div {
     width: 100%;
-    color:white;
+    color: white;
     align-items: center;
     display: flex;
     flex-wrap: wrap;
@@ -605,16 +748,16 @@ h1{
 #chansonForm legend {
     align-self: center;
 }
-#timeCode{
+#timeCode {
     margin: 0;
-    padding:10px;
+    padding: 10px;
     margin-bottom: 20px;
 }
 #timeCode div {
     width: 100%;
     display: flex;
     align-items: center;
-    color:white;
+    color: white;
     flex-wrap: wrap;
     justify-content: flex-start;
     margin: 5px;
@@ -626,9 +769,9 @@ h1{
     justify-content: space-between;
     margin: 5px;
 }
-#reponsesForm{
+#reponsesForm {
     width: 97%;
-    box-sizing:border-box;
+    box-sizing: border-box;
 }
 #reponsesForm label {
     margin-right: 20px;
@@ -641,15 +784,16 @@ h1{
 .addSongForm input[type=text],
 .addSongForm input[type=url],
 .addSongForm select {
-    border: 2px solid white;;
+    border: 2px solid white;
+    ;
     font-family: 'Raleway';
     outline: none;
     border-radius: 5px;
-    padding:5px;
+    padding: 5px;
     background-color: transparent;
 }
-.addSongForm input::placeholder{
-    color:#dedede;
+.addSongForm input::placeholder {
+    color: #dedede;
 }
 .addSongForm input[type=text],
 .addSongForm input[type=url],
@@ -673,185 +817,6 @@ h1{
 .addSongForm input[type="submit"]:hover {
     border: 2px solid var(--jaune);
     color: var(--jaune);
-}
-/*************************************************** HEADER **************************************/
-.mainHeader {
-    display: flex;
-    justify-content: space-between;
-    align-content: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    margin: 0;
-
-    font-family: "FuturaBold";
-    background-color: white;
-    height: auto;
-    width: 100vw;
-}
-.indexColor .mainHeader{
-    background-color: transparent;
-}
-.mainHeader .container {
-    display: block;
-    z-index: 5;
-   
-    cursor: pointer;
-    transition: transform .2s;
-}
-.mainHeader .container:hover {
-    transform: scale(1.1);
-}
-.container svg {
-    width: 100px;
-    height: 100px;
-}
-.container svg path,
-.container svg line {
-    stroke: var(--jaune);
-    stroke-width: 6px;
-    stroke-linecap: round;
-    fill: none;
-}
-.menuHidden {
-    transform: translateX(-400px);
-    position: fixed;
-    width: 300px;
-    height: 100vh;
-    background-color: var(--noir);
-    transition: transform 0.7s 0.1s ease-in-out;
-    padding-top: 15vh;
-    padding-bottom: 15vh;
-    box-sizing: border-box;
-    top: 0;
-    left: 0;
-}
-.menuShown {
-    transform: translateX(0);
-    position: fixed;
-    width: 300px;
-    height: 100vh;
-    background-color: var(--noir);
-    transition: transform 0.7s 0.1s ease-in-out;
-    padding-top: 15vh;
-    padding-bottom: 15vh;
-    box-sizing: border-box;
-    top: 0;
-    left: 0;
-}
-.mainHeader ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around; 
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    height: 100%;   
-}
-.mainHeader li:hover{
-    cursor: pointer;
-}
-.mainHeader a:hover{
-    color:var(--jaune);
-}
-.mainHeader li:nth-child(1){
-    background-image: url(../images/icon_accueil.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    padding-left: 40px;
-}
-.mainHeader li:nth-child(2){
-    background-image: url(../images/icon_play.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    padding-left: 40px;
-}
-.mainHeader li:nth-child(3){
-    background-image: url(../images/icon_rank.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    padding-left: 40px;
-}
-.mainHeader li:nth-child(4) p{
-    padding: 0;
-    margin: 0;
-}
-#fullScreenButton {
-    cursor: pointer;
-    transition: transform .2s;
-}
-#fullScreenButton:hover {
-    transform: scale(1.15);
-}
-#fullScreenButton svg {
-    width: 30px;
-    height: 30px;
-    display: inline-block;
-}
-#fullScreenButton svg path,
-#fullScreenButton svg line {
-    stroke: var(--rouge);
-    stroke-width: 0px;
-    fill: var(--rouge);
-}
-.mainHeader a {
-    color: white;
-    text-decoration: none;
-    font-size: 28px;
-}
-li .loginMenu {
-    color: white;
-    text-decoration: none;
-    font-size: 28px;
-}
-li .loginMenu:hover {
-    color: var(--jaune);
-}
-.mainHeader p:hover {
-    cursor: pointer;
-}
-.mainHeader a:hover {
-    color: var(--jaune);
-}
-.rightHeader {
-    display: flex;
-    align-items: center;
-    width: 350px;
-    justify-content: space-around;
-    padding: 0 30px;
-}
-.connect a {
-    font-size: 18px;
-    color: white;
-
-}
-.indexColor .connect a {
-    font-size: 18px;
-    color: var(--rouge);
-}
-.login {
-    font-size: 18px;
-    color: var(--rouge);
-    margin: 0;
-    padding-bottom: 2px;
-    height: 25px;
-    top: 5px;
-    position: relative;
-}
-.login::after {
-    position: absolute;
-    transition: .3s;
-    content: '';
-    width: 0;
-    left: 50%;
-    bottom: 0;
-    height: 3px;
-    background: var(--rouge);;
-}
-.login:hover::after {
-    width: 100%;
-    left: 0;
 }
 /********************************************** POPUP CONNEXION **************************************/
 .popup,
@@ -897,8 +862,8 @@ li .loginMenu:hover {
     margin: 0;
     font-family: 'FuturaBold';
     font-size: 28px;
-    color:var(--orange);
-    
+    color: var(--orange);
+
 }
 .popup-content input {
     height: 10%;
@@ -925,9 +890,9 @@ li .loginMenu:hover {
     transform-origin: center;
     width: 60%;
     border-color: var(--jaune);
-    color:var(--jaune);
+    color: var(--jaune);
     transition: 0.2s;
-   
+
 }
 .close,
 .close_regle {
@@ -1356,7 +1321,7 @@ li .loginMenu:hover {
 /**************************************************** SELEC GAME PAGE ********************************/
 .mainSelect {
     margin: 0;
-    background: linear-gradient(to right, var(--rouge),var(--orange), #fec65c);
+    background: linear-gradient(to right, var(--rouge), var(--orange), #fec65c);
     height: 100vh;
 }
 .mainSelect h1 {
@@ -1431,4 +1396,31 @@ li .loginMenu:hover {
     color: white;
     font-weight: 300;
     font-family: 'Raleway', sans-serif;
+}
+/***************************************************** MEDIA QUERIES ********************************/
+@media (max-width: 800px) {
+    @keyframes spriteSlidingMedia {
+        from {
+            background-position: calc(-50vw * 24);
+        }
+        to {
+            background-position: 0;
+        }
+    }
+    .indexLink::after {
+        width: 50vw;
+        height: 50vw;
+        top: calc(50vh - 25vw);
+        left: calc(50vw - 25vw);
+
+        animation: spriteSlidingMedia 0.7s steps(24, start) infinite, spriteSliding;
+        animation-play-state: running, paused;
+    }
+    .mainIndex h1 {
+        font-size: 15vw;
+        top: calc(20vh - 10vw);
+    }
+}
+@media (max-width: 1000px) {
+    
 }
