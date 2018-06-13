@@ -540,7 +540,7 @@ li .loginMenu:hover {
     -webkit-animation: background 20s ease infinite;
     -moz-animation: background 20s ease infinite;
     animation: background 20s ease infinite;
-
+    margin-top: 100px;
 }
 
 @-webkit-keyframes background {
@@ -588,7 +588,7 @@ li .loginMenu:hover {
 }
 
 .equipe h2 {
-    font-size: 30px;
+    font-size: 5vw;
     color: white;
     font-family: 'FuturaBold';
 }
@@ -599,7 +599,6 @@ li .loginMenu:hover {
     justify-content: space-between;
     text-align: center;
     max-width: 50vw;
-    min-width: 500px;
     margin: auto;
 }
 
@@ -608,6 +607,7 @@ li .loginMenu:hover {
     min-width: 150px;
     border-radius: 5px;
     border: 3px white solid;
+    margin: 20px;
 }
 
 .unePhoto:hover {
@@ -1626,6 +1626,7 @@ li .loginMenu:hover {
 }
 
 /***************************************************** MEDIA QUERIES ********************************/
+
 @media (max-width: 800px) {
     @keyframes spriteSlidingMedia {
         from {
@@ -1661,7 +1662,9 @@ li .loginMenu:hover {
         transition: .1s;
         border-radius: 2px;
     }
-    
+    .lesPhotos {
+        justify-content: center;
+    }
 }
 
 @media (max-width: 1000px) {
@@ -1672,29 +1675,39 @@ li .loginMenu:hover {
         flex-direction: column;
         padding: 0 30px;
     }
-    .rightHeader div{
+    .rightHeader div {
         padding: 10px;
     }
+    .mainAbout {
+        margin-top: 144px;
+    }
 }
+
 @media (max-width: 500px) {
-     .mainIndex h1 {
+    .mainIndex h1 {
         font-size: 20vw;
         top: calc(30vh - 20vw);
     }
-    .rightHeader{
+    .rightHeader {
         z-index: 1;
     }
-    .mainSelect h1{
+    .mainSelect h1 {
         margin: 80px 0 60px 0;
         font-size: 25px;
     }
-    .footerDroite{
+    .footerDroite {
         width: 100px;
     }
-    .footerDroite input{
+    .footerDroite input {
         padding: 2px;
         width: 50px;
         height: 10px;
     }
-    
+    .lesPhotos {
+        justify-content: center;
+    }
+        .equipe h2 {
+        font-size: 10vw;
+    }
+
 }
