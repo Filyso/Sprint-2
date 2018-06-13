@@ -79,7 +79,7 @@
     }
 ?>
     <script type="text/javascript" src="../javascript/add_Song.js"></script>
-    <script type="text/javascript" src="../javascript/valid_time_code.js"></script>
+    <script type="text/javascript" src="../javascript/verifFormAdmin.js"></script>
     <section class="addSongSection">
 
         <h3>AJOUTER UNE CHANSON</h3>

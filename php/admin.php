@@ -8,7 +8,6 @@
         <meta name="description" content="">
         <title>Choix des options de jeu</title>
         <link rel="stylesheet" type="text/css" href="../css/new_style.css" />
-        <script type="text/javascript" src="../javascript/verifFormAdmin.js"></script>
 
     </head>
 
