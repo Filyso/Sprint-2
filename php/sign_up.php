@@ -48,7 +48,7 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
     }
     
     
-    echo($_FILES["icon"]["size"]);
+
     
     
     if(!empty($ligne["pseudoMbr"]) || !empty($ligne["mailMbr"]) || !(in_array($extension_upload,$extensions_valides)) || $_FILES["icon"]["name"] == ".htacces" || $_FILES["icon"]["size"] > 2000000 || !$mdpConforme || !$pseudoConforme || !($password == $_POST["passverif"]) || strlen($_POST["lastname"]) > 25 || strlen($_POST["name"]) > 25 || strlen($_POST["emailSignUp"]) > 50){
@@ -90,13 +90,13 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
         if($password != $_POST["passverif"]){
             $erreur = $erreur."La vérification mot de passe n'est pas valide"."<br/>";
         }
-        echo($erreur);
+        
         
         $pdo = null;
         
         
     }else{
-        $erreur = "Inscription réussie";
+        $erreur = "Inscription réussie, un mail de vérification vous a été envoyé(e)";
         
         $passSha1 = sha1("cle".$_POST["passSignUp"]."hya");
         //inscription valide
@@ -114,21 +114,26 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
         $ligne = $statement->fetch(PDO::FETCH_ASSOC);
         
         
-        echo($_FILES["icon"]["name"]."tr");
+
         if($extension_upload == "jpg" || $extension_upload == "jpeg"){
-            convertirImage256x256JPG($_FILES["icon"]["tmp_name"], "../images/icons/img_avatar_".$ligne["idMbr"].".".$extension_upload);
+            convertirImage256x256JPG($_FILES["icon"]["tmp_name"], "../images/icons/img_avatar_".md5("azerty".$ligne["idMbr"]).".".$extension_upload);
         }
         if($extension_upload == "png"){
-            convertirImage256x256PNG($_FILES["icon"]["tmp_name"], "../images/icons/img_avatar_".$ligne["idMbr"].".".$extension_upload);
+            convertirImage256x256PNG($_FILES["icon"]["tmp_name"], "../images/icons/img_avatar_".md5("azerty".$ligne["idMbr"]).".".$extension_upload);
         } 
 
 
-        $requeteSQL = "UPDATE `membres` SET `linkIconMbr` = '../images/icons/img_avatar_".$ligne["idMbr"].".".$extension_upload."' WHERE idMbr='".$ligne["idMbr"]."'";
+        $requeteSQL = "UPDATE `membres` SET `linkIconMbr` = '../images/icons/img_avatar_".md5("azerty".$ligne["idMbr"]).".".$extension_upload."' WHERE idMbr='".$ligne["idMbr"]."'";
         $statement = $pdo->query($requeteSQL);
         
         $pdo = null;
         
-        //header("Location : PAGESPECIALE");
+        
+        sendMail($_POST["emailSignUp"],"Mail de vérification Filyso","Valider votre inscription !\r\n https://projets.iut-laval.univ-lemans.fr/17mmi1pj02/php/script_verif.php?id=".$ligne["idMbr"]);
+        
+        
+        
+
     }
 
 
@@ -136,6 +141,29 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
     
     
     
+}
+
+function sendMail($destinataire, $sujet, $msg) {
+
+
+	$passage_ligne = "\r\n";
+	$boundary = "-----=".md5(rand());
+	$header = "From: \"FILYSO\"<filyso@univ-lemans.fr>".$passage_ligne;
+	$header.= "Reply-to: \"".$_POST['pseudoSignUp']."\" <".$_POST['emailSignUp'].">".$passage_ligne;
+	$header.= "MIME-Version: 1.0".$passage_ligne;
+	$header.= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
+
+	$message = $passage_ligne."--".$boundary.$passage_ligne;
+	$message.= "Content-Type: text/html; charset=\"UTF-8\"".$passage_ligne;
+	$message.= "Content-Transfer-Encoding: 8bit".$passage_ligne;
+	$message.= $passage_ligne.$msg.$passage_ligne;
+	$message.= $passage_ligne."--".$boundary."--".$passage_ligne;
+	$message.= $passage_ligne."--".$boundary."--".$passage_ligne;
+
+
+	mail($destinataire, $sujet, $message, $header);
+
+
 }
 
 function convertirImage256x256JPG($nomFichierAConvertir, $nomFichierConverti) {

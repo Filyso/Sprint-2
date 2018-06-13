@@ -10,23 +10,29 @@
         $pdo->query("SET CHARACTER SET 'utf8'");
         
         $passSha1Verif = sha1("cle".$_POST["pass"]."hya");
-        $requeteSQL = "SELECT idMbr, pseudoMbr, mdpMbr, linkIconMbr FROM MEMBRES WHERE pseudoMbr= :pseudo AND mdpMbr= :pass";
+        $requeteSQL = "SELECT idMbr, pseudoMbr, nameMbr, prenomMbr, mailMbr, mdpMbr, linkIconMbr, isVerif FROM MEMBRES WHERE pseudoMbr= :pseudo AND mdpMbr= :pass";
         $statement = $pdo->prepare($requeteSQL);
         $statement->execute(array(":pseudo" => $_POST["pseudo"], ":pass" => $passSha1Verif));
 
         $ligne = $statement->fetch(PDO::FETCH_ASSOC);
 
-        
-        if($_POST["pseudo"] == $ligne["pseudoMbr"] && $passSha1Verif == $ligne["mdpMbr"]){
+        if($_POST["pseudo"] == $ligne["pseudoMbr"] && $passSha1Verif == $ligne["mdpMbr"] && $ligne["isVerif"] == 1){
 
             $_SESSION["id"] = $ligne["idMbr"];
             $_SESSION["pseudo"] = $ligne["pseudoMbr"];
             $_SESSION["icon"] = $ligne["linkIconMbr"];
+            $_SESSION["nom"] = $ligne["nameMbr"];
+            $_SESSION["prenom"] = $ligne["prenomMbr"];
+            $_SESSION["mail"] = $ligne["mailMbr"];
 
             echo("Connecté");
         }else{
-
-            echo("Mauvais Identifiants");
+            if($_POST["pseudo"] == $ligne["pseudoMbr"] && $passSha1Verif == $ligne["mdpMbr"] && $ligne["isVerif"] == 0){
+                echo("L'email de vérification qui vous a été envoyé n'est pas vérifié");
+            }else{
+                echo("Mauvais Identifiants");
+            }
+            
 
         }
         
