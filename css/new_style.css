@@ -902,6 +902,10 @@ h1 {
 .mainHeader li:nth-child(4) p {
     padding: 0;
     margin: 0;
+    background-image: url(../images/icon_login.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-left: 45px;
 }
 
 #fullScreenButton {
@@ -1105,7 +1109,7 @@ li .loginMenu:hover {
 /*********************************************** PRE GAME PAGE ****************************************/
 
 .preGamePage {
-    background: linear-gradient(to right, var(--rouge), #f79764, #fec65c);
+    background: linear-gradient(to right, #ED1B70, #f79764, #fec65c);
     height: 80vh;
     padding: 50px;
     padding-top: 150px;
@@ -1308,14 +1312,17 @@ li .loginMenu:hover {
 .sectionSolo .score .barScoreMax {
     background-color: var(--jaune);
     width: 15px;
+    position: relative;
     height: 40vh;
     border-radius: 20px;
 }
 
 .sectionSolo .score .barScore {
-    background-color: var(--rouge);
+    background: linear-gradient(to top, #ED1B70 50%, #f79764 90%, #fec65c);
     width: 100%;
-    /* PROBLEME */
+    border-radius: 20px;
+    position: absolute;
+    bottom:0px;
 }
 
 .sectionSolo .contenu {

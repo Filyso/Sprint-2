@@ -77,7 +77,7 @@
                             <p id="timer" class="timer">10</p>
                         </div>
                         <div class="Sousreponses">
-                            <button id="reponse3Button" class="reponseButton">Exemple Exemple Exemple Lalalallalalaalaa Exemple Exemple Exemple Exemple Lalalallalalaalaa  </button>
+                            <button id="reponse3Button" class="reponseButton">Exemple Exemple Exemple Lalalallalalaalaa Lalalallalalaalaa  </button>
 
                             <button id="reponse4Button" class="reponseButton">Exemple de réponse</button>
                         </div>
