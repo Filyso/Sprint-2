@@ -143,7 +143,6 @@ function verifierTimecodes(evt) {
             seconde1.style.backgroundColor = "red";
             seconde2.style.backgroundColor = "red";
         } else {
-            seconde1.setCustomValidity("");
             minute1.style.backgroundColor = "transparent";
             minute2.style.backgroundColor = "transparent";
             seconde1.style.backgroundColor = "transparent";
@@ -165,6 +164,12 @@ function verifierParoles(evt) {
 
     parole1.setCustomValidity("");
 
+    parole1.style.backgroundColor = "transparent";
+    parole2.style.backgroundColor = "transparent";
+    parole3.style.backgroundColor = "transparent";
+    parole4.style.backgroundColor = "transparent";
+    parole5.style.backgroundColor = "transparent";
+    
     if (p1 != "" && p2 != "" && p3 != "" && p4 != "" && p5 != "") {
         for (var paroles of tabParoles) {
             let array = [];
@@ -180,13 +185,6 @@ function verifierParoles(evt) {
                 parole3.style.backgroundColor = "red";
                 parole4.style.backgroundColor = "red";
                 parole5.style.backgroundColor = "red";
-            } else {
-                parole1.setCustomValidity("");
-                parole1.style.backgroundColor = "transparent";
-                parole2.style.backgroundColor = "transparent";
-                parole3.style.backgroundColor = "transparent";
-                parole4.style.backgroundColor = "transparent";
-                parole5.style.backgroundColor = "transparent";
             }
         }
     }
