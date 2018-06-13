@@ -6,7 +6,7 @@
 
     function initialiser(evt) {
 
-        submitbtn = $(".popup #submit");
+        submitbtn = $("#connexionBtn");
 
         submitbtn.click(verifier);
 
@@ -15,12 +15,11 @@
     
     function verifier(evt){
         
-        $.post({
-           'script_login.php',
+        $.post(
+           '../php/script_login.php', 
             {
                 pseudo : $("#pseudo").val(),
-                passwd : $("#passwd")
-            
+                passwd : $("#passwd").val()
             },
             function(data){
                 
@@ -32,7 +31,7 @@
             
             },
             'text'
-        });
+        );
         
     }
 
