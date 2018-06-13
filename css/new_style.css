@@ -102,6 +102,7 @@ h1 {
     box-sizing: border-box;
     top: 0;
     left: 0;
+    z-index: 2;
 }
 
 .menuShown {
@@ -116,6 +117,7 @@ h1 {
     box-sizing: border-box;
     top: 0;
     left: 0;
+    z-index: 2;
 }
 
 .mainHeader ul {
@@ -1624,14 +1626,6 @@ li .loginMenu:hover {
 }
 
 /***************************************************** MEDIA QUERIES ********************************/
-
-@media (max-width: 500px) {
-     .mainIndex h1 {
-        font-size: 50vw;
-        top: calc(50vh - 60vw);
-    }
-}
-
 @media (max-width: 800px) {
     @keyframes spriteSlidingMedia {
         from {
@@ -1673,9 +1667,20 @@ li .loginMenu:hover {
     .rightHeader {
         display: flex;
         align-items: flex-end;
-        width: 350px;
         justify-content: center;
         flex-direction: column;
         padding: 0 30px;
+    }
+    .rightHeader div{
+        padding: 10px;
+    }
+}
+@media (max-width: 500px) {
+     .mainIndex h1 {
+        font-size: 20vw;
+        top: calc(30vh - 20vw);
+    }
+    .rightHeader {
+        z-index: 1;
     }
 }
