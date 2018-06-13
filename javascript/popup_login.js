@@ -8,10 +8,11 @@
         popup = document.querySelector(".popup");
         popup.style.visibility = "hidden";
         
-        var btn = document.querySelectorAll(".login");
-        for(var currentBtn of btn){
-            currentBtn.addEventListener("click", show);
-        }
+        var btn1 = document.getElementById("btnPopup1");
+        var btn2 = document.getElementById("btnPopup2");
+
+        btn1.addEventListener("click", show);
+        btn2.addEventListener("click", show);
         
     }
 

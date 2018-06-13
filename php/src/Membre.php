@@ -16,22 +16,28 @@ class Membre{
     
     static function isAdmin(){
         
-        if(Membre::isLogged() && $_SESSION["role"]=="admin"){
-            return true;
+        if(isset($_SESSION["role"])){
+            if(Membre::isLogged() && $_SESSION["role"]=="admin"){
+                return true;
+            }else{
+                return false;
+            }
         }else{
             return false;
         }
-        
     }
     
     static function isModo(){
         
-        if(Membre::isLogged() && $_SESSION["role"]=="modo"){
-            return true;
+        if(isset($_SESSION["role"])){
+            if(Membre::isLogged() && $_SESSION["role"]=="modo"){
+                return true;
+            }else{
+                return false;
+            }
         }else{
             return false;
         }
-        
     }
   
 }
