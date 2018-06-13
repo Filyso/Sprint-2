@@ -25,7 +25,6 @@
 
             <fieldset class="section">
                 <div>
-
                     <input type="radio" name="langue" id="français" value="fr" class="inputRadio" required />
                     <label for="français"><img src="../images/FR.png" alt="drapeau français"></label>
                 </div>
@@ -63,9 +62,15 @@
                             // ETAPE 3 : Traiter les données retourner
                                 $ligne = $statement->fetch(PDO::FETCH_ASSOC);
                                 while($ligne != false) {
+                                    $newRequeteSQL = "SELECT COUNT(idSong) AS 'nbSong' FROM appartient_a_une WHERE idCat = 1";
+                                    $newStatement = $pdo->query($requeteSQL);
+                                    $newLigne = $newStatement->fetch(PDO::FETCH_ASSOC);
+                                    
+                                    if ($newLigne["nbSong"] >= 7) {
                         ?>
                         <option value="<?php echo($ligne["idCat"]);?>"><?php echo(ucfirst($ligne["nameCat"]));?></option>
                         <?php
+                                    }
                                     $ligne = $statement->fetch(PDO::FETCH_ASSOC);
                                 }
                             // Fin de la boucle
