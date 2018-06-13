@@ -62,7 +62,7 @@
                             // ETAPE 3 : Traiter les données retourner
                                 $ligne = $statement->fetch(PDO::FETCH_ASSOC);
                                 while($ligne != false) {
-                                    $newRequeteSQL = "SELECT COUNT(idSong) AS 'nbSong' FROM appartient_a_une WHERE idCat = 1";
+                                    $newRequeteSQL = "SELECT COUNT(idSong) AS 'nbSong' FROM appartient_a_une WHERE idCat =" . $ligne["idCat"];
                                     $newStatement = $pdo->query($requeteSQL);
                                     $newLigne = $newStatement->fetch(PDO::FETCH_ASSOC);
                                     
