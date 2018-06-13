@@ -161,6 +161,9 @@
         <script src="https://kodhus.com/moveit.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="../javascript/popup_login.js"></script>
+
         <script type="text/javascript" src="../javascript/main_header.js"></script>
+
         <script type="text/javascript" src="../javascript/verification_conexion.js"></script>
+
+        <script type="text/javascript" src="../javascript/popup_login.js"></script>

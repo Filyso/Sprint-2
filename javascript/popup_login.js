@@ -10,10 +10,13 @@
         
         var btn1 = document.getElementById("btnPopup1");
         var btn2 = document.getElementById("btnPopup2");
-
-        btn1.addEventListener("click", show);
-        btn2.addEventListener("click", show);
         
+        if(btn1 != null){
+            btn1.addEventListener("click", show);
+        }
+        if(btn2 != null){
+            btn2.addEventListener("click", show);
+        }
     }
 
     function show(evt) {

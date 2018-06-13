@@ -6,7 +6,7 @@ $pdo->query("SET NAMES utf8");
 $pdo->query("SET CHARACTER SET 'utf8'");
         
 $passSha1Verif = sha1("cle".$_POST["pass"]."hya");
-$requeteSQL = "SELECT idMbr, pseudoMbr, mdpMbr, linkIconMbr FROM MEMBRES WHERE pseudoMbr= :pseudo AND mdpMbr= :pass";
+$requeteSQL = "SELECT idMbr, pseudoMbr, mdpMbr, linkIconMbr, isVerif FROM MEMBRES WHERE pseudoMbr= :pseudo AND mdpMbr= :pass";
 $statement = $pdo->prepare($requeteSQL);
 $statement->execute(array(":pseudo" => $_POST["pseudo"], ":pass" => $passSha1Verif));
 
@@ -17,14 +17,17 @@ $passwd= $ligne["mdpMbr"];
 
 
 
-if(isset($_POST["pseudo"]) && isset($_POST["passwd"])){
+if(isset($_POST["pseudo"]) && isset($_POST["pass"])){
     
-    if($_POST["pseudo"] != $pseudo || $_POST["passwd"] != $passwd){
-        echo("Echec");
-        
-    }else{
+    if($_POST["pseudo"] == $pseudo && $passSha1Verif == $passwd && $ligne["isVerif"] == 1){
         echo("Connexion");
+        
+    }else if($_POST["pseudo"] == $pseudo && $passSha1Verif == $passwd && $ligne["isVerif"] == 0){
+        echo("nonVerif");
+    }else{
+        echo("Echec");
     }
+    
 }
 
 

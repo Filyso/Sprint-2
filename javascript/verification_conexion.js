@@ -7,38 +7,46 @@
     
     function initialiser(evt) {
         
-        
-        
         submitbtn = $("#connexionBtn");
         form = $(".popup form");
         
+        form.append("<p></p>");
         
         submitbtn.click(verifier);
-        
 
     }
     
     function verifier(evt){
+        evt.preventDefault();
         
-        console.log($("#pseudo").val());
-        console.log($("#passwd").val());
+
         
         $.post(
            '../php/script_login.php', 
             {
                 pseudo : $("#pseudo").val(),
-                passwd : $("#passwd").val()
+                pass : $("#passwd").val()
             },
             function(data){
                 
-                
+                console.log(data);
                 if(data == "Echec"){
                     
-                    form.setCustomValidity("");
+                    $("#pseudo").val("");
+                    $("#passwd").val("");
+                    $(".popup form p").text("Le couple identifiant/mot de passe est invalide");
                     
-                    $(".popup form h2").html("<p>L'identifiant ou(et) le mot de passe est invalide.</p>")
                     
+                }else if(data == "Connexion"){
+                    form.submit();
+                }else if(data == "nonVerif"){
+                    
+                    $("#pseudo").val("");
+                    $("#passwd").val("");
+                    $(".popup form p").text("L'email de vérification qui vous a été envoyé n'a pas été vérifié  ");
+                       
                 }
+                
             
             },
             'text'
