@@ -78,9 +78,9 @@
                     submitbtn1.text("Envoyer");
                     
                 }
-                window.setTimeout(function(){
-                    submitbtn1.click(verifier1);
-                },100);
+                
+                submitbtn1.click(verifier1);
+               
             },
             'text'
         );

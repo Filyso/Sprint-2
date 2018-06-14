@@ -10,8 +10,7 @@ if(isset($_POST["sujet"]) && isset($_POST["message"])){
         if(isset($_SESSION["pseudo"]) && isset($_SESSION["mail"]) && Membre::isLogged()){
             if($_POST["sujet"] != "" && $_POST["message"] != ""){
                 
-                sendMail("Maxime.Villatte.Etu@univ-lemans.fr
-",$_POST["sujet"],$_POST["message"]);
+                sendMail("filysogame@gmail.com",$_POST["sujet"],$_POST["message"]);
 
                 echo("Reussie");
             }else{
@@ -20,6 +19,7 @@ if(isset($_POST["sujet"]) && isset($_POST["message"])){
         }else{
             echo("Echec");
         }
+    
     
     
 }
