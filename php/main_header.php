@@ -25,12 +25,12 @@
             $_SESSION["prenom"] = $ligne["prenomMbr"];
             $_SESSION["mail"] = $ligne["mailMbr"];
 
-            echo("Connecté");
+            //echo("Connecté");
         }else{
             if($_POST["pseudo"] == $ligne["pseudoMbr"] && $passSha1Verif == $ligne["mdpMbr"] && $ligne["isVerif"] == 0){
-                echo("L'email de vérification qui vous a été envoyé n'est pas vérifié");
+                //echo("L'email de vérification qui vous a été envoyé n'est pas vérifié");
             }else{
-                echo("Mauvais Identifiants");
+                //echo("Mauvais Identifiants");
             }
             
 
