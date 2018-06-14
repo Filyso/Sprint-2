@@ -55,10 +55,10 @@
                 <div class="BoiteAIdee" id="idee">
                     <h2>Boîte à idées</h2>
                     <p>Une idée ? Un bug ? Une amélioration ? Dites le nous !</p>
-                    <form action="#" method="post">
-                        <input type="email" name="email" placeholder="Email" required/>
-                        <textarea rows=5 name="message" placeholder="Votre idée de génie" required></textarea>
-                        <button>Envoyer</button>
+                    <form id="formContact2" method="post">
+                        <input id="formContactSujet2" type="text" name="sujet" placeholder="Sujet" required/>
+                        <textarea id="formContactMsg2" rows=5 name="message" placeholder="Votre idée de génie" required></textarea>
+                        <button id="formContactSub2">Envoyer</button>
                     </form>
 
                 </div>

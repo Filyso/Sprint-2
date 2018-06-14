@@ -307,7 +307,7 @@ function convertirImageCarrePNG($source, $dst, $side){
                     <input name="name" type="text" id="name" required="required" size="25" minlength="1" maxlength="25" title="Le prénom ne doit pas dépasser 25 caractères"></input>
         
                     <label for="emailSignUp">Mail</label>
-                    <input name="emailSignUp" type="emailSignUp" id="emailSignUp" required="required"></input>
+                    <input name="emailSignUp" type="email" id="emailSignUp" required="required"></input>
     
                     <label for="passSignUp">Mot de passe</label>
                     <input name="passSignUp" type="password" id="passSignUp" required="required"></input>
