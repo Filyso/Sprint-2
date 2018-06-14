@@ -160,7 +160,7 @@
             $statement->execute(array(":paramIdTimeCode" => $idTimeCode));
             $ligne = $statement->fetch(PDO::FETCH_ASSOC);
             
-            $retour = array('trueRep' => $ligne["trueRep"]);
+            $retour = array('trueRep' => stripslashes($ligne["trueRep"]));
             
         // ETAPE 3 : Déconnecter du serveur                        
             $pdo = null;

@@ -42,16 +42,6 @@ var nbGoodAnswer = 0;
 
 document.addEventListener("DOMContentLoaded", initialiser);
 
-
-//// Load the IFrame Player API code asynchronously.
-//var tag = document.createElement('script');
-//tag.src = "https://www.youtube.com/player_api";
-//var firstScriptTag = document.getElementsByTagName('script')[0];
-//firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-//// Replace the 'ytplayer' element with an <iframe> and
-//// YouTube player after the API code downloads.
-//var player;
-
 function onYouTubePlayerAPIReady() {
     $.post(
         '../php/scripts/script_musique.php', {
@@ -107,7 +97,7 @@ function initialiser(evt) {
     var player;
 
     document.getElementsByClassName("barScore")[0].style.height = 0 + "%";
-    document.querySelector(".contenu").style.display = "none";
+    document.getElementById("rep").style.display = "none";
     document.querySelector(".resultat").style.display = "none";
 }
 
@@ -128,9 +118,8 @@ function swap(evt) {
         verifMemory = false;
         document.getElementById("ytplayer").style.display = "none";
 
-        document.getElementsByClassName("contenu")[0].style.display = "block";
+        document.getElementById("rep").style.display = "block";
         timerStart();
-        document.getElementById("numQuestion").textContent = "Question n° " + (numQuest + 1);
         document.getElementById("phraseACompleter").textContent = currentSong.previousLyrics;
 
         reps = document.querySelectorAll(".reponses button");
@@ -237,7 +226,7 @@ function verifierReps(evt) {
     setTimeout(function () {
         if (numQuest < 6) {
             numQuest = numQuest + 1;
-            document.getElementsByClassName("contenu")[0].style.display = "none";
+            document.getElementById("rep").style.display = "none";
             document.getElementById("ytplayer").style.display = "block";
 
 
@@ -260,6 +249,9 @@ function verifierReps(evt) {
                     document.getElementById("NomEtArtiste").textContent = data.nameSong + " - " + data.nameArtist ;
 
                     player.playVideo();
+                    
+                    document.getElementById("numQuestion").textContent = "Question n° " + (numQuest + 1);
+                    
                     reps[0].style.backgroundColor = "#784199";
                     reps[1].style.backgroundColor = "#784199";
                     reps[2].style.backgroundColor = "#784199";

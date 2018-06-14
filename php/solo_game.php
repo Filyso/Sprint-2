@@ -38,7 +38,7 @@
             </div>
 
             <section class="sectionSolo">
-                <div id="ytplayer" class="ytplayer"></div>
+
                 <div class="score">
 
                     <figure>
@@ -53,41 +53,42 @@
                 </div>
 
                 <div class="contenu">
-
                     <div class="numEtTuto">
                         <div class="buttonTuto">
-                        <input type="button" value="?" id="tutoButton" class="tutoButton"/>
-                            </div>
-                        
+                            <input type="button" value="?" id="tutoButton" class="tutoButton" />
+                        </div>
 
                         <p id="numQuestion" class="numQuestion">Question n°1</p>
                         <p id="NomEtArtiste" class="NomEtArtiste">Bella - Maître Gims</p>
-
                     </div>
 
-                    <p id="phraseACompleter" class="phraseACompleter">"Phrase à compléter ... qui peut être très longue aaaaaaaaa jebg sdgjzeruhzeae g"</p>
+                    <div id="ytplayer" class="ytplayer"></div>
+                    
+                    <div id="rep">
+                        <p id="phraseACompleter" class="phraseACompleter">"Phrase à compléter ... qui peut être très longue aaaaaaaaa jebg sdgjzeruhzeae g"</p>
 
-                    <div class="reponses">
-                        <div class="Sousreponses">
-                            <button id="reponse1Button" class="reponseButton"> EXEMPLE DE REPONSE</button>
+                        <div class="reponses">
+                            <div class="Sousreponses">
+                                <button id="reponse1Button" class="reponseButton"> EXEMPLE DE REPONSE</button>
 
-                            <button id="reponse2Button" class="reponseButton"> Lalalallalalaalaa </button>
+                                <button id="reponse2Button" class="reponseButton"> Lalalallalalaalaa </button>
+                            </div>
+                            <div class="divTimer">
+                                <p id="timer" class="timer">10</p>
+                            </div>
+                            <div class="Sousreponses">
+                                <button id="reponse3Button" class="reponseButton">Exemple Exemple Exemple Lalalallalalaalaa Lalalallalalaalaa  </button>
+
+                                <button id="reponse4Button" class="reponseButton">Exemple de réponse</button>
+                            </div>
+
                         </div>
-                        <div class="divTimer">
-                            <p id="timer" class="timer">10</p>
-                        </div>
-                        <div class="Sousreponses">
-                            <button id="reponse3Button" class="reponseButton">Exemple Exemple Exemple Lalalallalalaalaa Lalalallalalaalaa  </button>
-
-                            <button id="reponse4Button" class="reponseButton">Exemple de réponse</button>
-                        </div>
-
                     </div>
-                
+
                 </div>
 
             </section>
-            
+
             <div class="resultat">
                 <div class="partieGauche">
                     <div class="cercleScore">
@@ -114,9 +115,9 @@
             </div>
 
         </main>
-        
+
         <?php include("./main_footer.php");?>
-        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript" src="../javascript/game.js"></script>
     </body>
