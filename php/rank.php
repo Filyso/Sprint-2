@@ -20,11 +20,6 @@
             <main class="mainRank">
                 <h1>Classement des joueurs</h1>
                 <table>
-                    <tr>
-                        <th>Joueur</th>
-                        <th>Score</th>
-                        <th>Classement</th>
-                    </tr>
 
                     <?php
                     
@@ -36,8 +31,41 @@
                         $pdo->query("SET CHARACTER SET 'utf8'");
 
                         //Etape 2 : envoie la requête SQL au serveur
+                    
+                     $requeteSQL="SELECT membres.pseudoMbr AS 'nom', membres.linkIconMbr AS 'lien', COUNT(joue.score) AS 'score' ".
+                                    "FROM membres ".
+                                    "INNER JOIN joue ".
+                                    "ON membres.idMbr = joue.idMbr ".
+                                    "LIMIT 10 ".
+                                    "ORDER BY joue.score DESC";
+                    ?>
 
-                        $requeteSQL="SELECT membres.pseudoMbr AS 'nom', membres.linkIconMbr AS 'lien', COUNT(joue.score) AS 'score' ".
+                        <tr>
+                            <td>
+                                <figure>
+                                    <img alt="Photo de profil joueur" src="<?php echo($ligne->lien) ?>" />
+                                </figure>
+                                <p>
+                                    <?php echo($ligne->nom) ?>
+                                </p>
+                            </td>
+                            <td>
+                                <?php echo($ligne->score) ?>
+                            </td>
+                            <td>
+                                <?php echo($currentPosition) ?>
+                            </td>
+                        </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th>Joueur</th>
+                        <th>Score</th>
+                        <th>Classement</th>
+                    </tr>
+
+                    <?php
+                        $requeteSQL2="SELECT membres.pseudoMbr AS 'nom', membres.linkIconMbr AS 'lien', COUNT(joue.score) AS 'score' ".
                                     "FROM membres ".
                                     "INNER JOIN joue ".
                                     "ON membres.idMbr = joue.idMbr ".
@@ -46,7 +74,7 @@
 
                         $tabParam = array();
 
-                        $statement = $pdo->prepare($requeteSQL) ;
+                        $statement = $pdo->prepare($requeteSQL2) ;
                         $statement->execute($tabParam);
 
                         // Etape 3 : traite les données
@@ -65,12 +93,19 @@
                                 <figure>
                                     <img alt="Photo de profil joueur" src="<?php echo($ligne->lien) ?>" />
                                 </figure>
-                                <p><?php echo($ligne->nom) ?></p>
+                                <p>
+                                    <?php echo($ligne->nom) ?>
+                                </p>
                             </td>
-                            <td><?php echo($ligne->score) ?></td>
-                            <td> <?php echo($currentPosition) ?></td>/*Comment faaaaaaaaaaaaaaaaaaaaaaaire ?!*/
+                            <td>
+                                <?php echo($ligne->score) ?>
+                            </td>
+                            <td>
+                                <?php echo($currentPosition) ?>
+                            </td>
                         </tr>
-                    <?php
+
+                        <?php
                             //Membre suivant
                        
                             $currentPosition += 1; 
@@ -84,6 +119,7 @@
 
                             $pdo = null;
                      ?>
+
                 </table>
             </main>
             <?php include("./main_footer.php")?>
