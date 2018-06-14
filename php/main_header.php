@@ -66,22 +66,22 @@
                 <ul>
 
                     <li>
-                        <a href="index.php">ACCUEIL</a>
+                        <a href="index.php" class="loginMenu">ACCUEIL</a>
                     </li>
 
                     <li>
-                        <a href="./select_game.php">JOUER</a>
+                        <a href="./select_game.php" class="loginMenu">JOUER</a>
                     </li>
 
                     <li>
-                        <a href="rank.php">CLASSEMENT</a>
+                        <a href="rank.php" class="loginMenu">CLASSEMENT</a>
                     </li>
 <?php
     
     if(Membre::isLogged()){               
 ?>
                     <li>
-                        <a href="account.php">MON COMPTE</a>
+                        <a href="account.php" class="loginMenu">MON COMPTE</a>
                     </li>
 
 <?php
@@ -95,7 +95,7 @@
     if(Membre::isAdmin() || Membre::isModo()){
 ?>
                     <li>
-                        <a href="admin.php">ADMINISTRATION</a>
+                        <a href="admin.php" class="loginMenu">ADMINISTRATION</a>
                     </li>
 <?php
     }

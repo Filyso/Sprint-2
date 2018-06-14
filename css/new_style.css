@@ -777,10 +777,6 @@ h1{
     cursor: pointer;
 }
 
-.mainHeader a:hover {
-    color: var(--jaune);
-}
-
 .mainHeader li:nth-child(1) {
     background-image: url(../images/icon_accueil.png);
     background-size: contain;
@@ -839,14 +835,14 @@ li .loginMenu {
     text-decoration: none;
     font-size: 28px;
 }
-li .loginMenu:hover {
+.loginMenu:hover {
     color: var(--jaune);
 }
 .mainHeader p:hover {
     cursor: pointer;
 }
-.mainHeader a:hover {
-    color: var(--jaune);
+.mainHeader .login:hover {
+    color: var(--rouge);
 }
 .rightHeader {
     display: flex;
@@ -857,7 +853,7 @@ li .loginMenu:hover {
 }
 .connect a {
     font-size: 18px;
-    color: white;
+    color: var(--rouge);
 }
 .indexColor .connect a {
     font-size: 18px;
@@ -881,7 +877,6 @@ li .loginMenu:hover {
     bottom: 0;
     height: 3px;
     background: var(--rouge);
-    ;
 }
 .login:hover::after {
     width: 100%;
