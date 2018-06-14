@@ -54,10 +54,10 @@ document.addEventListener("DOMContentLoaded", initialiser);
 
 function onYouTubePlayerAPIReady() {
     $.post(
-        '../php/Musique.php', {
+        '../php/scripts/script_musique.php', {
             function: 'getMusique',
-            categorie: $_GET['categorie'],
-            lang: $_GET['langue'],
+            categorie: $_GET["categorie"] == undefined ? "0" : $_GET["categorie"],
+            lang: $_GET["langue"] == undefined ? "bilingue" : $_GET["langue"],
             forbiddenTimeCode: JSON.stringify(tabTimeCode)
         },
         function (data) {
@@ -89,12 +89,14 @@ function onYouTubePlayerAPIReady() {
                     'onStateChange': swap
                 }
             });
+            document.getElementById("NomEtArtiste").textContent = data.nameSong + " - " + data.nameArtist ;
         },
         'json'
     );
 }
 
 function initialiser(evt) {
+    
     // Load the IFrame Player API code asynchronously.
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/player_api";
@@ -105,6 +107,7 @@ function initialiser(evt) {
     var player;
 
     document.getElementsByClassName("barScore")[0].style.height = 0 + "%";
+    document.querySelector(".contenu").style.display = "none";
     document.querySelector(".resultat").style.display = "none";
 }
 
@@ -156,7 +159,7 @@ function swap(evt) {
 
 function melangerReps() {
     $.post(
-        '../php/Musique.php', {
+        '../php/scripts/script_musique.php', {
             function: 'getTimeCodeAnswers',
             idTimeCode: tabTimeCode[numQuest]
         },
@@ -181,8 +184,7 @@ function melangerReps() {
                     questAlea = Math.floor(Math.random() * 4);
                 }
                 tabReps[m] = questAlea;
-            }
-            console.log(tabReps);
+            }   
 
             reps[tabReps[0]].value = data.answers.rep1;
             reps[tabReps[1]].value = data.answers.rep2;
@@ -210,7 +212,7 @@ function verifierReps(evt) {
     // Vérification de la réponse
     if (!timeOut) {
         $.post(
-            '../php/Musique.php', {
+            '../php/scripts/script_musique.php', {
                 function: 'getTimeCodeAnswer',
                 idTimeCode: tabTimeCode[numQuest],
             },
@@ -240,10 +242,10 @@ function verifierReps(evt) {
 
 
             $.post(
-                '../php/Musique.php', {
+                '../php/scripts/script_musique.php', {
                     function: 'getMusique',
-                    categorie: $_GET['categorie'],
-                    lang: $_GET['langue'],
+                    categorie: $_GET["categorie"] == undefined ? "0" : $_GET["categorie"],
+                    lang: $_GET["langue"] == undefined ? "bilingue" : $_GET["langue"],
                     forbiddenTimeCode: JSON.stringify(tabTimeCode)
                 },
                 function (data) {
@@ -254,15 +256,14 @@ function verifierReps(evt) {
                         startSeconds: data.timeCodeStart,
                         endSeconds: data.timeCodeEnd,
                     });
+                    
+                    document.getElementById("NomEtArtiste").textContent = data.nameSong + " - " + data.nameArtist ;
 
                     player.playVideo();
                     reps[0].style.backgroundColor = "#784199";
                     reps[1].style.backgroundColor = "#784199";
                     reps[2].style.backgroundColor = "#784199";
                     reps[3].style.backgroundColor = "#784199";
-
-                    console.log(JSON.stringify(tabTimeCode));
-                    console.log(data.conditionSQL);
                 },
                 'json'
             );
@@ -278,27 +279,6 @@ function verifierReps(evt) {
             document.querySelector("main").className = "mainResultat";
         }
     }, 2000);
-}
-
-// ************************ //
-// *** Gestion Chansons *** //
-// ************************ //
-function getNewSong() {
-    $.post(
-        '../php/Musique.php', {
-            function: 'getMusique',
-            categorie: $_GET['categorie'],
-            lang: $_GET['langue']
-        },
-        majSong,
-        'json'
-    );
-}
-
-function majSong(data) {
-    currentSong = data;
-    tabTimeCode.push(data.idTimeCode);
-    console.log(currentSong);
 }
 
 // ********************* //

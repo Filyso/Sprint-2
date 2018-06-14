@@ -30,7 +30,7 @@
         
         // ETAPE 1 : Se connecter au serveur de base de données
         try {
-            require("./param.inc.php");
+            require("../param.inc.php");
             $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
             $pdo->query("SET NAMES utf8");
             $pdo->query("SET CHARACTER SET 'utf8'");
@@ -111,7 +111,7 @@
     function getTimeCodeAnswers($idTimeCode) {
         // ETAPE 1 : Se connecter au serveur de base de données
         try {
-            require("./param.inc.php");
+            require("../param.inc.php");
             $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
             $pdo->query("SET NAMES utf8");
             $pdo->query("SET CHARACTER SET 'utf8'");
@@ -125,12 +125,12 @@
             $statement->execute(array(":paramIdTimeCode" => $idTimeCode));
             $ligne = $statement->fetch(PDO::FETCH_ASSOC);
             
-            $retour = array('previousLyrics' => $ligne["previousLyrics"],
+            $retour = array('previousLyrics' => stripslashes($ligne["previousLyrics"]),
                             'answers'        => array(
-                                    'rep1' => $ligne["trueRep"],
-                                    'rep2' => $ligne["falseRep1"],
-                                    'rep3' => $ligne["falseRep2"],
-                                    'rep4' => $ligne["falseRep3"]
+                                    'rep1' => stripslashes($ligne["trueRep"]),
+                                    'rep2' => stripslashes($ligne["falseRep1"]),
+                                    'rep3' => stripslashes($ligne["falseRep2"]),
+                                    'rep4' => stripslashes($ligne["falseRep3"])
                                 ),
                             );
             
@@ -146,7 +146,7 @@
     function getTimeCodeAnswer($idTimeCode) {
         // ETAPE 1 : Se connecter au serveur de base de données
         try {
-            require("./param.inc.php");
+            require("../param.inc.php");
             $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
             $pdo->query("SET NAMES utf8");
             $pdo->query("SET CHARACTER SET 'utf8'");
