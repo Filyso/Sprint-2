@@ -32,7 +32,7 @@
         this.setCustomValidity("");
         if (!this.checkValidity()) {
             this.setCustomValidity("Le pseudo doit contenir entre 4 et 16 caractères (caractères spéciaux interdits)");
-            this.style.borderColor = "red";
+            this.style.borderColor = "#ED1B70";
         } else {
             this.style.borderColor = "initial";
         }
@@ -42,7 +42,7 @@
         this.setCustomValidity("");
         if (!this.checkValidity()) {
             this.setCustomValidity("Le mot de passe (entre 8 et 42 caractères) doit contenir au moins une majuscule, une minuscule, et un chiffre");
-            this.style.borderColor = "red";
+            this.style.borderColor = "#ED1B70";
         } else {
             this.style.borderColor = "initial";
         }
@@ -53,7 +53,7 @@
         if (mdp1.checkValidity() && this.checkValidity()) {
             if (mdp1.value != this.value) {
                 this.setCustomValidity("Les 2 mots de passe ne sont pas identiques");
-                this.style.borderColor = "red";
+                this.style.borderColor = "#ED1B70";
             }
         }
     }
@@ -62,7 +62,7 @@
         this.setCustomValidity("");
         if (!this.checkValidity()) {
             this.setCustomValidity("Le nom doit faire 25 caractères maximum");
-            this.style.borderColor = "red";
+            this.style.borderColor = "#ED1B70";
         } else {
             this.style.borderColor = "initial";
         }
@@ -72,7 +72,7 @@
         this.setCustomValidity("");
         if (!this.checkValidity()) {
             this.setCustomValidity("Le prénom doit faire 25 caractères maximum");
-            this.style.borderColor = "red";
+            this.style.borderColor = "#ED1B70";
         } else {
             this.style.borderColor = "initial";
         }
@@ -82,7 +82,7 @@
         this.setCustomValidity("");
         if (!this.checkValidity()) {
             this.setCustomValidity("Veuillez respecter un format mail valide");
-            this.style.borderColor = "red";
+            this.style.borderColor = "#ED1B70";
         } else {
             this.style.borderColor = "initial";
         }

@@ -11,14 +11,14 @@
         <meta http-equiv="" content="">
         <title></title>
         <meta name="" content="">
-<!--        <link rel="stylesheet" href="../style.css">-->
+        <!--        <link rel="stylesheet" href="../style.css">-->
         <link rel="stylesheet" href="../css/new_style.css">
     </head>
 
     <body>
         <?php include("./main_header.php"); ?>
-        <main class="mainRank">
-            <h1>Classement des joueurs</h1>
+            <main class="mainRank">
+                <h1>Classement des joueurs</h1>
                 <table>
 
                     <?php
@@ -31,12 +31,14 @@
                         $pdo->query("SET CHARACTER SET 'utf8'");
 
                         //Etape 2 : envoie de la première requête SQL au serveur
+                    
+                        if (Membre::isLogged()){
 
                         $requeteSQL="SELECT membres.pseudoMbr AS 'nom', membres.linkIconMbr AS 'lien', COUNT(joue.score) AS 'score' ".
-                                        "FROM membres ".
-                                        "INNER JOIN joue ".
-                                        "ON membres.idMbr = joue.idMbr ".
-                                        "WHERE membres.IdMbr = ".$_SESSION["id"];
+                                    "FROM membres ".
+                                    "INNER JOIN joue ".
+                                    "ON membres.idMbr = joue.idMbr ".
+                                    "ORDER BY joue.score DESC";
 
                         $tabParam = array();
 
@@ -44,12 +46,15 @@
                         $statement->execute($tabParam);
 
                         // Etape 3 : traite les données
-
-                        //Le membre connecté
                     
                         $ligne = $statement->fetch(PDO::FETCH_OBJ);
-                    
-                    while($ligne != false){
+                            
+                        $currentPosition = 1;
+                            
+                        while($ligne != $_POST[SESSION]){
+                            $currentPosition += 1;
+                            $ligne = $statement->fetch(PDO::FETCH_OBJ);
+                        }
 
                     ?>
 
@@ -71,8 +76,7 @@
                         </tr>
 
                         <?php
-                            $ligne2 = $statement->fetch(PDO::FETCH_OBJ);
-                            }
+                        }
                         ?>
 
                 </table>
@@ -97,7 +101,7 @@
                         $tabParam2 = array();
 
                         $statement2 = $pdo->prepare($requeteSQL2) ;
-                        $statement->execute($tabParam2);
+                        $statement2->execute($tabParam2);
 
                         // Etape 3 : traite les données
                         

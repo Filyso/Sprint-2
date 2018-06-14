@@ -118,10 +118,10 @@ function verifierURL(evt) {
     if (!url.checkValidity()) {
         if (!regex.test(url.value)) {
             url.setCustomValidity("Le format de l'URL n'est pas correct");
-            url.style.backgroundColor = "red";
+            url.style.borderColor = "#ED1B70";
         }
     } else {
-        url.style.backgroundColor = "transparent";
+        url.style.borderColor = "initial";
     }
 }
 
@@ -138,15 +138,15 @@ function verifierTimecodes(evt) {
     if (m1 != "" && s1 != "" && m2 != "" && s2 != "") {
         if ((m2 < m1) || (m1 == m2 && s2 < s1) || (m1 == m2 && s1 == s2)) {
             seconde1.setCustomValidity("Attention à bien respecter une logique temporelle");
-            minute1.style.backgroundColor = "red";
-            minute2.style.backgroundColor = "red";
-            seconde1.style.backgroundColor = "red";
-            seconde2.style.backgroundColor = "red";
+            minute1.style.borderColor = "#ED1B70";
+            minute2.style.borderColor = "#ED1B70";
+            seconde1.style.borderColor = "#ED1B70";
+            seconde2.style.borderColor = "#ED1B70";
         } else {
-            minute1.style.backgroundColor = "transparent";
-            minute2.style.backgroundColor = "transparent";
-            seconde1.style.backgroundColor = "transparent";
-            seconde2.style.backgroundColor = "transparent";
+            minute1.style.borderColor = "initial";
+            minute2.style.borderColor = "initial";
+            seconde1.style.borderColor = "initial";
+            seconde2.style.borderColor = "initial";
         }
     }
 }
@@ -164,11 +164,11 @@ function verifierParoles(evt) {
 
     parole1.setCustomValidity("");
 
-    parole1.style.backgroundColor = "transparent";
-    parole2.style.backgroundColor = "transparent";
-    parole3.style.backgroundColor = "transparent";
-    parole4.style.backgroundColor = "transparent";
-    parole5.style.backgroundColor = "transparent";
+    parole1.style.borderColor = "initial";
+    parole2.style.borderColor = "initial";
+    parole3.style.borderColor = "initial";
+    parole4.style.borderColor = "initial";
+    parole5.style.borderColor = "initial";
     
     if (p1 != "" && p2 != "" && p3 != "" && p4 != "" && p5 != "") {
         for (var paroles of tabParoles) {
@@ -180,11 +180,11 @@ function verifierParoles(evt) {
             }
             if (array.length !== tabParoles.length - 1) {
                 parole1.setCustomValidity("Attention à bien mettre des paroles différentes dans chaque champ");
-                parole1.style.backgroundColor = "red";
-                parole2.style.backgroundColor = "red";
-                parole3.style.backgroundColor = "red";
-                parole4.style.backgroundColor = "red";
-                parole5.style.backgroundColor = "red";
+                parole1.style.borderColor = "#ED1B70";
+                parole2.style.borderColor = "#ED1B70";
+                parole3.style.borderColor = "#ED1B70";
+                parole4.style.borderColor = "#ED1B70";
+                parole5.style.borderColor = "#ED1B70";
             }
         }
     }
