@@ -29,7 +29,10 @@
     }
     function verifier1(evt){
         evt.preventDefault();
-        $("#formContact1 p").text("Loading...");
+        submitbtn1.text("Loading...");
+        
+        $("#formContact1 p").text("");
+        
         submitbtn1.off("click",verifier1);
         
         $.post(
@@ -47,15 +50,16 @@
                     $("#formContactMsg1").val("");
                     $("#formContact1 p").text("Vous devez être connecté pour utiliser ce formulaire");
                     
-                    submitbtn1.click(verifier1);
+                    submitbtn1.text("Envoyer");
+
                 }else if(data == "Reussie"){
                     
                     $("#formContactSujet1").val("");
                     $("#formContactMsg1").val("");
                     $("#formContact1 p").text("Votre message a bien été envoyé");
                     
-                    submitbtn1.click(verifier1);
-                    
+
+                    submitbtn1.text("Envoyer");
                     
                     
                     
@@ -64,25 +68,32 @@
                     $("#formContactSujet1").val("");
                     $("#formContactMsg1").val("");
                     $("#formContact1 p").text("Le formulaire n'est pas complet");
-                    
-                    submitbtn1.click(verifier1);
+                    submitbtn1.text("Envoyer");
+
                     
                 }else{
                     $("#formContactSujet1").val("");
                     $("#formContactMsg1").val("");
                     $("#formContact1 p").text("Un problème est survenue. Il se peut que se service soit momentanément indisponible.");
+                    submitbtn1.text("Envoyer");
                     
-                    submitbtn1.click(verifier1);
                 }
+                window.setTimeout(function(){
+                    submitbtn1.click(verifier1);
+                },100);
             },
             'text'
         );
+        
 
     }
     function verifier2(evt){
         evt.preventDefault();
-        $("#formContact2 p").text("Loading...");
-        submitbtn1.off("click",verifier2);
+        $("#formContact2 p").text("");
+        submitbtn2.text("Loading...");
+        
+        $("#formContact2 p").text("");
+        submitbtn2.off("click",verifier2);
         
         $.post(
            '../php/scripts/script_form_contact.php', 
@@ -99,13 +110,14 @@
                     $("#formContactMsg2").val("");
                     $("#formContact2 p").text("Vous devez être connecté pour utiliser ce formulaire");
                     submitbtn2.click(verifier2);
-     
+                    submitbtn2.text("Envoyer");
                 }else if(data == "Reussie"){
                     
                     $("#formContactSujet2").val("");
                     $("#formContactMsg2").val("");
                     $("#formContact2 p").text("Votre message a bien été envoyé");
                     submitbtn2.click(verifier2);
+                    submitbtn2.text("Envoyer");
                     
                     
                     
@@ -118,15 +130,18 @@
                     $("#formContact2 p").text("Le formulaire n'est pas complet");
                     
                     submitbtn2.click(verifier2);
+                    submitbtn2.text("Envoyer");
                     
                 }else{
                     $("#formContact2 p").text("Un problème est survenue. Il se peut que se service soit momentanément indisponible.");
                     submitbtn2.click(verifier2);
+                    submitbtn2.text("Envoyer");
                 }
+                submitbtn2.click(verifier2);
             },
             'text'
         );
-
+        
     }
 
 
