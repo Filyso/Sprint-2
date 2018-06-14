@@ -9,7 +9,7 @@ if(isset($_GET["id"])){
     $pdo->query("SET NAMES utf8");
     $pdo->query("SET CHARACTER SET 'utf8'");
     
-    $requeteSQL = "UPDATE `membres` SET `isVerif` = '1'  WHERE idMbr= :id";
+    $requeteSQL = "UPDATE `MEMBRES` SET `isVerif` = '1'  WHERE idMbr= :id";
     $statement = $pdo->prepare($requeteSQL);
     $statement->execute(array(":id" => $_GET["id"]));
 

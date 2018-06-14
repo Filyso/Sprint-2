@@ -1,8 +1,6 @@
 <?php
 
-class Membre{
-    
-
+class Membre {
 
     static function isLogged(){
         

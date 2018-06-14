@@ -15,7 +15,12 @@
 
     <body>
 
-        <?php include("./main_header.php"); ?>
+        <?php 
+            include("./main_header.php");
+            if (!(Membre::isAdmin()) && !(Membre::isModo())) {
+                header("Location: ./index.php");
+            }
+        ?>
             <main class="mainAdmin">
                 <header class="headerAdmin">
 
@@ -23,16 +28,28 @@
                         <h2>GESTION DE CONTENU</h2>
                         <form action="./admin.php" method="get">
                             <input type="submit" value="Ajout de chansons" name="admin" />
+                            <?php
+                            if (Membre::isAdmin()) {
+                            ?>
                             <input type="submit" value="Modification/Suppression de chansons" name="admin" />
+                            <?php
+                            }
+                            ?>
                         </form>
                     </div>
 
+                    <?php
+                    if (Membre::isAdmin()) {
+                    ?>
                     <div>
                         <h2>GESTION D'UTILISATEURS</h2>
                         <form action="./admin.php" method="get">
                             <input type="submit" value="Suppression d'utilisateurs" name="admin" />
                         </form>
                     </div>
+                    <?php
+                    }
+                    ?>
                 </header>
                 <?php 
                 if (isset($_GET["admin"])) {
