@@ -1196,9 +1196,14 @@ li .loginMenu {
 .sectionSolo .contenu {
     display: flex;
     flex-direction: column;
+    align-items: center;
     text-align: center;
     margin: auto;
     width: 60%;
+}
+
+.sectionSolo .numEtTuto {
+    width: 100%;
 }
 
 .sectionSolo .numEtTuto .buttonTuto {
@@ -1206,7 +1211,7 @@ li .loginMenu {
     height: 40px;
     position: relative;
     top: 48px;
-    left: 60%;
+    left: 100%;
 }
 
 .sectionSolo .numEtTuto input {

@@ -45,6 +45,15 @@ var nbGoodAnswer = 0;
 
 document.addEventListener("DOMContentLoaded", initialiser);
 
+// Load the IFrame Player API code asynchronously.
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/player_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+// Replace the 'ytplayer' element with an <iframe> and
+// YouTube player after the API code downloads.
+var player;
+
 function onYouTubePlayerAPIReady() {
     $.post(
         '../php/scripts/script_musique.php', {
@@ -89,16 +98,6 @@ function onYouTubePlayerAPIReady() {
 }
 
 function initialiser(evt) {
-
-    // Load the IFrame Player API code asynchronously.
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/player_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    // Replace the 'ytplayer' element with an <iframe> and
-    // YouTube player after the API code downloads.
-    var player;
-
     document.getElementsByClassName("barScore")[0].style.height = 0 + "%";
     document.getElementById("rep").style.display = "none";
     document.querySelector(".resultat").style.display = "none";
@@ -243,6 +242,7 @@ function verifierReps(evt) {
             'json'
         );
     } else {
+        afficherScore(0);
         document.getElementsByClassName("divTimer")[0].style.borderColor = "red";
     }
 
@@ -276,7 +276,9 @@ function verifierType(evt) {
 }
 
 function afterVerif(evt) {
-    document.getElementById("currentScore").remove();
+    if (document.getElementById("currentScore") != null) {
+        document.getElementById("currentScore").remove();
+    }
     if (numQuest < 6) {
         numQuest = numQuest + 1;
         document.getElementById("rep").style.display = "none";
