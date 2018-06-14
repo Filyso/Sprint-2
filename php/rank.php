@@ -130,7 +130,7 @@
                             <figure>
                                 <img  alt="Photo de profil joueur" src="../images/chat.jpg"/>
                             </figure>
-                            <p>Toi</p>
+                            <p>Vous</p>
                         </td>
                         <td>870</td>
                         <td>22</td>

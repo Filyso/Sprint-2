@@ -113,8 +113,8 @@
                 <div class="connect">
                     <a href="logout.php"  class="login">DÉCONNEXION</a>
                 </div>  
-                <figure style="width: 100px; border-radius: 50%; overflow: hidden " >
-                    <img style="width: 100%" alt="icon joueur" src=<?php echo("\"".$_SESSION["icon"]."\""); ?>/>
+                <figure>
+                    <img alt="icon joueur" src=<?php echo("\"".$_SESSION["icon"]."\""); ?>/>
                 </figure>
                               
 <?php

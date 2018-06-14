@@ -313,7 +313,7 @@ h1{
 
 /************************************************** ABOUT *************************************/
 .mainAbout {
-    background: linear-gradient(341deg, var(--rouge), var(--orange), #fec65c);
+    background: #292929;
     -webkit-animation: background 20s ease infinite;
     -moz-animation: background 20s ease infinite;
     animation: background 20s ease infinite;
@@ -508,7 +508,7 @@ h1{
     justify-content: space-around;
 }
 .mainAdmin {
-    background-image: linear-gradient(90deg, var(--rouge), var(--jaune));
+    background: #292929;
     padding-bottom: 10vh;
     padding-top: 10vh;
 }
@@ -517,7 +517,6 @@ h1{
     font-family: "FuturaBold";
     font-size: 28px;
 }
-
 
 .headerAdmin div {
     display: flex;
@@ -543,6 +542,7 @@ h1{
     color: white;
 }
 .addSongSection {
+    color: white;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -554,6 +554,11 @@ h1{
     width: 50%;
     font-family: "Raleway";
 }
+
+.addSongForm input, .addSongForm select{
+    color: white;
+}
+
 .addSongForm fieldset {
     width: 80%;
     display: flex;
@@ -883,6 +888,17 @@ li .loginMenu:hover {
     left: 0;
 }
 
+.mainHeader figure{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; 
+    overflow: hidden;
+    margin: auto;
+    margin-top: 10px;
+}
+.mainHeader img{
+    width: 100%;
+}
 
 /********************************************** POPUP CONNEXION **************************************/
 .popup,
@@ -987,7 +1003,7 @@ li .loginMenu:hover {
 
 /*********************************************** PRE GAME PAGE ****************************************/
 .preGamePage {
-    background: linear-gradient(to right, var(--rouge), var(--orange), #fec65c);
+    background: #292929;
     height: 100vh;
     padding: 50px;
     padding-top: 150px;
@@ -1135,7 +1151,7 @@ li .loginMenu:hover {
 .sectionSolo {
     position: relative;
     height: 100vh;
-    background-color: #2c2c2c;
+    background-color: #292929;
 }
 .sectionSolo .ytplayer{
     position: fixed;
@@ -1158,8 +1174,8 @@ li .loginMenu:hover {
 
 .sectionSolo .score img {
     width: 10vw;
-    border-radius: 70px;
-    border: 3px solid var(--jaune);
+    border-radius: 50%;
+    border: 5px solid var(--rouge);
 }
 
 .sectionSolo .score figure {
@@ -1172,12 +1188,12 @@ li .loginMenu:hover {
     background-color: var(--jaune);
     width: 15px;
     position: relative;
-    height: 40vh;
+    height: 50vh;
     border-radius: 20px;
 }
 
 .sectionSolo .score .barScore {
-    background: linear-gradient(to top, #ED1B70 50%, #f79764 90%, #fec65c);
+    background: var(--rouge);
     width: 100%;
     border-radius: 20px;
     position: absolute;
@@ -1193,13 +1209,12 @@ li .loginMenu:hover {
     padding-top: 13vh;
 }
 
-.sectionSolo .contenu .numEtTuto {}
-
 .sectionSolo .contenu .numEtTuto .buttonTuto {
     width: 40px;
     height: 40px;
     position: relative;
-    right: -70vw;
+    top: 48px;
+    left: 60%;
 }
 
 .sectionSolo .contenu .numEtTuto input {
@@ -1260,22 +1275,19 @@ li .loginMenu:hover {
 }
 
 .sectionSolo .contenu .reponses .Sousreponses .reponseButton {
-    border: none;
+    background: none;
+    border: 3px solid var(--jaune);
     width: 20vw;
     min-width: 260px;
     font-family: 'RaleWay';
     font-size: 20px;
     font-weight: 700;
-    background-image: linear-gradient(to right, #feb35c 0%, #d04067 51%, #feb35c 100%);
     border-radius: 10px;
     text-align: center;
     text-transform: uppercase;
     transition: 0.5s;
     background-size: 200% auto;
     color: white;
-}
-.sectionSolo .contenu .reponses .Sousreponses .reponseButton:last-child {
-    background-image: linear-gradient(to left, #feb35c 0%, #d04067 51%, #feb35c 100%);
 }
 
 .sectionSolo .contenu .reponses .Sousreponses .reponseButton:hover {
@@ -1303,7 +1315,7 @@ li .loginMenu:hover {
 
 /******************************************************** RANK PAGE **********************************/
 .mainRank {
-    background: linear-gradient(to right, var(--rouge), var(--orange), #fec65c);
+    background: #292929;
     margin: 0;
     padding: 150px 50px 50px 50px;
     display: flex;
@@ -1325,7 +1337,7 @@ li .loginMenu:hover {
     font-family: 'Raleway', sans-serif;
     width: 55%;
     border-collapse: collapse;
-    font-size: 20px;
+    font-size: 30px;
     border-radius: 10px;
 }
 .mainRank tr {
@@ -1381,14 +1393,12 @@ li .loginMenu:hover {
 
 /***************************************************** STYLE RESULTAT *********************************/
 .mainResultat {
+    background: #292929;
     height: calc(80vh - 74px);
     padding-top: 20vh;
 }
 .mainResultat .resultat {
-    /*    box-shadow: 0px 0px 0px 5px grey;*/
-    border-radius: 30px;
     padding: 40px;
-    /*    background-color: #2D2D2D;*/
     display: flex;
     width: 40vw;
     margin: auto;
@@ -1404,14 +1414,8 @@ li .loginMenu:hover {
     border-radius: 100%;
     width: 300px;
     height: 300px;
-    background-color: #FEC65C;
+    background-color: var(--jaune);
     transition: 0.2s;
-    box-shadow: 0px 0px 0px 8px #f4e1af;
-}
-.cercleScore:hover {
-    box-shadow: 0px 0px 0px 15px #f4e1af;
-    transition: 0.2s;
-    font-weight: 500;
 }
 .scoreResultat {
     font-family: 'Raleway', sans-serif;
@@ -1419,14 +1423,9 @@ li .loginMenu:hover {
     font-size: 35px;
     color: white;
     margin: 0;
-    transition: 0.2s;
     padding-top: 25px;
 }
-.cercleScore:hover .scoreResultat,
-.cercleScore:hover .chiffreScoreResultat {
-    font-weight: 500;
-    transition: 0.2s;
-}
+
 .chiffreScoreResultat {
     font-family: 'Raleway', sans-serif;
     font-weight: 300;
@@ -1452,8 +1451,7 @@ li .loginMenu:hover {
 .btnSaveScore:hover {
     cursor: pointer;
     transition: 0.2s;
-    font-weight: 500;
-    box-shadow: 0px 0px 0px 5px #ff8a38;
+    transform: scale(1.3);
 }
 .partageReseaux {
     margin-top: 4vh;
@@ -1477,8 +1475,7 @@ li .loginMenu:hover {
     flex-direction: column;
 }
 .bonnesReponses {
-    background-color: #FEC65C;
-    box-shadow: 0px 0px 0px 8px #f4e1af;
+    background-color: var(--rouge);
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -1533,11 +1530,6 @@ li .loginMenu:hover {
     transform: rotate(90deg);
     transition: 0.2s;
 }
-.mainResultat .partieDroite button:hover {
-    cursor: pointer;
-    box-shadow: 0px 0px 0px 10px #ffb17b;
-    transition: 0.2s;
-}
 .mainResultat .partieDroite button:hover p {
     font-weight: 500;
     transition: 0.3s ease;
@@ -1562,10 +1554,10 @@ li .loginMenu:hover {
     padding-top: 20px;
 }
 
-/**************************************************** SELEC GAME PAGE ********************************/
+/**************************************************** SELECT GAME PAGE ********************************/
 .mainSelect {
     margin: 0;
-    background: linear-gradient(to right, var(--rouge),var(--orange), #fec65c);
+    background: #292929;
     height: 100vh;
 }
 .mainSelect h1 {
