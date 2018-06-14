@@ -29,7 +29,7 @@
             },
             function(data){
                 
-                console.log(data);
+                
                 if(data == "Echec"){
                     
                     $("#pseudo").val("");
