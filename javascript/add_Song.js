@@ -121,7 +121,7 @@ function verifierURL(evt) {
             url.style.borderColor = "#ED1B70";
         }
     } else {
-        url.style.borderColor = "initial";
+        url.style.borderColor = "white";
     }
 }
 
@@ -143,10 +143,10 @@ function verifierTimecodes(evt) {
             seconde1.style.borderColor = "#ED1B70";
             seconde2.style.borderColor = "#ED1B70";
         } else {
-            minute1.style.borderColor = "initial";
-            minute2.style.borderColor = "initial";
-            seconde1.style.borderColor = "initial";
-            seconde2.style.borderColor = "initial";
+            minute1.style.borderColor = "white";
+            minute2.style.borderColor = "white";
+            seconde1.style.borderColor = "white";
+            seconde2.style.borderColor = "white";
         }
     }
 }
@@ -164,11 +164,11 @@ function verifierParoles(evt) {
 
     parole1.setCustomValidity("");
 
-    parole1.style.borderColor = "initial";
-    parole2.style.borderColor = "initial";
-    parole3.style.borderColor = "initial";
-    parole4.style.borderColor = "initial";
-    parole5.style.borderColor = "initial";
+    parole1.style.borderColor = "white";
+    parole2.style.borderColor = "white";
+    parole3.style.borderColor = "white";
+    parole4.style.borderColor = "white";
+    parole5.style.borderColor = "white";
     
     if (p1 != "" && p2 != "" && p3 != "" && p4 != "" && p5 != "") {
         for (var paroles of tabParoles) {
