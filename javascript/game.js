@@ -16,17 +16,17 @@ if (document.location.toString().indexOf('?') !== -1) {
 
 "use strict";
 
-// Variable Song
+// Variables Song
 var currentSong;
 var tabTimeCode = [];
 
-// Variable Timer
+// Variables Timer
 var encours;
 var milli;
 var timerMilli;
 var timerSec;
 
-// Variable Game
+// Variables Game
 var niv;
 var score = 0;
 var numQuest = 0;
@@ -35,29 +35,22 @@ var reps;
 var stateChangeTamponMemory = [];
 var verifMemory = false;
 var timeOut = false;
+
+// Variables Score
 var scoreGeneral = 0;
 var scoreGeneralPourcent = 0;
+var scoreReponse;
 var nbGoodAnswer = 0;
 
 
 document.addEventListener("DOMContentLoaded", initialiser);
 
-
-//// Load the IFrame Player API code asynchronously.
-//var tag = document.createElement('script');
-//tag.src = "https://www.youtube.com/player_api";
-//var firstScriptTag = document.getElementsByTagName('script')[0];
-//firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-//// Replace the 'ytplayer' element with an <iframe> and
-//// YouTube player after the API code downloads.
-//var player;
-
 function onYouTubePlayerAPIReady() {
     $.post(
-        '../php/Musique.php', {
+        '../php/scripts/script_musique.php', {
             function: 'getMusique',
-            categorie: $_GET['categorie'],
-            lang: $_GET['langue'],
+            categorie: $_GET["categorie"] == undefined ? "0" : $_GET["categorie"],
+            lang: $_GET["langue"] == undefined ? "bilingue" : $_GET["langue"],
             forbiddenTimeCode: JSON.stringify(tabTimeCode)
         },
         function (data) {
@@ -89,12 +82,14 @@ function onYouTubePlayerAPIReady() {
                     'onStateChange': swap
                 }
             });
+            document.getElementById("NomEtArtiste").textContent = data.nameSong + " - " + data.nameArtist;
         },
         'json'
     );
 }
 
 function initialiser(evt) {
+
     // Load the IFrame Player API code asynchronously.
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/player_api";
@@ -105,7 +100,9 @@ function initialiser(evt) {
     var player;
 
     document.getElementsByClassName("barScore")[0].style.height = 0 + "%";
+    document.getElementById("rep").style.display = "none";
     document.querySelector(".resultat").style.display = "none";
+    document.getElementById("reponse7Input").parentElement.style.display = "none";
 }
 
 // ******************* //
@@ -125,9 +122,8 @@ function swap(evt) {
         verifMemory = false;
         document.getElementById("ytplayer").style.display = "none";
 
-        document.getElementsByClassName("contenu")[0].style.display = "block";
+        document.getElementById("rep").style.display = "block";
         timerStart();
-        document.getElementById("numQuestion").textContent = "Question n° " + (numQuest + 1);
         document.getElementById("phraseACompleter").textContent = currentSong.previousLyrics;
 
         reps = document.querySelectorAll(".reponses button");
@@ -142,9 +138,26 @@ function swap(evt) {
             reps[2].style.margin = "auto";
             reps[2].style.marginTop = "140px";
             reps[3].style.display = "none";
-        } else if (numQuest < 7) {
+        } else if (numQuest < 6) {
             reps[2].style.margin = "10px";
             reps[3].style.display = "block";
+        } else {
+            reps[0].style.display = "none";
+            reps[1].style.display = "none";
+            reps[2].style.display = "none";
+            reps[3].style.display = "none";
+            $.post(
+                '../php/scripts/script_musique.php', {
+                    function: 'getTimeCodeAnswer',
+                    idTimeCode: tabTimeCode[numQuest],
+                },
+                function (data) {
+                    document.querySelector("label[for=reponse7Input]").textContent += data.trueRep.split(/\b\w+\b/).length - 1;
+                },
+                'json'
+            );
+            document.getElementById("reponse7Input").parentElement.style.display = "block";
+            document.getElementById("reponse7Input").addEventListener("keyup", verifierType);
         }
 
         // Ajout de l'eventListener sur les boutons
@@ -156,7 +169,7 @@ function swap(evt) {
 
 function melangerReps() {
     $.post(
-        '../php/Musique.php', {
+        '../php/scripts/script_musique.php', {
             function: 'getTimeCodeAnswers',
             idTimeCode: tabTimeCode[numQuest]
         },
@@ -182,7 +195,6 @@ function melangerReps() {
                 }
                 tabReps[m] = questAlea;
             }
-            console.log(tabReps);
 
             reps[tabReps[0]].value = data.answers.rep1;
             reps[tabReps[1]].value = data.answers.rep2;
@@ -210,7 +222,7 @@ function verifierReps(evt) {
     // Vérification de la réponse
     if (!timeOut) {
         $.post(
-            '../php/Musique.php', {
+            '../php/scripts/script_musique.php', {
                 function: 'getTimeCodeAnswer',
                 idTimeCode: tabTimeCode[numQuest],
             },
@@ -220,8 +232,10 @@ function verifierReps(evt) {
                     btnThis.style.backgroundColor = "#3df22d";
                     stopTimer();
                     calculScore();
+                    afficherScore();
                     document.getElementsByClassName("barScore")[0].style.height = Math.round(scoreGeneralPourcent) + "%";
                 } else {
+                    afficherScore(0);
                     stopTimer();
                     btnThis.style.backgroundColor = "red";
                 }
@@ -232,80 +246,94 @@ function verifierReps(evt) {
         document.getElementsByClassName("divTimer")[0].style.borderColor = "red";
     }
 
-    setTimeout(function () {
-        if (numQuest < 6) {
-            numQuest = numQuest + 1;
-            document.getElementsByClassName("contenu")[0].style.display = "none";
-            document.getElementById("ytplayer").style.display = "block";
-
-
-            $.post(
-                '../php/Musique.php', {
-                    function: 'getMusique',
-                    categorie: $_GET['categorie'],
-                    lang: $_GET['langue'],
-                    forbiddenTimeCode: JSON.stringify(tabTimeCode)
-                },
-                function (data) {
-                    currentSong = data;
-                    tabTimeCode.push(data.idTimeCode);
-                    player.loadVideoById({
-                        videoId: data.url,
-                        startSeconds: data.timeCodeStart,
-                        endSeconds: data.timeCodeEnd,
-                    });
-
-                    player.playVideo();
-                    reps[0].style.backgroundColor = "#784199";
-                    reps[1].style.backgroundColor = "#784199";
-                    reps[2].style.backgroundColor = "#784199";
-                    reps[3].style.backgroundColor = "#784199";
-
-                    console.log(JSON.stringify(tabTimeCode));
-                    console.log(data.conditionSQL);
-                },
-                'json'
-            );
-
-        } else {
-            var childMain = document.querySelectorAll(".mainJeuSolo > *");
-            for (var currentElem of childMain) {
-                currentElem.style.display = "none";
-            }
-            document.querySelector(".resultat").style.display = "flex";
-            document.getElementById("chiffreScoreResultat").textContent = scoreGeneral;
-            document.getElementById("nbBonneReponse").textContent = nbGoodAnswer;
-            document.querySelector("main").className = "mainResultat";
-        }
-    }, 2000);
+    setTimeout(afterVerif, 2000);
 }
 
-// ************************ //
-// *** Gestion Chansons *** //
-// ************************ //
-function getNewSong() {
+function verifierType(evt) {
+    repInput = this;
     $.post(
-        '../php/Musique.php', {
-            function: 'getMusique',
-            categorie: $_GET['categorie'],
-            lang: $_GET['langue']
+        '../php/scripts/script_musique.php', {
+            function: 'getTimeCodeAnswer',
+            idTimeCode: tabTimeCode[numQuest],
         },
-        majSong,
+        function (data) {
+            console.log(data.trueRep);
+            if (repInput.value == data.trueRep.toLowerCase()) {
+                nbGoodAnswer = nbGoodAnswer + 1;
+                repInput.style.borderColor = "#3df22d";
+                stopTimer();
+                calculScore();
+                afficherScore();
+                document.getElementsByClassName("barScore")[0].style.height = Math.round(scoreGeneralPourcent) + "%";
+                setTimeout(afterVerif, 2000);
+            } else {
+                afficherScore(0);
+                repInput.style.borderColor = "red";
+            }
+        },
         'json'
     );
 }
 
-function majSong(data) {
-    currentSong = data;
-    tabTimeCode.push(data.idTimeCode);
-    console.log(currentSong);
+function afterVerif(evt) {
+    document.getElementById("currentScore").remove();
+    if (numQuest < 6) {
+        numQuest = numQuest + 1;
+        document.getElementById("rep").style.display = "none";
+        document.getElementById("ytplayer").style.display = "block";
+
+        $.post(
+            '../php/scripts/script_musique.php', {
+                function: 'getMusique',
+                categorie: $_GET["categorie"] == undefined ? "0" : $_GET["categorie"],
+                lang: $_GET["langue"] == undefined ? "bilingue" : $_GET["langue"],
+                forbiddenTimeCode: JSON.stringify(tabTimeCode)
+            },
+            function (data) {
+                currentSong = data;
+                tabTimeCode.push(data.idTimeCode);
+                player.loadVideoById({
+                    videoId: data.url,
+                    startSeconds: data.timeCodeStart,
+                    endSeconds: data.timeCodeEnd,
+                });
+
+                document.getElementById("NomEtArtiste").textContent = data.nameSong + " - " + data.nameArtist;
+
+                player.playVideo();
+
+                document.getElementById("numQuestion").textContent = "Question n° " + (numQuest + 1);
+
+                reps[0].style.backgroundColor = "#784199";
+                reps[1].style.backgroundColor = "#784199";
+                reps[2].style.backgroundColor = "#784199";
+                reps[3].style.backgroundColor = "#784199";
+            },
+            'json'
+        );
+
+    } else {
+        var childMain = document.querySelectorAll(".mainJeuSolo > *");
+        for (var currentElem of childMain) {
+            currentElem.style.display = "none";
+        }
+        document.querySelector(".resultat").style.display = "flex";
+        document.getElementById("chiffreScoreResultat").textContent = scoreGeneral;
+        document.getElementById("nbBonneReponse").textContent = nbGoodAnswer;
+        document.querySelector("main").className = "mainResultat";
+    }
 }
 
 // ********************* //
 // *** Gestion Timer *** //
 // ********************* //
 function timerStart(niv) {
-    milli = 1050;
+    if (numQuest == 6) {
+        milli = 3050;
+    } else {
+        milli = 1050;
+    }
+
     encours = setInterval(decrement, 10);
     stopTimerBool = false;
     timeOut = false;
@@ -350,7 +378,7 @@ function calculScore() {
     var tempsCourant = timerSec + (timerMilli / 100);
 
     if (numQuest == 6) {
-        var tempsInitial = 10;
+        var tempsInitial = 30;
         var scoreMax = 40;
     } else {
         var tempsInitial = 10;
@@ -358,9 +386,29 @@ function calculScore() {
     }
 
     var pourcent = tempsCourant / tempsInitial;
-    var scoreReponse = Math.round(pourcent * scoreMax);
+    scoreReponse = Math.round(pourcent * scoreMax);
 
     scoreGeneral = scoreGeneral + scoreReponse;
 
     scoreGeneralPourcent = scoreGeneral * 100 / 160;
+}
+
+function afficherScore(setScore) {
+
+    var spanScore = document.createElement("span");
+
+    if (setScore != undefined) {
+        spanScore.textContent = "+" + setScore;
+    } else {
+        spanScore.textContent = "+" + scoreReponse;
+    }
+
+    spanScore.id = "currentScore";
+
+    spanScore.style.position = "absolute";
+    spanScore.style.top = "50%";
+    spanScore.style.left = "50%";
+    spanScore.style.transform = "translate(-50%, -50%)";
+
+    document.querySelector(".contenu").appendChild(spanScore);
 }

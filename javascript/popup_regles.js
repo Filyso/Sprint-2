@@ -7,7 +7,7 @@
     function initialiser(evt) {
         popup = document.querySelector(".popup_regle");
 
-        popup.style.visibility = "visible";
+        popup.style.visibility = "hidden";
         popup.style.opacity = 1;
 
         var span = document.getElementsByClassName("close_regle");

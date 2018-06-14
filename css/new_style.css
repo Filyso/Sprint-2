@@ -1144,17 +1144,14 @@ li .loginMenu {
 ***************************************/
 
 .sectionSolo {
+    margin: 100px 0 0 0;
     position: relative;
     height: 100vh;
     background-color: #292929;
 }
 .sectionSolo .ytplayer{
-    position: fixed;
     width: 40vw;
-    top: 25vh;
-    left:30vw;
     pointer-events: none;
-    
 }
 
 .sectionSolo .score {
@@ -1204,7 +1201,7 @@ li .loginMenu {
     padding-top: 13vh;
 }
 
-.sectionSolo .contenu .numEtTuto .buttonTuto {
+.sectionSolo .numEtTuto .buttonTuto {
     width: 40px;
     height: 40px;
     position: relative;
@@ -1212,7 +1209,7 @@ li .loginMenu {
     left: 60%;
 }
 
-.sectionSolo .contenu .numEtTuto input {
+.sectionSolo .numEtTuto input {
     background-color: transparent;
     border: 3px solid var(--orange);
     border-radius: 100px;
@@ -1225,7 +1222,7 @@ li .loginMenu {
     text-align: center;
 }
 
-.sectionSolo .contenu .numEtTuto input:hover {
+.sectionSolo .numEtTuto input:hover {
     width: 100%;
     height: 100%;
     font-size: 21px;
@@ -1236,23 +1233,23 @@ li .loginMenu {
     cursor: pointer;
 }
 
-.sectionSolo .contenu .numEtTuto p {
+.sectionSolo .numEtTuto p {
     font-family: 'Raleway';
     color: white;
     font-weight: 700;
 
 }
-.sectionSolo .contenu .numEtTuto p:last-child{
+.sectionSolo .numEtTuto p:last-child{
     font-size: 25px;
 }
-.sectionSolo .contenu .phraseACompleter {
+.sectionSolo .phraseACompleter {
     font-family: 'FuturaBold';
     font-size: 33px;
     color: white;
     margin-top: 20px;
 }
 
-.sectionSolo .contenu .reponses {
+.sectionSolo .reponses {
     margin-top: 2vh;
     display: flex;
     height: 45vh;
@@ -1260,7 +1257,7 @@ li .loginMenu {
     align-items: center;
 }
 
-.sectionSolo .contenu .reponses .Sousreponses {
+.sectionSolo .reponses .Sousreponses {
     height: 15vh;
     width: 100%;
     display: flex;
@@ -1269,7 +1266,7 @@ li .loginMenu {
     justify-content: space-around;
 }
 
-.sectionSolo .contenu .reponses .Sousreponses .reponseButton {
+.sectionSolo .reponses .Sousreponses .reponseButton {
     background: none;
     border: 3px solid var(--jaune);
     width: 20vw;
@@ -1285,21 +1282,21 @@ li .loginMenu {
     color: white;
 }
 
-.sectionSolo .contenu .reponses .Sousreponses .reponseButton:hover {
+.sectionSolo .reponses .Sousreponses .reponseButton:hover {
     background-position: right center;
     transform: scale(1.05);
     cursor: pointer;
     transition: 0.5s;
 }
 
-.sectionSolo .contenu .reponses .divTimer {
+.sectionSolo .reponses .divTimer {
     height: 10vh;
     width: 10vh;
     border-radius: 100px;   
     border: 5px solid var(--jaune);
 }
 
-.sectionSolo .contenu .reponses .divTimer p {
+.sectionSolo .reponses .divTimer p {
     margin: auto;
     font-family: 'FuturaBold';
     font-size: 30px;
