@@ -718,6 +718,7 @@ h1{
     z-index: 5;
     cursor: pointer;
     transition: transform .2s;
+    height: 100px;
 }
 .mainHeader .container:hover {
     transform: scale(1.1);
@@ -1146,7 +1147,7 @@ li .loginMenu {
 .sectionSolo {
     margin: 100px 0 0 0;
     position: relative;
-    height: 100vh;
+    height: calc(100vh - 100px);
     background-color: #292929;
 }
 .sectionSolo .ytplayer{
@@ -1155,7 +1156,7 @@ li .loginMenu {
 }
 
 .sectionSolo .score {
-    top: 15vh;
+    top: 3vw;
     left: 3vw;
     width: 10vw;
     position: absolute;
@@ -1165,22 +1166,22 @@ li .loginMenu {
 }
 
 .sectionSolo .score img {
-    width: 10vw;
+    width: calc(10vw + 10px);
     border-radius: 50%;
     border: 5px solid var(--rouge);
+    box-sizing: border-box;
 }
 
 .sectionSolo .score figure {
     margin: 0;
-    height: 10vw;
-    margin-bottom: 50px;
+    margin-bottom: 3vw;
 }
 
 .sectionSolo .score .barScoreMax {
     background-color: var(--jaune);
     width: 15px;
     position: relative;
-    height: 50vh;
+    height: calc(100vh - 110px - 19vw);
     border-radius: 20px;
 }
 
@@ -1198,7 +1199,6 @@ li .loginMenu {
     text-align: center;
     margin: auto;
     width: 60%;
-    padding-top: 13vh;
 }
 
 .sectionSolo .numEtTuto .buttonTuto {
