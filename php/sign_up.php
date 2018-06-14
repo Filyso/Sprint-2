@@ -262,7 +262,7 @@ function convertirImage256x256PNG($nomFichierAConvertir, $nomFichierConverti) {
                     <input name="name" type="text" id="name" required="required" size="25" minlength="1" maxlength="25" title="Le prénom ne doit pas dépasser 25 caractères" pattern="^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{1,25})$"/>
         
                     <label for="emailSignUp">Mail</label>
-                    <input name="emailSignUp" type="emailSignUp" id="emailSignUp" required="required" pattern="^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$"/>
+                    <input name="emailSignUp" type="email" id="emailSignUp" required="required" pattern="^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$"/>
     
                     <label for="passSignUp">Mot de passe</label>
                     <input name="passSignUp" type="password" id="passSignUp" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,42}$"/>
