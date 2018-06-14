@@ -281,7 +281,8 @@ function convertirImageCarrePNG($source, $dst, $side){
     <meta charset="utf-8">
     <meta name="description" content="Inscrivez-vous."/>
     <title>Inscrivez-vous</title>
-    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <link rel="stylesheet" type="text/css" href="../css/new_style.css" />
+    <script type="text/javascript" src="../javascript/verification_inscription.js"></script>
 </head>
 
 <body>
@@ -298,22 +299,22 @@ function convertirImageCarrePNG($source, $dst, $side){
             <fieldset>
                 <div>
                     <label for="pseudoSignUp">Pseudo</label>
-                    <input name="pseudoSignUp" type="text" id="pseudoSignUp" required="required" size="25" minlength="4" maxlength="25" title="Le pseudo doit être compris entre 4 et 25 caractères"></input>
+                    <input name="pseudoSignUp" type="text" id="pseudoSignUp" required="required" size="16" minlength="4" maxlength="16" title="Le pseudo doit être compris entre 4 et 16 caractères" pattern="^([0-9a-zA-Z]{4,16})$" />
                 
                     <label for="lastname">Nom</label>
-                    <input name="lastname" type="text" id="lastname" required="required" size="25" minlength="1" maxlength="25" title="Le nom ne doit pas dépasser 25 caractères"></input>
+                    <input name="lastname" type="text" id="lastname" required="required" size="25" minlength="1" maxlength="25" title="Le nom ne doit pas dépasser 25 caractères" pattern="^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{1,25})$"/>
             
                     <label for="name">Prénom</label>
-                    <input name="name" type="text" id="name" required="required" size="25" minlength="1" maxlength="25" title="Le prénom ne doit pas dépasser 25 caractères"></input>
+                    <input name="name" type="text" id="name" required="required" size="25" minlength="1" maxlength="25" title="Le prénom ne doit pas dépasser 25 caractères" pattern="^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{1,25})$"/>
         
                     <label for="emailSignUp">Mail</label>
-                    <input name="emailSignUp" type="emailSignUp" id="emailSignUp" required="required"></input>
+                    <input name="emailSignUp" type="emailSignUp" id="emailSignUp" required="required" pattern="^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$"/>
     
                     <label for="passSignUp">Mot de passe</label>
-                    <input name="passSignUp" type="password" id="passSignUp" required="required"></input>
+                    <input name="passSignUp" type="password" id="passSignUp" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,42}$"/>
     
                     <label for="passverif">Vérification du mot de passe</label>
-                    <input name="passverif" type="password" id="passverif" required="required"></input>
+                    <input name="passverif" type="password" id="passverif" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}$"/>
 
                     <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
 
