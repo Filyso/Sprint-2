@@ -45,11 +45,7 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
         $pseudoConforme = true;
     }else{
         $pseudoConforme = false;
-    }
-    
-    
-
-    
+    }  
     
     if(!empty($ligne["pseudoMbr"]) || !empty($ligne["mailMbr"]) || !(in_array($extension_upload,$extensions_valides)) || $_FILES["icon"]["name"] == ".htacces" || $_FILES["icon"]["size"] > 2000000 || !$mdpConforme || !$pseudoConforme || !($password == $_POST["passverif"]) || strlen($_POST["lastname"]) > 25 || strlen($_POST["name"]) > 25 || strlen($_POST["emailSignUp"]) > 50){
         
@@ -100,7 +96,7 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
         
         $passSha1 = sha1("cle".$_POST["passSignUp"]."hya");
         //inscription valide
-        $requeteSQL = "INSERT INTO `membres` (`pseudoMbr`, `nameMbr`, `prenomMbr`, `mailMbr`, `mdpMbr`,  `isVerif`) VALUES (:pseudoSignUp, :lastname, :name, :emailSignUp, :passSignUp,'0')";
+        $requeteSQL = "INSERT INTO `MEMBRES` (`pseudoMbr`, `nameMbr`, `prenomMbr`, `mailMbr`, `mdpMbr`,  `isVerif`) VALUES (:pseudoSignUp, :lastname, :name, :emailSignUp, :passSignUp,'0')";
         $statement = $pdo->prepare($requeteSQL);
         $statement->execute(array(":pseudoSignUp" => $_POST["pseudoSignUp"], 
                                   ":lastname" => $_POST["lastname"],
@@ -123,7 +119,7 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
         } 
 
 
-        $requeteSQL = "UPDATE `membres` SET `linkIconMbr` = '../images/icons/img_avatar_".md5("azerty".$ligne["idMbr"]).".".$extension_upload."' WHERE idMbr='".$ligne["idMbr"]."'";
+        $requeteSQL = "UPDATE `MEMBRES` SET `linkIconMbr` = '../images/icons/img_avatar_".md5("azerty".$ligne["idMbr"]).".".$extension_upload."' WHERE idMbr='".$ligne["idMbr"]."'";
         $statement = $pdo->query($requeteSQL);
         
         $pdo = null;
@@ -131,15 +127,7 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
         
         sendMail($_POST["emailSignUp"],"Mail de vérification Filyso","Valider votre inscription !\r\n https://projets.iut-laval.univ-lemans.fr/17mmi1pj02/php/script_verif.php?id=".$ligne["idMbr"]);
         
-        
-        
-
-    }
-
-
-    
-    
-    
+    } 
     
 }
 
@@ -236,40 +224,6 @@ function convertirImage256x256PNG($nomFichierAConvertir, $nomFichierConverti) {
 		imageDestroy($imageDestination);
 	}
 
-function convertirImageCarrePNG($source, $dst, $side){
-    
-    header("Content-Type: image/png");
-    
-    $imageSize = getimagesize($source);
-    
-    if($imageSize[0] > $imageSize[1]){
-        $height = $side;
-        $width = round(($imageSize[0]*256)/$imageSize[1]);
-        $portrait = true;
-    }else{
-        $width = $side;
-        $height = round($imageSize[1]*256)/$imageSize[0];
-        $portrait = false;
-    }
-    
-    $imageResource = imagecreatefrompng($source);
-    
-    $imageFinal = imagecreatetruecolor($width, $height);
-    
-    $final = imagecopyresampled($imageFinal, $imageResource, 0, 0, 0, 0, $width, $height, $imageSize[0], $imageSize[1]);
-    
-    if($portrait){
-        $final = imagecrop($imageFinal, ['x' => 0, 'y' => 0, 'width' => $side, 'height' => $side]);
-    }else{
-        $final = imagecrop($imageFinal, ['x' => ($width-$side)/2, 'y' => ($height-$side)/2, 'width' => $side, 'height' => $side]);
-    }
-        
-    
-    imagepng($final, $dst, 0);
-    
-    imagedestroy($imageResource);
-}
-
 ?>
 
 
@@ -298,22 +252,22 @@ function convertirImageCarrePNG($source, $dst, $side){
             <fieldset>
                 <div>
                     <label for="pseudoSignUp">Pseudo</label>
-                    <input name="pseudoSignUp" type="text" id="pseudoSignUp" required="required" size="25" minlength="4" maxlength="25" title="Le pseudo doit être compris entre 4 et 25 caractères"></input>
+                    <input name="pseudoSignUp" type="text" id="pseudoSignUp" required="required" size="25" minlength="4" maxlength="25" title="Le pseudo doit être compris entre 4 et 25 caractères"/>
                 
                     <label for="lastname">Nom</label>
-                    <input name="lastname" type="text" id="lastname" required="required" size="25" minlength="1" maxlength="25" title="Le nom ne doit pas dépasser 25 caractères"></input>
+                    <input name="lastname" type="text" id="lastname" required="required" size="25" minlength="1" maxlength="25" title="Le nom ne doit pas dépasser 25 caractères"/>
             
                     <label for="name">Prénom</label>
-                    <input name="name" type="text" id="name" required="required" size="25" minlength="1" maxlength="25" title="Le prénom ne doit pas dépasser 25 caractères"></input>
+                    <input name="name" type="text" id="name" required="required" size="25" minlength="1" maxlength="25" title="Le prénom ne doit pas dépasser 25 caractères"/>
         
                     <label for="emailSignUp">Mail</label>
-                    <input name="emailSignUp" type="emailSignUp" id="emailSignUp" required="required"></input>
+                    <input name="emailSignUp" type="emailSignUp" id="emailSignUp" required="required"/>
     
                     <label for="passSignUp">Mot de passe</label>
-                    <input name="passSignUp" type="password" id="passSignUp" required="required"></input>
+                    <input name="passSignUp" type="password" id="passSignUp" required="required"/>
     
                     <label for="passverif">Vérification du mot de passe</label>
-                    <input name="passverif" type="password" id="passverif" required="required"></input>
+                    <input name="passverif" type="password" id="passverif" required="required"/>
 
                     <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
 
