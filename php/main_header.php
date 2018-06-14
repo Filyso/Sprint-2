@@ -25,12 +25,12 @@
             $_SESSION["prenom"] = $ligne["prenomMbr"];
             $_SESSION["mail"] = $ligne["mailMbr"];
 
-            echo("Connecté");
+            //echo("Connecté");
         }else{
             if($_POST["pseudo"] == $ligne["pseudoMbr"] && $passSha1Verif == $ligne["mdpMbr"] && $ligne["isVerif"] == 0){
-                echo("L'email de vérification qui vous a été envoyé n'est pas vérifié");
+                //echo("L'email de vérification qui vous a été envoyé n'est pas vérifié");
             }else{
-                echo("Mauvais Identifiants");
+                //echo("Mauvais Identifiants");
             }
             
 
@@ -161,6 +161,9 @@
         <script src="https://kodhus.com/moveit.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="../javascript/popup_login.js"></script>
+
         <script type="text/javascript" src="../javascript/main_header.js"></script>
+
         <script type="text/javascript" src="../javascript/verification_conexion.js"></script>
+
+        <script type="text/javascript" src="../javascript/popup_login.js"></script>
