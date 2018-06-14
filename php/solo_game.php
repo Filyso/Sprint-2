@@ -81,6 +81,10 @@
 
                                 <button id="reponse4Button" class="reponseButton">Exemple de réponse</button>
                             </div>
+                            
+                            <form>
+                                <input id="reponse7Input" type="text" name="reponse7Input"/>
+                            </form>
 
                         </div>
                     </div>
