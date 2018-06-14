@@ -1,6 +1,6 @@
 <?php
 ?>
-
+    <script type="text/javascript" src="../javascript/ajax_form_contact.js"></script>
     <link rel="stylesheet" href="../css/new_style.css" type="text/css" />
     <footer class="footer">
         <a href="./index.php">
@@ -27,11 +27,11 @@
 
             <h3>CONTACTEZ-NOUS</h3>
 
-            <form action="#" method="post">
+            <form id="formContact1" method="post">
 
-                <input type="email" name="email" placeholder="Email" required />
-                <textarea name="message" placeholder="Message" required></textarea>
-                <button>Envoyer</button>
+                <input id="formContactSujet1" type="text" name="text" placeholder="Sujet" required />
+                <textarea id="formContactMsg1" name="message" placeholder="Message" required></textarea>
+                <button id="formContactSub1">Envoyer</button>
 
             </form>
 
