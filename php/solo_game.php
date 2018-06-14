@@ -83,6 +83,7 @@
                             </div>
                             
                             <form>
+                                <label for="reponse7Input">Nombres de mots à trouvés : </label>
                                 <input id="reponse7Input" type="text" name="reponse7Input"/>
                             </form>
 

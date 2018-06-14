@@ -16,27 +16,30 @@ if (document.location.toString().indexOf('?') !== -1) {
 
 "use strict";
 
-// Variable Song
+// Variables Song
 var currentSong;
 var tabTimeCode = [];
 
-// Variable Timer
+// Variables Timer
 var encours;
 var milli;
 var timerMilli;
 var timerSec;
 
-// Variable Game
+// Variables Game
 var niv;
 var score = 0;
-var numQuest = 6;
+var numQuest = 0;
 var stopTimerBool = false;
 var reps;
 var stateChangeTamponMemory = [];
 var verifMemory = false;
 var timeOut = false;
+
+// Variables Score
 var scoreGeneral = 0;
 var scoreGeneralPourcent = 0;
+var scoreReponse;
 var nbGoodAnswer = 0;
 
 
@@ -99,7 +102,7 @@ function initialiser(evt) {
     document.getElementsByClassName("barScore")[0].style.height = 0 + "%";
     document.getElementById("rep").style.display = "none";
     document.querySelector(".resultat").style.display = "none";
-    document.getElementById("reponse7Input").style.display = "none";
+    document.getElementById("reponse7Input").parentElement.style.display = "none";
 }
 
 // ******************* //
@@ -143,7 +146,17 @@ function swap(evt) {
             reps[1].style.display = "none";
             reps[2].style.display = "none";
             reps[3].style.display = "none";
-            document.getElementById("reponse7Input").style.display = "block";
+            $.post(
+                '../php/scripts/script_musique.php', {
+                    function: 'getTimeCodeAnswer',
+                    idTimeCode: tabTimeCode[numQuest],
+                },
+                function (data) {
+                    document.querySelector("label[for=reponse7Input]").textContent += data.trueRep.split(/\b\w+\b/).length - 1;
+                },
+                'json'
+            );
+            document.getElementById("reponse7Input").parentElement.style.display = "block";
             document.getElementById("reponse7Input").addEventListener("keyup", verifierType);
         }
 
@@ -219,8 +232,10 @@ function verifierReps(evt) {
                     btnThis.style.backgroundColor = "#3df22d";
                     stopTimer();
                     calculScore();
+                    afficherScore();
                     document.getElementsByClassName("barScore")[0].style.height = Math.round(scoreGeneralPourcent) + "%";
                 } else {
+                    afficherScore(0);
                     stopTimer();
                     btnThis.style.backgroundColor = "red";
                 }
@@ -235,7 +250,6 @@ function verifierReps(evt) {
 }
 
 function verifierType(evt) {
-    console.log(this.value);
     repInput = this;
     $.post(
         '../php/scripts/script_musique.php', {
@@ -243,24 +257,26 @@ function verifierType(evt) {
             idTimeCode: tabTimeCode[numQuest],
         },
         function (data) {
-            if (repInput.value == data.trueRep) {
+            console.log(data.trueRep);
+            if (repInput.value == data.trueRep.toLowerCase()) {
                 nbGoodAnswer = nbGoodAnswer + 1;
                 repInput.style.borderColor = "#3df22d";
                 stopTimer();
                 calculScore();
+                afficherScore();
                 document.getElementsByClassName("barScore")[0].style.height = Math.round(scoreGeneralPourcent) + "%";
+                setTimeout(afterVerif, 2000);
             } else {
-                stopTimer();
+                afficherScore(0);
                 repInput.style.borderColor = "red";
             }
         },
         'json'
     );
-    
-    setTimeout(afterVerif, 2000);
 }
 
 function afterVerif(evt) {
+    document.getElementById("currentScore").remove();
     if (numQuest < 6) {
         numQuest = numQuest + 1;
         document.getElementById("rep").style.display = "none";
@@ -312,7 +328,12 @@ function afterVerif(evt) {
 // *** Gestion Timer *** //
 // ********************* //
 function timerStart(niv) {
-    milli = 1050;
+    if (numQuest == 6) {
+        milli = 3050;
+    } else {
+        milli = 1050;
+    }
+
     encours = setInterval(decrement, 10);
     stopTimerBool = false;
     timeOut = false;
@@ -357,7 +378,7 @@ function calculScore() {
     var tempsCourant = timerSec + (timerMilli / 100);
 
     if (numQuest == 6) {
-        var tempsInitial = 10;
+        var tempsInitial = 30;
         var scoreMax = 40;
     } else {
         var tempsInitial = 10;
@@ -365,9 +386,29 @@ function calculScore() {
     }
 
     var pourcent = tempsCourant / tempsInitial;
-    var scoreReponse = Math.round(pourcent * scoreMax);
+    scoreReponse = Math.round(pourcent * scoreMax);
 
     scoreGeneral = scoreGeneral + scoreReponse;
 
     scoreGeneralPourcent = scoreGeneral * 100 / 160;
+}
+
+function afficherScore(setScore) {
+
+    var spanScore = document.createElement("span");
+
+    if (setScore != undefined) {
+        spanScore.textContent = "+" + setScore;
+    } else {
+        spanScore.textContent = "+" + scoreReponse;
+    }
+
+    spanScore.id = "currentScore";
+
+    spanScore.style.position = "absolute";
+    spanScore.style.top = "50%";
+    spanScore.style.left = "50%";
+    spanScore.style.transform = "translate(-50%, -50%)";
+
+    document.querySelector(".contenu").appendChild(spanScore);
 }
