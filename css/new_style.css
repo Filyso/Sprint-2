@@ -1644,7 +1644,7 @@ li .loginMenu {
 .signUpPage form{
     width: 40%;
    margin: auto;
-    margin-top: 5vh;
+    margin-top: 4vh;
     border: 5px solid white;
     border-radius: 10px;
     display: flex;
