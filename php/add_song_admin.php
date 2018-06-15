@@ -100,7 +100,7 @@
                 <div class="catSong">
 
                     <label for="catSong">Catégorie</label>
-                    <select id="catSong" size="1" name="catSong" required>
+                    <select id="catSong_1" size="1" name="catSong_1" required>
                         
                     <option value="" disabled selected>Choisissez une catégorie</option>
                     <?php
