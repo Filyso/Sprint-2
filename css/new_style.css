@@ -1650,9 +1650,10 @@ li .loginMenu {
     margin-bottom: 50px;
 }
 .mainAccount table {
+    margin-top: -200px;
     border: 3px solid white;
     font-family: 'Raleway', sans-serif;
-    width: 55%;
+    width: 100%;
     border-collapse: collapse;
     font-size: 30px;
     border-radius: 10px;
@@ -1664,7 +1665,7 @@ li .loginMenu {
 .mainAccount th {
     font-weight: normal;
     font-size: 30px;
-    padding: 10px 20px 10px 20px;
+    padding: 10px 50px 10px 50px;
 }
 .mainAccount td {
     text-align: center;
@@ -1672,6 +1673,9 @@ li .loginMenu {
     font-weight: 300;
     padding: 5px 20px 5px 20px;
     height: 100%;
+}
+.mainAccount td p{
+    margin-left: 100px;
 }
 .mainAccount th:first-child,
 .mainAccount td:first-child {
@@ -1694,21 +1698,23 @@ li .loginMenu {
     color: var(--rouge);
 }
 .mainAccount figure{
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     float: left;
-    margin: 5px 0px 5px 20px;
+    margin: 5px 0px 0px 10px;
     overflow: hidden;
 }
 .mainAccount img {
     width: 100%;
 }
 .infoJoueur {
+    margin-right: 80px;
     font-size: 25px;
 }
 .infoJoueur .figureImgJoueurAccount{
     margin: auto;
+    margin-top: -300px;
     width: 400px;
     height: 400px;
     border: 5px solid var(--rouge);
@@ -1716,4 +1722,24 @@ li .loginMenu {
 .infoJoueur .pseudoJoueurAccount{
     font-size: 50px;
     text-align: center;
+}
+.mainAccount input{
+    background: none;
+    border: 3px solid var(--jaune);
+    width: 150px;
+    height: 50px;
+    font-size: 25px;
+    color: var(--jaune);
+    margin-top: 20px;
+    margin-left: 100px;
+    font-family: 'FuturaBold';
+}
+.badgesGagnes {
+    border: 3px solid white;
+    margin: auto;
+    margin-top: 124px;
+    width: 500px;
+    text-align: center;
+    height: 520px;
+    font-size: 25px;
 }

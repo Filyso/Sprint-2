@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="../css/new_style.css"/>
     </head>
     <body>
-        <?php //include("./main_header.php") ?>
+        <?php include("./main_header.php") ?>
         <main class="mainAccount">
             <div class="infoJoueur">
                 <figure class="figureImgJoueurAccount">
@@ -83,8 +83,9 @@
                     </tr>
                 </table>
             </div>
-            <div class="badgesGagnesAccount">
+            <div class="badgesGagnes">
                 <h2>Badges Gagnés</h2>
+                <p>Bientôt Disponible !</p>
                 <div>
                     <img src=""/>
                     <img src=""/>
