@@ -1630,3 +1630,90 @@ li .loginMenu {
     font-weight: 300;
     font-family: 'Raleway', sans-serif;
 }
+/*************************************************STYLE ACCOUNT********************************/
+
+.mainAccount {
+    background: #292929;
+    margin: 0;
+    padding: 150px 50px 50px 50px;
+    display: flex;
+    align-items: center;
+    font-family: 'Raleway';
+    min-height: 100vh;
+    color: white;
+}
+.mainAccount h1 {
+    margin-top: 0;
+    font-family: 'FuturaBold', sans-serif;
+    font-weight: 500;
+    font-size: 50px;
+    margin-bottom: 50px;
+}
+.mainAccount table {
+    border: 3px solid white;
+    font-family: 'Raleway', sans-serif;
+    width: 55%;
+    border-collapse: collapse;
+    font-size: 30px;
+    border-radius: 10px;
+}
+.mainAccount tr {
+    border: 3px solid white;
+    padding-top: 15px;
+}
+.mainAccount th {
+    font-weight: normal;
+    font-size: 30px;
+    padding: 10px 20px 10px 20px;
+}
+.mainAccount td {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 300;
+    padding: 5px 20px 5px 20px;
+    height: 100%;
+}
+.mainAccount th:first-child,
+.mainAccount td:first-child {
+    text-align: center;
+}
+.mainAccount th:last-child,
+.mainAccount td:last-child {
+    text-align: right;
+}
+.mainAccount .vous{
+    background: white;
+}
+.mainAccount td{
+    color: var(--orange);
+}
+.mainAccount td:last-child {
+    color: #fec65c;
+}
+.mainAccount td:first-child {
+    color: var(--rouge);
+}
+.mainAccount figure{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    float: left;
+    margin: 5px 0px 5px 20px;
+    overflow: hidden;
+}
+.mainAccount img {
+    width: 100%;
+}
+.infoJoueur {
+    font-size: 25px;
+}
+.infoJoueur .figureImgJoueurAccount{
+    margin: auto;
+    width: 400px;
+    height: 400px;
+    border: 5px solid var(--rouge);
+}
+.infoJoueur .pseudoJoueurAccount{
+    font-size: 50px;
+    text-align: center;
+}

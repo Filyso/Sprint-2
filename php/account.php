@@ -15,13 +15,13 @@
         <?php //include("./main_header.php") ?>
         <main class="mainAccount">
             <div class="infoJoueur">
-                <img class="imgJoueurAccount" src=""/>
-                <div class="textInfoJoueur">
+                <figure class="figureImgJoueurAccount">
+                    <img src="../images/chat.jpg" class="imgJoueurAccount" src=""/>
+                </figure>
                     <p class="pseudoJoueurAccount"><?php echo($_SESSION["pseudo"]); ?></p>
                     <p class="nomJoueurAccount">Nom : <?php echo($_SESSION["nom"]); ?></p>
                     <p class="prenomJoueurAccount">Prenom : <?php echo($_SESSION["prenom"]); ?></p>
                     <p class="mailJoueurAccount">Mail : <?php echo($_SESSION["mail"]); ?></p>
-                </div>
                 <input type="button" value="Editer">
             </div>
             <div class="classementAccount">
@@ -34,7 +34,7 @@
                     <tr>
                         <td>
                             <figure>
-                                <img  alt="Photo de profil joueur" src=""/>
+                                <img src="../images/chat.jpg"  alt="Photo de profil joueur" src=""/>
                             </figure>
                             <p>Michel</p>
                         </td>
@@ -44,19 +44,19 @@
                     <tr>
                         <td>
                             <figure>
-                                <img  alt="Photo de profil joueur" src=""/>
+                                <img src="../images/chat.jpg"  alt="Photo de profil joueur" src=""/>
                             </figure>
                             <p>Samuel</p>
                         </td>
                         <td>9.000</td>
                         <td>2</td>
                     </tr>
-                    <tr>
+                    <tr class="vous">
                         <td>
-                            <figure>
-                                <img  alt="Photo de profil joueur" src=""/>
+                            <figure >
+                                <img src="../images/chat.jpg"  alt="Photo de profil joueur" src=""/>
                             </figure>
-                            <p>Francis</p>
+                            <p>Vous</p>
                         </td>
                         <td>8.000</td>
                         <td>3</td>
@@ -64,7 +64,7 @@
                     <tr>
                         <td>
                             <figure>
-                                <img  alt="Photo de profil joueur" src=""/>
+                                <img src="../images/chat.jpg"  alt="Photo de profil joueur" src=""/>
                             </figure>
                             <p>Antonin54</p>
                         </td>
@@ -74,7 +74,7 @@
                     <tr>
                         <td>
                             <figure>
-                                <img  alt="Photo de profil joueur" src=""/>
+                                <img src="../images/chat.jpg"  alt="Photo de profil joueur" src=""/>
                             </figure>
                             <p>ElRodriguo</p>
                         </td>
