@@ -42,7 +42,7 @@
                 <div class="score">
 
                     <figure>
-                        <img alt="Photo de profil" src="../images/chat.jpg" />
+                        <img alt="Photo de profil" src="<?php echo(Membre::isLogged() ? $_SESSION["icon"] : "../images/icons/default/mercury.jpg")?>" />
                     </figure>
 
                     <div class="barScoreMax">
@@ -100,10 +100,12 @@
                         <p class="scoreResultat">Score</p>
                         <p class="chiffreScoreResultat" id="chiffreScoreResultat">85</p>
                     </div>
+<!--
                     <div class="partageReseaux">
                         <img src="../images/share-on-facebook.png" alt="partager sur facebook">
                         <img src="../images/share-twitter.png" alt="partager sur twitter">
                     </div>
+-->
                 </div>
                 <div class="partieDroite">
                     <div class="bonnesReponses">
