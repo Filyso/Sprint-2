@@ -95,7 +95,7 @@
                 'url'            => $url,
                 'timeCodeStart'  => $startTime,
                 'timeCodeEnd'    => $endTime,
-                'previousLyrics' => $ligne["previousLyrics"],
+                'previousLyrics' => stripslashes($ligne["previousLyrics"]),
             );
             
         // ETAPE 3 : Déconnecter du serveur                        
