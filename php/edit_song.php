@@ -211,35 +211,40 @@
                         $ligne3 = $statement3->fetch(PDO::FETCH_ASSOC);
                             
                         while($ligne3 != false){
+                            
+                            $debut = explode(":", $ligne3["debut"]);
+                            $fin = explode(":", $ligne3["fin"]);
+
                 ?>
                 
             <fieldset class="timeCode">
+                
                 <legend>Timecode</legend>
 
                 <div>
                     <span>De</span>
-                    <input id="minStart_1" type="number" name="minStart_1" required="required" min="0" max="10">
+                    <input id="minStart_1" type="number" name="minStart_1" required="required" min="0" max="10" value="<?php echo($debut[1]) ?>">
                     <label for="minStart_1">min</label>
 
-                    <input id="secStart_1" type="number" name="secStart_1" required="required" min="00" max="59">
+                    <input id="secStart_1" type="number" name="secStart_1" required="required" min="00" max="59" value="<?php echo($debut[2]) ?>">
                     <label for="secStart_1">s</label>
                 </div>
 
                 <div>
                     <span>À</span>
-                    <input id="minEnd_1" type="number" name="minEnd_1" required="required" min="0" max="10">
+                    <input id="minEnd_1" type="number" name="minEnd_1" required="required" min="0" max="10" value="<?php echo($fin[1]) ?>">
                     <label for="minEnd_1">min</label>
 
-                    <input id="secEnd_1" type="number" name="secEnd_1" required="required" min="00" max="59">
+                    <input id="secEnd_1" type="number" name="secEnd_1" required="required" min="00" max="59" value="<?php echo($fin[2]) ?>">
                     <label for="secEnd_1">s</label>
                     <div>
                         <label for="prevLyrics_1">Paroles précédentes</label>
-                        <input id="prevLyrics_1" type="text" name="prevLyrics_1" required="required" maxlength="200" value="<?php echo($ligne3["previousLyrics"]) ?>">
+                        <input id="prevLyrics_1" type="text" name="prevLyrics_1" required="required" maxlength="200" value="<?php echo(stripslashes($ligne3["previousLyrics"])) ?>">
                     </div>
 
                     <div>
                         <label for="goodRep_1">Bonne réponse</label>
-                        <input id="goodRep_1" type="text" name="goodRep_1" required="required" maxlength="200" value="<?php echo($ligne3["trueRep"]) ?>">
+                        <input id="goodRep_1" type="text" name="goodRep_1" required="required" maxlength="200" value="<?php echo(stripslashes($ligne3["trueRep"])) ?>">
                     </div>
                 </div>
 
@@ -250,18 +255,21 @@
 
                     <div>
                         <label for="badRep1_1">Autre réponse 1</label>
-                        <input id="badRep1_1" type="text" name="badRep1_1" required="required" maxlength="200" value="<?php echo($ligne3["falseRep1"]) ?>">
+                        <input id="badRep1_1" type="text" name="badRep1_1" required="required" maxlength="200" value="<?php echo(stripslashes($ligne3["falseRep1"])) ?>">
                     </div>
 
                     <div>
                         <label for="badRep2_1">Autre réponse 2</label>
-                        <input id="badRep2_1" type="text" name="badRep2_1" required="required" maxlength="200" value="<?php echo($ligne3["falseRep2"]) ?>">
+                        <input id="badRep2_1" type="text" name="badRep2_1" required="required" maxlength="200" value="<?php echo(stripslashes($ligne3["falseRep2"])) ?>">
                     </div>
 
                     <div>
                         <label for="badRep3_1">Autre réponse 3</label>
-                        <input id="badRep3_1" type="text" name="badRep3_1" required="required" maxlength="200" value="<?php echo($ligne3["falseRep3"]) ?>">
+                        <input id="badRep3_1" type="text" name="badRep3_1" required="required" maxlength="200" value="<?php echo(stripslashes($ligne3["falseRep3"])) ?>">
                     </div>
+                    
+                </fieldset>
+            </fieldset>    
                     
                 <?php 
                      $ligne3 = $statement3->fetch(PDO::FETCH_ASSOC);
@@ -277,8 +285,7 @@
 
                 ?>
 
-                </fieldset>
-            </fieldset>
+                
 
 
             <div>
