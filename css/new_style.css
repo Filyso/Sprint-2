@@ -1630,3 +1630,134 @@ li .loginMenu {
     font-weight: 300;
     font-family: 'Raleway', sans-serif;
 }
+
+/***************************************************
+********************* INSCRIPTION SIGN UP *********************
+***********************************************************/
+
+.signUpPage{
+    height: 100vh;
+     background-color:var(--noir);
+    margin-top: 0px;
+    padding-top: 100px;
+}
+.signUpPage form{
+    width: 40%;
+   margin: auto;
+    margin-top: 5vh;
+    border: 5px solid white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.signUpPage form h1{
+    text-align: center;
+    padding: 0;
+    margin-bottom: 0px;
+    color:var(--jaune);
+    font-family: 'FuturaBold';
+}
+.signUpPage fieldset{
+    height: 60vh;
+    border:none;
+    display: flex;
+    
+}
+.signUpPage form div{
+    display: flex;
+    height: 100%;
+    margin: auto;
+    width: 60%;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: left;
+    
+    
+}
+.signUpPage form div input:not([type="file"]){
+    background-color: white;
+    color:black;
+    padding:10px;
+    border-radius: 5px;
+    font-family: 'Raleway';
+    font-size: 20px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent;
+    outline: none;
+    width:100%;
+    margin: 10px 0px 10px 0px;
+    
+}
+.signUpPage form div input:not([type="file"])::placeholder{
+    color:#5d5d5d;
+    font-family: 'Raleway';
+    font-size: 18px;
+}
+.signUpPage form div input[type="file"]{
+    font-family: 'Raleway';
+    color:white;
+}
+.signUpPage form div input[type="file"]:hover{
+    cursor: pointer;
+}
+.labelIcone{
+    font-family: 'Raleway';
+    font-size: 18px;
+    color:white;
+    margin-bottom: 10px;
+}
+.signUpPage form button{
+    width: 20%;
+    margin: auto;
+    margin-top:30px;
+    margin-bottom: 30px;
+    background-color:transparent;
+    color:white;
+    border: 3px solid var(--jaune);
+    font-size: 1.5vw;
+    padding: 10px;
+    transition: 0.2s;
+    outline: none;
+    font-family: 'RaleWay';
+    font-weight: 700;
+    color:var(--jaune);
+}
+.signUpPage form button:hover{
+    cursor: pointer;
+    transition: 0.2s;
+    border: 3px solid var(--rouge);
+    color: var(--rouge);
+    width: 25%;
+}
+@media only screen and (max-device-width: 480px) {
+    .signUpPage form{
+    width: 80%;    
+    }
+    .signUpPage form h1{
+        font-size: 60px;
+    }
+    .signUpPage form div{
+        width: 90%;
+    }
+    .signUpPage form button{
+        font-size: 40px;
+        width: 30%
+    }
+    .signUpPage form button:hover{
+        width: 40%;
+    }
+    .signUpPage form div input:not([type="file"]){
+        font-size: 40px;
+    }
+    .signUpPage form div input:not([type="file"])::placeholder{
+        font-size: 40px;
+    }
+    .labelIcone{
+        font-size: 30px;
+    }
+    .signUpPage form div input[type="file"]{
+        font-size: 30px;
+    }
+    
+    }

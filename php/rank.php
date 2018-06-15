@@ -149,6 +149,7 @@
                 </table>
             </main>
             <?php include("./main_footer.php")?>
+        
     </body>
 
     </html>
