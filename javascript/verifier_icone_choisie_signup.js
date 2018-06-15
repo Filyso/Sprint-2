@@ -27,8 +27,8 @@
         var chemin;
             
             
-        iconDefault.css("border","0px solid green");
-        thiss.css("border","5px solid green");
+        iconDefault.css("border","0px solid #ed1b70");
+        thiss.css("border","3px solid #ed1b70");
 
         chemin = thiss.data("icon");
             
@@ -48,7 +48,7 @@ function selectIconChoisie(evt){
         var chemin;
 
             
-        iconDefault.css("border","0px solid green");
+        iconDefault.css("border","0px solid #ed1b70");
             
         chemin = thiss.val();
         

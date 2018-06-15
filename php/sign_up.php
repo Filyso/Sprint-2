@@ -1,11 +1,18 @@
 <?php
 $erreur = "";
 session_start();
-if(isset($_GET["isSend"]) && !isset($_FILES["icon"])){
+
+
+
+
+
+if(isset($_GET["isSend"]) && !isset($_FILES["iconChoisie"])){
     $erreur = $erreur."Fichier trop volumineux ou inexistant"."<br/>";
 }
-if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["name"]) && isset($_POST["emailSignUp"]) && isset($_POST["passSignUp"]) && isset($_POST["passverif"]) && isset($_FILES["icon"])){
+if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["name"]) && isset($_POST["emailSignUp"]) && isset($_POST["passSignUp"]) && isset($_POST["passverif"]) && isset($_POST["icon"]) && isset($_FILES["iconChoisie"])){
 
+    
+    
     require("./param.inc.php");
     $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
     $pdo->query("SET NAMES utf8");
@@ -17,12 +24,16 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
     
     $ligne = $statement->fetch(PDO::FETCH_ASSOC);
     
-
+    $extConforme = false;
     // le pseudo ou le mail ne doit pas être déjà utilisé, l'image doit être en jpeg ou png, la taille de l'image ne doit pas dépassé 3Mo, 
-    $extensions_valides = array('jpg', 'jpeg','png');
-    
-    $extension_upload = strtolower(substr(strrchr($_FILES['icon']['name'],'.'),1));
-    
+    if($_FILES["iconChoisie"]["name"] != ""){
+        
+        $extensions_valides = array('jpg', 'jpeg','png');
+
+        $extension_upload = strtolower(substr(strrchr($_FILES['iconChoisie']['name'],'.'),1));
+        
+        $extConforme = true;
+    }
 
     $password = $_POST["passSignUp"];
     
@@ -47,7 +58,11 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
         $pseudoConforme = false;
     }  
     
-    if(!empty($ligne["pseudoMbr"]) || !empty($ligne["mailMbr"]) || !(in_array($extension_upload,$extensions_valides)) || $_FILES["icon"]["name"] == ".htacces" || $_FILES["icon"]["size"] > 2000000 || !$mdpConforme || !$pseudoConforme || !($password == $_POST["passverif"]) || strlen($_POST["lastname"]) > 25 || strlen($_POST["name"]) > 25 || strlen($_POST["emailSignUp"]) > 50){
+    
+    
+    
+    
+    if(!empty($ligne["pseudoMbr"]) || !empty($ligne["mailMbr"]) || $_FILES["iconChoisie"]["name"] == ".htacces" || $_FILES["iconChoisie"]["size"] > 2000000 || !$mdpConforme || !$pseudoConforme || !($password == $_POST["passverif"]) || strlen($_POST["lastname"]) > 25 || strlen($_POST["name"]) > 25 || strlen($_POST["emailSignUp"]) > 50 || $_POST["icon"] == ""){
         
         //inscription invalide
         if(strlen($_POST["lastname"]) > 25){
@@ -69,24 +84,23 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
             $erreur = $erreur."Le pseudo doit contenir au moins 4 caractères, mais il ne doit pas en contenir plus de 16"."<br/>";
         }
         if(!empty($ligne["pseudoMbr"])){
-            $erreur = $erreur."Pseudo déjà utilisé"."<br/>";
+            $erreur = $erreur."Pseudo ou Mail déjà utilisé"."<br/>";
         }
-        if(!empty($ligne["mailMbr"])){
-            $erreur = $erreur."Mail déjà utilisé"."<br/>";
-        }
-        if(!(in_array($extension_upload,$extensions_valides))){
+        if(!($_FILES["iconChoisie"]["name"] == "") && !$extConforme){
             $erreur = $erreur."Le fichier doit être un fichier PNG,JPG ou JPEG"."<br/>";
         }
-        if($_FILES["icon"]["size"] > 2000000){
+        if(!($_FILES["iconChoisie"]["name"] == "") && $_FILES["iconChoisie"]["size"] > 2000000){
             $erreur = $erreur."Le fichier est trop volumineux"."<br/>";
         }
-        if($_FILES["icon"]["name"] == ".htacces"){
+        if(!($_FILES["iconChoisie"]["name"] == "") && $_FILES["iconChoisie"]["name"] == ".htacces"){
             $erreur = $erreur."Pas de fichier .htaccess (on tiens au bon fonctionnement du site)"."<br/>";
         }
         if($password != $_POST["passverif"]){
             $erreur = $erreur."La vérification mot de passe n'est pas valide"."<br/>";
         }
-        
+        if($_POST["icon"] == "" && $_FILES["iconChoisie"]["name"] == ""){
+            $erreur = $erreur."Aucune icône n'a été selectionnée"."<br/>";
+        }
         
         $pdo = null;
         
@@ -109,18 +123,26 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
         $statement = $pdo->query($requeteSQL);
         $ligne = $statement->fetch(PDO::FETCH_ASSOC);
         
-        
-
-        if($extension_upload == "jpg" || $extension_upload == "jpeg"){
-            convertirImage256x256JPG($_FILES["icon"]["tmp_name"], "../images/icons/img_avatar_".md5("azerty".$ligne["idMbr"]).".".$extension_upload);
+       
+        if(($_FILES["iconChoisie"]["name"] != "")){
+            if($extension_upload == "jpg" || $extension_upload == "jpeg"){
+                convertirImage256x256JPG($_FILES["iconChoisie"]["tmp_name"], "../images/icons/img_avatar_".md5("azerty".$ligne["idMbr"]).".".$extension_upload);
+            }
+            if($extension_upload == "png"){
+                convertirImage256x256PNG($_FILES["iconChoisie"]["tmp_name"], "../images/icons/img_avatar_".md5("azerty".$ligne["idMbr"]).".".$extension_upload);
+            } 
+            
+            $requeteSQL = "UPDATE `MEMBRES` SET `linkIconMbr` = '../images/icons/img_avatar_".md5("azerty".$ligne["idMbr"]).".".$extension_upload."' WHERE idMbr='".$ligne["idMbr"]."'";
+            $statement = $pdo->query($requeteSQL);
+            
+            
+        }else{
+            
+            $requeteSQL = "UPDATE `MEMBRES` SET `linkIconMbr` = '../images/icons/default/".$_POST["icon"]."' WHERE idMbr='".$ligne["idMbr"]."'";
+            $statement = $pdo->query($requeteSQL);
+           
         }
-        if($extension_upload == "png"){
-            convertirImage256x256PNG($_FILES["icon"]["tmp_name"], "../images/icons/img_avatar_".md5("azerty".$ligne["idMbr"]).".".$extension_upload);
-        } 
-
-
-        $requeteSQL = "UPDATE `MEMBRES` SET `linkIconMbr` = '../images/icons/img_avatar_".md5("azerty".$ligne["idMbr"]).".".$extension_upload."' WHERE idMbr='".$ligne["idMbr"]."'";
-        $statement = $pdo->query($requeteSQL);
+        
         
         $pdo = null;
         
@@ -241,7 +263,6 @@ function convertirImage256x256PNG($nomFichierAConvertir, $nomFichierConverti) {
 
 <body>
     <?php include("./main_header.php"); ?>
-
     <main class="signUpPage">
         <h1>Sélectionnez la langue et la catégorie</h1>
         <form action="./sign_up.php?isSend=1" method="post"  style="margin-top:200px"  enctype="multipart/form-data">
@@ -273,7 +294,7 @@ function convertirImage256x256PNG($nomFichierAConvertir, $nomFichierConverti) {
                     <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
 
                     <label for="iconChoisie">Icône de joueur (JPG ou PNG | max. 2Mo)</label>
-                    <input name="iconChoisie" type="file" id="iconChoisie" required="required" />  
+                    <input name="iconChoisie" type="file" id="iconChoisie" />  
 
 <?php
             $dossier = glob("../images/icons/default/*");
