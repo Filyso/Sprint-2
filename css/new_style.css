@@ -40,7 +40,7 @@ h1{
 /*************************************** PAGE INDEX ***************************************************/
 @keyframes spriteSliding {
     from {
-        background-position: calc(-70vh * 24);
+        background-position: calc(-69vh * 24);
     }
     to {
         background-position: 0;
@@ -62,8 +62,8 @@ h1{
 .indexLink::after {
     content: '';
     display: block;
-    width: 70vh;
-    height: 70vh;
+    width: 69vh;
+    height: 69vh;
     position: absolute;
     top: 15vh;
     left: calc(50vw - 35vh);
