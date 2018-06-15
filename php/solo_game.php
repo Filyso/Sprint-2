@@ -99,7 +99,6 @@
                     <div class="cercleScore">
                         <p class="scoreResultat">Score</p>
                         <p class="chiffreScoreResultat" id="chiffreScoreResultat">85</p>
-                        <button type="button" class="btnSaveScore">Enregistrer</button>
                     </div>
                     <div class="partageReseaux">
                         <img src="../images/share-on-facebook.png" alt="partager sur facebook">
@@ -112,10 +111,6 @@
                         <p class="txtBonnesReponses">bonnes réponses</p>
                     </div>
                     <a href="pre_game_page.php"><button type="button" class="btnRejouer"><img src="../images/fleche.png" alt="fleche pour rejouer" class="imgReplay"><p>Rejouer</p></button></a>
-                    <div class="badgesObtenus">
-                        <img src="../images/tropheeexemple.png" alt="exemples de badges gagnés">
-                        <p>Badges obtenus</p>
-                    </div>
                 </div>
             </div>
 
