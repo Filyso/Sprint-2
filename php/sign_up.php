@@ -243,36 +243,36 @@ function convertirImage256x256PNG($nomFichierAConvertir, $nomFichierConverti) {
     <?php include("./main_header.php"); ?>
 
     <main class="signUpPage">
-        <h1>Sélectionnez la langue et la catégorie</h1>
-        <form action="./sign_up.php?isSend=1" method="post"  style="margin-top:200px"  enctype="multipart/form-data">
+        <form action="./sign_up.php?isSend=1" method="post"   enctype="multipart/form-data">
             <?php 
             if($erreur != ""){ 
                 echo($erreur);
             } 
             ?>
+            <h1>Inscription</h1>
             <fieldset>
                 <div>
-                    <label for="pseudoSignUp">Pseudo</label>
-                    <input name="pseudoSignUp" type="text" id="pseudoSignUp" required="required" size="16" minlength="4" maxlength="16" title="Le pseudo doit être compris entre 4 et 16 caractères" pattern="^([0-9a-zA-Z]{4,16})$" />
+                    <label for="pseudoSignUp" ></label>
+                    <input placeholder="Pseudo" name="pseudoSignUp" type="text" id="pseudoSignUp" required="required" size="16" minlength="4" maxlength="16" title="Le pseudo doit être compris entre 4 et 16 caractères" pattern="^([0-9a-zA-Z]{4,16})$" />
                 
-                    <label for="lastname">Nom</label>
-                    <input name="lastname" type="text" id="lastname" required="required" size="25" minlength="1" maxlength="25" title="Le nom ne doit pas dépasser 25 caractères" pattern="^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{1,25})$"/>
+                    <label for="lastname"></label>
+                    <input placeholder="Nom" name="lastname" type="text" id="lastname" required="required" size="25" minlength="1" maxlength="25" title="Le nom ne doit pas dépasser 25 caractères" pattern="^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{1,25})$"/>
             
-                    <label for="name">Prénom</label>
-                    <input name="name" type="text" id="name" required="required" size="25" minlength="1" maxlength="25" title="Le prénom ne doit pas dépasser 25 caractères" pattern="^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{1,25})$"/>
+                    <label for="name"></label>
+                    <input placeholder="Prénom" name="name" type="text" id="name" required="required" size="25" minlength="1" maxlength="25" title="Le prénom ne doit pas dépasser 25 caractères" pattern="^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{1,25})$"/>
         
-                    <label for="emailSignUp">Mail</label>
-                    <input name="emailSignUp" type="email" id="emailSignUp" required="required" pattern="^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$"/>
+                    <label for="emailSignUp"></label>
+                    <input placeholder="Adresse mail" name="emailSignUp" type="email" id="emailSignUp" required="required" pattern="^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$"/>
     
-                    <label for="passSignUp">Mot de passe</label>
-                    <input name="passSignUp" type="password" id="passSignUp" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,42}$"/>
+                    <label for="passSignUp"></label>
+                    <input placeholder="Mot de passe" name="passSignUp" type="password" id="passSignUp" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,42}$"/>
     
-                    <label for="passverif">Vérification du mot de passe</label>
-                    <input name="passverif" type="password" id="passverif" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}$"/>
+                    <label for="passverif"></label>
+                    <input placeholder="Confirmer le mot de passe" name="passverif" type="password" id="passverif" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}$"/>
 
                     <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
 
-                    <label for="icon">Icône de joueur (JPG ou PNG | max. 2Mo)</label>
+                    <label for="icon" class="labelIcone">Icône de joueur (JPG ou PNG | max. 2Mo)</label>
                     <input name="icon" type="file" id="icon" required="required" />   
                 </div>
             </fieldset>
