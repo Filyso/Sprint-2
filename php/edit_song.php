@@ -98,12 +98,7 @@
 
                 $ligne2 = $statement2->fetch(PDO::FETCH_ASSOC);
 
-        } catch (Exception $e) {
-            $msg = "Erreur de connexion à la base de donnée";
-        }
-    }else{
-        header('Location: ./admin.php?admin=Modification%2FSuppression+de+chansons');
-    }
+      
 ?>
     <script type="text/javascript" src="../javascript/add_Song.js"></script>
     <section class="addSongSection">
@@ -124,11 +119,13 @@
                 </div>
 
                 <div class="catSong">
-
+                    <?php
+                        while($ligne2 != false){
+                    ?>
                     <label for="catSong">Catégorie</label>
                     <select id="catSong_1" size="1" name="catSong_1" required>
 
-                        <option value="" disabled selected>Choisissez une catégorie</option>
+                        <option value="" disabled>Choisissez une catégorie</option>
                         <?php
                         try {
 
@@ -156,7 +153,16 @@
                     ?>
 
                     </select>
-
+                    <?php
+                            $ligne2 = $statement2->fetch(PDO::FETCH_ASSOC);
+                        }
+                    } catch (Exception $e) {
+                            $msg = "Erreur de connexion à la base de donnée";
+                        }
+                    }else{
+                        header('Location: ./admin.php?admin=Modification%2FSuppression+de+chansons');
+                    }        
+                    ?>
                 </div>
                 <input id="nbCat" type="hidden" name="nbCat" value="1" class="inputMasque" />
                 <input type="button" id="addCatBtn" value="AJOUTER UNE CATEGORIE" />
