@@ -34,11 +34,11 @@
                     
                         if (Membre::isLogged()){
 
-                        $requeteSQL="SELECT membres.pseudoMbr AS 'nom', membres.linkIconMbr AS 'lien', COUNT(joue.score) AS 'score' ".
-                                    "FROM membres ".
-                                    "INNER JOIN joue ".
-                                    "ON membres.idMbr = joue.idMbr ".
-                                    "ORDER BY joue.score DESC";
+                        $requeteSQL="SELECT MEMBRES.idMbr, MEMBRES.pseudoMbr AS 'nom', MEMBRES.linkIconMbr AS 'lien', COUNT(JOUE.score) AS 'score' ".
+                                    "FROM MEMBRES ".
+                                    "INNER JOIN JOUE ".
+                                    "ON MEMBRES.idMbr = JOUE.idMbr ".
+                                    "ORDER BY JOUE.score DESC";
 
                         $tabParam = array();
 
@@ -51,7 +51,7 @@
                             
                         $currentPosition = 1;
                             
-                        while($ligne != $_POST[SESSION]){
+                        while($ligne->idMbr != $_SESSION["id"] && $ligne != false){
                             $currentPosition += 1;
                             $ligne = $statement->fetch(PDO::FETCH_OBJ);
                         }
@@ -91,12 +91,12 @@
                         
                         //Envoie de la seconde requête SQL au serveur
     
-                        $requeteSQL2="SELECT membres.pseudoMbr AS 'nom', membres.linkIconMbr AS 'lien', COUNT(joue.score) AS 'score' ".
-                                    "FROM membres ".
-                                    "INNER JOIN joue ".
-                                    "ON membres.idMbr = joue.idMbr ".
+                        $requeteSQL2="SELECT MEMBRES.pseudoMbr AS 'nom', MEMBRES.linkIconMbr AS 'lien', COUNT(JOUE.score) AS 'score' ".
+                                    "FROM MEMBRES ".
+                                    "INNER JOIN JOUE ".
+                                    "ON MEMBRES.idMbr = JOUE.idMbr ".
                                     "LIMIT 10 ".
-                                    "ORDER BY joue.score DESC";
+                                    "ORDER BY JOUE.score DESC";
 
                         $tabParam2 = array();
 

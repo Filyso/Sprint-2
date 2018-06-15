@@ -15,12 +15,12 @@
         <?php //include("./main_header.php") ?>
         <main class="mainAccount">
             <div class="infoJoueur">
-                <img class="imgJoueurAccount" src""/>
+                <img class="imgJoueurAccount" src=""/>
                 <div class="textInfoJoueur">
-                    <p class="pseudoJoueurAccount">Pseudo du joueur</p>
-                    <p class="nomJoueurAccount">Nom : nom du joueur</p>
-                    <p class="prenomJoueurAccount">Prenom : prenom du joueur</p>
-                    <p class="mailJoueurAccount">Mail : oui@gmail.com</p>
+                    <p class="pseudoJoueurAccount"><?php echo($_SESSION["pseudo"]); ?></p>
+                    <p class="nomJoueurAccount">Nom : <?php echo($_SESSION["nom"]); ?></p>
+                    <p class="prenomJoueurAccount">Prenom : <?php echo($_SESSION["prenom"]); ?></p>
+                    <p class="mailJoueurAccount">Mail : <?php echo($_SESSION["mail"]); ?></p>
                 </div>
                 <input type="button" value="Editer">
             </div>
