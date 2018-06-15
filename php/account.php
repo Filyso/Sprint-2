@@ -15,7 +15,7 @@
         <?php //include("./main_header.php") ?>
         <main class="mainAccount">
             <div class="infoJoueur">
-                <img class="imgJoueurAccount" src""/>
+                <img class="imgJoueurAccount" src=""/>
                 <div class="textInfoJoueur">
                     <p class="pseudoJoueurAccount"><?php echo($_SESSION["pseudo"]); ?></p>
                     <p class="nomJoueurAccount">Nom : <?php echo($_SESSION["nom"]); ?></p>
