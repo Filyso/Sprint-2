@@ -92,7 +92,7 @@
         $("#formContact2 p").text("");
         submitbtn2.text("Loading...");
         
-        $("#formContact2 p").text("");
+      
         submitbtn2.off("click",verifier2);
         
         $.post(
@@ -109,14 +109,14 @@
                     $("#formContactSujet2").val("");
                     $("#formContactMsg2").val("");
                     $("#formContact2 p").text("Vous devez être connecté pour utiliser ce formulaire");
-                    submitbtn2.click(verifier2);
+                    
                     submitbtn2.text("Envoyer");
                 }else if(data == "Reussie"){
                     
                     $("#formContactSujet2").val("");
                     $("#formContactMsg2").val("");
                     $("#formContact2 p").text("Votre message a bien été envoyé");
-                    submitbtn2.click(verifier2);
+                    
                     submitbtn2.text("Envoyer");
                     
                     
@@ -129,12 +129,12 @@
                     $("#formContactMsg2").val("");
                     $("#formContact2 p").text("Le formulaire n'est pas complet");
                     
-                    submitbtn2.click(verifier2);
+                    
                     submitbtn2.text("Envoyer");
                     
                 }else{
                     $("#formContact2 p").text("Un problème est survenue. Il se peut que se service soit momentanément indisponible.");
-                    submitbtn2.click(verifier2);
+                    
                     submitbtn2.text("Envoyer");
                 }
                 submitbtn2.click(verifier2);
