@@ -99,7 +99,7 @@
 
                 <div class="catSong">
 
-                    <label for="catSong">Catégorie</label>
+                    <label for="catSong_1">Catégorie</label>
                     <select id="catSong_1" size="1" name="catSong_1" required>
                         
                     <option value="" disabled selected>Choisissez une catégorie</option>

@@ -210,10 +210,14 @@
                         $statement3 = $pdo->query($requeteSQL3);
                         $ligne3 = $statement3->fetch(PDO::FETCH_ASSOC);
                             
+                        $iterationCount = 0;
+                            
                         while($ligne3 != false){
                             
                             $debut = explode(":", $ligne3["debut"]);
                             $fin = explode(":", $ligne3["fin"]);
+                            
+                            $iterationCount += 1;
 
                 ?>
                 
@@ -223,28 +227,28 @@
 
                 <div>
                     <span>De</span>
-                    <input id="minStart_1" type="number" name="minStart_1" required="required" min="0" max="10" value="<?php echo($debut[1]) ?>">
-                    <label for="minStart_1">min</label>
+                    <input id="minStart_<?php echo($iterationCount) ?>" type="number" name="minStart_<?php echo($iterationCount) ?>" required="required" min="0" max="10" value="<?php echo($debut[1]) ?>">
+                    <label for="minStart_<?php echo($iterationCount) ?>">min</label>
 
-                    <input id="secStart_1" type="number" name="secStart_1" required="required" min="00" max="59" value="<?php echo($debut[2]) ?>">
-                    <label for="secStart_1">s</label>
+                    <input id="secStart_<?php echo($iterationCount) ?>" type="number" name="secStart_<?php echo($iterationCount) ?>" required="required" min="00" max="59" value="<?php echo($debut[2]) ?>">
+                    <label for="secStart_<?php echo($iterationCount) ?>">s</label>
                 </div>
 
                 <div>
                     <span>À</span>
-                    <input id="minEnd_1" type="number" name="minEnd_1" required="required" min="0" max="10" value="<?php echo($fin[1]) ?>">
-                    <label for="minEnd_1">min</label>
+                    <input id="minEnd_<?php echo($iterationCount) ?>" type="number" name="minEnd_<?php echo($iterationCount) ?>" required="required" min="0" max="10" value="<?php echo($fin[1]) ?>">
+                    <label for="minEnd_<?php echo($iterationCount) ?>">min</label>
 
-                    <input id="secEnd_1" type="number" name="secEnd_1" required="required" min="00" max="59" value="<?php echo($fin[2]) ?>">
-                    <label for="secEnd_1">s</label>
+                    <input id="secEnd_<?php echo($iterationCount) ?>" type="number" name="secEnd_<?php echo($iterationCount) ?>" required="required" min="00" max="59" value="<?php echo($fin[2]) ?>">
+                    <label for="secEnd_<?php echo($iterationCount) ?>">s</label>
                     <div>
-                        <label for="prevLyrics_1">Paroles précédentes</label>
-                        <input id="prevLyrics_1" type="text" name="prevLyrics_1" required="required" maxlength="200" value="<?php echo(stripslashes($ligne3["previousLyrics"])) ?>">
+                        <label for="prevLyrics_<?php echo($iterationCount) ?>">Paroles précédentes</label>
+                        <input id="prevLyrics_<?php echo($iterationCount) ?>" type="text" name="prevLyrics_<?php echo($iterationCount) ?>" required="required" maxlength="200" value="<?php echo(stripslashes($ligne3["previousLyrics"])) ?>">
                     </div>
 
                     <div>
-                        <label for="goodRep_1">Bonne réponse</label>
-                        <input id="goodRep_1" type="text" name="goodRep_1" required="required" maxlength="200" value="<?php echo(stripslashes($ligne3["trueRep"])) ?>">
+                        <label for="goodRep_<?php echo($iterationCount) ?>">Bonne réponse</label>
+                        <input id="goodRep_<?php echo($iterationCount) ?>" type="text" name="goodRep_<?php echo($iterationCount) ?>" required="required" maxlength="200" value="<?php echo(stripslashes($ligne3["trueRep"])) ?>">
                     </div>
                 </div>
 
@@ -254,18 +258,18 @@
                     <legend>Réponses</legend>
 
                     <div>
-                        <label for="badRep1_1">Autre réponse 1</label>
-                        <input id="badRep1_1" type="text" name="badRep1_1" required="required" maxlength="200" value="<?php echo(stripslashes($ligne3["falseRep1"])) ?>">
+                        <label for="badRep1_<?php echo($iterationCount) ?>">Autre réponse 1</label>
+                        <input id="badRep1_<?php echo($iterationCount) ?>" type="text" name="badRep1_<?php echo($iterationCount) ?>" required="required" maxlength="200" value="<?php echo(stripslashes($ligne3["falseRep1"])) ?>">
                     </div>
 
                     <div>
-                        <label for="badRep2_1">Autre réponse 2</label>
-                        <input id="badRep2_1" type="text" name="badRep2_1" required="required" maxlength="200" value="<?php echo(stripslashes($ligne3["falseRep2"])) ?>">
+                        <label for="badRep2_<?php echo($iterationCount) ?>">Autre réponse 2</label>
+                        <input id="badRep2_<?php echo($iterationCount) ?>" type="text" name="badRep2_<?php echo($iterationCount) ?>" required="required" maxlength="200" value="<?php echo(stripslashes($ligne3["falseRep2"])) ?>">
                     </div>
 
                     <div>
-                        <label for="badRep3_1">Autre réponse 3</label>
-                        <input id="badRep3_1" type="text" name="badRep3_1" required="required" maxlength="200" value="<?php echo(stripslashes($ligne3["falseRep3"])) ?>">
+                        <label for="badRep3_<?php echo($iterationCount) ?>">Autre réponse 3</label>
+                        <input id="badRep3_<?php echo($iterationCount) ?>" type="text" name="badRep3_<?php echo($iterationCount) ?>" required="required" maxlength="200" value="<?php echo(stripslashes($ligne3["falseRep3"])) ?>">
                     </div>
                     
                 </fieldset>
