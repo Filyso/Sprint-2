@@ -293,21 +293,23 @@ function convertirImage256x256PNG($nomFichierAConvertir, $nomFichierConverti) {
 
                     <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
 
-                    <label for="iconChoisie">Icône de joueur (JPG ou PNG | max. 2Mo)</label>
-                    <input name="iconChoisie" type="file" id="iconChoisie" />  
-
+                    <label for="iconChoisie" class="labelIcone">Importez votre icône (JPG ou PNG | max. 2Mo)</label>
+                    <input name="iconChoisie" type="file" id="iconChoisie" />
+                    <p class="choisirImageDefinis"> ou choisissez-en une parmi celles-ci :</p>
+                <div class="imagesProfil">
 <?php
             $dossier = glob("../images/icons/default/*");
             foreach($dossier as $fichier){ 
                 $nomfichier = substr($fichier,24);
-?>
-            <figure data-icon="<?php echo($nomfichier); ?>" style="width: 75px; border-radius:50%; overflow:hidden; margin:auto;">
-                    <img style="width : 100%; margin:auto;" src="<?php echo($fichier); ?>" alt="Icône par défault"/>      
+?>          
+            <figure  data-icon="<?php echo($nomfichier); ?>">
+                    <img src="<?php echo($fichier); ?>" alt="Icône par défault"/>      
             </figure>  
 <?php
             }        
                     
 ?>
+                        </div>
                     <input id="hiddenSignUp" type="hidden" name="icon" value=""/>
                 </div>
             </fieldset>

@@ -16,7 +16,7 @@
         hiddenBtn = $("#hiddenSignUp");
         iconChoisie = $("#iconChoisie");
         
-
+        iconDefault.css("border","3px solid #231F20");
         iconDefault.click(selectIconDefault);
         iconChoisie.change(selectIconChoisie);
     }
@@ -27,8 +27,8 @@
         var chemin;
             
             
-        iconDefault.css("border","0px solid #ed1b70");
-        thiss.css("border","3px solid #ed1b70");
+        iconDefault.css("border","3px solid #231F20");
+        thiss.css("border","3px solid #FEC65C");
 
         chemin = thiss.data("icon");
             
@@ -48,7 +48,7 @@ function selectIconChoisie(evt){
         var chemin;
 
             
-        iconDefault.css("border","0px solid #ed1b70");
+        iconDefault.css("border","3px solid #231F20");
             
         chemin = thiss.val();
         
