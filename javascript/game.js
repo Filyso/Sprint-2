@@ -101,6 +101,7 @@ function initialiser(evt) {
     document.getElementsByClassName("barScore")[0].style.height = 0 + "%";
     document.getElementById("rep").style.display = "none";
     document.querySelector(".resultat").style.display = "none";
+    document.getElementById("reponse7Input").parentElement.addEventListener("submit", function(evt) {evt.preventDefault();});
     document.getElementById("reponse7Input").parentElement.style.display = "none";
 }
 
