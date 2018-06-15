@@ -267,7 +267,6 @@ function verifierType(evt) {
                 document.getElementsByClassName("barScore")[0].style.height = Math.round(scoreGeneralPourcent) + "%";
                 setTimeout(afterVerif, 2000);
             } else {
-                afficherScore(0);
                 repInput.style.borderColor = "red";
             }
         },
@@ -306,10 +305,10 @@ function afterVerif(evt) {
 
                 document.getElementById("numQuestion").textContent = "Question n° " + (numQuest + 1);
 
-                reps[0].style.backgroundColor = "#784199";
-                reps[1].style.backgroundColor = "#784199";
-                reps[2].style.backgroundColor = "#784199";
-                reps[3].style.backgroundColor = "#784199";
+                reps[0].style.backgroundColor = "transparent";
+                reps[1].style.backgroundColor = "transparent";
+                reps[2].style.backgroundColor = "transparent";
+                reps[3].style.backgroundColor = "transparent";
             },
             'json'
         );
@@ -410,7 +409,6 @@ function afficherScore(setScore) {
     spanScore.style.position = "absolute";
     spanScore.style.top = "50%";
     spanScore.style.left = "50%";
-    spanScore.style.transform = "translate(-50%, -50%)";
 
     document.querySelector(".contenu").appendChild(spanScore);
 }
