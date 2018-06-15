@@ -236,7 +236,7 @@ function convertirImage256x256PNG($nomFichierAConvertir, $nomFichierConverti) {
     <meta name="description" content="Inscrivez-vous."/>
     <title>Inscrivez-vous</title>
     <link rel="stylesheet" type="text/css" href="../css/new_style.css" />
-    <script type="text/javascript" src="../javascript/verification_inscription.js"></script>
+    
 </head>
 
 <body>
@@ -272,14 +272,31 @@ function convertirImage256x256PNG($nomFichierAConvertir, $nomFichierConverti) {
 
                     <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
 
-                    <label for="icon">Icône de joueur (JPG ou PNG | max. 2Mo)</label>
-                    <input name="icon" type="file" id="icon" required="required" />   
+                    <label for="iconChoisie">Icône de joueur (JPG ou PNG | max. 2Mo)</label>
+                    <input name="iconChoisie" type="file" id="iconChoisie" required="required" />  
+
+<?php
+            $dossier = glob("../images/icons/default/*");
+            foreach($dossier as $fichier){ 
+                $nomfichier = substr($fichier,24);
+?>
+            <figure data-icon="<?php echo($nomfichier); ?>" style="width: 75px; border-radius:50%; overflow:hidden; margin:auto;">
+                    <img style="width : 100%; margin:auto;" src="<?php echo($fichier); ?>" alt="Icône par défault"/>      
+            </figure>  
+<?php
+            }        
+                    
+?>
+                    <input id="hiddenSignUp" type="hidden" name="icon" value=""/>
                 </div>
             </fieldset>
-            <button type="submit">Terminer</button>
+            <button id="btnSignUp" type="submit">Terminer</button>
         </form>
     </main>
     <?php include("./main_footer.php"); ?>
+    
+    <script type="text/javascript" src="../javascript/verification_inscription.js"></script>
+    <script type="text/javascript" src="../javascript/verifier_icone_choisie_signup.js"></script>
 </body>
 
 </html>
