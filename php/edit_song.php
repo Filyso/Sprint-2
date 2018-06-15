@@ -3,13 +3,11 @@
 
     if(isset($_POST["song"])) {
         try {
-        // ETAPE 1 : Se connecter au serveur de base de données
             require("./param.inc.php");
             $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
             $pdo->query("SET NAMES utf8");
             $pdo->query("SET CHARACTER SET 'utf8'");
 
-        // ETAPE 2 : Envoyer une requête SQL
             // AJOUT CHANSON
             $requeteSQL = "INSERT INTO CHANSONS(nameSong, linkVideo, lang, idMbr) VALUES (:paramNameSong, :paramLinkVideo, :paramLangSong, NULL)";
             $statement = $pdo->prepare($requeteSQL);
@@ -65,10 +63,8 @@
                 $statement = $pdo->query($requeteSQL);
             }
                         
-        // ETAPE 3 : Déconnecter du serveur
             $pdo = null;
-            
-        // SETUP message retourner à l'utilisateur
+        
             $msg = "La chanson " . $_POST["song"] . " a bien été ajoutée à la base de donnée.";
             
         } catch (Exception $e) {
@@ -81,7 +77,7 @@
 
     if(isset($_POST["songId"])){
         try {
-            // ETAPE 1 : Se connecter au serveur de base de données
+        
                 require("./param.inc.php");
                 $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
                 $pdo->query("SET NAMES utf8");
@@ -135,17 +131,15 @@
                         <option value="" disabled selected>Choisissez une catégorie</option>
                         <?php
                         try {
-                        //Se connecter au serveur de base de données
+
                             require("./param.inc.php");
                             $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
                             $pdo->query("SET NAMES utf8");
                             $pdo->query("SET CHARACTER SET 'utf8'");
 
-                        //Envoyer une requête SQL (demander la liste des données)
                             $requeteSQL = "SELECT idCat, nameCat FROM CATEGORIES";
                             $statement = $pdo->query($requeteSQL);
 
-                        //Traiter les données retourner
                             $ligne = $statement->fetch(PDO::FETCH_ASSOC);
                             while($ligne != false) {
                     ?>
@@ -155,8 +149,6 @@
                             <?php
                                 $ligne = $statement->fetch(PDO::FETCH_ASSOC);
                             }
-                        // Fin de la boucle
-                        //Déconnecter du serveur
                             $pdo = null;
                         } catch (Exception $e) {
                             echo($e);
@@ -188,33 +180,39 @@
                 <?php
                 if(isset($_POST["songId"])){
                         try {
-                        //Connection au serveur de base de données
                         require("./param.inc.php");
                         $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
                         $pdo->query("SET NAMES utf8");
                         $pdo->query("SET CHARACTER SET 'utf8'");
                             
-                        $requeteSQL3 = "SELECT TIMECODES.timeCode AS 'fin', TIMECODES.startTimeCode AS 'debut', TIMECODES.trueRep, TIMECODES.falseRep1, TIMECODES.falseRep2, TIMECODES.falseRep3, TIMECODES.previousLyrics".  
-                                    "FROM TIMECODES".
-                                    "INNER JOIN CHANSONS".
-                                    "ON CHANSONS.idSong = TIMECODES.idSong".
-                                    "WHERE CHANSONS.idSong = ". $_POST["songId"];
+                        $requeteSQL3 = "SELECT TIMECODES.timeCode AS 'fin', TIMECODES.startTimeCode AS 'debut', TIMECODES.trueRep, TIMECODES.falseRep1, TIMECODES.falseRep2, TIMECODES.falseRep3, TIMECODES.previousLyrics ".  
+                                    "FROM TIMECODES ".
+                                    "INNER JOIN CHANSONS ".
+                                    "ON CHANSONS.idSong = TIMECODES.idSong ".
+                                    "WHERE CHANSONS.idSong = '".$_POST["songId"]."'";
                             
                         $statement3 = $pdo->query($requeteSQL3);
                         $ligne3 = $statement3->fetch(PDO::FETCH_ASSOC);
+
+                        $nbLigne3=0;
                             
-                        } catch (Exception $e) {
-                            $msg = "Erreur de connexion à la base de donnée";
-                        }
-                }else{
-                    header('Location: ./admin.php?admin=Modification%2FSuppression+de+chansons');
-                }
-
+                        while($ligne3 != false){
+                            $nbLigne3 += 1; 
+                            $ligne3 = $statement3->fetch(PDO::FETCH_ASSOC);
+                            }
                 ?>
-
-                <input id="nbTimecode" type="hidden" name="nbTimecode" value="1" class="inputMasque" />
+                
+                <input id="nbTimecode" type="hidden" name="nbTimecode" value="<?php echo($nbLigne3) ?>" class="inputMasque" />
 
             </fieldset>
+                
+                <?php
+                        $statement3 = $pdo->query($requeteSQL3);
+                        $ligne3 = $statement3->fetch(PDO::FETCH_ASSOC);
+                            
+                        while($ligne3 != false){
+                ?>
+                
             <fieldset class="timeCode">
                 <legend>Timecode</legend>
 
@@ -236,12 +234,12 @@
                     <label for="secEnd_1">s</label>
                     <div>
                         <label for="prevLyrics_1">Paroles précédentes</label>
-                        <input id="prevLyrics_1" type="text" name="prevLyrics_1" required="required" maxlength="200">
+                        <input id="prevLyrics_1" type="text" name="prevLyrics_1" required="required" maxlength="200" value="<?php echo($ligne3["previousLyrics"]) ?>">
                     </div>
 
                     <div>
                         <label for="goodRep_1">Bonne réponse</label>
-                        <input id="goodRep_1" type="text" name="goodRep_1" required="required" maxlength="200">
+                        <input id="goodRep_1" type="text" name="goodRep_1" required="required" maxlength="200" value="<?php echo($ligne3["trueRep"]) ?>">
                     </div>
                 </div>
 
@@ -252,18 +250,32 @@
 
                     <div>
                         <label for="badRep1_1">Autre réponse 1</label>
-                        <input id="badRep1_1" type="text" name="badRep1_1" required="required" maxlength="200">
+                        <input id="badRep1_1" type="text" name="badRep1_1" required="required" maxlength="200" value="<?php echo($ligne3["falseRep1"]) ?>">
                     </div>
 
                     <div>
                         <label for="badRep2_1">Autre réponse 2</label>
-                        <input id="badRep2_1" type="text" name="badRep2_1" required="required" maxlength="200">
+                        <input id="badRep2_1" type="text" name="badRep2_1" required="required" maxlength="200" value="<?php echo($ligne3["falseRep2"]) ?>">
                     </div>
 
                     <div>
                         <label for="badRep3_1">Autre réponse 3</label>
-                        <input id="badRep3_1" type="text" name="badRep3_1" required="required" maxlength="200">
+                        <input id="badRep3_1" type="text" name="badRep3_1" required="required" maxlength="200" value="<?php echo($ligne3["falseRep3"]) ?>">
                     </div>
+                    
+                <?php 
+                     $ligne3 = $statement3->fetch(PDO::FETCH_ASSOC);
+                     }
+                    
+                     $pdo = null;
+                        } catch (Exception $e) {
+                            $msg = "Erreur de connexion à la base de donnée";
+                        }
+                }else{
+                    header('Location: ./admin.php?admin=Modification%2FSuppression+de+chansons');
+                }
+
+                ?>
 
                 </fieldset>
             </fieldset>
