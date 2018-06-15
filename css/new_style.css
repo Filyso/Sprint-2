@@ -1845,7 +1845,7 @@ li .loginMenu {
     display: flex;
     align-items: center;
     font-family: 'Raleway';
-    min-height: 100vh;
+    min-height: calc(100vh - 100px);
     color: white;
 }
 .mainAccount h1 {
@@ -1856,7 +1856,6 @@ li .loginMenu {
     margin-bottom: 50px;
 }
 .mainAccount table {
-    margin-top: -200px;
     border: 3px solid white;
     font-family: 'Raleway', sans-serif;
     width: 100%;
@@ -1920,9 +1919,8 @@ li .loginMenu {
 }
 .infoJoueur .figureImgJoueurAccount{
     margin: auto;
-    margin-top: -300px;
-    width: 400px;
-    height: 400px;
+    width: 256px;
+    height: 256px;
     border: 5px solid var(--rouge);
 }
 .infoJoueur .pseudoJoueurAccount{
@@ -1942,8 +1940,6 @@ li .loginMenu {
 }
 .badgesGagnes {
     border: 3px solid white;
-    margin: auto;
-    margin-top: 124px;
     width: 500px;
     text-align: center;
     height: 520px;

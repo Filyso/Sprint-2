@@ -1,5 +1,11 @@
 <?php
     session_start();
+
+    if(!isset($_SESSION["id"]) && !isset($_SESSION["pseudo"])){
+        header("Location: index.php");
+    }
+
+
 	header("Content-type: text/html; charset: UTF-8");
 ?>
 <!DOCTYPE html>
@@ -16,7 +22,7 @@
         <main class="mainAccount">
             <div class="infoJoueur">
                 <figure class="figureImgJoueurAccount">
-                    <img src="../images/chat.jpg" class="imgJoueurAccount" src=""/>
+                    <img src="<?php echo($_SESSION["icon"]); ?>" class="imgJoueurAccount" src=""/>
                 </figure>
                     <p class="pseudoJoueurAccount"><?php echo($_SESSION["pseudo"]); ?></p>
                     <p class="nomJoueurAccount">Nom : <?php echo($_SESSION["nom"]); ?></p>
@@ -54,7 +60,7 @@
                     <tr class="vous">
                         <td>
                             <figure >
-                                <img src="../images/chat.jpg"  alt="Photo de profil joueur" src=""/>
+                                <img src="<?php echo($_SESSION["icon"]); ?>"  alt="Photo de profil joueur" src=""/>
                             </figure>
                             <p>Vous</p>
                         </td>
