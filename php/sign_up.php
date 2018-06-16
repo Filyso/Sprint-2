@@ -5,7 +5,6 @@ session_start();
 
 
 
-
 if(isset($_GET["isSend"]) && !isset($_FILES["iconChoisie"])){
     $erreur = $erreur."Fichier trop volumineux ou inexistant"."<br/>";
 }
