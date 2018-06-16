@@ -13,7 +13,7 @@
         var span = document.getElementsByClassName("close_regle");
         span[0].addEventListener("click", hide);
 
-        var btn = document.getElementById("tutoButton");
+        var btn = document.getElementById("tutoBtn");
         btn.addEventListener("click", show);
     }
 

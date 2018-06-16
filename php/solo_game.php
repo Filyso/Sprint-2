@@ -45,51 +45,6 @@
                         <img alt="Photo de profil" src="<?php echo(Membre::isLogged() ? $_SESSION["icon"] : "../images/icons/default/mercury.jpg")?>" />
                     </figure>
 
-                    <div class="barScoreMax">
-                        <div class="barScore">
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="contenu">
-                    <div class="numEtTuto">
-                        <div class="buttonTuto">
-                            <input type="button" value="?" id="tutoButton" class="tutoButton" />
-                        </div>
-
-                        <p id="numQuestion" class="numQuestion">Question n°1</p>
-                        <p id="NomEtArtiste" class="NomEtArtiste">Bella - Maître Gims</p>
-                    </div>
-
-                    <div id="ytplayer" class="ytplayer"></div>
-                    
-                    <div id="rep">
-                        <p id="phraseACompleter" class="phraseACompleter">"Phrase à compléter ... qui peut être très longue aaaaaaaaa jebg sdgjzeruhzeae g"</p>
-
-                        <div class="reponses">
-                            <div class="Sousreponses">
-                                <button id="reponse1Button" class="reponseButton"> EXEMPLE DE REPONSE</button>
-
-                                <button id="reponse2Button" class="reponseButton"> Lalalallalalaalaa </button>
-                            </div>
-                            <div class="divTimer">
-                                <p id="timer" class="timer">10</p>
-                            </div>
-                            <div class="Sousreponses">
-                                <button id="reponse3Button" class="reponseButton">Exemple Exemple Exemple Lalalallalalaalaa Lalalallalalaalaa  </button>
-
-                                <button id="reponse4Button" class="reponseButton">Exemple de réponse</button>
-                            </div>
-                            
-                            <form>
-                                <label for="reponse7Input">Nombres de mots à trouvés : </label>
-                                <input id="reponse7Input" type="text" name="reponse7Input"/>
-                            </form>
-
-                        </div>
-                    </div>
-
                 </div>
 
             </section>

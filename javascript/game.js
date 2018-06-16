@@ -91,17 +91,123 @@ function onYouTubePlayerAPIReady() {
                     'onStateChange': swap
                 }
             });
-            document.getElementById("NomEtArtiste").textContent = data.nameSong + " - " + data.nameArtist;
+            document.getElementById("nomEtArtiste").textContent = data.nameSong + " - " + data.nameArtist;
         },
         'json'
     );
 }
 
 function initialiser(evt) {
-    document.getElementsByClassName("barScore")[0].style.height = 0 + "%";
-    document.getElementById("rep").style.display = "none";
+    // Création de la barre de score
+    var barScoreMax = document.createElement("div");
+    barScoreMax.classList.add("barScoreMax");
+    
+    var barScore = document.createElement("div");
+    barScore.classList.add("barScore");
+    barScore.style.height = 0 + "%";
+    barScoreMax.appendChild(barScore);
+    
+    document.getElementsByClassName("score")[0].appendChild(barScoreMax);
+
+    // Création de la div contenu
+    var contenu = document.createElement("div");
+    contenu.classList.add("contenu");
+    document.querySelector(".sectionSolo").appendChild(contenu);
+        // Création de la div numEtTuto
+    var numEtTuto = document.createElement("div");
+    numEtTuto.classList.add("numEtTuto");
+    contenu.appendChild(numEtTuto);
+            // Création du bouton de tuto
+    var tutoBtn = document.createElement("input");
+    tutoBtn.id = "tutoBtn";
+    tutoBtn.type = "button";
+    tutoBtn.value = "?";
+    numEtTuto.appendChild(tutoBtn);
+            // Création du paragraphe de num de question
+    var numQuestion = document.createElement("p");
+    numQuestion.id = "numQuestion";
+    numQuestion.classList.add("numQuestion");
+    numEtTuto.appendChild(numQuestion);
+            // Création du paragraphe de nom de chanson et d'artiste
+    var nomEtArtiste = document.createElement("p");
+    nomEtArtiste.id = "nomEtArtiste";
+    nomEtArtiste.classList.add("nomEtArtiste");
+    numEtTuto.appendChild(nomEtArtiste);
+        // Création de la div ytplayer
+    var ytplayer = document.createElement("div");
+    ytplayer.id = "ytplayer";
+    ytplayer.classList.add("ytplayer");
+    contenu.appendChild(ytplayer);
+        // Création de la div rep
+    var rep = document.createElement("div");
+    rep.id = "rep";
+    rep.style.display = "none";
+    contenu.appendChild(rep);
+            // Création du paragraphe de phrase à compléter
+    var phraseACompleter = document.createElement("p");
+    phraseACompleter.id = "phraseACompleter";
+    phraseACompleter.classList.add("phraseACompleter");
+    rep.appendChild(phraseACompleter);
+            // Création de la div contenant les réponses
+    var reponses = document.createElement("div");
+    reponses.classList.add("reponses");
+    rep.appendChild(reponses);
+                // Création div de sous-réponses 1
+    var sousReponses1 = document.createElement("div");
+    sousReponses1.classList.add("sousReponses");
+    reponses.appendChild(sousReponses1);
+                    // Création bouton de réponse 1
+    var reponse1Btn = document.createElement("button");
+    reponse1Btn.id = "reponse1Btn";
+    reponse1Btn.classList = "reponseBtn";
+    sousReponses1.appendChild(reponse1Btn);
+                    // Création bouton de réponse 2
+    var reponse2Btn = document.createElement("button");
+    reponse2Btn.id = "reponse2Btn";
+    reponse2Btn.classList = "reponseBtn";
+    sousReponses1.appendChild(reponse2Btn);
+                // Création div timer
+    var divTimer = document.createElement("div");
+    divTimer.classList.add("divTimer");
+    reponses.appendChild(divTimer);
+                    // Création paragraphe timer
+    var timer = document.createElement("p");
+    timer.id = "timer";
+    timer.classList.add("timer");
+    divTimer.appendChild(timer);
+            // Création div de sous-réponses 2
+    var sousReponses2 = document.createElement("div");
+    sousReponses2.classList.add("sousReponses");
+    reponses.appendChild(sousReponses2);
+                    // Création bouton de réponse 3
+    var reponse3Btn = document.createElement("button");
+    reponse3Btn.id = "reponse3Btn";
+    reponse3Btn.classList = "reponseBtn";
+    sousReponses2.appendChild(reponse3Btn);
+                    // Création bouton de réponse 4
+    var reponse4Btn = document.createElement("button");
+    reponse4Btn.id = "reponse4Btn";
+    reponse4Btn.classList = "reponseBtn";
+    sousReponses2.appendChild(reponse4Btn);
+            // Création form reponse 7
+    var form = document.createElement("form");
+    reponses.appendChild(form);
+                // Création du label reponse 7
+    var label = document.createElement("label");
+    label.for = "reponse7Input";
+    label.textContent = "Nombres de mots à trouvés : ";
+    form.appendChild(label);
+                // Création de l'input reponse 7
+    var reponse7Input = document.createElement("input");
+    reponse7Input.id = "reponse7Input";
+    reponse7Input.type = "text";
+    reponse7Input.name = "reponse7Input";
+    form.appendChild(reponse7Input);
+    
     document.querySelector(".resultat").style.display = "none";
-    document.getElementById("reponse7Input").parentElement.addEventListener("submit", function(evt) {evt.preventDefault();});
+    document.getElementById("reponse7Input").parentElement.addEventListener("submit", function (evt) {
+        evt.preventDefault();
+    });
     document.getElementById("reponse7Input").parentElement.style.display = "none";
 }
 
@@ -253,14 +359,12 @@ function verifierType(evt) {
     repInput = this;
     $.post(
         '../php/scripts/script_musique.php', {
-            function: 'getTimeCodeAnswer',
+            function: 'checkAnswer',
             idTimeCode: tabTimeCode[numQuest],
+            playerAnswer: repInput.value.toLowerCase()
         },
         function (data) {
-            //var regExToReplace = new RegExp(/\'/, 'g');
-            console.log(data.trueRep);
-            //console.log(data.trueRep.replace(regExToReplace, "{'}"));
-            if (repInput.value.toLowerCase() == data.trueRep.toLowerCase()) {
+            if (data.answerIsGood) {
                 nbGoodAnswer = nbGoodAnswer + 1;
                 repInput.style.borderColor = "#3df22d";
                 stopTimer();
@@ -301,11 +405,11 @@ function afterVerif(evt) {
                     endSeconds: data.timeCodeEnd,
                 });
 
-                document.getElementById("NomEtArtiste").textContent = data.nameSong + " - " + data.nameArtist;
+                document.getElementById("nomEtArtiste").textContent = data.nameSong + " - " + data.nameArtist;
 
                 player.playVideo();
 
-                document.getElementById("numQuestion").textContent = "Question n° " + (numQuest + 1);
+                document.getElementById("numQuestion").textContent = "#" + (numQuest + 1);
 
                 reps[0].style.backgroundColor = "transparent";
                 reps[1].style.backgroundColor = "transparent";
