@@ -11,7 +11,6 @@
         <title>Jeu en Solo</title>
         <meta name="description" content="Jouez !">
         <link rel="stylesheet" type="text/css" href="../css/new_style.css" />
-        <script type="text/javascript" src="../javascript/popup_regles.js"></script>
     </head>
 
     <body>
@@ -49,34 +48,13 @@
 
             </section>
 
-            <div class="resultat">
-                <div class="partieGauche">
-                    <div class="cercleScore">
-                        <p class="scoreResultat">Score</p>
-                        <p class="chiffreScoreResultat" id="chiffreScoreResultat">85</p>
-                    </div>
-<!--
-                    <div class="partageReseaux">
-                        <img src="../images/share-on-facebook.png" alt="partager sur facebook">
-                        <img src="../images/share-twitter.png" alt="partager sur twitter">
-                    </div>
--->
-                </div>
-                <div class="partieDroite">
-                    <div class="bonnesReponses">
-                        <p class="nbBonneReponse" id="nbBonneReponse">6</p>
-                        <p class="txtBonnesReponses">bonnes réponses</p>
-                    </div>
-                    <a href="pre_game_page.php"><button type="button" class="btnRejouer"><img src="../images/fleche.png" alt="fleche pour rejouer" class="imgReplay"><p>Rejouer</p></button></a>
-                </div>
-            </div>
-
         </main>
 
         <?php include("./main_footer.php");?>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript" src="../javascript/game.js"></script>
+        <script type="text/javascript" src="../javascript/popup_regles.js"></script>
     </body>
 
     </html>

@@ -1725,7 +1725,7 @@ li .loginMenu {
     transition: 0.2s;
 }
 
-.mainResultat .partieDroite .imgReplay {
+.mainResultat .partieDroite .replayImg {
     height: 60px;
     width: 60px;
     transform: rotate(90deg);
@@ -1737,7 +1737,7 @@ li .loginMenu {
     transition: 0.3s ease;
 }
 
-.mainResultat .partieDroite button:hover .imgReplay {
+.mainResultat .partieDroite button:hover .replayImg {
     transform: rotate(-90deg);
     transition: 0.3s ease;
 }
