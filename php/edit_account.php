@@ -49,13 +49,9 @@ if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"])){
 <body>
     <?php include("./main_header.php"); ?>
     <main class="signUpPage">
-        <form id="editForm" action="./edit_account.php?isSend=1" method="post"  enctype="multipart/form-data">
-            <?php 
-            if($erreur != ""){ 
-                echo($erreur);
-            } 
-            ?>
+        <form id="editFormPerso" method="post">
             <h1>Edition compte</h1>
+            <h2>Informations personnelles</h2>
             <fieldset>
                 <div>
                     <label for="pseudoEdit" ></label>
@@ -69,7 +65,15 @@ if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"])){
         
                     <label for="emailEdit"></label>
                     <input placeholder="Adresse mail" name="emailEdit" type="email" id="emailEdit" required="required" pattern="^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$" disabled value="<?php echo($ligne["mailMbr"]); ?>"/>
-                    
+                </div>
+            </fieldset>
+            <button id="editSubmitPerso" type="submit">Editer</button>
+        </form>
+                
+        <form id="editFormPass" method="post">
+            <h2>Mot de passe</h2>
+            <fieldset>
+                <div>          
                     <label for="oldPass"></label>
                     <input placeholder="Ancien mot de passe" name="oldPass" type="password" id="oldPass" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,42}$"/>
                     
@@ -78,7 +82,15 @@ if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"])){
     
                     <label for="passverifEdit"></label>
                     <input placeholder="Confirmer le mot de passe" name="passverifEdit" type="password" id="passverifEdit" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}$"/>
-
+                </div>
+            </fieldset>
+            <button id="editSubmitPass" type="submit">Editer</button>
+        </form>
+          
+        <form id="editFormIcone" method="post" enctype="multipart/form-data">
+            <h2>Icône de joueur</h2>
+            <fieldset>
+                <div>
                     <input type="hidden" name="MAX_FILE_SIZE" value="2000000"/>
 
                     <label for="iconChoisieEdit" class="labelIcone">Remplacer votre icône par l'image que vous souhaitez (JPG ou PNG | max. 2Mo)</label>
@@ -101,10 +113,10 @@ if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"])){
                     <input id="hiddenEdit" type="hidden" name="icon" value=""/>
                 </div>
             </fieldset>
-            <button id="editSubmit" type="submit">Editer</button>
+            <button id="editSubmitIcone" type="submit">Editer</button>
         </form>
     </main>
-    <?php include("./main_footer.php"); ?>
+    <?php //include("./main_footer.php"); ?>
     
 <!--
     <script type="text/javascript" src="../javascript/verification_inscription.js"></script>
