@@ -19,6 +19,11 @@
                     getTimeCodeAnswers($_POST['idTimeCode']);
                 };
                 break;
+            case "checkAnswer":
+                if(isset($_POST['idTimeCode']) && isset($_POST['playerAnswer'])) {
+                    checkAnswer($_POST['idTimeCode'], $_POST['playerAnswer']);
+                };
+                break;
             default:
                 echo "{error: Fonction non défini}";
         }
@@ -161,6 +166,38 @@
             $ligne = $statement->fetch(PDO::FETCH_ASSOC);
             
             $retour = array('trueRep' => stripslashes($ligne["trueRep"]));
+            
+        // ETAPE 3 : Déconnecter du serveur                        
+            $pdo = null;
+            
+            // Envoi du retour (on renvoi le tableau $retour encodé en JSON)
+            echo json_encode($retour);
+        } catch (Exception $e) {
+        }
+    }
+
+    function checkAnswer($idTimeCode, $playerAnswer) {
+        // ETAPE 1 : Se connecter au serveur de base de données
+        try {
+            require("../param.inc.php");
+            $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
+            $pdo->query("SET NAMES utf8");
+            $pdo->query("SET CHARACTER SET 'utf8'");
+            
+        // ETAPE 2 : Envoyer une requête SQL
+            // conditions pour l'envoi de la requête en fonction du choix du joueur
+            
+            $requeteSQL = "SELECT LOWER(trueRep) AS trueRep FROM TIMECODES WHERE TIMECODES.idTimeCode=:paramIdTimeCode";
+            
+            $statement = $pdo->prepare($requeteSQL);
+            $statement->execute(array(":paramIdTimeCode" => $idTimeCode));
+            $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+            
+            if ($playerAnswer == $ligne['trueRep']) {
+                $retour = array('answerIsGood' => true);
+            } else {
+                $retour = array('answerIsGood' => false);
+            }
             
         // ETAPE 3 : Déconnecter du serveur                        
             $pdo = null;

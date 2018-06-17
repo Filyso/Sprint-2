@@ -1349,20 +1349,15 @@ li .loginMenu {
     width: 100%;
 }
 
-.sectionSolo .numEtTuto .buttonTuto {
-    width: 40px;
-    height: 40px;
+.sectionSolo .numEtTuto input {
     position: relative;
     top: 48px;
-    left: 100%;
-}
-
-.sectionSolo .numEtTuto input {
+    left: calc(50% - 18px);
     background-color: transparent;
     border: 3px solid var(--orange);
     border-radius: 100px;
-    width: 90%;
-    height: 90%;
+    width: 36px;
+    height: 36px;
     font-family: 'FuturaBold';
     font-size: 20px;
     color: var(--orange);
@@ -1371,11 +1366,10 @@ li .loginMenu {
 }
 
 .sectionSolo .numEtTuto input:hover {
-    width: 100%;
-    height: 100%;
     font-size: 21px;
     border: 3px solid var(--rouge);
     color: var(--rouge);
+    transform: scale(1.1);
     transform-origin: center;
     transition: 0.2s;
     cursor: pointer;
@@ -1407,7 +1401,7 @@ li .loginMenu {
     align-items: center;
 }
 
-.sectionSolo .reponses .Sousreponses {
+.sectionSolo .reponses .sousReponses {
     height: 15vh;
     width: 100%;
     display: flex;
@@ -1416,7 +1410,7 @@ li .loginMenu {
     justify-content: space-around;
 }
 
-.sectionSolo .reponses .Sousreponses .reponseButton {
+.sectionSolo .reponses .sousReponses .reponseBtn {
     background: none;
     border: 3px solid var(--jaune);
     width: 20vw;
@@ -1432,7 +1426,7 @@ li .loginMenu {
     color: white;
 }
 
-.sectionSolo .reponses .Sousreponses .reponseButton:hover {
+.sectionSolo .reponses .sousReponses .reponseBtn:hover {
     background-position: right center;
     transform: scale(1.05);
     cursor: pointer;
@@ -1731,7 +1725,7 @@ li .loginMenu {
     transition: 0.2s;
 }
 
-.mainResultat .partieDroite .imgReplay {
+.mainResultat .partieDroite .replayImg {
     height: 60px;
     width: 60px;
     transform: rotate(90deg);
@@ -1743,7 +1737,7 @@ li .loginMenu {
     transition: 0.3s ease;
 }
 
-.mainResultat .partieDroite button:hover .imgReplay {
+.mainResultat .partieDroite button:hover .replayImg {
     transform: rotate(-90deg);
     transition: 0.3s ease;
 }
