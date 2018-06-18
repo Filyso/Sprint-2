@@ -1,7 +1,4 @@
 <?php
-    session_start();
-	header("Content-type: text/html; charset: UTF-8");
-
     if(isset($_POST["admin"]) && $_POST["admin"] == "supprimer") {
         try {
             // ETAPE 1 : Se connecter au serveur de base de données
@@ -22,7 +19,7 @@
         }
     }
 ?>
-    <section class="selectMulti">
+    <section class="modifySong">
         <table>
             <thead>
                 <tr>
@@ -49,24 +46,23 @@
                             while($ligne != false) {
                     ?>
                     <tr>
-
-                        <td>
+                        <td class="nameSong">
                             <?php echo($ligne["nameSong"])?>
                         </td>
-                        <td>
+                        <td class="nameArtist">
                             <?php echo($ligne["nameArtist"])?>
                         </td>
                         <td>
                             <form action="./edit_song.php" method="post">
                                 <input type="submit" value="Modifier" name="admin" class="editSongBtn" />
-                                <input type="hidden" value="<?php echo($ligne["idSong"])?>" name="songId" />
+                                <input type="hidden" value="<?php echo($ligne[" idSong "])?>" name="songId" />
                             </form>
                         </td>
                         <td>
                             <form action="admin.php?admin=Modification%2FSuppression+de+chansons" method="post">
                                 <input type="button" value="Supprimer" class="suppSongBtn" />
                                 <input type="hidden" value="supprimer" name="admin" />
-                                <input type="hidden" value="<?php echo($ligne["idSong"])?>" name="songId" />
+                                <input type="hidden" value="<?php echo($ligne[" idSong "])?>" name="songId" />
                             </form>
                         </td>
                     </tr>

@@ -21,13 +21,13 @@
         <main class="mainAccount">
             <div class="infoJoueur">
                 <figure class="figureImgJoueurAccount">
-                    <img src="<?php echo($_SESSION[" icon "]); ?>" class="imgJoueurAccount" src="" />
+                    <img src="<?php echo($_SESSION["icon"]); ?>" class="imgJoueurAccount"/>
                 </figure>
                     <p class="pseudoJoueurAccount"><?php echo($_SESSION["pseudo"]); ?></p>
                     <p class="nomJoueurAccount">Nom : <?php echo($_SESSION["nom"]); ?></p>
                     <p class="prenomJoueurAccount">Prénom : <?php echo($_SESSION["prenom"]); ?></p>
                     <p class="mailJoueurAccount">Mail : <?php echo($_SESSION["mail"]); ?></p>
-                <input type="button" value="Editer">
+                <input id="btnEdit" type="button" value="Editer" onClick='document.location.href="./edit_account.php"'>
             </div>
             <div class="classementAccount">
                 <table class="tableauAccount">
