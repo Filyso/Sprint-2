@@ -9,8 +9,8 @@
         <div class="footerGauche">
 
             <p class="footer-links">
-                <a href="./about.php#equipe">L'ÉQUIPE</a> ·
-                <a href="./about.php#idee">BOÎTE À IDÉE</a> ·
+                <a href="./about.php#equipe">L'ÉQUIPE</a>
+                <a href="./about.php#idee">BOÎTE À IDÉE</a>
                 <a href="./about.php#avenir">À VENIR</a>
 
             </p>
