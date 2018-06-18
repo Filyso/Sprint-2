@@ -263,7 +263,7 @@ function convertirImage256x256PNG($nomFichierAConvertir, $nomFichierConverti) {
 <body>
     <?php include("./main_header.php"); ?>
     <main class="signUpPage">
-        <form action="./sign_up.php?isSend=1" method="post"   enctype="multipart/form-data">
+        <form id="signUpForm" action="./sign_up.php?isSend=1" method="post"   enctype="multipart/form-data">
             <?php 
             if($erreur != ""){ 
                 echo($erreur);

@@ -4,22 +4,79 @@ session_start();
 
 
 
-if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"])){
-    
-    
-    
+if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"]) && isset($_FILES["iconChoisieEdit"]) && isset($_POST["hiddenEdit"])){
     
     require("./param.inc.php");
     $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
     $pdo->query("SET NAMES utf8");
     $pdo->query("SET CHARACTER SET 'utf8'");
+    
+    
+    $extConforme = false;
+    // le pseudo ou le mail ne doit pas être déjà utilisé, l'image doit être en jpeg ou png, la taille de l'image ne doit pas dépassé 3Mo, 
+    if(isset($_FILES["iconChoisieEdit"]) && $_FILES["iconChoisieEdit"]["name"] != ""){
+        
+        $extensions_valides = array('jpg', 'jpeg','png');
 
-    $requeteSQL = "SELECT pseudoMbr, nameMbr, prenomMbr, mailMbr, mdpMbr, linkIconMbr FROM MEMBRES WHERE idMbr='".$_SESSION["id"]."'";
-    $statement = $pdo->query($requeteSQL);
+        $extension_upload = strtolower(substr(strrchr($_FILES['iconChoisieEdit']['name'],'.'),1));
+        
+        $extConforme = true;
+    }
+
     
-    $ligne = $statement->fetch(PDO::FETCH_ASSOC);
     
     
+    if(isset($_FILES["iconChoisieEdit"]) && ($_FILES["iconChoisieEdit"]["name"] == ".htacces" || $_FILES["iconChoisieEdit"]["size"] > 2000000 || $_POST["hiddenEdit"] == "")){
+        
+        //inscription invalide
+        
+        
+        
+        if(!($_FILES["iconChoisieEdit"]["name"] == "") && !$extConforme){
+            $erreur = $erreur."Le fichier doit être un fichier PNG,JPG ou JPEG"."<br/>";
+        }
+        if(!($_FILES["iconChoisieEdit"]["name"] == "") && $_FILES["iconChoisieEdit"]["size"] > 2000000){
+            $erreur = $erreur."Le fichier est trop volumineux"."<br/>";
+        }
+        if(!($_FILES["iconChoisieEdit"]["name"] == "") && $_FILES["iconChoisieEdit"]["name"] == ".htacces"){
+            $erreur = $erreur."Pas de fichier .htaccess (on tiens au bon fonctionnement du site)"."<br/>";
+        }
+        if($_POST["hiddenEdit"] == "" && $_FILES["iconChoisieEdit"]["name"] == ""){
+            $erreur = $erreur."Aucune icône n'a été selectionnée"."<br/>";
+        }
+        
+        $pdo = null;
+        
+        
+    }else{
+        $erreur = "Inscription réussie, un mail de vérification vous a été envoyé(e)";
+        
+        //inscription valide
+       
+        if(($_FILES["iconChoisieEdit"]["name"] != "")){
+            if($extension_upload == "jpg" || $extension_upload == "jpeg"){
+                convertirImage256x256JPG($_FILES["iconChoisie"]["tmp_name"], "../images/icons/img_avatar_".md5("azerty".$ligne["idMbr"]).".".$extension_upload);
+            }
+            if($extension_upload == "png"){
+                convertirImage256x256PNG($_FILES["iconChoisie"]["tmp_name"], "../images/icons/img_avatar_".md5("azerty".$ligne["idMbr"]).".".$extension_upload);
+            } 
+            
+            $requeteSQL = "UPDATE `MEMBRES` SET `linkIconMbr` = '../images/icons/img_avatar_".md5("azerty".$ligne["idMbr"]).".".$extension_upload."' WHERE idMbr='".$ligne["idMbr"]."'";
+            $statement = $pdo->query($requeteSQL);
+            
+            
+        }else{
+            
+            $requeteSQL = "UPDATE `MEMBRES` SET `linkIconMbr` = '../images/icons/default/".$_POST["icon"]."' WHERE idMbr='".$ligne["idMbr"]."'";
+            $statement = $pdo->query($requeteSQL);
+           
+        }
+        
+        
+        $pdo = null;
+        
+        
+    } 
     
     
 }else{
@@ -28,6 +85,75 @@ if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"])){
 
 
 
+function convertirImage256x256JPG($nomFichierAConvertir, $nomFichierConverti) {
+		$imageSource = imageCreateFromJpeg($nomFichierAConvertir);
+		$tailleImage = getImageSize($nomFichierAConvertir);
+		$largeurImageSource = $tailleImage[0];
+		$hauteurImageSource = $tailleImage[1];
+		if ($hauteurImageSource > $largeurImageSource) {
+			$largeurImageReechantillonne = 256;
+			// Contraint le rééchantillonage à une largeur fixe et aintient le ratio de l'image
+			$hauteurImageReechantillonne = round(($largeurImageReechantillonne / $largeurImageSource) * $hauteurImageSource);
+			$positionX = 0 ;
+			$positionY = round(($hauteurImageReechantillonne-$largeurImageReechantillonne)/2) ;
+		} 
+		else {
+			$hauteurImageReechantillonne = 256;
+			// Contraint le rééchantillonage à une largeur fixe et maintient le ratio de l'image
+			$largeurImageReechantillonne = round(($hauteurImageReechantillonne / $hauteurImageSource) * $largeurImageSource);
+			$positionX = round(($largeurImageReechantillonne-$hauteurImageReechantillonne)/2) ;
+			$positionY = 0 ;
+		}
+		$imageReechantillonne = imageCreateTrueColor($largeurImageReechantillonne, $hauteurImageReechantillonne );
+		/* ImageCopyResampled copie et rééchantillonne l'image originale*/
+		imageCopyResampled($imageReechantillonne,$imageSource,0,0,0,0,
+                       $largeurImageReechantillonne, $hauteurImageReechantillonne,
+                       $largeurImageSource, $hauteurImageSource);
+		$largeurImageDestination = 256 ;
+		$hauteurImageDestination = 256 ;
+		$imageDestination = imageCreateTrueColor($largeurImageDestination,$hauteurImageDestination);
+		imageCopy ( $imageDestination, $imageReechantillonne, 0, 0,
+                $positionX, $positionY, $largeurImageDestination,
+                $hauteurImageDestination );
+		imageDestroy($imageReechantillonne);
+		imageJpeg($imageDestination, $nomFichierConverti) ;
+		imageDestroy($imageDestination);
+	}
+
+function convertirImage256x256PNG($nomFichierAConvertir, $nomFichierConverti) {
+		$imageSource = imageCreateFromPng($nomFichierAConvertir);
+		$tailleImage = getImageSize($nomFichierAConvertir);
+		$largeurImageSource = $tailleImage[0];
+		$hauteurImageSource = $tailleImage[1];
+		if ($hauteurImageSource > $largeurImageSource) {
+			$largeurImageReechantillonne = 256;
+			// Contraint le rééchantillonage à une largeur fixe et aintient le ratio de l'image
+			$hauteurImageReechantillonne = round(($largeurImageReechantillonne / $largeurImageSource) * $hauteurImageSource);
+			$positionX = 0 ;
+			$positionY = round(($hauteurImageReechantillonne-$largeurImageReechantillonne)/2) ;
+		} 
+		else {
+			$hauteurImageReechantillonne = 256;
+			// Contraint le rééchantillonage à une largeur fixe et maintient le ratio de l'image
+			$largeurImageReechantillonne = round(($hauteurImageReechantillonne / $hauteurImageSource) * $largeurImageSource);
+			$positionX = round(($largeurImageReechantillonne-$hauteurImageReechantillonne)/2) ;
+			$positionY = 0 ;
+		}
+		$imageReechantillonne = imageCreateTrueColor($largeurImageReechantillonne, $hauteurImageReechantillonne );
+		/* ImageCopyResampled copie et rééchantillonne l'image originale*/
+		imageCopyResampled($imageReechantillonne,$imageSource,0,0,0,0,
+                       $largeurImageReechantillonne, $hauteurImageReechantillonne,
+                       $largeurImageSource, $hauteurImageSource);
+		$largeurImageDestination = 256 ;
+		$hauteurImageDestination = 256 ;
+		$imageDestination = imageCreateTrueColor($largeurImageDestination,$hauteurImageDestination);
+		imageCopy ( $imageDestination, $imageReechantillonne, 0, 0,
+                $positionX, $positionY, $largeurImageDestination,
+                $hauteurImageDestination );
+		imageDestroy($imageReechantillonne);
+		imagePng($imageDestination, $nomFichierConverti) ;
+		imageDestroy($imageDestination);
+	}
 
 
 
@@ -46,7 +172,7 @@ if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"])){
     
 </head>
 
-<body>
+<body style="background-color:black">
     <?php include("./main_header.php"); ?>
     <main class="signUpPage">
         <form id="editFormPerso" method="post">
@@ -87,7 +213,7 @@ if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"])){
             <button id="editSubmitPass" type="submit">Editer</button>
         </form>
           
-        <form id="editFormIcone" method="post" enctype="multipart/form-data">
+        <form id="editFormIcone" method="post" enctype="multipart/form-data" action="edit_account.php">
             <h2>Icône de joueur</h2>
             <fieldset>
                 <div>
@@ -110,18 +236,20 @@ if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"])){
                     
 ?>
                         </div>
-                    <input id="hiddenEdit" type="hidden" name="icon" value=""/>
+                    <input id="hiddenEdit" type="hidden" name="hiddenEdit" value=""/>
                 </div>
             </fieldset>
             <button id="editSubmitIcone" type="submit">Editer</button>
+            <p><?php echo($erreur); ?></p>
         </form>
     </main>
     <?php //include("./main_footer.php"); ?>
     
 <!--
     <script type="text/javascript" src="../javascript/verification_inscription.js"></script>
-    <script type="text/javascript" src="../javascript/verifier_icone_choisie_signup.js"></script>
 -->
+    <script type="text/javascript" src="../javascript/verifier_icone_choisie_signup.js"></script>
+
     <script type="text/javascript" src="../javascript/edit_account.js"></script>
 </body>
 

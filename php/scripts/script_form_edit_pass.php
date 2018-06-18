@@ -16,7 +16,7 @@ if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"])){
         $statement = $pdo->query($requeteSQL);
 
         $ligne = $statement->fetch(PDO::FETCH_ASSOC);
-
+        
 
         $ancienPassCrypt = $ligne["mdpMbr"];
 
@@ -32,23 +32,28 @@ if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"])){
                 $requeteSQL = "UPDATE `MEMBRES` SET `mdpMbr` = :newpass WHERE idMbr='".$_SESSION["id"]."'";
                 $statement = $pdo->prepare($requeteSQL);
                 $statement->execute(array(":newpass" => sha1("cle".$_POST["pass"]."hya")));
-
-
-            }
-            if($_POST["pass"] != $_POST["passVerif"]){
-                // vérification mdp incorrect
                 
-            }
-            if(!(strlen($_POST["pass"])>=8 && strlen($_POST["pass"])<=42 && preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])#', $_POST["pass"]))){
-               
-               // nouveau mot de passe incorect il doit comporté...
-           }
+                $msg .= "Le mot de passe a bien été modfié \r\n ";
 
-            if($ancienPassCrypt == sha1("cle".$_POST["oldpass"]."hya") && $_POST["pass"]!= ""){
-                //mot de passe actuel incorrect
-                
-            }
+            }else{
+                if($ancienPassCrypt != sha1("cle".$_POST["oldpass"]."hya")){
+                    //mot de passe actuel incorrect
+                    $msg .= "Le mot de passe actuel n'est pas le bon \r\n ";
+                }else{
+                    
+                    if(!(strlen($_POST["pass"])>=8 && strlen($_POST["pass"])<=42 && preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])#', $_POST["pass"]))){
+                        $msg .= "Le mot de passe doit contenir entre 8 et 42 caractères, au moins une majuscule et une minuscule. \r\n ";
+                       // nouveau mot de passe incorect il doit comporté...
+                    }
+                    
+                    if($_POST["pass"] != $_POST["passVerif"]){
+                    // vérification mdp incorrect
+                        $msg .= "La vérifiacation du mot de passe est erronée \r\n ";
+                    }
+                    
 
+                }
+            }
         }
 
 
@@ -58,8 +63,12 @@ if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"])){
     }
     
     
-    echo ($msg);
-}
-
     
+}else{
+    $msg .= "Une erreur est survenue, il se peut que se service soit momentanément indisponible, merci de votre compréhension. \r\n ";
+}
+$pdo = null; 
+echo ($msg);
+ 
+
 ?>

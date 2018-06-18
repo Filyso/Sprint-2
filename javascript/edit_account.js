@@ -4,41 +4,41 @@
 
     var submitbtnPerso;
     var submitbtnPass;
-    var submitbtnIcone;
+
     var messagePerso;
     var messagePass;
-    var messageIcone;
+
     var formPerso;
     var formPass;
-    var formIcone;
+
 
     
     function initialiser(evt) {
         
         submitbtnPerso = $("#editSubmitPerso");
         submitbtnPass = $("#editSubmitPass");
-        submitbtnIcone = $("#editSubmitIcone");
+
         
         formPerso = $("#editFormPerso");
         formPass = $("#editFormPass");
-        formIcone = $("#editFormIcone");
+
         
         
         formPerso.append("<p id=\"msg1\" ></p>");
         formPass.append("<p id=\"msg2\" ></p>");
-        formIcone.append("<p id=\"msg3\" ></p>");
+
         
         messagePerso = $("#msg1");
         messagePass = $("#msg2");
-        messageIcone = $("#msg3");
+
         
         submitbtnPerso.click(editerPerso);
         submitbtnPass.click(editerPass);
-        submitbtnIcone.click(editerIcone);
+
         
         submitbtnPerso.click(preventDefault);
         submitbtnPass.click(preventDefault);
-        submitbtnIcone.click(preventDefault);
+
 
     }
     function preventDefault(evt){
@@ -91,50 +91,22 @@
             {
                 oldpass : $("#oldPass").val(),
                 pass :  $("#passEdit").val(),
-                passVerif : $("#passEdit").val()
+                passVerif : $("#passverifEdit").val()
             },
             function(data){
                 var lemsg = data;
-
+                console.log(data);
 
                 messagePass.text(lemsg);
                 
                 submitbtnPass.text("Editer");
                 submitbtnPass.click(editerPass);
-               
-            },
-            'text'
-        );
-    }
-    function editerIcone(evt){
-        
-        evt.preventDefault();
-        
-        submitbtnIcone.text("Loading...");
-        
-        messageIcone.text("");
-        
-        submitbtnIcone.off("click",editerIcone);
-        
-        $.post(
-           '../php/scripts/script_form_edit_icone.php', 
-            {
-                cheminIcon : $("#hiddenEdit").val()
-            },
-            function(data){
-                var lemsg = data;
-
-
-                messageIcone.text(lemsg);
-                
-                submitbtnIcone.text("Editer");
-                submitbtnIcone.click(editerIcone);
-               
+                $("#oldPass").val("");
+                $("#passEdit").val("");
+                $("#passverifEdit").val("");
             },
             'text'
         );
     }
     
-
-
 }());

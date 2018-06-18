@@ -88,7 +88,7 @@ if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"])){
     echo ($msg);
 }
 }
-
+$pdo = null;
                                     
 
 ?>
