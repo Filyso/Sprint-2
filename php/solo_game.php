@@ -9,7 +9,7 @@
     <head>
         <meta charset="utf-8">
         <title>Jeu en Solo</title>
-        <meta name="description" content="Jouez !">
+        <meta name="description" content="Le jeu SOLO ! Jouez seul contre l'ordinateur. Amusement garanti !">
         <link rel="stylesheet" type="text/css" href="../css/new_style.css" />
     </head>
 

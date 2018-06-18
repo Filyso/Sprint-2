@@ -2,15 +2,14 @@
     session_start();
 	header("Content-type: text/html; charset: UTF-8");
 ?>
-   <!DOCTYPE html>
-    <html>
+<!DOCTYPE html>
+<html lang="fr">
 
     <head>
-        <meta charset="utf-8">
-        <meta name="description" content="">
-        <title>Choix des options de jeu</title>
+       <meta charset="utf-8"/>
+        <title>Page d'administration</title>
+        <meta name="description" content="Bienvenuee sur la page d'administration de Filyso. Ici vous pourrez consulter la liste des membres et des chansons. Vous pourrez ajouter ou modifier de chansons, et supprimer des utilisateurs si nécessaire.">
         <link rel="stylesheet" type="text/css" href="../css/new_style.css" />
-
     </head>
 
     <body>
@@ -21,24 +20,24 @@
                 header("Location: ./index.php");
             }
         ?>
-            <main class="mainAdmin">
-                <header class="headerAdmin">
+        <main class="mainAdmin">
+            <header class="headerAdmin">
 
-                    <div>
-                        <h2>GESTION DE CONTENU</h2>
-                        <form action="./admin.php" method="get">
-                            <input type="submit" value="Ajout de chansons" name="admin" />
-                            <?php
+                <div>
+                    <h2>GESTION DE CONTENU</h2>
+                    <form action="./admin.php" method="get">
+                        <input type="submit" value="Ajout de chansons" name="admin" />
+                        <?php
                             if (Membre::isAdmin()) {
                             ?>
                             <input type="submit" value="Modification/Suppression de chansons" name="admin" />
                             <?php
                             }
                             ?>
-                        </form>
-                    </div>
+                    </form>
+                </div>
 
-                    <?php
+                <?php
                     if (Membre::isAdmin()) {
                     ?>
                     <div>
@@ -50,8 +49,8 @@
                     <?php
                     }
                     ?>
-                </header>
-                <?php 
+            </header>
+            <?php 
                 if (isset($_GET["admin"])) {
                     if ($_GET["admin"] == "Suppression d'utilisateurs") {
                         include("./rm_user.php");
@@ -64,9 +63,9 @@
                     include("./add_song_admin.php");
                 }
             ?>
-            </main>
+        </main>
 
-            <?php include("./main_footer.php"); ?>
+        <?php include("./main_footer.php"); ?>
 
     </body>
 
