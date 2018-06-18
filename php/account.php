@@ -1,10 +1,27 @@
 <?php
     header("Content-type: text/html; charset: UTF-8");
     session_start();
+    require("./param.inc.php");
 
     if(!isset($_SESSION["id"]) && !isset($_SESSION["pseudo"])){
         header("Location: index.php");
     }	
+
+    if(isset($_POST["amiSup"])){
+                            
+        $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
+        $pdo->query("SET NAMES utf8");
+        $pdo->query("SET CHARACTER SET 'utf8'");
+                            
+        $requeteSQL = "SELECT idMbr FROM MEMBRES WHERE pseudoMbr='".$_POST["amiSup"]."'";
+        $statement = $pdo->query($requeteSQL);
+        $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+                            
+        $requeteSQL = "DELETE FROM AMIS WHERE (idMbr_Ami1 = '".$ligne["idMbr"]."' AND idMbr_Ami2 = '".$_SESSION["id"]."') OR (idMbr_Ami1 = ".$_SESSION["id"]." AND idMbr_Ami2 = '".$ligne["idMbr"]."') ";
+        $statement = $pdo->query($requeteSQL);
+                           
+                            
+    }
 ?>
     <!DOCTYPE html>
     <html lang="fr">
@@ -39,7 +56,7 @@
                     <tr>
                         <td>
                             <figure>
-                                <img src="../images/chat.jpg" alt="Photo de profil joueur" src="" />
+                                <img src="../images/chat.jpg" alt="Photo de profil joueur"/>
                             </figure>
                             <p>Michel</p>
                         </td>
@@ -49,7 +66,7 @@
                     <tr>
                         <td>
                             <figure>
-                                <img src="../images/chat.jpg" alt="Photo de profil joueur" src="" />
+                                <img src="../images/chat.jpg" alt="Photo de profil joueur"/>
                             </figure>
                             <p>Samuel</p>
                         </td>
@@ -59,7 +76,7 @@
                     <tr class="vous">
                         <td>
                             <figure>
-                                <img src="<?php echo($_SESSION[" icon "]); ?>" alt="Photo de profil joueur" src="" />
+                                <img src="<?php echo($_SESSION["icon"]); ?>" alt="Photo de profil joueur"/>
                             </figure>
                             <p>Vous</p>
                         </td>
@@ -69,7 +86,7 @@
                     <tr>
                         <td>
                             <figure>
-                                <img src="../images/chat.jpg" alt="Photo de profil joueur" src="" />
+                                <img src="../images/chat.jpg" alt="Photo de profil joueur"/>
                             </figure>
                             <p>Antonin54</p>
                         </td>
@@ -79,7 +96,7 @@
                     <tr>
                         <td>
                             <figure>
-                                <img src="../images/chat.jpg" alt="Photo de profil joueur" src="" />
+                                <img src="../images/chat.jpg" alt="Photo de profil joueur"/>
                             </figure>
                             <p>ElRodriguo</p>
                         </td>
@@ -89,16 +106,102 @@
                 </table>
             </div>
             <div class="badgesGagnes">
-                <h2>Badges Gagnés</h2>
-                <p>Bientôt Disponible !</p>
+                <h2>Amis</h2>
+                <form method="post" action="./account.php">
+                    <input id="pseudoFriend" type="text" required="required" name="pseudoFriend" placeholder="Pseudo amis...">
+                    <button id="searchFriend" type="submit">Ajouter</button>
+                </form>
+                <?php
+                    if(isset($_POST["pseudoFriend"])){
+                        $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
+                        $pdo->query("SET NAMES utf8");
+                        $pdo->query("SET CHARACTER SET 'utf8'");
+                        
+                        
+                        $requeteSQL = "SELECT idMbr FROM MEMBRES WHERE pseudoMbr= :pseudoFriend";
+                        $statement = $pdo->prepare($requeteSQL);
+                        $statement->execute(array(":pseudoFriend" => $_POST["pseudoFriend"]));
+                        $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+                        
+                        $idami = $ligne["idMbr"];
+                        
+                        if($ligne != false){
+                            
+                            $requeteSQL = "SELECT idMbr_Ami1 FROM AMIS WHERE ( idMbr_Ami1=".$idami." AND idMbr_Ami2=".$_SESSION["id"]." ) OR ( idMbr_Ami1=".$_SESSION["id"]." AND idMbr_Ami2=".$idami." )";
+                            $statement = $pdo->query($requeteSQL);
+                            $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+                            
+                            if($ligne == false){
+                                $requeteSQL = "INSERT INTO AMIS (`idMbr_Ami1`, `idMbr_Ami2`) VALUES ('".$_SESSION["id"]."', '".$idami."')";
+                                $statement = $pdo->query($requeteSQL);
+                                echo("<p>Ami(e) ajouté(e)</p>");
+                            }else{
+                                echo("<p>Ami déjà ajouté</p>");
+                            }
+ 
+                        }else{
+                            
+                            echo("<p>Votre ami(e) n'a pas été(e) trouvé(e)</p>");
+                        }
+                        
+                        $pdo = null;
+                    }
+                        
+                        
+                
+                ?>
                 <div>
-                    <img src="" />
-                    <img src="" />
-                    <img src="" />
-                    <img src="" />
-                    <img src="" />
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Profil</th>
+                            <th></th>
+                        </tr>
+                    <?php
+                        
+                        $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
+                        $pdo->query("SET NAMES utf8");
+                        $pdo->query("SET CHARACTER SET 'utf8'");
+
+                       
+                        $requeteSQL = "SELECT DISTINCT AMI.pseudoMbr, AMI.linkIconMbr 
+FROM MEMBRES INNER JOIN AMIS ON MEMBRES.idMbr = AMIS.idMbr_Ami1 OR MEMBRES.idMbr = AMIS.idMbr_Ami2 INNER JOIN MEMBRES AS AMI ON (AMIS.idMbr_Ami1 = AMI.idMbr OR AMIS.idMbr_Ami2 = AMI.idMbr) AND MEMBRES.idMbr <> AMI.idMbr WHERE MEMBRES.idMbr = :idMbr";
+                        $statement = $pdo->prepare($requeteSQL);
+                        $statement->execute(array(":idMbr" => $_SESSION["id"]));
+                    
+                        $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+                        while($ligne != false) {
+                    ?>
+                    <tr>
+                        <td>
+                        <figure>
+                            <img src="<?php echo($ligne["linkIconMbr"]); ?>" alt="Photo de profil de <?php echo($ligne["pseudoMbr"]); ?>"/>
+                        </figure>
+                        </td>
+                        <td>
+                            <a src="/php/friend.php"><?php echo($ligne["pseudoMbr"]); ?></a>
+                        </td>
+                        <td>
+                            <form action="account.php" method="post">
+                                <input type="submit" value="Supprimer"/>
+                                <input type="hidden" value="<?php echo($ligne["pseudoMbr"]);?>" name="amiSup" />
+                            </form>
+                        </td>
+                    </tr>
+                    </div>
+                    
+                    <?php
+                            $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+                        }
+                        $pdo = null;
+                        
+                        
+                        
+                    ?>
+                    </table>
                 </div>
             </div>
         </main>
         <?php include("./main_footer.php"); ?>
     </body>
+</html>

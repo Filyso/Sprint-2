@@ -267,7 +267,7 @@ function convertirImage256x256PNG($nomFichierAConvertir, $nomFichierConverti) {
             <p><?php echo($erreur); ?></p>
         </form>
     </main>
-    <?php //include("./main_footer.php"); ?>
+    <?php include("./main_footer.php"); ?>
     
 <!--
     <script type="text/javascript" src="../javascript/verification_inscription.js"></script>
