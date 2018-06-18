@@ -13,8 +13,8 @@
     </head>
 
     <body>
-       <?php include("./main_header.php");?>
-<?php 
+        <?php include("./main_header.php");?>
+        <?php 
 
 
         
@@ -38,8 +38,8 @@ if(Membre::isLogged()){
             </div>
 
         </main>
-        
-        <?php include("./main_footer.php")?>
+
+        <?php include("./main_footer.php");?>
     </body>
 
     </html>
