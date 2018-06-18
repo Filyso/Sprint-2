@@ -7,8 +7,13 @@
             $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
             $pdo->query("SET NAMES utf8");
             $pdo->query("SET CHARACTER SET 'utf8'");
+            
+            //SUPPRIMER L'ANCIENNE VERSION DE LA CHANSON
+            $requeteSQL = "DELETE FROM CHANSONS WHERE CHANSONS.idSong = :paramIdSong";
+            $statement = $pdo->prepare($requeteSQL);
+            $statement->execute(array(":paramIdSong" => $_POST["songId"]));
 
-            // AJOUT CHANSON
+            // AJOUT DE LA CHANSON (AVEC MODIFICATIONS)
             $requeteSQL = "INSERT INTO CHANSONS(nameSong, linkVideo, lang, idMbr) VALUES (:paramNameSong, :paramLinkVideo, :paramLangSong, NULL)";
             $statement = $pdo->prepare($requeteSQL);
             $statement->execute(array(":paramNameSong" => $_POST["song"],
@@ -72,7 +77,7 @@
         }
         
         echo '<script type="text/javascript">alert("' . $msg . '")</script>';
-        header("Location: admin.php");
+        header("Location: admin.php?admin=Modification%2FSuppression+de+chansons");
     }
 
     if(isset($_POST["songId"])){
@@ -82,6 +87,7 @@
                 $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
                 $pdo->query("SET NAMES utf8");
                 $pdo->query("SET CHARACTER SET 'utf8'");
+            
                 $requeteSQL2="SELECT CHANSONS.nameSong AS 'titre', ARTISTES.nameArtist AS 'interprete', CHANSONS.linkVideo AS 'lien', CATEGORIES.nameCat AS 'categorie', CHANSONS.lang AS 'langue' ".
                         "FROM CHANSONS ".
                         "INNER JOIN A_UN ".
@@ -103,9 +109,9 @@
     <script type="text/javascript" src="../javascript/add_Song.js"></script>
     <section class="addSongSection">
 
-        <h3>AJOUTER UNE CHANSON</h3>
+        <h3>MODIFIER UNE CHANSON</h3>
 
-        <form action="add_song_admin.php" method="post" id="addSongForm" class="addSongForm">
+        <form action="edit_song.php" method="post" id="addSongForm" class="addSongForm">
             <fieldset id="chansonForm">
                 <legend>Chanson</legend>
                 <div>
@@ -299,8 +305,9 @@
 
 
             <div>
+                <input id="songId" type="hidden" name="songId" value="<?php echo($_POST["songId"]) ?>"/>
                 <input type="button" id="addTCBtn" value="AJOUTER UN TIMECODE" />
-                <input type="submit" value="APPLIQUER" />
+                <input type="submit" value="APPLIQUER LES MODIFICATIONS" />
             </div>
 
         </form>
