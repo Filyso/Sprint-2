@@ -98,20 +98,22 @@ h1 {
 }
 
 .welcomeIndex p {
-    max-width: 40%;
+    max-width: 70%;
     min-width: 10%;
     font-family: "Raleway";
-    font-size: 18px;
+    font-size: 2.5vh;
     line-height: 1.5;
 }
 
 .welcomeIndex h2 {
+    text-align: center;
     font-family: "FuturaBold";
-    font-size: 50px;
+    font-size: 6vh;
 }
 
 .welcomeIndex strong {
-    font-size: 22px;
+    font-weight: 1500;
+    font-size: 2.8vh;
 }
 
 .indexLink a {
@@ -131,11 +133,11 @@ h1 {
 
 .mainIndex h1 {
     position: absolute;
-    top: 0;
+    top: calc(20vh - 10vw);
     font-family: "Norwester";
     color: var(--jaune);
-    font-size: 120px;
-    margin-top: 1%;
+    font-size: 10vw;
+    margin-top: 0;
 }
 
 .mainIndex a:hover {
@@ -358,45 +360,6 @@ h1 {
 
 .mainAbout {
     background: #292929;
-    -webkit-animation: background 20s ease infinite;
-    -moz-animation: background 20s ease infinite;
-    animation: background 20s ease infinite;
-}
-
-@-webkit-keyframes background {
-    0% {
-        background-position: 0% 62%
-    }
-    50% {
-        background-position: 100% 39%
-    }
-    100% {
-        background-position: 0% 62%
-    }
-}
-
-@-moz-keyframes background {
-    0% {
-        background-position: 0% 62%
-    }
-    50% {
-        background-position: 100% 39%
-    }
-    100% {
-        background-position: 0% 62%
-    }
-}
-
-@keyframes background {
-    0% {
-        background-position: 0% 62%
-    }
-    50% {
-        background-position: 100% 39%
-    }
-    100% {
-        background-position: 0% 62%
-    }
 }
 
 .equipe {
@@ -408,7 +371,7 @@ h1 {
 }
 
 .equipe h2 {
-    font-size: 30px;
+    font-size: 5vw;
     color: white;
     font-family: 'FuturaBold';
 }
@@ -419,7 +382,6 @@ h1 {
     justify-content: space-between;
     text-align: center;
     max-width: 50vw;
-    min-width: 500px;
     margin: auto;
 }
 
@@ -428,6 +390,7 @@ h1 {
     min-width: 150px;
     border-radius: 5px;
     border: 3px white solid;
+    margin: 20px;
 }
 
 .unePhoto:hover {
@@ -815,7 +778,6 @@ h1 {
     transform: scale(1.1);
 }
 
-
 .container svg {
     width: 100px;
     height: 100px;
@@ -1067,7 +1029,6 @@ li .loginMenu {
     font-family: 'Raleway', sans-serif;
 }
 
-
 .popup-content button {
     height: 15%;
     width: 50%;
@@ -1114,7 +1075,6 @@ li .loginMenu {
     font-weight: 300;
     list-style-image: url(images/list.png);
 }
-
 
 /*********************************************** PRE GAME PAGE ****************************************/
 
@@ -1278,7 +1238,6 @@ li .loginMenu {
     background-color: #2D2D2D;
 }
 
-
 /*****************************************
 ***************** GAME SOLO JEU *********
 ***************************************/
@@ -1345,7 +1304,7 @@ li .loginMenu {
     height: 100%;
 }
 
-.sectionSolo .contenu>* {
+.sectionSolo .contenu > * {
     width: 100%;
 }
 
@@ -1465,16 +1424,16 @@ li .loginMenu {
     font-size: 16em;
     text-shadow: var(--orange) 5px 5px, var(--orange) -5px 5px, var(--orange) -5px -5px, var(--orange) 5px -5px;
     animation: 0.5s cubic-bezier(0, .76, .33, .25) scoreAppear;
-    transform: scale(1) rotate(-16deg) translate(-50%,-50%);
+    transform: scale(1) rotate(-16deg) translate(-50%, -50%);
     transform-origin: center center;
 }
 
 @keyframes scoreAppear {
     from {
-        transform: scale(5) rotate(0deg) translate(-50%,-50%);
+        transform: scale(5) rotate(0deg) translate(-50%, -50%);
     }
     to {
-        transform: scale(1) rotate(-16deg) translate(-50%,-50%);
+        transform: scale(1) rotate(-16deg) translate(-50%, -50%);
     }
 }
 
@@ -1830,6 +1789,7 @@ li .loginMenu {
     font-weight: 300;
     font-family: 'Raleway', sans-serif;
 }
+
 /*************************************************STYLE ACCOUNT********************************/
 
 .mainAccount {
@@ -1842,6 +1802,7 @@ li .loginMenu {
     min-height: calc(100vh - 100px);
     color: white;
 }
+
 .mainAccount h1 {
     margin-top: 0;
     font-family: 'FuturaBold', sans-serif;
@@ -1849,6 +1810,7 @@ li .loginMenu {
     font-size: 50px;
     margin-bottom: 50px;
 }
+
 .mainAccount table {
     border: 3px solid white;
     font-family: 'Raleway', sans-serif;
@@ -1857,15 +1819,18 @@ li .loginMenu {
     font-size: 30px;
     border-radius: 10px;
 }
+
 .mainAccount tr {
     border: 3px solid white;
     padding-top: 15px;
 }
+
 .mainAccount th {
     font-weight: normal;
     font-size: 30px;
     padding: 10px 50px 10px 50px;
 }
+
 .mainAccount td {
     text-align: center;
     font-size: 25px;
@@ -1873,30 +1838,38 @@ li .loginMenu {
     padding: 5px 20px 5px 20px;
     height: 100%;
 }
-.mainAccount td p{
+
+.mainAccount td p {
     margin-left: 100px;
 }
+
 .mainAccount th:first-child,
 .mainAccount td:first-child {
     text-align: center;
 }
+
 .mainAccount th:last-child,
 .mainAccount td:last-child {
     text-align: right;
 }
-.mainAccount .vous{
+
+.mainAccount .vous {
     background: white;
 }
-.mainAccount td{
+
+.mainAccount td {
     color: var(--orange);
 }
+
 .mainAccount td:last-child {
     color: #fec65c;
 }
+
 .mainAccount td:first-child {
     color: var(--rouge);
 }
-.mainAccount figure{
+
+.mainAccount figure {
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -1904,24 +1877,29 @@ li .loginMenu {
     margin: 5px 0px 0px 10px;
     overflow: hidden;
 }
+
 .mainAccount img {
     width: 100%;
 }
+
 .infoJoueur {
     margin-right: 80px;
     font-size: 25px;
 }
-.infoJoueur .figureImgJoueurAccount{
+
+.infoJoueur .figureImgJoueurAccount {
     margin: auto;
     width: 256px;
     height: 256px;
     border: 5px solid var(--rouge);
 }
-.infoJoueur .pseudoJoueurAccount{
+
+.infoJoueur .pseudoJoueurAccount {
     font-size: 50px;
     text-align: center;
 }
-.mainAccount input{
+
+.mainAccount input {
     background: none;
     border: 3px solid var(--jaune);
     width: 150px;
@@ -1932,6 +1910,7 @@ li .loginMenu {
     margin-left: 100px;
     font-family: 'FuturaBold';
 }
+
 .badgesGagnes {
     border: 3px solid white;
     width: 500px;
@@ -1939,38 +1918,43 @@ li .loginMenu {
     height: 520px;
     font-size: 25px;
 }
+
 /***************************************************
 ********************* INSCRIPTION SIGN UP *********************
 ***********************************************************/
 
-.signUpPage{
+.signUpPage {
     height: 100vh;
-     background-color:var(--noir);
+    background-color: var(--noir);
     margin-top: 0px;
     padding-top: 100px;
 }
-.signUpPage form{
+
+.signUpPage form {
     width: 40%;
-   margin: auto;
+    margin: auto;
     margin-top: 5vh;
     border: 5px solid white;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
 }
-.signUpPage form h1{
+
+.signUpPage form h1 {
     text-align: center;
     padding: 0;
     margin-bottom: 0px;
-    color:var(--jaune);
+    color: var(--jaune);
     font-family: 'FuturaBold';
 }
-.signUpPage fieldset{
+
+.signUpPage fieldset {
     height: 60vh;
-    border:none;
+    border: none;
     display: flex;
-    
+
 }
+
 .signUpPage form div:not(.imagesProfil) {
     display: flex;
     height: 100%;
@@ -1979,13 +1963,14 @@ li .loginMenu {
     flex-direction: column;
     justify-content: space-around;
     align-items: left;
-    
-    
+
+
 }
-.signUpPage form div input:not([type="file"]){
+
+.signUpPage form div input:not([type="file"]) {
     background-color: white;
-    color:black;
-    padding:10px;
+    color: black;
+    padding: 10px;
     border-radius: 5px;
     font-family: 'Raleway';
     font-size: 20px;
@@ -1993,35 +1978,41 @@ li .loginMenu {
     border-style: solid;
     border-color: transparent;
     outline: none;
-    width:100%;
+    width: 100%;
     margin: 10px 0px 10px 0px;
-    
+
 }
-.signUpPage form div input:not([type="file"])::placeholder{
-    color:#5d5d5d;
+
+.signUpPage form div input:not([type="file"])::placeholder {
+    color: #5d5d5d;
     font-family: 'Raleway';
     font-size: 18px;
 }
-.signUpPage form div input[type="file"]{
+
+.signUpPage form div input[type="file"] {
     font-family: 'Raleway';
-    color:white;
+    color: white;
 }
-.signUpPage form div input[type="file"]:hover{
+
+.signUpPage form div input[type="file"]:hover {
     cursor: pointer;
 }
-.labelIcone, .signUpPage p{
+
+.labelIcone,
+.signUpPage p {
     font-family: 'Raleway';
     font-size: 18px;
-    color:white;
+    color: white;
     margin-bottom: 10px;
 }
-.signUpPage form button{
+
+.signUpPage form button {
     width: 20%;
     margin: auto;
-    margin-top:30px;
+    margin-top: 30px;
     margin-bottom: 30px;
-    background-color:transparent;
-    color:white;
+    background-color: transparent;
+    color: white;
     border: 3px solid var(--jaune);
     font-size: 1.5vw;
     padding: 10px;
@@ -2029,67 +2020,162 @@ li .loginMenu {
     outline: none;
     font-family: 'RaleWay';
     font-weight: 700;
-    color:var(--jaune);
+    color: var(--jaune);
 }
-.signUpPage form button:hover{
+
+.signUpPage form button:hover {
     cursor: pointer;
     transition: 0.2s;
     border: 3px solid var(--rouge);
     color: var(--rouge);
     width: 25%;
 }
-.imagesProfil{
+
+.imagesProfil {
     padding-top: 10px;
-    width: 100%;    
+    width: 100%;
     display: flex;
     margin: 0px;
     justify-content: space-between;
-    
+
 }
-.imagesProfil img{
+
+.imagesProfil img {
     width: 100%;
     transition: .2s;
-    
+
 }
-.imagesProfil img:hover{
+
+.imagesProfil img:hover {
     cursor: pointer;
     transform: scale(1.05);
     transition: .2s;
 }
-.imagesProfil figure{
+
+.imagesProfil figure {
     margin: 0;
     overflow: hidden;
     width: 50px;
     height: 50px;
     border-radius: 100%;
 }
-@media only screen and (max-device-width: 480px) {
-    .signUpPage form{
-    width: 80%;    
+
+/***************************************************** MEDIA QUERIES ********************************/
+
+@media (max-width: 800px) {
+    @keyframes spriteSlidingMedia {
+        from {
+            background-position: calc(-50vw * 24);
+        }
+        to {
+            background-position: 0;
+        }
     }
-    .signUpPage form h1{
+    .indexLink::after {
+        width: 50vw;
+        height: 50vw;
+        top: calc(50vh - 25vw);
+        left: calc(50vw - 25vw);
+
+        animation: spriteSlidingMedia 0.7s steps(24, start) infinite, spriteSliding;
+        animation-play-state: running, paused;
+    }
+    .mainIndex h1 {
+        font-size: 15vw;
+        top: calc(20vh - 10vw);
+    }
+    .indexLink a {
+        top: calc(65vh + 10vw);
+        z-index: 1;
+        text-decoration: none;
+        font-family: "FuturaBold", sans-serif;
+        font-size: 5vh;
+        color: var(--jaune);
+        padding: 15px;
+        border: 5px solid var(--jaune);
+        background-color: transparent;
+        transition: .1s;
+        border-radius: 2px;
+    }
+    .lesPhotos {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 1000px) {
+    .rightHeader {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0 30px;
+    }
+    .rightHeader div {
+        padding: 10px;
+    }
+    .mainAbout {
+        margin-top: 144px;
+    }
+}
+
+@media (max-width: 500px) {
+    .mainIndex h1 {
+        font-size: 20vw;
+        top: calc(30vh - 20vw);
+    }
+    .rightHeader {
+        z-index: 1;
+    }
+    .mainSelect h1 {
+        margin: 80px 0 60px 0;
+        font-size: 25px;
+    }
+    .menuShown{
+        width: 100vw;
+    }
+    .menuHidden{
+        width: 100vw;
+    }
+    .footerDroite {
+        width: 100px;
+    }
+    .footerDroite input {
+        padding: 2px;
+        width: 50px;
+        height: 10px;
+    }
+    .lesPhotos {
+        justify-content: center;
+    }
+    .equipe h2 {
+        font-size: 10vw;
+    }
+    .signUpPage form {
+        width: 80%;
+    }
+    .signUpPage form h1 {
         font-size: 60px;
     }
-    .signUpPage form div{
+    .signUpPage form div {
         width: 90%;
     }
-    .signUpPage form button{
+    .signUpPage form button {
         font-size: 40px;
         width: 30%
     }
-    .signUpPage form button:hover{
+    .signUpPage form button:hover {
         width: 40%;
     }
-    .signUpPage form div input:not([type="file"]){
+    .signUpPage form div input:not([type="file"]) {
         font-size: 40px;
     }
-    .signUpPage form div input:not([type="file"])::placeholder{
+    .signUpPage form div input:not([type="file"])::placeholder {
         font-size: 40px;
     }
-    .labelIcone{
+    .labelIcone {
         font-size: 30px;
     }
-    .signUpPage form div input[type="file"]{
+    .signUpPage form div input[type="file"] {
         font-size: 30px;
     }
-    
+}
