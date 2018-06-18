@@ -22,7 +22,7 @@
 
         
         $.post(
-           '../php/script_login.php', 
+           '../php/scripts/script_login.php', 
             {
                 pseudo : $("#pseudo").val(),
                 pass : $("#passwd").val()
@@ -45,6 +45,10 @@
                     $("#passwd").val("");
                     $(".popup form p").text("L'email de vérification qui vous a été envoyé n'a pas été vérifié  ");
                        
+                }else if(data == "banni"){
+                    $("#pseudo").val("");
+                    $("#passwd").val("");
+                    $(".popup form p").text("Connexion impossible, vous êtes banni");
                 }
                 
             

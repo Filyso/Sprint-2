@@ -4,7 +4,7 @@ session_start();
 
 if(isset($_GET["id"])){
     
-    require("./param.inc.php");
+    require("../param.inc.php");
     $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
     $pdo->query("SET NAMES utf8");
     $pdo->query("SET CHARACTER SET 'utf8'");
@@ -32,12 +32,12 @@ if(isset($_GET["id"])){
     
 
     
-    header("Location: index.php");
+    header("Location: ../index.php");
     
     
     
 }else{
-    header("Location: index.php");
+    header("Location: ../index.php");
 }
 
 

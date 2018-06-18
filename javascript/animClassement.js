@@ -1,4 +1,4 @@
-/* click to the atrract the snake bugs */
+''/* click to the atrract the snake bugs */
 
 var a = document.getElementById( 'c' ),
 	c = a.getContext( '2d' );

@@ -50,20 +50,20 @@
 
 
 ?>
-        <header class="mainHeader">
+    <header class="mainHeader">
 
-            <!-- Icône Menu Burger -->
-            <div class="container">
-                <svg>
+        <!-- Icône Menu Burger -->
+        <div class="container">
+            <svg>
                     <path id="first" d="M 30 40 L 70 40 C 90 40 90 75 60 85 A 40 40 0 0 1 20 20 L 80 80"></path>
                     <path id="middle" d="M 30 50 L 70 50"></path>
                     <path id="second" d="M 70 60 L 30 60 C 10 60 10 20 40 15 A 40 38 0 1 1 20 80 L 80 20"></path>
                 </svg>
-            </div>
+        </div>
 
-            <nav class="menuHidden">
+        <nav class="menuHidden">
 
-                <ul>
+            <ul>
 
                     <li>
                         <a href="index.php" class="loginMenu">ACCUEIL</a>
@@ -84,7 +84,7 @@
                         <a href="account.php" class="loginMenu logoAccountHeader">MON COMPTE</a>
                     </li>
 
-<?php
+                    <?php
     }else{
 ?>
                     <li>
@@ -103,7 +103,7 @@
                 </ul>
             </nav>
 
-            <div class="rightHeader">
+        <div class="rightHeader">
 
 <?php
     
@@ -142,8 +142,19 @@
 
                         </path>
                     </svg>
-                </div>
+            </div>
 
+        </div>
+        <div class="popup">
+            <div class="popup-content">
+                <span class="close">&times;</span>
+                <h2>CONNECTEZ-VOUS</h2>
+                <a href="sign_up.php">inscrivez-vous</a>
+                <form action="<?php echo($_SERVER[" SCRIPT_NAME "]);?>" method="post">
+                    <input id="pseudo" type="text" required="required" name="pseudo" placeholder="Pseudo...">
+                    <input id="passwd" type="password" required="required" name="pass" placeholder="Mot de passe...">
+                    <button type="submit">SE CONNECTER</button>
+                </form>
             </div>
             <div class="popup">
                 <div class="popup-content">
