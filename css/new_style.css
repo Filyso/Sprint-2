@@ -159,6 +159,7 @@ li .loginMenu:hover {
     transition: .1s linear;
     padding: 15px 40px;
     color: var(--rouge);
+    border-color: var(--rouge);
 }
 
 /****************************************************** FOOTER ****************************************/
