@@ -1,33 +1,40 @@
 <?php
+    header("Content-type: text/html; charset: UTF-8");
     session_start();
 
     if(!isset($_SESSION["id"]) && !isset($_SESSION["pseudo"])){
         header("Location: index.php");
-    }
-
-
-	header("Content-type: text/html; charset: UTF-8");
+    }	
 ?>
-<!DOCTYPE html>
-<html lang="fr">
+    <!DOCTYPE html>
+    <html lang="fr">
+
     <head>
-        <meta charset="utf-8"/>
-        <meta http-equiv="" content=""/>
-        <title>Bienvenue sur Filyso</title>
-        <meta name="" content="">
-        <link rel="stylesheet" href="../css/new_style.css"/>
+       <meta charset="utf-8"/>
+        <title>Espace mon compte</title>
+        <meta name="description" content="Bienvenue dans votre espace personnel de compte. Ici vous pourrez consulter les données relatives à votre compte et votre activité sur le site Filyso.">
+        <link rel="stylesheet" href="../css/new_style.css" />
     </head>
+
     <body>
         <?php include("./main_header.php") ?>
         <main class="mainAccount">
             <div class="infoJoueur">
                 <figure class="figureImgJoueurAccount">
-                    <img src="<?php echo($_SESSION["icon"]); ?>" class="imgJoueurAccount" src=""/>
+                    <img src="<?php echo($_SESSION[" icon "]); ?>" class="imgJoueurAccount" src="" />
                 </figure>
-                    <p class="pseudoJoueurAccount"><?php echo($_SESSION["pseudo"]); ?></p>
-                    <p class="nomJoueurAccount">Nom : <?php echo($_SESSION["nom"]); ?></p>
-                    <p class="prenomJoueurAccount">Prenom : <?php echo($_SESSION["prenom"]); ?></p>
-                    <p class="mailJoueurAccount">Mail : <?php echo($_SESSION["mail"]); ?></p>
+                <p class="pseudoJoueurAccount">
+                    <?php echo($_SESSION["pseudo"]); ?>
+                </p>
+                <p class="nomJoueurAccount">Nom :
+                    <?php echo($_SESSION["nom"]); ?>
+                </p>
+                <p class="prenomJoueurAccount">Prenom :
+                    <?php echo($_SESSION["prenom"]); ?>
+                </p>
+                <p class="mailJoueurAccount">Mail :
+                    <?php echo($_SESSION["mail"]); ?>
+                </p>
                 <input type="button" value="Editer">
             </div>
             <div class="classementAccount">
@@ -40,7 +47,7 @@
                     <tr>
                         <td>
                             <figure>
-                                <img src="../images/chat.jpg"  alt="Photo de profil joueur" src=""/>
+                                <img src="../images/chat.jpg" alt="Photo de profil joueur" src="" />
                             </figure>
                             <p>Michel</p>
                         </td>
@@ -50,7 +57,7 @@
                     <tr>
                         <td>
                             <figure>
-                                <img src="../images/chat.jpg"  alt="Photo de profil joueur" src=""/>
+                                <img src="../images/chat.jpg" alt="Photo de profil joueur" src="" />
                             </figure>
                             <p>Samuel</p>
                         </td>
@@ -59,8 +66,8 @@
                     </tr>
                     <tr class="vous">
                         <td>
-                            <figure >
-                                <img src="<?php echo($_SESSION["icon"]); ?>"  alt="Photo de profil joueur" src=""/>
+                            <figure>
+                                <img src="<?php echo($_SESSION[" icon "]); ?>" alt="Photo de profil joueur" src="" />
                             </figure>
                             <p>Vous</p>
                         </td>
@@ -70,7 +77,7 @@
                     <tr>
                         <td>
                             <figure>
-                                <img src="../images/chat.jpg"  alt="Photo de profil joueur" src=""/>
+                                <img src="../images/chat.jpg" alt="Photo de profil joueur" src="" />
                             </figure>
                             <p>Antonin54</p>
                         </td>
@@ -80,7 +87,7 @@
                     <tr>
                         <td>
                             <figure>
-                                <img src="../images/chat.jpg"  alt="Photo de profil joueur" src=""/>
+                                <img src="../images/chat.jpg" alt="Photo de profil joueur" src="" />
                             </figure>
                             <p>ElRodriguo</p>
                         </td>
@@ -93,11 +100,11 @@
                 <h2>Badges Gagnés</h2>
                 <p>Bientôt Disponible !</p>
                 <div>
-                    <img src=""/>
-                    <img src=""/>
-                    <img src=""/>
-                    <img src=""/>
-                    <img src=""/>
+                    <img src="" />
+                    <img src="" />
+                    <img src="" />
+                    <img src="" />
+                    <img src="" />
                 </div>
             </div>
         </main>

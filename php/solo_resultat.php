@@ -2,11 +2,17 @@
     session_start();
 	header("Content-type: text/html; charset: UTF-8");
 ?>
-<head>
-    <link rel="stylesheet" href="../css/new_style.css" type="text/css" media="screen" />
-</head>
-<body>
-    <?php include("./main_header.php"); ?>
+    <html lang="fr">
+
+    <head>
+        <meta charset="UTF-8" />
+        <title>Résultats de la partie SOLO</title>
+        <meta name="description" content="Le jeu est terminé ! vous pouvez consulter les résultats et statistiques de votre partie en SOLO !"
+        <link rel="stylesheet" href="../css/new_style.css" type="text/css" media="screen" />
+    </head>
+
+    <body>
+        <?php include("./main_header.php"); ?>
         <main class="mainResultat">
             <div class="resultat">
                 <div class="partieGauche">
@@ -33,5 +39,7 @@
                 </div>
             </div>
         </main>
-    <?php include("./main_footer.php"); ?>
-</body>
+        <?php include("./main_footer.php"); ?>
+    </body>
+
+    </html>

@@ -255,7 +255,7 @@ function convertirImage256x256PNG($nomFichierAConvertir, $nomFichierConverti) {
 <head>
 
     <meta charset="utf-8">
-    <meta name="description" content="Inscrivez-vous."/>
+    <meta name="description" content="Bienvenue sur la page d'inscription Filyso. Créez votre compte afin de profiter pleinement des fonctionnalités proposées par notre site !"/>
     <title>Inscrivez-vous</title>
     <link rel="stylesheet" type="text/css" href="../css/new_style.css" />
     
