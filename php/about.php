@@ -2,11 +2,12 @@
     session_start();
 	header("Content-type: text/html; charset: UTF-8");
 ?>
-
+<!DOCTYPE html>
+<html lang="fr">
     <head>
-        <link rel="stylesheet" href="../css/new_style.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="../css/new_style.css" type="text/css" media="screen">
+        <title>A propos de l'équipe de Filyso</title>
     </head>
-
     <body>
         <?php include("./main_header.php"); ?>
         <main class="mainAbout">
