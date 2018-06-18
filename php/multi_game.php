@@ -49,6 +49,8 @@
                 }
                 
                 $_SESSION["idLA"] = $idLA;
+                
+                
                 $requeteSQL = "UPDATE MEMBRES SET MEMBRES.idLA =" . $idLA . " WHERE MEMBRES.idMbr =" . $_SESSION["id"];
                 $statement = $pdo->query($requeteSQL);
                 

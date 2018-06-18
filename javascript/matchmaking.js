@@ -15,10 +15,12 @@
                 function: 'checkQueue',
             },
             function (data) {
-                if (competitorFind) {
+                if (data.competitorFind) {
                     window.clearInterval(timerQueue);
+                    console.log(data.requete);
                 } else {
                     console.log("En recherche de Matchmaking");
+                    console.log(data.requete);
                 }
             },
             'json'
