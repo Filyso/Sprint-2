@@ -2,14 +2,20 @@
 $erreur = "";
 session_start();
 
-
-
-if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"]) && isset($_FILES["iconChoisieEdit"]) && isset($_POST["hiddenEdit"])){
+if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"])){
     
     require("./param.inc.php");
     $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
     $pdo->query("SET NAMES utf8");
     $pdo->query("SET CHARACTER SET 'utf8'");
+    
+}else{
+    header("Location: index.php");
+}
+
+if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"]) && isset($_FILES["iconChoisieEdit"]) && isset($_POST["hiddenEdit"])){
+    
+    
     
     
     $extConforme = false;
@@ -79,8 +85,6 @@ if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"]) && isset($_FILES["iconCh
     } 
     
     
-}else{
-    header("Location: index.php");
 }
 
 
