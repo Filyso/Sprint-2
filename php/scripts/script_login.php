@@ -1,6 +1,6 @@
 <?php
 
-require("./param.inc.php");
+require("../param.inc.php");
 $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
 $pdo->query("SET NAMES utf8");
 $pdo->query("SET CHARACTER SET 'utf8'");
@@ -24,6 +24,8 @@ if(isset($_POST["pseudo"]) && isset($_POST["pass"])){
         
     }else if($_POST["pseudo"] == $pseudo && $passSha1Verif == $passwd && $ligne["isVerif"] == 0){
         echo("nonVerif");
+    }else if($_POST["pseudo"] == $pseudo && $passSha1Verif == $passwd && $ligne["isVerif"] == 2){
+        echo("banni");
     }else{
         echo("Echec");
     }
