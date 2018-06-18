@@ -2133,7 +2133,7 @@ li .loginMenu {
     }
 }
 
-@media (max-width: 800px) {
+@media only screen and (max-device-width: 480px) {
     @keyframes spriteSlidingMedia {
         from {
             background-position: calc(-50vw * 24);
@@ -2155,6 +2155,12 @@ li .loginMenu {
         font-size: 15vw;
         top: calc(20vh - 10vw);
     }
+    .menuShown .loginMenu{
+        font-size: 80px;
+    }
+    .mainHeader li:nth-child(1),.mainHeader li:nth-child(2),.mainHeader li:nth-child(3),.mainHeader li:nth-child(4) p{
+        padding-left: 120px;
+    }
     .indexLink a {
         top: calc(65vh + 10vw);
         z-index: 1;
@@ -2172,7 +2178,7 @@ li .loginMenu {
         justify-content: center;
     }
     .footer-links a {
-        font-size: 3vh;
+        font-size: 2vh;
     }
     .footer h3 {
         font-size: 3vw;
@@ -2194,15 +2200,20 @@ li .loginMenu {
     .footerReseaux a{
         margin-left: 0;
     }
-}
-
-@media (max-width: 500px) {
     .mainIndex h1 {
         font-size: 20vw;
         top: calc(30vh - 20vw);
     }
     .rightHeader {
         z-index: 1;
+    }
+    .rightHeader p, .rightHeader a{
+        font-size: 30px;
+        padding-bottom: 20px;
+    }
+    .rightHeader #fullScreenButton svg{
+        width: 50px;
+        height: 50px;
     }
     .mainSelect h1 {
         margin: 80px 0 60px 0;
@@ -2229,6 +2240,7 @@ li .loginMenu {
     .footer form textarea {
         padding: 2px;
         width: 100%;
+        font-size: 30px;
     }
     .footer form button {
         width: 100%;
@@ -2254,5 +2266,34 @@ li .loginMenu {
     .equipe h2 {
         font-size: 10vw;
     }
-    
+    .mainSelect h1{
+        font-size: 80px;
+    }
+    .mainSelect p{
+        font-size: 50px;
+        padding-bottom: 20px
+    }
+    .mainSelect a{
+        margin-top: 50px;
+        font-size: 60px;
+    }
+    .mainSelect .buttonSolo a{
+        width: 220px;
+    }
+    .mainAbout .equipe .lesPhotos{
+        margin: auto;
+        max-width: 90%;
+    }
+    .mainAbout .equipe .lesPhotos .unePhoto{
+        max-width: 30%;
+        margin: 50px;
+    }
+    .mainAbout .equipe .lesPhotos .unePhoto h3{
+        font-size: 40px;
+    }
+    #formContact2 input, #formContact2 button{
+        font-size: 30px;
+        margin-top: 30px;
+    }
 }
+
