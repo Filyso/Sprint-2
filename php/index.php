@@ -31,7 +31,7 @@
         </main>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <?php include("./main_footer.php"); ?>
-        <script type="text/javascript" src="../javascript/jsAnimParticules.js"></script>
+        <script  src="../javascript/jsAnimParticules.js"></script>
     </body>
 
 </html>

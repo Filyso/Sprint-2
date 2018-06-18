@@ -5,7 +5,7 @@ tuto utiliser ce truc :
  
   et ça avant la fin du body:  
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="../javascript/jsAnimParticules.js"></script>
+<script  src="../javascript/jsAnimParticules.js"></script>
     
 puis mettre dans la div qu'on veut l'id "particle"    
 */

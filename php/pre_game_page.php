@@ -90,7 +90,7 @@
             <button type="submit">JOUER</button>
         </form>
     </main>
-    <script type="text/javascript" src="../javascript/selectAlea.js"></script>
+    <script  src="../javascript/selectAlea.js"></script>
     <?php include("./main_footer.php"); ?>
     
 </body>

@@ -318,8 +318,8 @@ function convertirImage256x256PNG($nomFichierAConvertir, $nomFichierConverti) {
     </main>
     <?php include("./main_footer.php"); ?>
     
-    <script type="text/javascript" src="../javascript/verification_inscription.js"></script>
-    <script type="text/javascript" src="../javascript/verifier_icone_choisie_signup.js"></script>
+    <script  src="../javascript/verification_inscription.js"></script>
+    <script  src="../javascript/verifier_icone_choisie_signup.js"></script>
 </body>
 
 </html>

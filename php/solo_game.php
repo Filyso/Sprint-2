@@ -53,8 +53,8 @@
         <?php include("./main_footer.php");?>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script type="text/javascript" src="../javascript/game.js"></script>
-        <script type="text/javascript" src="../javascript/popup_regles.js"></script>
+        <script  src="../javascript/game.js"></script>
+        <script  src="../javascript/popup_regles.js"></script>
     </body>
 
     </html>
