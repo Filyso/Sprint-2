@@ -126,7 +126,14 @@ h1 {
     top: 85vh;
     z-index: 1;
     text-decoration: none;
-    font-size: 28px;
+    font-family: "FuturaBold";
+    font-size: 30px;
+    color: var(--jaune);
+    padding: 15px;
+    border: 5px solid var(--jaune);
+    background-color: transparent;
+    transition: .1s;
+    border-radius: 2px;
 }
 
 li .loginMenu {
