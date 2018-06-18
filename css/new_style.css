@@ -1944,7 +1944,7 @@ li .loginMenu {
 .signUpPage{
      background-color:var(--noir);
     margin-top: 0px;
-    color:white;
+    color:var(--rouge);
     font-size: 24;
     font-family: 'RaleWay';
     text-align: center;
@@ -1956,7 +1956,7 @@ li .loginMenu {
     width: 40%;
    margin: auto;
     
-    margin-top: 5vh;
+    margin-top: 3vh;
     border: 5px solid white;
     border-radius: 10px;
     display: flex;
