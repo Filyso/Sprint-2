@@ -57,8 +57,9 @@
                             <?php echo($ligne["nameArtist"])?>
                         </td>
                         <td>
-                            <form action="admin.php?admin=Modification%2FSuppression+de+chansons" method="post">
+                            <form action="./edit_song.php" method="post">
                                 <input type="submit" value="Modifier" name="admin" class="editSongBtn" />
+                                <input type="hidden" value="<?php echo($ligne["idSong"])?>" name="songId" />
                             </form>
                         </td>
                         <td>
