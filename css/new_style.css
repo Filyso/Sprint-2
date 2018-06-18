@@ -189,7 +189,7 @@ h1 {
     padding: 0;
     width: 40vw;
     text-align: center;
-    height: 30px;
+    height: 100%;
     font-size: 1.3vw;
     display: flex;
     justify-content: space-around;
@@ -212,7 +212,7 @@ h1 {
 }
 
 .footerReseaux img {
-    max-width: 3vw;
+    width: 4vw;
     padding: 5px;
 }
 
@@ -268,7 +268,7 @@ h1 {
     font-size: 14px;
     color: black;
     width: 20vw;
-    padding: 18px;
+    padding: 15px;
 }
 
 .footer::-webkit-input-placeholder {
@@ -316,6 +316,7 @@ h1 {
     border: 3px solid var(--orange);
     color: var(--orange);
 }
+
 /************************************************** ABOUT *************************************/
 
 .mainAbout {
@@ -2022,6 +2023,25 @@ li .loginMenu {
 
 /***************************************************** MEDIA QUERIES ********************************/
 
+@media (max-width: 1000px) {
+    .rightHeader {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0 30px;
+    }
+    .rightHeader div {
+        padding: 10px;
+    }
+    .mainAbout {
+        margin-top: 144px;
+    }
+    .footer-links a {
+        font-size: 3vh;
+    }
+}
+
 @media (max-width: 800px) {
     @keyframes spriteSlidingMedia {
         from {
@@ -2060,35 +2080,28 @@ li .loginMenu {
     .lesPhotos {
         justify-content: center;
     }
-    .footer-links a{
+    .footer-links a {
         font-size: 3vh;
     }
-    .footer h3{
+    .footer h3 {
         font-size: 3vw;
     }
-    .footer-links{
+    .footerGauche {
+        align-items: flex-start;
+    }
+    .footer-links {
         flex-direction: column;
         align-items: flex-start;
+        margin-left: 30px;
+    }
+    .footerReseaux {
         margin-left: 50px;
     }
-}
-
-@media (max-width: 1000px) {
-    .rightHeader {
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        flex-direction: column;
-        padding: 0 30px;
+    .footerReseaux img {
+        width: 5vw;
     }
-    .rightHeader div {
-        padding: 10px;
-    }
-    .mainAbout {
-        margin-top: 144px;
-    }
-    .footer-links a{
-        font-size: 3vh;
+    .footerReseaux a{
+        margin-left: 0;
     }
 }
 
@@ -2104,32 +2117,44 @@ li .loginMenu {
         margin: 80px 0 60px 0;
         font-size: 25px;
     }
-    .menuShown{
+    .menuShown {
         width: 100vw;
     }
-    .menuHidden{
+    .menuHidden {
         transform: translateX(-100vw);
         width: 100vw;
     }
-    .footerGauche{
+    .footerGauche {
         width: 40vw;
         height: 100%;
     }
     .footerDroite {
         width: 40vw;
     }
+    .footer-links {
+        margin-left: 0;
+    }
     .footer form input,
-    .footer form textarea{
+    .footer form textarea {
         padding: 2px;
         width: 100%;
     }
-    .footer form button{
+    .footer form button {
         width: 100%;
     }
-    .footer img{
+    .footerReseaux {
+        margin-left: 0;
+    }
+    .footerReseaux img {
+        width: 10vw;
+    }
+    .footerReseaux a {
+        margin-left: 0;
+    }
+    .footer .logo {
         display: none;
     }
-    .footer h3{
+    .footer h3 {
         font-size: 4vw;
     }
     .lesPhotos {
