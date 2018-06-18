@@ -12,7 +12,6 @@ if (isset($_POST["function"])) {
             echo "{error: Fonction non défini}";
     }
 }
-    
 
 function checkQueue($idQueue) {
     // ETAPE 1 : Se connecter au serveur de base de données
