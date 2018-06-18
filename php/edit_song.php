@@ -159,16 +159,6 @@
                     ?>
 
                     </select>
-                    <?php
-                            $ligne2 = $statement2->fetch(PDO::FETCH_ASSOC);
-                        }
-                    } catch (Exception $e) {
-                            $msg = "Erreur de connexion à la base de donnée";
-                        }
-                    }else{
-                        header('Location: ./admin.php?admin=Modification%2FSuppression+de+chansons');
-                    }        
-                    ?>
                 </div>
                 <input id="nbCat" type="hidden" name="nbCat" value="1" class="inputMasque" />
                 <input type="button" id="addCatBtn" value="AJOUTER UNE CATEGORIE" />
@@ -188,8 +178,16 @@
                     <label for="linkVideo">URL</label>
                     <input type="url" name="linkVideo" id="linkVideo" required="required" pattern="^https://www.youtube.com/watch?.+" placeholder="https://www.youtube.com/watch?..." value="<?php echo($ligne2["lien"]) ?>"/>
                 </div>
-                
                 <?php
+                            $ligne2 = $statement2->fetch(PDO::FETCH_ASSOC);
+                        }
+                    } catch (Exception $e) {
+                            $msg = "Erreur de connexion à la base de donnée";
+                        }
+                    }else{
+                        header('Location: ./admin.php?admin=Modification%2FSuppression+de+chansons');
+                    }        
+
                 if(isset($_POST["songId"])){
                         try {
                         require("./param.inc.php");
