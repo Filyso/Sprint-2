@@ -2090,13 +2090,19 @@ li .loginMenu {
 @media only screen and (max-device-width: 480px) {
     .signUpPage form {
         width: 80%;
+        margin-top: 200px;
+    }
+    .signUpPage form div:not(.imagesProfil){
+        margin: auto;
+        width: 70%;
     }
     .signUpPage form h1 {
         font-size: 60px;
     }
     .signUpPage form div {
-        width: 90%;
+        width: 100%;
     }
+    
     .signUpPage form button {
         font-size: 40px;
         width: 30%
@@ -2106,6 +2112,7 @@ li .loginMenu {
     }
     .signUpPage form div input:not([type="file"]) {
         font-size: 40px;
+        margin-bottom: 30px;
     }
     .signUpPage form div input:not([type="file"])::placeholder {
         font-size: 35px;
@@ -2117,7 +2124,9 @@ li .loginMenu {
     .signUpPage form div input[type="file"] {
         font-size: 30px;
     }
-    
+    .signUpPage .choisirImageDefinis{
+        font-size: 30px;
+    }
 }
 /***************************************************** MEDIA QUERIES ********************************/
 
