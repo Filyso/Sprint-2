@@ -548,6 +548,8 @@ li .loginMenu:hover {
     color: white;
 }
 
+/****************************************** ADD SONG *********************************/
+
 .addSongSection {
     color: white;
     display: flex;
@@ -574,11 +576,11 @@ li .loginMenu:hover {
     flex-direction: column;
     align-items: center;
     margin: 10px;
-    border: 3px solid white;
+    border: 2px solid #444444;
 }
 
 .addSongForm legend {
-    color: white;
+    color: var(--jaune);
     font-family: "FuturaBold";
     font-size: 22px;
 }
@@ -674,8 +676,7 @@ li .loginMenu:hover {
 .addSongForm input[type=text],
 .addSongForm input[type=url],
 .addSongForm select {
-    border: 2px solid white;
-    ;
+    border: 2px solid #555555;
     font-family: 'Raleway';
     outline: none;
     border-radius: 5px;
@@ -700,18 +701,60 @@ li .loginMenu:hover {
 
 .addSongForm input[type="button"],
 .addSongForm input[type="submit"] {
-    border: 2px solid white;
+    border: 2px solid #42f456;
     background-color: transparent;
     height: 30px;
     cursor: pointer;
     margin: 0 20px;
-    color: white;
+    color: #42f456;
 }
 
 .addSongForm input[type="button"]:hover,
 .addSongForm input[type="submit"]:hover {
     border: 2px solid var(--jaune);
     color: var(--jaune);
+}
+/**************************************************** MODIFY SONG ********************************/
+.modifySong {
+    display: flex;
+    justify-content: center;
+    font-family: 'Raleway';
+    color: white;
+}
+.modifySong th{
+    font-family: 'FuturaBold';
+    padding: 20px 0;
+}
+.modiftSong table{
+    border-collapse: collapse;
+}
+.modifySong .nameSong,
+.modifySong th{
+    color: var(--jaune);
+}
+.suppSongBtn{
+    border: 2px solid var(--rouge);
+    color: var(--rouge);
+}
+.editSongBtn{
+    border: 2px solid #42f456;
+    color: #42f456;
+}
+.modifySong input{
+    font-family: 'Raleway';
+    background-color: transparent;
+    padding: 4px;
+    margin: 0 10px;
+}
+.modifySong input:hover{
+    transform: 0.2s linear;
+    color: var(--jaune);
+    border-color: var(--jaune);
+    cursor: pointer;
+}
+.modifySong td{
+    border: 2px solid #555555;
+    padding: 10px;
 }
 
 /*************************************************** HEADER **************************************/
@@ -2086,48 +2129,8 @@ li .loginMenu {
     height: 50px;
     border-radius: 100%;
 }
-/**************************************************** MODIFY SONG ********************************/
-.modifySong {
-    display: flex;
-    justify-content: center;
-    font-family: 'Raleway';
-    color: white;
-}
-.modifySong th{
-    font-family: 'FuturaBold';
-    padding: 20px 0;
-}
-.modiftSong table{
-    border-collapse: collapse;
-}
-.modifySong .nameSong,
-.modifySong th{
-    color: var(--jaune);
-}
-.suppSongBtn{
-    border: 2px solid var(--rouge);
-    color: var(--rouge);
-}
-.editSongBtn{
-    border: 2px solid #42f456;
-    color: #42f456;
-}
-.modifySong input{
-    font-family: 'Raleway';
-    background-color: transparent;
-    padding: 4px;
-    margin: 0 10px;
-}
-.modifySong input:hover{
-    transform: 0.2s linear;
-    color: var(--jaune);
-    border-color: var(--jaune);
-    cursor: pointer;
-}
-.modifySong td{
-    border: 1px solid #444444;
-    padding: 10px;
-}
+
+/***************************************************** MEDIA QUERIES ********************************/
 
 @media only screen and (max-device-width: 480px) {
     .signUpPage form {
@@ -2170,8 +2173,6 @@ li .loginMenu {
         font-size: 30px;
     }
 }
-/***************************************************** MEDIA QUERIES ********************************/
-
 @media (max-width: 1000px) {
     .rightHeader {
         display: flex;
