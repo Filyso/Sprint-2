@@ -38,9 +38,7 @@
                     $requeteSQL2 = "INSERT INTO LISTE_ATTENTE (lang, idCat) VALUES (:paramLang, :paramIdCat)";
                     $statement2 = $pdo->prepare($requeteSQL2);
                     $statement2->execute(array(":paramLang" => $lang,
-                                              ":paramIdCat" => $_GET["categorie"] == "0" ? "NULL" : $_GET["categorie"]));
-                    
-                    echo($_GET["categorie"] == "0" ? "NULL" : $_GET["categorie"]);
+                                              ":paramIdCat" => $_GET["categorie"] == "0" ? NULL : $_GET["categorie"]));
                     
                     $requeteSQL3 = "SELECT LAST_INSERT_ID() AS idLA";
                     $statement3 = $pdo->query($requeteSQL3);
@@ -48,9 +46,9 @@
                     $idLA = $ligne2["idLA"];
                 } else {
                     $idLA = $ligne["idLA"];
-                    echo($idLA);
                 }
                 
+                $_SESSION["idLA"] = $idLA;
                 $requeteSQL = "UPDATE MEMBRES SET MEMBRES.idLA =" . $idLA . " WHERE MEMBRES.idMbr =" . $_SESSION["id"];
                 $statement = $pdo->query($requeteSQL);
                 
@@ -67,6 +65,8 @@
         </main>
 
         <?php include("./main_footer.php")?>
+        
+        <script src="../javascript/matchmaking.js"></script>
     </body>
 
     </html>
