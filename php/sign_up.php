@@ -5,9 +5,7 @@ session_start();
 
 
 
-if(isset($_GET["isSend"]) && !isset($_FILES["iconChoisie"])){
-    $erreur = $erreur."Fichier trop volumineux ou inexistant"."<br/>";
-}
+
 if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["name"]) && isset($_POST["emailSignUp"]) && isset($_POST["passSignUp"]) && isset($_POST["passverif"]) && isset($_POST["icon"]) && isset($_FILES["iconChoisie"])){
 
     
@@ -23,7 +21,11 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
     
     $ligne = $statement->fetch(PDO::FETCH_ASSOC);
     
-    $extConforme = false;
+    if($_FILES["iconChoisie"]["name"] == ""){
+        $extConforme = true;
+    }else{
+        $extConforme = false;
+    }
     // le pseudo ou le mail ne doit pas être déjà utilisé, l'image doit être en jpeg ou png, la taille de l'image ne doit pas dépassé 3Mo, 
     if($_FILES["iconChoisie"]["name"] != ""){
         
@@ -31,7 +33,17 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
 
         $extension_upload = strtolower(substr(strrchr($_FILES['iconChoisie']['name'],'.'),1));
         
-        $extConforme = true;
+        
+        if(in_array($extension_upload,$extensions_valides)){
+            
+            $extConforme = true;
+        }else{
+            $extConforme = false;
+        }
+        
+        
+        
+        
     }
 
     $password = $_POST["passSignUp"];
@@ -61,7 +73,7 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
     
     
     
-    if(!empty($ligne["pseudoMbr"]) || !empty($ligne["mailMbr"]) || $_FILES["iconChoisie"]["name"] == ".htacces" || $_FILES["iconChoisie"]["size"] > 2000000 || !$mdpConforme || !$pseudoConforme || !($password == $_POST["passverif"]) || strlen($_POST["lastname"]) > 25 || strlen($_POST["name"]) > 25 || strlen($_POST["emailSignUp"]) > 50 || $_POST["icon"] == ""){
+    if(!empty($ligne["pseudoMbr"]) || !empty($ligne["mailMbr"]) || $_FILES["iconChoisie"]["name"] == ".htaccess.txt" || $_FILES["iconChoisie"]["size"] > 2000000 || !$mdpConforme || !$pseudoConforme || !($password == $_POST["passverif"]) || strlen($_POST["lastname"]) > 25 || strlen($_POST["name"]) > 25 || strlen($_POST["emailSignUp"]) > 50 || $_POST["icon"] == "" || !$extConforme){
         
         //inscription invalide
         if(strlen($_POST["lastname"]) > 25){
@@ -91,8 +103,8 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
         if(!($_FILES["iconChoisie"]["name"] == "") && $_FILES["iconChoisie"]["size"] > 2000000){
             $erreur = $erreur."Le fichier est trop volumineux"."<br/>";
         }
-        if(!($_FILES["iconChoisie"]["name"] == "") && $_FILES["iconChoisie"]["name"] == ".htacces"){
-            $erreur = $erreur."Pas de fichier .htaccess (on tiens au bon fonctionnement du site)"."<br/>";
+        if(!($_FILES["iconChoisie"]["name"] == "") && $_FILES["iconChoisie"]["name"] == ".htaccess.txt"){
+            $erreur = $erreur."Pas de fichier .htaccess (on tient au bon fonctionnement du site)"."<br/>";
         }
         if($password != $_POST["passverif"]){
             $erreur = $erreur."La vérification mot de passe n'est pas valide"."<br/>";
@@ -146,7 +158,7 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
         $pdo = null;
         
         
-        sendMail($_POST["emailSignUp"],"Mail de vérification Filyso","Valider votre inscription !\r\n https://projets.iut-laval.univ-lemans.fr/17mmi1pj02/php/script_verif.php?id=".$ligne["idMbr"]);
+        sendMail($_POST["emailSignUp"],"Mail de vérification Filyso","Valider votre inscription !\r\n https://projets.iut-laval.univ-lemans.fr/17mmi1pj02/php/scripts/script_verif.php?id=".$ligne["idMbr"]);
         
     } 
     
@@ -263,7 +275,7 @@ function convertirImage256x256PNG($nomFichierAConvertir, $nomFichierConverti) {
 <body>
     <?php include("./main_header.php"); ?>
     <main class="signUpPage">
-        <form id="signUpForm" action="./sign_up.php?isSend=1" method="post"   enctype="multipart/form-data">
+        <form id="signUpForm" action="./sign_up.php" method="post" enctype="multipart/form-data">
             <?php 
             if($erreur != ""){ 
                 echo($erreur);
@@ -290,7 +302,7 @@ function convertirImage256x256PNG($nomFichierAConvertir, $nomFichierConverti) {
                     <label for="passverif"></label>
                     <input placeholder="Confirmer le mot de passe" name="passverif" type="password" id="passverif" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}$"/>
 
-                    <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
+<!--                    <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />-->
 
                     <label for="iconChoisie" class="labelIcone">Importez votre icône (JPG ou PNG | max. 2Mo)</label>
                     <input name="iconChoisie" type="file" id="iconChoisie" />

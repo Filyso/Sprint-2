@@ -9,30 +9,44 @@ if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"])){
     $pdo->query("SET NAMES utf8");
     $pdo->query("SET CHARACTER SET 'utf8'");
     
+    $requeteSQL = "SELECT idMbr, pseudoMbr, nameMbr, prenomMbr, mailMbr FROM MEMBRES WHERE idMbr='".$_SESSION["id"]."'";
+    $statement = $pdo->query($requeteSQL);
+    $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+    
 }else{
     header("Location: index.php");
 }
 
+
 if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"]) && isset($_FILES["iconChoisieEdit"]) && isset($_POST["hiddenEdit"])){
     
     
+    if($_FILES["iconChoisieEdit"]["name"] == ""){
+        $extConforme = true;
+    }else{
+        $extConforme = false;
+    }
     
     
-    $extConforme = false;
-    // le pseudo ou le mail ne doit pas être déjà utilisé, l'image doit être en jpeg ou png, la taille de l'image ne doit pas dépassé 3Mo, 
+
     if(isset($_FILES["iconChoisieEdit"]) && $_FILES["iconChoisieEdit"]["name"] != ""){
         
         $extensions_valides = array('jpg', 'jpeg','png');
 
         $extension_upload = strtolower(substr(strrchr($_FILES['iconChoisieEdit']['name'],'.'),1));
         
-        $extConforme = true;
+        if(in_array($extension_upload,$extensions_valides)){
+            
+            $extConforme = true;
+        }else{
+            $extConforme = false;
+        }
     }
 
     
     
     
-    if(isset($_FILES["iconChoisieEdit"]) && ($_FILES["iconChoisieEdit"]["name"] == ".htacces" || $_FILES["iconChoisieEdit"]["size"] > 2000000 || $_POST["hiddenEdit"] == "")){
+    if(($_FILES["iconChoisieEdit"]["name"] == ".htaccess.txt" || $_FILES["iconChoisieEdit"]["size"] > 2000000 || $_POST["hiddenEdit"] == "") || !$extConforme){
         
         //inscription invalide
         
@@ -44,8 +58,8 @@ if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"]) && isset($_FILES["iconCh
         if(!($_FILES["iconChoisieEdit"]["name"] == "") && $_FILES["iconChoisieEdit"]["size"] > 2000000){
             $erreur = $erreur."Le fichier est trop volumineux"."<br/>";
         }
-        if(!($_FILES["iconChoisieEdit"]["name"] == "") && $_FILES["iconChoisieEdit"]["name"] == ".htacces"){
-            $erreur = $erreur."Pas de fichier .htaccess (on tiens au bon fonctionnement du site)"."<br/>";
+        if(!($_FILES["iconChoisieEdit"]["name"] == "") && $_FILES["iconChoisieEdit"]["name"] == ".htaccess.txt"){
+            $erreur = $erreur."Pas de fichier .htaccess (on tient au bon fonctionnement du site)"."<br/>";
         }
         if($_POST["hiddenEdit"] == "" && $_FILES["iconChoisieEdit"]["name"] == ""){
             $erreur = $erreur."Aucune icône n'a été selectionnée"."<br/>";
@@ -55,27 +69,33 @@ if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"]) && isset($_FILES["iconCh
         
         
     }else{
-        $erreur = "Inscription réussie, un mail de vérification vous a été envoyé(e)";
+        $erreur .= "Votre image de profil a bien été modifiée";
         
         //inscription valide
        
         if(($_FILES["iconChoisieEdit"]["name"] != "")){
             if($extension_upload == "jpg" || $extension_upload == "jpeg"){
-                convertirImage256x256JPG($_FILES["iconChoisie"]["tmp_name"], "../images/icons/img_avatar_".md5("azerty".$ligne["idMbr"]).".".$extension_upload);
+                convertirImage256x256JPG($_FILES["iconChoisieEdit"]["tmp_name"], "../images/icons/img_avatar_".md5("azerty".$ligne["idMbr"]).".".$extension_upload);
             }
             if($extension_upload == "png"){
-                convertirImage256x256PNG($_FILES["iconChoisie"]["tmp_name"], "../images/icons/img_avatar_".md5("azerty".$ligne["idMbr"]).".".$extension_upload);
+                convertirImage256x256PNG($_FILES["iconChoisieEdit"]["tmp_name"], "../images/icons/img_avatar_".md5("azerty".$ligne["idMbr"]).".".$extension_upload);
             } 
-            
+            if(stristr($_SESSION["icon"],"../images/icons/img_avatar_") !== false ){
+                unlink($_SESSION["icon"]);
+            }
             $requeteSQL = "UPDATE `MEMBRES` SET `linkIconMbr` = '../images/icons/img_avatar_".md5("azerty".$ligne["idMbr"]).".".$extension_upload."' WHERE idMbr='".$ligne["idMbr"]."'";
             $statement = $pdo->query($requeteSQL);
             
-            
+            $_SESSION["icon"] = "../images/icons/img_avatar_".md5("azerty".$ligne["idMbr"]).".".$extension_upload;
         }else{
+            if(stristr($_SESSION["icon"],"../images/icons/img_avatar_") !== false ){
+                unlink($_SESSION["icon"]);
+            }
             
-            $requeteSQL = "UPDATE `MEMBRES` SET `linkIconMbr` = '../images/icons/default/".$_POST["icon"]."' WHERE idMbr='".$ligne["idMbr"]."'";
+            $requeteSQL = "UPDATE `MEMBRES` SET `linkIconMbr` = '".$_POST["hiddenEdit"]."' WHERE idMbr='".$_SESSION["id"]."'";
             $statement = $pdo->query($requeteSQL);
            
+            $_SESSION["icon"] = $_POST["hiddenEdit"];
         }
         
         
@@ -221,7 +241,7 @@ function convertirImage256x256PNG($nomFichierAConvertir, $nomFichierConverti) {
             <h2>Icône de joueur</h2>
             <fieldset>
                 <div>
-                    <input type="hidden" name="MAX_FILE_SIZE" value="2000000"/>
+<!--                    <input type="hidden" name="MAX_FILE_SIZE" value="2000000"/>-->
 
                     <label for="iconChoisieEdit" class="labelIcone">Remplacer votre icône par l'image que vous souhaitez (JPG ou PNG | max. 2Mo)</label>
                     <input name="iconChoisieEdit" type="file" id="iconChoisieEdit" />
