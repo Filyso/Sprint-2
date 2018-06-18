@@ -1322,6 +1322,7 @@ li .loginMenu {
     border-radius: 100px;
     width: 36px;
     height: 36px;
+    outline: none;
     font-family: 'FuturaBold';
     font-size: 20px;
     color: var(--orange);
