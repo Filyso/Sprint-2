@@ -81,7 +81,7 @@
     if(Membre::isLogged()){               
 ?>
                     <li>
-                        <a href="account.php" class="loginMenu">MON COMPTE</a>
+                        <a href="account.php" class="loginMenu logoAccountHeader">MON COMPTE</a>
                     </li>
 
 <?php

@@ -901,7 +901,12 @@ h1 {
     background-repeat: no-repeat;
     padding-left: 45px;
 }
-
+.mainHeader .logoAccountHeader{
+    background-image: url(../images/icon_account.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-left: 40px;
+}
 #fullScreenButton {
     cursor: pointer;
     transition: transform .2s;
@@ -1908,8 +1913,17 @@ li .loginMenu {
     width: 100%;
 }
 .infoJoueur {
+    display: flex;
+    flex-direction: column;
     margin-right: 80px;
     font-size: 25px;
+}
+.infoJoueur .nomJoueurAccount,
+.infoJoueur .prenomJoueurAccount,
+.infoJoueur .mailJoueurAccount{
+    margin: 0;
+    padding-bottom: 10px;
+    text-align: center;
 }
 .infoJoueur .figureImgJoueurAccount{
     margin: auto;
@@ -1939,19 +1953,64 @@ li .loginMenu {
     height: 520px;
     font-size: 25px;
 }
+@media only screen and (max-device-width: 480px) {
+    .mainAccount{
+        flex-direction: column;
+        align-content: center;
+    }
+    .infoJoueur{
+        margin: 0; 
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    .infoJoueur .pseudoJoueurAccount{
+        margin: 0;
+        margin-bottom: 10px;
+    }
+    .infoJoueur .nomJoueurAccount,
+.infoJoueur .prenomJoueurAccount,
+    .infoJoueur .mailJoueurAccount{
+        font-size: 35px;
+    }
+    .infoJoueur .mailJoueurAccount{
+        margin-bottom: 10px;
+    }
+    .infoJoueur input{
+        margin: 0;
+        font-size: 40px;
+        width: 200px;
+    height: 80px;
+    }
+    .mainAccount table {
+        margin-bottom: 30px;    
+    }
+    .mainAccount th{
+        font-size: 40px;
+    }
+    .mainAccount td {
+        font-size: 30px;
+    }
+    .badgesGagnes {
+        width: 80%;
+        height: auto;
+        font-size: 35px;
+        margin: 0;
+    }
+}
 /***************************************************
 ********************* INSCRIPTION SIGN UP *********************
 ***********************************************************/
 
 .signUpPage{
-    height: 100vh;
      background-color:var(--noir);
     margin-top: 0px;
     padding-top: 100px;
+    padding-bottom: 100px;
 }
 .signUpPage form{
     width: 40%;
    margin: auto;
+    
     margin-top: 5vh;
     border: 5px solid white;
     border-radius: 10px;
@@ -1966,14 +2025,12 @@ li .loginMenu {
     font-family: 'FuturaBold';
 }
 .signUpPage fieldset{
-    height: 60vh;
     border:none;
     display: flex;
     
 }
 .signUpPage form div:not(.imagesProfil) {
     display: flex;
-    height: 100%;
     margin: auto;
     width: 60%;
     flex-direction: column;
@@ -2042,10 +2099,11 @@ li .loginMenu {
     padding-top: 10px;
     width: 100%;    
     display: flex;
+    flex-wrap: wrap;
     margin: 0px;
     justify-content: space-between;
-    
 }
+
 .imagesProfil img{
     width: 100%;
     transition: .2s;

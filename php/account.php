@@ -26,7 +26,7 @@
                 </figure>
                     <p class="pseudoJoueurAccount"><?php echo($_SESSION["pseudo"]); ?></p>
                     <p class="nomJoueurAccount">Nom : <?php echo($_SESSION["nom"]); ?></p>
-                    <p class="prenomJoueurAccount">Prenom : <?php echo($_SESSION["prenom"]); ?></p>
+                    <p class="prenomJoueurAccount">Prénom : <?php echo($_SESSION["prenom"]); ?></p>
                     <p class="mailJoueurAccount">Mail : <?php echo($_SESSION["mail"]); ?></p>
                 <input type="button" value="Editer">
             </div>
