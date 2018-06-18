@@ -7,10 +7,8 @@
 
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="" content="">
         <title>Filyso - Sélectionnez le mode de jeu</title>
-        <meta name="" content="">
-        <!--<link rel="stylesheet" href="../css/style.css">-->
+        <meta name="description" content="Sélectionnez votre mode de jeu ! Jouez seul avec le mode SOLO ou affrontez d'autres joueurs en duel avec le mode MULTI.">
         <link rel="stylesheet" href="../css/new_style.css">
     </head>
 
