@@ -189,7 +189,7 @@ h1 {
     padding: 0;
     width: 40vw;
     text-align: center;
-    height: 30px;
+    height: 100%;
     font-size: 1.3vw;
     display: flex;
     justify-content: space-around;
@@ -202,7 +202,8 @@ h1 {
     text-decoration: none;
     color: inherit;
     font-weight: 300;
-    font-size: 22px;
+    font-size: 4vh;
+    margin-bottom: 20px;
 }
 
 .footer-links a:hover {
@@ -211,7 +212,7 @@ h1 {
 }
 
 .footerReseaux img {
-    max-width: 3vw;
+    width: 4vw;
     padding: 5px;
 }
 
@@ -267,7 +268,7 @@ h1 {
     font-size: 14px;
     color: black;
     width: 20vw;
-    padding: 18px;
+    padding: 15px;
 }
 
 .footer::-webkit-input-placeholder {
@@ -301,9 +302,10 @@ h1 {
     border-radius: 3px;
     color: var(--rouge);
     outline: none;
-    padding: 15px 50px;
+    padding: 10px;
     float: right;
     cursor: pointer;
+    text-align: center;
     font-size: 18px;
     font-family: "FuturaBold", sans-serif;
 }
@@ -314,47 +316,6 @@ h1 {
     border: 3px solid var(--orange);
     color: var(--orange);
 }
-
-/* @media (max-width: 1000px) {
-    .footer {
-        font: bold 14px sans-serif;
-    }
-    .footer .footerNom {
-        font-size: 12px;
-    }
-    .footer form input,
-    .footer form textarea {
-        width: 250px;
-    }
-    .footer form button {
-        padding: 10px 35px;
-    }
-}
-
-@media (max-width: 800px) {
-    .footer {
-        padding: 30px;
-    }
-    .footer .footerGauche,
-    .footer .footerDroite {
-        float: none;
-        max-width: 300px;
-        margin: 0 auto;
-    }
-    .footer .footerGauche {
-        margin-bottom: 40px;
-    }
-    .footer form {
-        margin-top: 30px;
-    }
-    .footer form {
-        display: block;
-    }
-    .footer form button {
-        float: none;
-    }
-}
-*/
 
 /************************************************** ABOUT *************************************/
 
@@ -2121,6 +2082,25 @@ li .loginMenu {
 
 /***************************************************** MEDIA QUERIES ********************************/
 
+@media (max-width: 1000px) {
+    .rightHeader {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0 30px;
+    }
+    .rightHeader div {
+        padding: 10px;
+    }
+    .mainAbout {
+        margin-top: 144px;
+    }
+    .footer-links a {
+        font-size: 3vh;
+    }
+}
+
 @media (max-width: 800px) {
     @keyframes spriteSlidingMedia {
         from {
@@ -2159,21 +2139,28 @@ li .loginMenu {
     .lesPhotos {
         justify-content: center;
     }
-}
-
-@media (max-width: 1000px) {
-    .rightHeader {
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
+    .footer-links a {
+        font-size: 3vh;
+    }
+    .footer h3 {
+        font-size: 3vw;
+    }
+    .footerGauche {
+        align-items: flex-start;
+    }
+    .footer-links {
         flex-direction: column;
-        padding: 0 30px;
+        align-items: flex-start;
+        margin-left: 30px;
     }
-    .rightHeader div {
-        padding: 10px;
+    .footerReseaux {
+        margin-left: 50px;
     }
-    .mainAbout {
-        margin-top: 144px;
+    .footerReseaux img {
+        width: 5vw;
+    }
+    .footerReseaux a{
+        margin-left: 0;
     }
 }
 
@@ -2189,19 +2176,45 @@ li .loginMenu {
         margin: 80px 0 60px 0;
         font-size: 25px;
     }
-    .menuShown{
+    .menuShown {
         width: 100vw;
     }
-    .menuHidden{
+    .menuHidden {
+        transform: translateX(-100vw);
         width: 100vw;
+    }
+    .footerGauche {
+        width: 40vw;
+        height: 100%;
     }
     .footerDroite {
-        width: 100px;
+        width: 40vw;
     }
-    .footerDroite input {
+    .footer-links {
+        margin-left: 0;
+    }
+    .footer form input,
+    .footer form textarea {
         padding: 2px;
-        width: 50px;
-        height: 10px;
+        width: 100%;
+    }
+    .footer form button {
+        width: 100%;
+    }
+    .footerReseaux {
+        margin-left: 0;
+    }
+    .footerReseaux img {
+        width: 10vw;
+    }
+    .footerReseaux a {
+        margin-left: 0;
+    }
+    .footer .logo {
+        display: none;
+    }
+    .footer h3 {
+        font-size: 4vw;
     }
     .lesPhotos {
         justify-content: center;
