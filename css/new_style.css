@@ -2079,6 +2079,48 @@ li .loginMenu {
     height: 50px;
     border-radius: 100%;
 }
+/**************************************************** MODIFY SONG ********************************/
+.modifySong {
+    display: flex;
+    justify-content: center;
+    font-family: 'Raleway';
+    color: white;
+}
+.modifySong th{
+    font-family: 'FuturaBold';
+    padding: 20px 0;
+}
+.modiftSong table{
+    border-collapse: collapse;
+}
+.modifySong .nameSong,
+.modifySong th{
+    color: var(--jaune);
+}
+.suppSongBtn{
+    border: 2px solid var(--rouge);
+    color: var(--rouge);
+}
+.editSongBtn{
+    border: 2px solid #42f456;
+    color: #42f456;
+}
+.modifySong input{
+    font-family: 'Raleway';
+    background-color: transparent;
+    padding: 4px;
+    margin: 0 10px;
+}
+.modifySong input:hover{
+    transform: 0.2s linear;
+    color: var(--jaune);
+    border-color: var(--jaune);
+    cursor: pointer;
+}
+.modifySong td{
+    border: 1px solid #444444;
+    padding: 10px;
+}
 
 @media only screen and (max-device-width: 480px) {
     .signUpPage form {
