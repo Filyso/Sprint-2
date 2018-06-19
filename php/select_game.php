@@ -19,9 +19,8 @@
 
         
 if(Membre::isLogged()){
-    $destination = "./multi_game.php";
+    $destination = "./pre_game_page.php?mod=multi";
 }else{
-    
     $destination = "./select_game.php";
 }
                       
