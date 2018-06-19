@@ -50,7 +50,7 @@
 
     function verifierMdp2(evt) {
         this.setCustomValidity("");
-        if (mdp1.checkValidity()) {
+        if (mdp1.checkValidity() && this.checkValidity()) {
             if (mdp1.value != this.value) {
                 this.setCustomValidity("Les 2 mots de passe ne sont pas identiques");
                 this.style.borderColor = "#ED1B70";
