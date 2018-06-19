@@ -37,6 +37,7 @@ html {
 
 body {
     margin: 0;
+    font-family: "Raleway";
 }
 header{
     z-index: 10;
