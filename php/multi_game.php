@@ -15,11 +15,15 @@
 
     <body>
         <?php include("./main_header.php")?>
+        
+<!--
         <main class="selectMulti">
             <h1>Le jeu en multijoueur est encore en développement !</h1>
         </main>
+-->
 
         <?php include("./main_footer.php")?>
+        <script src="../javascript/multi_game.js"></script>
     </body>
 
     </html>
