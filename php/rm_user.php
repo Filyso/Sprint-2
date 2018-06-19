@@ -58,7 +58,7 @@
                                     <td>
                                         <select class="statutMbr">
                                             <option name="statut" value="attente" <?php echo($ligne[ "statut"]=='0' ? "selected": "") ?>>En attente</option>
-                                            <option name="statut" value="actif" <?php echo($ligne[ "statut"]=='1' ? "selected": "") ?>> Enregistré</option>
+                                            <option name="statut" value="enregistre" <?php echo($ligne[ "statut"]=='1' ? "selected": "") ?>> Enregistré</option>
                                             <option name="statut" value="banni" <?php echo($ligne[ "statut"]=='2' ? "selected": "") ?>>Banni</option>
                                         </select>
                                     </td>
