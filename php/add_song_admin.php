@@ -191,17 +191,17 @@
                     <legend>Réponses</legend>
 
                     <div>
-                        <label for="badRep1_1">Autre réponse 1</label>
+                        <label for="badRep1_1">Mauvaise réponse 1</label>
                         <input id="badRep1_1" type="text" name="badRep1_1" required="required" maxlength="200">
                     </div>
 
                     <div>
-                        <label for="badRep2_1">Autre réponse 2</label>
+                        <label for="badRep2_1">Mauvaise réponse 2</label>
                         <input id="badRep2_1" type="text" name="badRep2_1" required="required" maxlength="200">
                     </div>
 
                     <div>
-                        <label for="badRep3_1">Autre réponse 3</label>
+                        <label for="badRep3_1">Mauvaise réponse 3</label>
                         <input id="badRep3_1" type="text" name="badRep3_1" required="required" maxlength="200">
                     </div>
 

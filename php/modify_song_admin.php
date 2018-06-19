@@ -53,7 +53,7 @@
                             <?php echo($ligne["nameArtist"])?>
                         </td>
                         <td>
-                            <form action="./edit_song.php" method="post">
+                            <form action="./admin.php?admin=edit" method="post">
                                 <input type="submit" value="Modifier" name="admin" class="editSongBtn" />
                                 <input type="hidden" value="<?php echo($ligne["idSong"])?>" name="songId" />
                             </form>
