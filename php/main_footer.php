@@ -8,7 +8,7 @@
 
         <div class="footer-links">
             <a href="./about.php#equipe">L'ÉQUIPE</a>
-            <a href="./about.php#idee">BOÎTE À IDÉE</a>
+            <a href="./about.php#idee">BOÎTE À IDÉES</a>
             <a href="./about.php#avenir">À VENIR</a>
 
         </div>
@@ -34,5 +34,7 @@
         </form>
 
     </div>
-
+    <div class="legal">
+        <p>Filyso - Projet Tuteuré MMI LAVAL - 2018 - <a href="mentions_legales.php">Mentions légales</a></p>
+    </div>
 </footer>
