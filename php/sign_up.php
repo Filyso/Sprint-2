@@ -300,7 +300,7 @@ function convertirImage256x256PNG($nomFichierAConvertir, $nomFichierConverti) {
                     <input placeholder="Mot de passe" name="passSignUp" type="password" id="passSignUp" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,42}$"/>
     
                     <label for="passverif"></label>
-                    <input placeholder="Confirmer le mot de passe" name="passverif" type="password" id="passverif" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}$"/>
+                    <input placeholder="Confirmer le mot de passe" name="passVerif" type="password" id="passverif" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,42}$"/>
 
 <!--                    <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />-->
 
