@@ -201,6 +201,9 @@
             $str = stripslashes($ligne["trueRep"]);
             $tabWords = explode(" ", $str);
             $wordIndex = rand(0, count($tabWords) - 1);
+            while ($tabWords[$wordIndex] == "!" || $tabWords[$wordIndex] == "?" || $tabWords[$wordIndex] == ".") {
+                $wordIndex = rand(0, count($tabWords) - 1);
+            }
             
             $rightStr = "";
             for ($i = 0; $i < $wordIndex; $i++) {

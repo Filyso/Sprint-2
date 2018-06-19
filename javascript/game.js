@@ -126,6 +126,7 @@ function initialiser(evt) {
     // Création du paragraphe de num de question
     var numQuestion = document.createElement("p");
     numQuestion.id = "numQuestion";
+    numQuestion.textContent = "#1";
     numQuestion.classList.add("numQuestion");
     numEtTuto.appendChild(numQuestion);
     // Création du paragraphe de nom de chanson et d'artiste
@@ -264,6 +265,7 @@ function swap(evt) {
                 },
                 'json'
             );
+            document.getElementById("reponse7Input").autofocus;
             document.getElementById("reponse7Input").parentElement.style.display = "block";
             document.getElementById("reponse7Input").addEventListener("keyup", verifierType);
         }
@@ -503,7 +505,7 @@ function afterVerif(evt) {
 // ********************* //
 function timerStart(niv) {
     if (numQuest == 6) {
-        milli = 3050;
+        milli = 1550;
     } else {
         milli = 1050;
     }
@@ -535,7 +537,7 @@ function decrement(evt) {
         timer.textContent = "" + timerSec + "." + timerMilli;
     }
 
-    if (timerSec < 1 && timerMilli < 1) {
+    if (timerSec < 1 && timerMilli < 1 && numQuest < 6) {
         clearInterval(encours);
         if (timer.textContent = "0.0") {
             timeOut = true;
