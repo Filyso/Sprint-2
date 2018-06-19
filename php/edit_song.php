@@ -1,6 +1,5 @@
 <?php
 	//header("Content-type: text/html; charset: UTF-8");
-
     if(isset($_POST["song"])) {
         try {
             require("./param.inc.php");
@@ -268,17 +267,17 @@
                     <legend>Réponses</legend>
 
                     <div>
-                        <label for="badRep1_<?php echo($iterationCount) ?>">Autre réponse 1</label>
+                        <label for="badRep1_<?php echo($iterationCount) ?>">Mauvaise réponse 1</label>
                         <input id="badRep1_<?php echo($iterationCount) ?>" type="text" name="badRep1_<?php echo($iterationCount) ?>" required="required" maxlength="200" value="<?php echo(stripslashes($ligne3["falseRep1"])) ?>">
                     </div>
 
                     <div>
-                        <label for="badRep2_<?php echo($iterationCount) ?>">Autre réponse 2</label>
+                        <label for="badRep2_<?php echo($iterationCount) ?>">Mauvaise réponse 2</label>
                         <input id="badRep2_<?php echo($iterationCount) ?>" type="text" name="badRep2_<?php echo($iterationCount) ?>" required="required" maxlength="200" value="<?php echo(stripslashes($ligne3["falseRep2"])) ?>">
                     </div>
 
                     <div>
-                        <label for="badRep3_<?php echo($iterationCount) ?>">Autre réponse 3</label>
+                        <label for="badRep3_<?php echo($iterationCount) ?>">Mauvaise réponse 3</label>
                         <input id="badRep3_<?php echo($iterationCount) ?>" type="text" name="badRep3_<?php echo($iterationCount) ?>" required="required" maxlength="200" value="<?php echo(stripslashes($ligne3["falseRep3"])) ?>">
                     </div>
                     
@@ -298,10 +297,6 @@
                 }
 
                 ?>
-
-                
-
-
             <div>
                 <input id="songId" type="hidden" name="songId" value="<?php echo($_POST["songId"]) ?>"/>
                 <input type="button" id="addTCBtn" value="AJOUTER UN TIMECODE" />

@@ -56,6 +56,8 @@
                         include("./rm_user.php");
                     } else if ($_GET["admin"] == "Modification/Suppression de chansons" || $_GET["admin"] == "Modifier" || $_GET["admin"] == "Supprimer") {
                         include("./modify_song_admin.php");
+                    } else if($_GET["admin"] == "edit"){
+                        include("./edit_song.php");
                     } else {
                         include("./add_song_admin.php");
                     }
