@@ -192,10 +192,10 @@ function initialiser(evt) {
     // Création form reponse 7
     var form = document.createElement("form");
     reponses.appendChild(form);
-    // Création du label reponse 7
+    // Création du label 1 reponse 7
     var label = document.createElement("label");
     label.setAttribute("for", "reponse7Input");
-    label.textContent = "Nombres de mots à trouvés : ";
+    label.textContent = "Gauche";
     form.appendChild(label);
     // Création de l'input reponse 7
     var reponse7Input = document.createElement("input");
@@ -203,6 +203,12 @@ function initialiser(evt) {
     reponse7Input.type = "text";
     reponse7Input.name = "reponse7Input";
     form.appendChild(reponse7Input);
+    // Création du label 2 reponse 7
+    var label2 = document.createElement("label");
+    label2.setAttribute("for", "reponse7Input");
+    label2.textContent = "Droite";
+    form.appendChild(label2);
+    
     document.getElementById("reponse7Input").parentElement.addEventListener("submit", function (evt) {
         evt.preventDefault();
     });
