@@ -37,7 +37,7 @@
                                     "FROM MEMBRES ".
                                     "LEFT OUTER JOIN JOUE ".
                                     "ON MEMBRES.idMbr = JOUE.idMbr ".
-                                    "GROUP BY JOUE.idMbr ".
+                                    "GROUP BY MEMBRES.idMbr ".
                                     "ORDER BY SUM(JOUE.score) DESC";
 
                
@@ -47,29 +47,33 @@
                         // Etape 3 : traite les données
                     
                         $ligne = $statement->fetch(PDO::FETCH_OBJ);
-                        $placeTrouvee = false;
+
                         $currentPosition = 1;
+                        $previousPlace = $currentPosition;
+                        $previousScore = $ligne->score;
+
                             
-                            
-                        while($ligne->idMbr != $_SESSION["id"] && $ligne != false && $ligne->score != ""){
+                        while($ligne->idMbr != $_SESSION["id"] && $ligne != false){
                             
                             $currentPosition += 1;
                             $previousScore = $ligne->score;
                             
                             $ligne = $statement->fetch(PDO::FETCH_OBJ);
                             
-                            if($ligne->score != $previousScore){
-                                $previousScore=$ligne->score;
-                                $previousPlace=$currentPosition;
+                            
+                            if($ligne != false){
                                 
+                                if($ligne->score != $previousScore){
+                                    $previousScore=$ligne->score;
+                                    $previousPlace=$currentPosition;
+                                }
+                                if($ligne->score == ""){
+                                    $previousScore = 0;
+                                }
                             }
                             
-                            $score = $ligne->score;
-                            if($ligne->score == ""){
-                                $score = 0;
-                            }
                         }
-
+                       
                     ?>
 
                         <tr>
@@ -82,10 +86,10 @@
                                 </p>
                             </td>
                             <td>
-                                <?php echo($score) ?>
+                                <?php echo($previousScore) ?>
                             </td>
                             <td>
-                                <?php echo($currentPosition) ?>
+                                <?php echo($previousPlace) ?>
                             </td>
                         </tr>
 
@@ -109,7 +113,7 @@
                                     "FROM MEMBRES ".
                                     "LEFT OUTER JOIN JOUE ".
                                     "ON MEMBRES.idMbr = JOUE.idMbr ".
-                                    "GROUP BY JOUE.idMbr ".
+                                    "GROUP BY MEMBRES.idMbr ".
                                     "ORDER BY SUM(JOUE.score) DESC ".
                                     "LIMIT 10";
 
@@ -162,12 +166,18 @@
                             
                             $ligne2 = $statement2->fetch(PDO::FETCH_OBJ);
                             
-                            if($currentPosition<11){
+                            if($ligne2 != false){
                                 if($ligne2->score != $previousScore){
                                     $previousScore=$ligne2->score;
                                     $previousPlace=$currentPosition;
+                                    
                                 }
+                                if($ligne2->score == ""){
+                                        $previousScore = 0;
+                                } 
                             }
+                            
+                            
                             
 //                            if($i < 9){
 //                                if($ligne2->score == $previousScore){

@@ -13,6 +13,7 @@
                             
     }
         ?>
+
         <main class="mainAccount">
             <div class="infoJoueur">
                 <figure class="figureImgJoueurAccount">

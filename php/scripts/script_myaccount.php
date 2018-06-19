@@ -1,9 +1,12 @@
 <?php 
+    
+    $pdo=new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS) ;
+    $pdo->query("SET NAMES utf8");
+    $pdo->query("SET CHARACTER SET 'utf8'");
+
     if(isset($_POST["amiSup"])){
                             
-        $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
-        $pdo->query("SET NAMES utf8");
-        $pdo->query("SET CHARACTER SET 'utf8'");
+
                             
         $requeteSQL = "SELECT idMbr FROM MEMBRES WHERE pseudoMbr='".$_POST["amiSup"]."'";
         $statement = $pdo->query($requeteSQL);
@@ -14,7 +17,13 @@
                            
                             
     }
+    
+
+    //Etape 2 : envoie de la première requête SQL au serveur
+                    
+    
         ?>
+
         <main class="mainAccount">
             <div class="infoJoueur">
                 <figure class="figureImgJoueurAccount">
@@ -33,56 +42,204 @@
                         <th>Score</th>
                         <th>Classement</th>
                     </tr>
-                    <tr>
-                        <td>
-                            <figure>
-                                <img src="../images/chat.jpg" alt="Photo de profil joueur"/>
-                            </figure>
-                            <p>Michel</p>
-                        </td>
-                        <td>10.000</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <figure>
-                                <img src="../images/chat.jpg" alt="Photo de profil joueur"/>
-                            </figure>
-                            <p>Samuel</p>
-                        </td>
-                        <td>9.000</td>
-                        <td>2</td>
-                    </tr>
+                    
+<?php
+  
+
+
+        $requeteSQL="SELECT MEMBRES.idMbr, MEMBRES.pseudoMbr AS 'pseudo', MEMBRES.linkIconMbr AS 'icon', SUM(JOUE.score) AS 'score' ".
+                                    "FROM MEMBRES ".
+                                    "LEFT OUTER JOIN JOUE ".
+                                    "ON MEMBRES.idMbr = JOUE.idMbr ".
+                                    "GROUP BY MEMBRES.idMbr ".
+                                    "ORDER BY SUM(JOUE.score) DESC";
+
+               
+
+        $statement = $pdo->query($requeteSQL) ;
+           
+        // Etape 3 : traite les données
+                   
+        
+        $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+        $currentPosition = 1;
+        
+        $pseudoPlayer1 = $ligne["pseudo"];
+        $iconPlayer1 = $ligne["icon"];
+        $scorePlayer1 = $ligne["score"];
+        $placePlayer1 = $currentPosition;
+        
+        if($pseudoPlayer1 == $_SESSION["pseudo"]){
+            
+?>
                     <tr class="vous">
                         <td>
                             <figure>
-                                <img src="<?php echo($_SESSION["icon"]); ?>" alt="Photo de profil joueur"/>
+                                <img src="<?php echo($iconPlayer1); ?>" alt="Photo de profil de <?php echo($pseudoPlayer1); ?>"/>
                             </figure>
-                            <p>Vous</p>
+                            <p><?php echo($pseudoPlayer1); ?></p>
                         </td>
-                        <td>8.000</td>
-                        <td>3</td>
-                    </tr>
+                        <td><?php echo($scorePlayer1); ?></td>
+                        <td><?php echo($placePlayer1); ?></td>
+                    </tr>                 
+<?php
+            
+            $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+            $currentPosition += 1;
+            
+            if($ligne != false){
+                $pseudoPlayer2 = $ligne["pseudo"];
+                $iconPlayer2 = $ligne["icon"];
+                $scorePlayer2 = $ligne["score"];
+                $placePlayer2 = $currentPosition;
+?>
                     <tr>
                         <td>
                             <figure>
-                                <img src="../images/chat.jpg" alt="Photo de profil joueur"/>
+                                <img src="<?php echo($iconPlayer2); ?>" alt="Photo de profil de <?php echo($pseudoPlayer2); ?>"/>
                             </figure>
-                            <p>Antonin54</p>
+                            <p><?php echo($pseudoPlayer2); ?></p>
                         </td>
-                        <td>7.000</td>
-                        <td>4</td>
-                    </tr>
+                        <td><?php echo($scorePlayer2); ?></td>
+                        <td><?php echo($placePlayer2); ?></td>
+                    </tr>                
+<?php
+                $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+                $currentPosition += 1;
+                
+                if($ligne != false){
+                    $pseudoPlayer3 = $ligne["pseudo"];
+                    $iconPlayer3 = $ligne["icon"];
+                    $scorePlayer3 = $ligne["score"];
+                    $placePlayer3 = $currentPosition;
+?>
                     <tr>
                         <td>
                             <figure>
-                                <img src="../images/chat.jpg" alt="Photo de profil joueur"/>
+                                <img src="<?php echo($iconPlayer3); ?>" alt="Photo de profil de <?php echo($pseudoPlayer3); ?>"/>
                             </figure>
-                            <p>ElRodriguo</p>
+                            <p><?php echo($pseudoPlayer3); ?></p>
                         </td>
-                        <td>6.000</td>
-                        <td>5</td>
-                    </tr>
+                        <td><?php echo($scorePlayer3); ?></td>
+                        <td><?php echo($placePlayer3); ?></td>
+                    </tr>                 
+<?php
+                    $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+                    $currentPosition += 1;
+
+                    if($ligne != false){
+                        $pseudoPlayer4 = $ligne["pseudo"];
+                        $iconPlayer4 = $ligne["icon"];
+                        $scorePlayer4 = $ligne["score"];
+                        $placePlayer4 = $currentPosition;
+?>
+                    <tr>
+                        <td>
+                            <figure>
+                                <img src="<?php echo($iconPlayer4); ?>" alt="Photo de profil de <?php echo($pseudoPlayer4); ?>"/>
+                            </figure>
+                            <p><?php echo($pseudoPlayer4); ?></p>
+                        </td>
+                        <td><?php echo($scorePlayer4); ?></td>
+                        <td><?php echo($placePlayer4); ?></td>
+                    </tr>           
+<?php
+                        $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+                        $currentPosition += 1;
+                        
+                        if($ligne != false){
+                            $pseudoPlayer5 = $ligne["pseudo"];
+                            $iconPlayer5 = $ligne["icon"];
+                            $scorePlayer5 = $ligne["score"];
+                            $placePlayer5 = $currentPosition;
+?>
+                    <tr>
+                        <td>
+                            <figure>
+                                <img src="<?php echo($iconPlayer5); ?>" alt="Photo de profil de <?php echo($pseudoPlayer5); ?>"/>
+                            </figure>
+                            <p><?php echo($pseudoPlayer5); ?></p>
+                        </td>
+                        <td><?php echo($scorePlayer5); ?></td>
+                        <td><?php echo($placePlayer5); ?></td>
+                    </tr>                    
+<?php
+                        }
+                    }
+                } 
+            }  
+        }else{
+            
+            $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+            $currentPosition += 1;
+
+            $pseudoPlayer2 = $ligne["pseudo"];
+            $iconPlayer2 = $ligne["icon"];
+            $scorePlayer2 = $ligne["score"];
+            $placePlayer2 = $currentPosition;
+            
+            if($pseudoPlayer2 == $_SESSION["pseudo"]){
+                
+                //boucle
+                
+            }else{
+                $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+                $currentPosition += 1;
+
+                $pseudoPlayer3 = $ligne["pseudo"];
+                $iconPlayer3 = $ligne["icon"];
+                $scorePlayer3 = $ligne["score"];
+                $placePlayer3 = $currentPosition;
+                
+                //boucle
+                
+                $pseudoPlayer4 = "";
+                $iconPlayer4 = "";
+                $scorePlayer4 = "";
+                $placePlayer4 = "";
+
+                $pseudoPlayer5 = "";
+                $iconPlayer5 = "";
+                $scorePlayer5 = "";
+                $placePlayer5 = "";
+                
+            }
+            
+            
+
+
+
+            
+        }
+        
+        
+
+                            
+        
+                    
+?>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                 </table>
             </div>
             <div class="badgesGagnes">
