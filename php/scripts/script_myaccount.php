@@ -24,7 +24,7 @@
                     <p class="nomJoueurAccount">Nom : <?php echo($_SESSION["nom"]); ?></p>
                     <p class="prenomJoueurAccount">Prénom : <?php echo($_SESSION["prenom"]); ?></p>
                     <p class="mailJoueurAccount">Mail : <?php echo($_SESSION["mail"]); ?></p>
-                <input id="btnEdit" type="button" value="Editer" onClick='document.location.href="./edit_account.php"'>
+                <input class="btnEdit" id="btnEdit" type="button" value="Editer" onClick='document.location.href="./edit_account.php"'>
             </div>
             <div class="classementAccount">
                 <table class="tableauAccount">
@@ -88,8 +88,8 @@
             <div class="badgesGagnes">
                 <h2>Amis</h2>
                 <form method="post" action="./account.php">
-                    <input id="pseudoFriend" type="text" required="required" name="pseudoFriend" placeholder="Pseudo amis...">
-                    <button id="searchFriend" type="submit">Ajouter</button>
+                    <input id="pseudoFriend" type="text" required="required" name="pseudoFriend" placeholder="Pseudo amis..." class="btnAmis">
+                    <button class="submitAmis" id="searchFriend" type="submit"><img src="../images/icon_addFriend.png" alt="Icone ajouter un ami"/></button>
                 </form>
                 <?php
                     if(isset($_POST["pseudoFriend"])){
