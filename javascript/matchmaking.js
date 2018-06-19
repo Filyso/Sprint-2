@@ -17,6 +17,7 @@
             function (data) {
                 if (data.competitorFind) {
                     window.clearInterval(timerQueue);
+                    document.location.href = "./multi_game.php";
                     console.log(data.requete);
                 } else {
                     console.log("En recherche de Matchmaking");
