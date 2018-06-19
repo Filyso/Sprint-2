@@ -180,7 +180,7 @@ FROM MEMBRES INNER JOIN AMIS ON MEMBRES.idMbr = AMIS.idMbr_Ami1 OR MEMBRES.idMbr
                             
                             ?>
                             <form action="account.php" method="post">
-                                <input type="submit" value="Supprimer"/>
+                                <input type="submit" value="Supprimer" class="btnDeleteFriend"/>
                                 <input type="hidden" value="<?php echo($ligne["pseudoMbr"]);?>" name="amiSup" />
                             </form>
                         </td>

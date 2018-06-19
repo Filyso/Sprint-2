@@ -19,7 +19,7 @@
                     <img src="<?php echo($ligne["linkIconMbr"]); ?>" class="imgJoueurAccount"/>
                 </figure>
                     <p class="pseudoJoueurAccount"><?php echo($ligne["pseudoMbr"]); ?></p>
-                <input id="btnEdit" type="button" value="Retour" onClick='document.location.href="./account.php"'>
+                <input class="btnRetour" id="btnEdit" type="button" value="Retour" onClick='document.location.href="./account.php"'>
             </div>
             <div class="classementAccount">
                 <table class="tableauAccount">
