@@ -1599,6 +1599,7 @@ li .loginMenu {
 }
 .mainAccount td:first-child {
     color: var(--rouge);
+    
 }
 .mainAccount figure {
     width: 60px;
@@ -1654,7 +1655,7 @@ li .loginMenu {
     width: 40%;
     margin-right: 10px;
 }
-.badgesGagnes form {
+.badgesGagnes>form {
     align-items: center;
     margin-bottom: 20px;
 }
@@ -1678,6 +1679,55 @@ li .loginMenu {
     height: 520px;
     font-size: 25px;
 }
+.badgesGagnes table tbody td:first-child{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.badgesGagnes table tbody td:first-child a{
+    text-decoration: none;
+    color:var(--jaune);
+     transition: .2s;
+}
+.badgesGagnes table tbody td:first-child a:hover{
+    font-weight: bold;
+    transition: .2s;
+}
+.btnDeleteFriend{
+    background-color: transparent;
+    color:transparent;
+    background-image: url(../images/icon_deleteFriend.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 3px solid var(--jaune);
+    height: 30px;
+    width: 50px;
+    background-position: center;
+    padding: 3px 0px 3px 0px;
+    transition: .2s;
+}
+.btnDeleteFriend:hover{
+    transform: scale(1.02);
+    cursor: pointer;
+    transition: .2s;
+    border-color: var(--rouge);
+}
+.mainAccount .btnRetour{
+    background-color: transparent;
+    color:transparent;
+    background-image: url(../images/icon_retour.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 3px solid var(--jaune);
+    background-position: center;
+    height: 50px;
+    width: 100px;
+}
+.mainAccount .btnRetour:hover{
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
 /*************************** INSCRIPTION SIGN UP ************************/
 .signUpPage {
     background-color: var(--noir);
