@@ -126,6 +126,7 @@ function initialiser(evt) {
     // Création du paragraphe de num de question
     var numQuestion = document.createElement("p");
     numQuestion.id = "numQuestion";
+    numQuestion.textContent = "#1";
     numQuestion.classList.add("numQuestion");
     numEtTuto.appendChild(numQuestion);
     // Création du paragraphe de nom de chanson et d'artiste
@@ -192,10 +193,9 @@ function initialiser(evt) {
     // Création form reponse 7
     var form = document.createElement("form");
     reponses.appendChild(form);
-    // Création du label reponse 7
+    // Création du label 1 reponse 7
     var label = document.createElement("label");
     label.setAttribute("for", "reponse7Input");
-    label.textContent = "Nombres de mots à trouvés : ";
     form.appendChild(label);
     // Création de l'input reponse 7
     var reponse7Input = document.createElement("input");
@@ -203,6 +203,11 @@ function initialiser(evt) {
     reponse7Input.type = "text";
     reponse7Input.name = "reponse7Input";
     form.appendChild(reponse7Input);
+    // Création du label 2 reponse 7
+    var label2 = document.createElement("label");
+    label2.setAttribute("for", "reponse7Input");
+    form.appendChild(label2);
+    
     document.getElementById("reponse7Input").parentElement.addEventListener("submit", function (evt) {
         evt.preventDefault();
     });
@@ -251,14 +256,16 @@ function swap(evt) {
             reps[3].style.display = "none";
             $.post(
                 '../php/scripts/script_musique.php', {
-                    function: 'getTimeCodeAnswer',
+                    function: 'getQuestion7',
                     idTimeCode: tabTimeCode[numQuest],
                 },
                 function (data) {
-                    document.querySelector("label[for=reponse7Input]").textContent += data.trueRep.split(/\b\w+\b/).length - 1;
+                    document.querySelectorAll("label[for=reponse7Input]")[0].textContent += data.rightStr;
+                    document.querySelectorAll("label[for=reponse7Input]")[1].textContent += data.leftStr;
                 },
                 'json'
             );
+            document.getElementById("reponse7Input").autofocus;
             document.getElementById("reponse7Input").parentElement.style.display = "block";
             document.getElementById("reponse7Input").addEventListener("keyup", verifierType);
         }
@@ -354,12 +361,15 @@ function verifierReps(evt) {
 }
 
 function verifierType(evt) {
-    repInput = this;
+    var repInput = this;
+    var thisLabels = this.parentElement.querySelectorAll("label");
+    var answer = thisLabels[0].textContent + this.value + thisLabels[1].textContent;
+    console.log(answer);
     $.post(
         '../php/scripts/script_musique.php', {
             function: 'checkAnswer',
             idTimeCode: tabTimeCode[numQuest],
-            playerAnswer: repInput.value.toLowerCase()
+            playerAnswer: answer.toLowerCase()
         },
         function (data) {
             if (data.answerIsGood) {
@@ -495,7 +505,7 @@ function afterVerif(evt) {
 // ********************* //
 function timerStart(niv) {
     if (numQuest == 6) {
-        milli = 3050;
+        milli = 1550;
     } else {
         milli = 1050;
     }
@@ -527,7 +537,7 @@ function decrement(evt) {
         timer.textContent = "" + timerSec + "." + timerMilli;
     }
 
-    if (timerSec < 1 && timerMilli < 1) {
+    if (timerSec < 1 && timerMilli < 1 && numQuest < 6) {
         clearInterval(encours);
         if (timer.textContent = "0.0") {
             timeOut = true;

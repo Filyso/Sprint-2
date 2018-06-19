@@ -19,6 +19,11 @@
                     getTimeCodeAnswers($_POST['idTimeCode']);
                 };
                 break;
+            case "getQuestion7":
+                if(isset($_POST['idTimeCode'])) {
+                    getQuestion7($_POST['idTimeCode']);
+                };
+                break;
             case "checkAnswer":
                 if(isset($_POST['idTimeCode']) && isset($_POST['playerAnswer'])) {
                     checkAnswer($_POST['idTimeCode'], $_POST['playerAnswer']);
@@ -176,6 +181,53 @@
         }
     }
 
+    function getQuestion7($idTimeCode) {
+        // ETAPE 1 : Se connecter au serveur de base de données
+        try {
+            require("../param.inc.php");
+            $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
+            $pdo->query("SET NAMES utf8");
+            $pdo->query("SET CHARACTER SET 'utf8'");
+            
+        // ETAPE 2 : Envoyer une requête SQL
+            // conditions pour l'envoi de la requête en fonction du choix du joueur
+            
+            $requeteSQL = "SELECT trueRep FROM TIMECODES WHERE TIMECODES.idTimeCode=:paramIdTimeCode";
+            
+            $statement = $pdo->prepare($requeteSQL);
+            $statement->execute(array(":paramIdTimeCode" => $idTimeCode));
+            $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+            
+            $str = stripslashes($ligne["trueRep"]);
+            $tabWords = explode(" ", $str);
+            $wordIndex = rand(0, count($tabWords) - 1);
+            while ($tabWords[$wordIndex] == "!" || $tabWords[$wordIndex] == "?" || $tabWords[$wordIndex] == ".") {
+                $wordIndex = rand(0, count($tabWords) - 1);
+            }
+            
+            $rightStr = "";
+            for ($i = 0; $i < $wordIndex; $i++) {
+                $rightStr = $rightStr . $tabWords[$i] . " ";
+            }
+            
+            $leftStr = "";
+            for ($i = $wordIndex + 1; $i < count($tabWords); $i++) {
+                $leftStr = $leftStr  . " " . $tabWords[$i];
+            }
+            
+            
+            $retour = array('rightStr' => $rightStr,
+                           'leftStr' => $leftStr);
+            
+        // ETAPE 3 : Déconnecter du serveur                        
+            $pdo = null;
+            
+            // Envoi du retour (on renvoi le tableau $retour encodé en JSON)
+            echo json_encode($retour);
+        } catch (Exception $e) {
+        }
+    }
+
     function checkAnswer($idTimeCode, $playerAnswer) {
         // ETAPE 1 : Se connecter au serveur de base de données
         try {
@@ -193,7 +245,7 @@
             $statement->execute(array(":paramIdTimeCode" => $idTimeCode));
             $ligne = $statement->fetch(PDO::FETCH_ASSOC);
             
-            if ($playerAnswer == $ligne['trueRep']) {
+            if ($playerAnswer == stripslashes($ligne['trueRep'])) {
                 $retour = array('answerIsGood' => true);
             } else {
                 $retour = array('answerIsGood' => false);
