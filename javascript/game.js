@@ -195,7 +195,6 @@ function initialiser(evt) {
     // Création du label 1 reponse 7
     var label = document.createElement("label");
     label.setAttribute("for", "reponse7Input");
-    label.textContent = "Gauche";
     form.appendChild(label);
     // Création de l'input reponse 7
     var reponse7Input = document.createElement("input");
@@ -206,7 +205,6 @@ function initialiser(evt) {
     // Création du label 2 reponse 7
     var label2 = document.createElement("label");
     label2.setAttribute("for", "reponse7Input");
-    label2.textContent = "Droite";
     form.appendChild(label2);
     
     document.getElementById("reponse7Input").parentElement.addEventListener("submit", function (evt) {
@@ -257,11 +255,12 @@ function swap(evt) {
             reps[3].style.display = "none";
             $.post(
                 '../php/scripts/script_musique.php', {
-                    function: 'getTimeCodeAnswer',
+                    function: 'getQuestion7',
                     idTimeCode: tabTimeCode[numQuest],
                 },
                 function (data) {
-                    document.querySelector("label[for=reponse7Input]").textContent += data.trueRep.split(/\b\w+\b/).length - 1;
+                    document.querySelectorAll("label[for=reponse7Input]")[0].textContent += data.rightStr;
+                    document.querySelectorAll("label[for=reponse7Input]")[1].textContent += data.leftStr;
                 },
                 'json'
             );
@@ -360,12 +359,15 @@ function verifierReps(evt) {
 }
 
 function verifierType(evt) {
-    repInput = this;
+    var repInput = this;
+    var thisLabels = this.parentElement.querySelectorAll("label");
+    var answer = thisLabels[0].textContent + this.value + thisLabels[1].textContent;
+    console.log(answer);
     $.post(
         '../php/scripts/script_musique.php', {
             function: 'checkAnswer',
             idTimeCode: tabTimeCode[numQuest],
-            playerAnswer: repInput.value.toLowerCase()
+            playerAnswer: answer.toLowerCase()
         },
         function (data) {
             if (data.answerIsGood) {
