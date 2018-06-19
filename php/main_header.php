@@ -24,7 +24,12 @@
             $_SESSION["nom"] = $ligne["nameMbr"];
             $_SESSION["prenom"] = $ligne["prenomMbr"];
             $_SESSION["mail"] = $ligne["mailMbr"];
-
+            
+            
+            $requeteSQL = "UPDATE MEMBRES SET isConnect = '1' WHERE MEMBRES.idMbr = '".$_SESSION["id"]."'";
+            $statement = $pdo->query($requeteSQL);
+            
+            
             //echo("Connecté");
         }else{
             if($_POST["pseudo"] == $ligne["pseudoMbr"] && $passSha1Verif == $ligne["mdpMbr"] && $ligne["isVerif"] == 0){
