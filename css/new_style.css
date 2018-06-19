@@ -1,65 +1,53 @@
-/********************************************* POLICES *******************************/
-
+/************************************** POLICES ***************************/
 @font-face {
     font-family: "Norwester";
     src: url("../fonts/norwester.otf");
 }
-
 @font-face {
     font-family: "FuturaBold";
     src: url("../fonts/futuraBold.otf");
 }
-
 @font-face {
     font-family: "Raleway";
     src: url("../fonts/ralewayRegular.ttf");
 }
-
-
-/***************************************** COULEURS ***********************************/
-
+/*********************************** COULEURS *****************************/
 html {
     --jaune: #FEC65C;
     --rouge: #ED1B70;
     --orange: #F79754;
     --noir: #231F20;
 }
-
-
-/**************************************** PROPRIETES SUR TOUT *****************************************/
-
+/****************************** PROPRIETES SUR TOUT *************************/
 body {
     margin: 0;
     font-family: "Raleway";
 }
-
 header {
     z-index: 10;
 }
-
+main {
+    margin: 0;
+    padding: 0;
+}
 canvas {
     height: 100%;
     z-index: 0;
     position: absolute;
 }
-
 h1 {
     font-size: 50px;
 }
 h2 {
     font-family: "FuturaBold";
 }
-
 select,
 button,
 input,
 textarea {
     outline: none;
 }
-
-
-/*************************************** PAGE INDEX ***************************************************/
-
+/********************************** KEYFRAMES **************************/
 @keyframes spriteSliding {
     from {
         background-position: calc(-69vh * 24);
@@ -68,88 +56,85 @@ textarea {
         background-position: 0;
     }
 }
-
-.mainIndex {
-    position: relative;
+@keyframes scoreAppear {
+    from {
+        transform: scale(5) rotate(0deg) translate(-50%, -50%);
+    }
+    to {
+        transform: scale(1) rotate(-16deg) translate(-50%, -50%);
+    }
+}
+@keyframes spriteSlidingMedia {
+    from {
+        background-position: calc(-50vw * 24);
+    }
+    to {
+        background-position: 0;
+    }
+}
+/**************************************** DISPLAY ********************/
+.modifySong,
+.welcomeIndex,
+.selectMulti,
+.footer,
+.BoiteAIdee form,
+.mainMentions,
+#chansonForm .choixLangue,
+#timeCode div,
+.mainResultat,
+.mainAccount,
+.badgesGagnes form,
+.signUpPage fieldset {
+    display: flex;
+    justify-content: center;
+}
+.mainIndex,
+.mainSelect div,
+.preGamePage form,
+.footerGauche,
+.footer form,
+.headerAdmin div,
+.addSongSection,
+.addSongForm,
+.addSongForm fieldset,
+.mainHeader ul,
+.popup-content,
+.popup-content_regle,
+.popup-content form,
+.sectionSolo .score,
+.sectionSolo .contenu,
+.sectionSolo .reponses,
+.sectionSolo form,
+.mainRank,
+.mainResultat .partieGauche,
+.cercleScore,
+.mainResultat .partieDroite,
+.bonnesReponses,
+.infoJoueur,
+.signUpPage form,
+.signUpPage form div:not(.imagesProfil) {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.footer-links,
+.footerReseaux,
+.headerAdmin,
+.sectionSolo .reponses .sousReponses,
+.mainResultat .partieDroite button,
+.enDessous,
+.rightHeader {
+    display: flex;
     justify-content: space-around;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    height: 100%;
 }
-
-.mainIndex section {
-    height: 100vh;
-    width: 100%;
+.imagesProfil,
+.lesPhotos,
+#chansonForm div,
+#reponsesForm div,
+.mainHeader,
+.mainResultat .resultat {
     display: flex;
-    justify-content: center;
-    position: relative;
-}
-
-.indexLink::after {
-    content: '';
-    display: block;
-    width: 69vh;
-    height: 69vh;
-    position: absolute;
-    top: 15vh;
-    left: calc(50vw - 35vh);
-    z-index: 1;
-    background-image: url(../images/sprite_1.png);
-    background-repeat: no-repeat;
-    background-size: auto 100%;
-    overflow: hidden;
-    animation: spriteSliding 0.7s steps(24, start) infinite;
-    animation-play-state: running;
-}
-
-.welcomeIndex {
-    text-align: justify;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-image: linear-gradient(90deg, var(--rouge), var(--jaune));
-    color: white;
-}
-
-.welcomeIndex p {
-    max-width: 70%;
-    min-width: 10%;
-    font-size: 2.5vh;
-    line-height: 1.5;
-}
-
-.welcomeIndex h2 {
-    text-align: center;
-    font-size: 6vh;
-}
-
-.welcomeIndex strong {
-    font-weight: 1500;
-    font-size: 2.8vh;
-}
-
-li .loginMenu {
-    color: white;
-    text-decoration: none;
-    font-size: 28px;
-}
-
-li .loginMenu:hover {
-    color: var(--jaune);
-}
-
-.mainIndex h1 {
-    position: absolute;
-    top: calc(20vh - 10vw);
-    font-family: "Norwester";
-    color: var(--jaune);
-    font-size: 10vw;
-    margin-top: 0;
+    justify-content: space-between;
 }
 /************************* BOUTONS ****************************/
 .mainIndex a,
@@ -211,7 +196,7 @@ li .loginMenu:hover {
 .buttonMulti a:hover,
 .BoiteAIdee button:hover,
 .preGamePage button[type="button"]:hover,
-.preGamePage button[type=submit]:hover{
+.preGamePage button[type=submit]:hover {
     transition: .2s;
     color: var(--rouge);
     border-color: var(--rouge);
@@ -234,15 +219,76 @@ li .loginMenu:hover {
 .BoiteAIdee button:hover {
     padding: 10px 25px;
 }
-
-/**************************************************** SELECT GAME PAGE ********************************/
-
+/************************************* PAGE INDEX *********************/
+.mainIndex {
+    position: relative;
+    list-style: none;
+    height: 100%;
+}
+.mainIndex section {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+.indexLink::after {
+    content: '';
+    display: block;
+    width: 69vh;
+    height: 69vh;
+    position: absolute;
+    top: 15vh;
+    left: calc(50vw - 35vh);
+    z-index: 1;
+    background-image: url(../images/sprite_1.png);
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    overflow: hidden;
+    animation: spriteSliding 0.7s steps(24, start) infinite;
+    animation-play-state: running;
+}
+.welcomeIndex {
+    text-align: justify;
+    align-items: center;
+    flex-direction: column;
+    background-image: linear-gradient(90deg, var(--rouge), var(--jaune));
+    color: white;
+}
+.welcomeIndex p {
+    max-width: 70%;
+    min-width: 10%;
+    font-size: 2.5vh;
+    line-height: 1.5;
+}
+.welcomeIndex h2 {
+    text-align: center;
+    font-size: 6vh;
+}
+.welcomeIndex strong {
+    font-weight: 1500;
+    font-size: 2.8vh;
+}
+li .loginMenu {
+    color: white;
+    text-decoration: none;
+    font-size: 28px;
+}
+li .loginMenu:hover {
+    color: var(--jaune);
+}
+.mainIndex h1 {
+    position: absolute;
+    top: calc(20vh - 10vw);
+    font-family: "Norwester";
+    color: var(--jaune);
+    font-size: 10vw;
+    margin-top: 0;
+}
+/*************************** SELECT GAME PAGE ********************************/
 .mainSelect {
     margin: 0;
     background: #292929;
     height: 100vh;
 }
-
 .mainSelect h1 {
     text-align: center;
     margin-bottom: 100px;
@@ -251,7 +297,6 @@ li .loginMenu:hover {
     padding-top: 20vh;
     margin-top: 0px;
 }
-
 .mainSelect div {
     color: white;
     width: 60%;
@@ -259,18 +304,12 @@ li .loginMenu:hover {
     margin: auto;
     font-weight: 300;
     font-size: 18px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     margin-top: 0px;
     margin-bottom: 80px;
 }
-
 .selectMulti {
     height: calc(100vh - 74px);
-    display: flex;
 }
-
 .selectMulti h1 {
     margin: auto;
     text-align: center;
@@ -280,8 +319,7 @@ li .loginMenu:hover {
     color: white;
     font-weight: 300;
 }
-/*********************************************** PRE GAME PAGE ****************************************/
-
+/*********************************** PRE GAME PAGE ***************************/
 .preGamePage {
     background: #292929;
     height: 100vh;
@@ -289,23 +327,18 @@ li .loginMenu:hover {
     padding-top: 150px;
     text-align: center;
 }
-
 .preGamePage h1 {
     margin-bottom: 50px;
     font-weight: 500;
     color: white;
     font-family: "FuturaBold";
 }
-
 .preGamePage form {
     margin: auto;
     max-width: 35%;
     min-height: 300px;
-    display: flex;
     justify-content: space-around;
-    flex-direction: column;
 }
-
 .preGamePage fieldset {
     height: 30%;
     border: 3px solid white;
@@ -315,45 +348,37 @@ li .loginMenu:hover {
     border-radius: 3px;
     margin-bottom: 30px;
 }
-
 .preGamePage img {
     max-width: 50px;
     vertical-align: center;
 }
-
 .preGamePage fieldset:first-child div {
     max-width: 200px;
     display: inline-block;
 }
-
 .preGamePage fieldset:first-child div input {
     vertical-align: middle;
     margin: 0;
     margin-top: 7px;
 }
-
 .preGamePage fieldset:first-child div img {
     vertical-align: middle;
 }
-
 .preGamePage fieldset:first-child div img:hover {
     cursor: pointer;
     transform: scale(1.05);
     transition: 0.2s;
 }
-
 .preGamePage label {
     padding: 0px 5px 0 5px;
     vertical-align: middle;
     font-weight: 500;
 }
-
 .preGamePage input[type=radio] {
     width: 15px;
     height: 15px;
     opacity: 0;
 }
-
 .preGamePage input[type=radio] + label:after {
     background: #fff;
     border: 2px solid #ccc;
@@ -366,18 +391,15 @@ li .loginMenu:hover {
     height: 17px;
     cursor: pointer;
 }
-
 .preGamePage input[type=radio]:checked + label:after {
     background: var(--rouge);
     border-color: var(--rouge);
     transition: 0.1s;
     box-shadow: inset 0px 0px 0px 2px #fff;
 }
-
 .preGamePage input[type=radio]:hover {
     cursor: pointer;
 }
-
 .preGamePage select {
     background-color: transparent;
     color: white;
@@ -386,51 +408,36 @@ li .loginMenu:hover {
     font-size: 18px;
     border-bottom: white 2px solid;
 }
-
 .preGamePage select option {
     background-color: #2D2D2D;
 }
-
-/****************************************************** FOOTER ****************************************/
-
+/*********************************** FOOTER *****************************/
 .footer {
     max-width: 100vw;
     overflow: hidden;
-    display: flex;
-    justify-content: center;
     flex-wrap: wrap;
     align-items: center;
     font-family: "FuturaBold";
     background-color: white;
 }
-
 .footer img:hover {
     transform: scale(1.02);
     transition: 0.2s;
 }
-
 .footer img {
     transition: 0.2s;
 }
-
-
-/* Footer left */
-
 .footerGauche {
-    display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
     max-width: 50vw;
 }
-
 .logo {
     max-height: 15vw;
 }
-.legal{
+.legal {
     font-size: 2vh;
 }
-.legal a{
+.legal a {
     color: var(--rouge);
     text-decoration: none;
 }
@@ -441,13 +448,10 @@ li .loginMenu:hover {
     text-align: center;
     height: 100%;
     font-size: 1.3vw;
-    display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
     min-width: 200px;
     margin: 20px;
 }
-
 .footer-links a {
     text-decoration: none;
     color: inherit;
@@ -455,41 +459,29 @@ li .loginMenu:hover {
     font-size: 4vh;
     margin-bottom: 20px;
 }
-
 .footer-links a:hover {
     color: var(--rouge);
     transition: 0.2s;
 }
-
 .footerReseaux img {
     width: 4vw;
     padding: 5px;
 }
-
 .footerReseaux img:hover {
     transform: scale(1.1);
     transition: 0.2s;
 }
-
 .footerReseaux {
-    display: flex;
-    justify-content: space-around;
     flex-wrap: nowrap;
 }
-
 .footerReseaux a {
     margin: 0 20px;
 }
-
-
-/* Footer Right */
-
 .footerDroite {
     float: right;
     display: inline-block;
     padding: 0 0 2vw 2vw;
 }
-
 .footerDroite h3 {
     vertical-align: top;
     margin-bottom: 20px;
@@ -497,17 +489,10 @@ li .loginMenu:hover {
     font-size: 1.8vw;
     color: var(--noir);
 }
-
-
-/* The contact form */
-
 .footer form {
-    display: flex;
     justify-content: center;
     align-items: flex-start;
-    flex-direction: column;
 }
-
 .sectionSolo form input,
 .footer form input,
 .footer form textarea {
@@ -521,30 +506,24 @@ li .loginMenu:hover {
     width: 20vw;
     padding: 15px;
 }
-
 .footer::-webkit-input-placeholder {
     color: #5c666b;
 }
-
 .footer::-moz-placeholder {
     color: #5c666b;
     opacity: 1;
 }
-
 .footer:-ms-input-placeholder {
     color: #5c666b;
 }
-
 .footer form input {
     height: 55px;
     margin-bottom: 15px;
 }
-
 .footer form textarea {
     height: 100px;
     margin-bottom: 20px;
 }
-
 .footer form button {
     background-color: white;
     border: 3px solid var(--rouge);
@@ -557,20 +536,16 @@ li .loginMenu:hover {
     font-size: 18px;
     font-family: "FuturaBold", sans-serif;
 }
-
 .footer form button:hover {
     transition: 0.2s;
     transform: scale(1.02);
     border: 3px solid var(--orange);
     color: var(--orange);
 }
-
-/************************************************** ABOUT *************************************/
-
+/*********************************** ABOUT *********************************/
 .mainAbout {
     background: #292929;
 }
-
 .equipe {
     padding-top: 6vh;
     text-align: center;
@@ -578,21 +553,16 @@ li .loginMenu:hover {
     color: #2D2D2D;
     margin-top: 5vh;
 }
-
 .equipe h2 {
     font-size: 5vw;
     color: white;
 }
-
 .lesPhotos {
-    display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     text-align: center;
     max-width: 50vw;
     margin: auto;
 }
-
 .unePhoto {
     max-width: 10vw;
     min-width: 150px;
@@ -600,39 +570,31 @@ li .loginMenu:hover {
     border: 3px white solid;
     margin: 20px;
 }
-
 .unePhoto:hover {
     transform: scale(1.02);
     transition: 0.2s;
 }
-
 .unePhoto img {
     max-width: 100%;
     margin: 0;
     padding: 0;
 }
-
 .unePhoto figcaption h3 {
     margin: 10px;
     font-weight: normal;
     font-weight: 500;
 }
-
 .unePhoto figcaption {
     color: white;
     text-align: center;
     font-weight: 300;
     padding: 0px 10px 15px 10px;
 }
-
 .enDessous {
-    display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
     margin: 50px 10vw 0 10vw;
     padding-bottom: 10vh;
 }
-
 .BoiteAIdee {
     padding: 3vh 3vw 3vh 3vw;
     border-radius: 5px;
@@ -640,19 +602,16 @@ li .loginMenu:hover {
     border: 3px solid white;
     width: 50vw;
 }
-
 .BoiteAIdee h2 {
     font-weight: normal;
     margin: 0;
     font-weight: 500;
     color: white;
 }
-
 .BoiteAIdee p {
     color: white;
     font-weight: 300;
 }
-
 .BoiteAIdee form textarea {
     display: block;
     width: 100%;
@@ -667,15 +626,11 @@ li .loginMenu:hover {
     border: none;
     padding: 10px;
 }
-
 .BoiteAIdee form {
     width: 100%;
     margin: 0;
-    display: flex;
-    justify-content: center;
     flex-wrap: wrap;
 }
-
 .BoiteAIdee form input {
     width: 100%;
     margin-bottom: 10px;
@@ -688,80 +643,59 @@ li .loginMenu:hover {
     border: none;
     padding: 10px;
 }
-
 .AVenir {
     padding: 3vh 3vw 3vh 3vw;
     border-radius: 5px;
     border: 3px solid white;
     margin-top: 50px;
 }
-
 .AVenir h2 {
     color: white;
     font-weight: normal;
     margin: 0;
     font-weight: 500;
 }
-
 .AVenir p {
     font-weight: 500;
 }
-
 .AVenir p,
 .AVenir ul {
     color: white;
 }
-
 .AVenir li {
     padding-top: 10px;
     font-weight: 300;
 }
-/********************************** MENTIONS LEGALES *****************************************/
-.mainMentions{
+/************************* MENTIONS LEGALES ********************************/
+.mainMentions {
     background-color: var(--noir);
     color: white;
     text-align: justify;
-    display: flex;
-    justify-content: center;
     padding-top: 100px;
 }
-.mainMentions section{
+.mainMentions section {
     width: 70vw;
 }
-.mainMentions h2{
+.mainMentions h2 {
     color: var(--jaune);
 }
-.mainMentions h3{
+.mainMentions h3 {
     color: var(--orange);
 }
-.mainMentions a{
+.mainMentions a {
     color: var(--rouge);
     text-decoration: none;
 }
-/************************************* PAGES ADMIN ********************************************/
-
-.headerAdmin {
-    display: flex;
-    justify-content: space-around;
-}
-
+/********************** PAGES ADMIN ************************************/
 .mainAdmin {
     background: #292929;
     padding-bottom: 10vh;
     padding-top: 10vh;
 }
-
 .headerAdmin h2 {
     color: white;
     font-size: 28px;
 }
-
-.headerAdmin div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .headerAdmin input {
     border: 2px solid white;
     background-color: transparent;
@@ -770,143 +704,104 @@ li .loginMenu:hover {
     cursor: pointer;
     font-size: 17px;
 }
-
 .headerAdmin input:hover {
     border: 2px solid var(--jaune);
     color: var(--jaune);
 }
-
 .mainAdmin h3 {
     text-align: center;
     font-family: "FuturaBold";
     font-size: 24px;
     color: white;
 }
-
-
-/****************************************** ADD SONG *********************************/
-
+/***************************** ADD SONG *********************************/
 .addSongSection {
-    color: white;
-    display: flex;
-    align-items: center;
     flex-direction: column;
 }
-
 .addSongForm {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
     width: 50%;
 }
-
 .addSongForm input,
 .addSongForm select {
     color: white;
 }
-
 .addSongForm fieldset {
     width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     margin: 10px;
     border: 2px solid #444444;
 }
-
 .addSongForm legend {
     color: var(--jaune);
     font-family: "FuturaBold";
     font-size: 22px;
 }
-
 #chansonForm .adminLangues {
     display: inline-flex;
 }
-
 #chansonForm .choixLangue {
-    display: flex;
     justify-content: flex-start;
     width: 60%;
     padding-bottom: 5px;
     align-items: center;
 }
-
 #chansonForm .choixLangue input {
     cursor: pointer;
     background-color: white;
 }
-
 #chansonForm .choixLangue img {
     margin-right: 20px;
     width: 40px;
     cursor: pointer;
     transition: 0.2s;
 }
-
 #chansonForm .choixLangue img:hover {
     transform: scale(1.1);
     transition: 0.2s;
 }
-
 #chansonForm {
     margin: 0;
     padding: 10px;
     margin-bottom: 20px;
 }
-
 #chansonForm div {
     width: 100%;
     color: white;
     align-items: center;
-    display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     padding: 0;
 }
-
 #chansonForm legend {
     align-self: center;
 }
-
 #timeCode {
     margin: 0;
     padding: 10px;
     margin-bottom: 20px;
 }
-
 #timeCode div {
     width: 100%;
-    display: flex;
     align-items: center;
     color: white;
     flex-wrap: wrap;
     justify-content: flex-start;
     margin: 5px;
 }
-
 #reponsesForm div {
     width: 100%;
-    display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     margin: 5px;
 }
-
 #reponsesForm {
     width: 97%;
     box-sizing: border-box;
 }
-
 #reponsesForm label {
     margin-right: 20px;
 }
-
 #timeCode span,
 #timeCode label {
     margin: 0 10px;
 }
-
 .addSongForm input[type=number],
 .addSongForm input[type=text],
 .addSongForm input[type=url],
@@ -916,22 +811,18 @@ li .loginMenu:hover {
     padding: 5px;
     background-color: transparent;
 }
-
 .addSongForm input::placeholder {
     color: #dedede;
 }
-
 .addSongForm input[type=text],
 .addSongForm input[type=url],
 .addSongForm select {
     width: 60%;
     margin-bottom: 5px;
 }
-
 .addSongForm input[type=number] {
     width: 20%;
 }
-
 .addSongForm input[type="button"],
 .addSongForm input[type="submit"] {
     border: 2px solid #42f456;
@@ -941,70 +832,51 @@ li .loginMenu:hover {
     margin: 0 20px;
     color: #42f456;
 }
-
 .addSongForm input[type="button"]:hover,
 .addSongForm input[type="submit"]:hover {
     border: 2px solid var(--jaune);
     color: var(--jaune);
 }
-
-
-/**************************************************** MODIFY SONG ********************************/
-
+/****************************** MODIFY SONG ****************************/
 .modifySong {
-    display: flex;
-    justify-content: center;
     color: white;
 }
-
 .modifySong th {
     font-family: 'FuturaBold';
     padding: 20px 0;
 }
-
 .modiftSong table {
     border-collapse: collapse;
 }
-
 .modifySong .nameSong,
 .modifySong th {
     color: var(--jaune);
 }
-
 .suppSongBtn {
     border: 2px solid var(--rouge);
     color: var(--rouge);
 }
-
 .editSongBtn {
     border: 2px solid #42f456;
     color: #42f456;
 }
-
 .modifySong input {
     background-color: transparent;
     padding: 4px;
     margin: 0 10px;
 }
-
 .modifySong input:hover {
     transform: 0.2s linear;
     color: var(--jaune);
     border-color: var(--jaune);
     cursor: pointer;
 }
-
 .modifySong td {
     border: 2px solid #555555;
     padding: 10px;
 }
-
-
-/*************************************************** HEADER **************************************/
-
+/********************* HEADER **************************************/
 .mainHeader {
-    display: flex;
-    justify-content: space-between;
     align-content: center;
     position: fixed;
     top: 0;
@@ -1015,11 +887,9 @@ li .loginMenu:hover {
     height: auto;
     width: 100vw;
 }
-
 .indexColor .mainHeader {
     background-color: transparent;
 }
-
 .mainHeader .container {
     display: block;
     z-index: 5;
@@ -1027,16 +897,13 @@ li .loginMenu:hover {
     transition: transform .2s;
     height: 100px;
 }
-
 .mainHeader .container:hover {
     transform: scale(1.1);
 }
-
 .container svg {
     width: 100px;
     height: 100px;
 }
-
 .container svg path,
 .container svg line {
     stroke: var(--jaune);
@@ -1044,7 +911,6 @@ li .loginMenu:hover {
     stroke-linecap: round;
     fill: none;
 }
-
 .menuHidden {
     transform: translateX(-400px);
     position: fixed;
@@ -1058,7 +924,6 @@ li .loginMenu:hover {
     top: 0;
     left: 0;
 }
-
 .menuShown {
     transform: translateX(0);
     position: fixed;
@@ -1072,43 +937,34 @@ li .loginMenu:hover {
     top: 0;
     left: 0;
 }
-
 .mainHeader ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: space-around;
     list-style: none;
     padding: 0;
     margin: 0;
     height: 100%;
 }
-
 .mainHeader li:hover {
     cursor: pointer;
 }
-
 .mainHeader li:nth-child(1) {
     background-image: url(../images/icon_accueil.png);
     background-size: contain;
     background-repeat: no-repeat;
     padding-left: 45px;
 }
-
 .mainHeader li:nth-child(2) {
     background-image: url(../images/icon_play.png);
     background-size: contain;
     background-repeat: no-repeat;
     padding-left: 40px;
 }
-
 .mainHeader li:nth-child(3) {
     background-image: url(../images/icon_rank.png);
     background-size: contain;
     background-repeat: no-repeat;
     padding-left: 45px;
 }
-
 .mainHeader li:nth-child(4) p {
     padding: 0;
     margin: 0;
@@ -1117,78 +973,62 @@ li .loginMenu:hover {
     background-repeat: no-repeat;
     padding-left: 45px;
 }
-
 .mainHeader .logoAccountHeader {
     background-image: url(../images/icon_account.png);
     background-size: contain;
     background-repeat: no-repeat;
     padding-left: 40px;
 }
-
 #fullScreenButton {
     cursor: pointer;
     transition: transform .2s;
 }
-
 #fullScreenButton:hover {
     transform: scale(1.15);
 }
-
 #fullScreenButton svg {
     width: 30px;
     height: 30px;
     display: inline-block;
 }
-
 #fullScreenButton svg path,
 #fullScreenButton svg line {
     stroke: var(--rouge);
     stroke-width: 0px;
     fill: var(--rouge);
 }
-
 .mainHeader a {
     color: white;
     text-decoration: none;
     font-size: 28px;
 }
-
 li .loginMenu {
     color: white;
     text-decoration: none;
     font-size: 28px;
 }
-
 .loginMenu:hover {
     color: var(--jaune);
 }
-
 .mainHeader p:hover {
     cursor: pointer;
 }
-
 .mainHeader .login:hover {
     color: var(--rouge);
 }
-
 .rightHeader {
-    display: flex;
     align-items: center;
     width: 350px;
-    justify-content: space-around;
     padding: 0 30px;
 }
-
 .connect a {
     font-size: 18px;
     color: var(--rouge);
 }
-
 .indexColor .connect a {
     font-size: 18px;
     color: var(--rouge);
 }
-
 .login {
     font-size: 18px;
     color: var(--rouge);
@@ -1198,7 +1038,6 @@ li .loginMenu {
     top: 5px;
     position: relative;
 }
-
 .login::after {
     position: absolute;
     transition: .3s;
@@ -1209,12 +1048,10 @@ li .loginMenu {
     height: 3px;
     background: var(--rouge);
 }
-
 .login:hover::after {
     width: 100%;
     left: 0;
 }
-
 .mainHeader figure {
     width: 80px;
     height: 80px;
@@ -1223,14 +1060,10 @@ li .loginMenu {
     margin: auto;
     margin-top: 10px;
 }
-
 .mainHeader img {
     width: 100%;
 }
-
-
-/********************************************** POPUP CONNEXION **************************************/
-
+/********************* POPUP CONNEXION ******************************/
 .popup,
 .popup_regle {
     display: block;
@@ -1245,11 +1078,9 @@ li .loginMenu {
     background-color: rgba(0, 0, 0, 0.4);
     animation-play-state: running;
 }
-
 .is-open {
     opacity: 1;
 }
-
 .popup-content,
 .popup-content_regle {
     background-color: #fefefe;
@@ -1258,20 +1089,13 @@ li .loginMenu {
     height: 50%;
     border-radius: 10px;
     position: relative;
-    display: flex;
     justify-content: space-around;
-    flex-direction: column;
-    align-items: center;
 }
-
 .popup-content form {
-    display: flex;
     height: 100%;
     justify-content: center;
-    flex-direction: column;
     width: 50%;
 }
-
 .popup-content h2,
 .popup-content_regle h2 {
     padding-top: 10%;
@@ -1279,7 +1103,6 @@ li .loginMenu {
     font-size: 28px;
     color: var(--orange);
 }
-
 .popup-content input {
     height: 10%;
     margin-bottom: 10%;
@@ -1287,7 +1110,6 @@ li .loginMenu {
     padding: 5px 10px 5px 10px;
     font-size: 15px;
 }
-
 .popup-content button {
     height: 15%;
     width: 50%;
@@ -1300,7 +1122,6 @@ li .loginMenu {
     transition: 0.2s;
     background-color: white;
 }
-
 .popup-content button:hover {
     transform-origin: center;
     width: 60%;
@@ -1308,7 +1129,6 @@ li .loginMenu {
     color: var(--jaune);
     transition: 0.2s;
 }
-
 .close,
 .close_regle {
     color: var(--orange);
@@ -1318,7 +1138,6 @@ li .loginMenu {
     top: 0;
     left: calc(100% - 28px);
 }
-
 .close:hover,
 .close:focus,
 .close_regle:hover,
@@ -1327,13 +1146,11 @@ li .loginMenu {
     text-decoration: none;
     cursor: pointer;
 }
-
 .popup-content_regle ul {
     font-size: 25px;
     font-weight: 300;
     list-style-image: url(images/list.png);
 }
-
 @media only screen and (max-device-width: 480px) {
     .preGamePage {
         padding-top: 250px;
@@ -1375,48 +1192,35 @@ li .loginMenu {
         font-weight: bold;
     }
 }
-
-
-/*****************************************
-***************** GAME SOLO JEU *********
-***************************************/
-
+/********************************* GAME SOLO JEU *****************/
 .sectionSolo {
     margin: 100px 0 0 0;
     position: relative;
     height: calc(100vh - 100px);
     background-color: #292929;
 }
-
 .sectionSolo .ytplayer {
     flex: 0.9;
     width: 100%;
     pointer-events: none;
     align-self: center;
 }
-
 .sectionSolo .score {
     top: 3vw;
     left: 3vw;
     width: 10vw;
     position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
-
 .sectionSolo .score img {
     width: calc(10vw + 10px);
     border-radius: 50%;
     border: 5px solid var(--rouge);
     box-sizing: border-box;
 }
-
 .sectionSolo .score figure {
     margin: 0;
     margin-bottom: 3vw;
 }
-
 .sectionSolo .score .barScoreMax {
     background-color: var(--jaune);
     width: 15px;
@@ -1424,7 +1228,6 @@ li .loginMenu {
     height: calc(100vh - 110px - 19vw);
     border-radius: 20px;
 }
-
 .sectionSolo .score .barScore {
     background: var(--rouge);
     width: 100%;
@@ -1432,21 +1235,15 @@ li .loginMenu {
     position: absolute;
     bottom: 0px;
 }
-
 .sectionSolo .contenu {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     text-align: center;
     margin: auto;
     width: 60%;
     height: 100%;
 }
-
 .sectionSolo .contenu > * {
     width: 100%;
 }
-
 .sectionSolo .numEtTuto input {
     position: relative;
     top: 48px;
@@ -1462,7 +1259,6 @@ li .loginMenu {
     transition: 0.2s;
     text-align: center;
 }
-
 .sectionSolo .numEtTuto input:hover {
     font-size: 21px;
     border: 3px solid var(--rouge);
@@ -1472,41 +1268,30 @@ li .loginMenu {
     transition: 0.2s;
     cursor: pointer;
 }
-
 .sectionSolo .numEtTuto p {
     color: white;
     font-weight: 700;
 }
-
 .sectionSolo .numEtTuto p:last-child {
     font-size: 25px;
 }
-
 .sectionSolo .phraseACompleter {
     font-family: 'FuturaBold';
     font-size: 33px;
     color: white;
     margin-top: 20px;
 }
-
 .sectionSolo .reponses {
     margin-top: 2vh;
-    display: flex;
     width: 100%;
     height: 45vh;
-    flex-direction: column;
-    align-items: center;
 }
-
 .sectionSolo .reponses .sousReponses {
     height: 15vh;
     width: 100%;
-    display: flex;
     margin-top: 10px;
     margin-bottom: 10px;
-    justify-content: space-around;
 }
-
 .sectionSolo .reponses .sousReponses .reponseBtn {
     background: none;
     border: 3px solid var(--jaune);
@@ -1521,40 +1306,31 @@ li .loginMenu {
     background-size: 200% auto;
     color: white;
 }
-
 .sectionSolo .reponses .sousReponses .reponseBtn:hover {
     background-position: right center;
     transform: scale(1.05);
     cursor: pointer;
     transition: 0.5s;
 }
-
 .sectionSolo .reponses .divTimer {
     height: 10vh;
     width: 10vh;
     border-radius: 100%;
     border: 5px solid var(--jaune);
 }
-
 .sectionSolo .reponses .divTimer p {
     font-family: 'FuturaBold';
     font-size: 30px;
     margin-top: 30%;
     color: var(--jaune);
 }
-
 .sectionSolo form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
 }
-
 .sectionSolo label {
     font-family: 'FuturaBold';
     color: #fff;
 }
-
 #currentScore {
     color: #fff;
     font-size: 16em;
@@ -1563,30 +1339,14 @@ li .loginMenu {
     transform: scale(1) rotate(-16deg) translate(-50%, -50%);
     transform-origin: center center;
 }
-
-@keyframes scoreAppear {
-    from {
-        transform: scale(5) rotate(0deg) translate(-50%, -50%);
-    }
-    to {
-        transform: scale(1) rotate(-16deg) translate(-50%, -50%);
-    }
-}
-
-
-/******************************************************** RANK PAGE **********************************/
-
+/******************************** RANK PAGE **********************************/
 .mainRank {
     background: #292929;
     margin: 0;
     padding: 150px 50px 50px 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     min-height: 100vh;
     color: white;
 }
-
 .mainRank h1 {
     margin-top: 0;
     font-family: 'FuturaBold', sans-serif;
@@ -1594,7 +1354,6 @@ li .loginMenu {
     font-size: 50px;
     margin-bottom: 50px;
 }
-
 .mainRank table {
     border: 3px solid white;
     width: 55%;
@@ -1602,18 +1361,15 @@ li .loginMenu {
     font-size: 30px;
     border-radius: 10px;
 }
-
 .mainRank tr {
     border: 3px solid white;
     padding-top: 15px;
 }
-
 .mainRank th {
     font-weight: normal;
     font-size: 30px;
     padding: 10px 20px 10px 20px;
 }
-
 .mainRank td {
     text-align: center;
     font-size: 25px;
@@ -1621,32 +1377,26 @@ li .loginMenu {
     padding: 5px 20px 5px 20px;
     height: 100%;
 }
-
 .mainRank th:first-child,
 .mainRank td:first-child {
     text-align: center;
 }
-
 .mainRank th:last-child,
 .mainRank td:last-child {
     text-align: right;
 }
-
 .mainRank tr + tr:hover td {
     background: white;
     color: var(--orange);
 }
-
 .mainRank tr + tr:hover td:last-child {
     background: white;
     color: #fec65c;
 }
-
 .mainRank tr + tr:hover td:first-child {
     background: white;
     color: var(--rouge);
 }
-
 .mainRank figure {
     width: 80px;
     height: 80px;
@@ -1655,59 +1405,40 @@ li .loginMenu {
     margin: 5px 0px 5px 20px;
     overflow: hidden;
 }
-
 .mainRank img {
     width: 100%;
 }
-
 .mainRank p {
     margin-top: 30px;
 }
-
-
-/***************************************************** STYLE RESULTAT *********************************/
-
+/**************************** STYLE RESULTAT *********************************/
 .mainResultat {
-    display: flex;
-    justify-content: center;
     background: #292929;
     height: calc(100vh - 100px);
     padding-top: 100px;
 }
-
 .mainResultat .resultat {
     padding: 40px;
-    display: flex;
     width: 40vw;
     margin: auto;
-    justify-content: space-between;
 }
-
 .mainResultat .partieGauche {
-    display: flex;
-    flex-direction: column;
     text-align: center;
-    align-items: center;
 }
-
 .cercleScore {
     border-radius: 100%;
     width: 300px;
     height: 300px;
     background-color: var(--jaune);
     transition: 0.2s;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
 }
-
 .scoreResultat {
     font-weight: 300;
     font-size: 35px;
     color: white;
     margin: 0;
 }
-
 .chiffreScoreResultat {
     font-weight: 300;
     font-size: 120px;
@@ -1715,7 +1446,6 @@ li .loginMenu {
     margin: 0;
     transition: 0.2s;
 }
-
 .btnSaveScore {
     margin: 0;
     margin-top: 30px;
@@ -1728,42 +1458,31 @@ li .loginMenu {
     font-weight: 300;
     transition: 0.2s;
 }
-
 .btnSaveScore:hover {
     cursor: pointer;
     transition: 0.2s;
     transform: scale(1.3);
 }
-
 .partageReseaux {
     margin-top: 4vh;
     width: 20vw;
 }
-
 .partageReseaux img {
     width: 100%;
     transition: 0.2s;
     opacity: 0.9;
 }
-
 .partageReseaux img:hover {
     transform: scale(1.02);
     transition: 0.2s;
     opacity: 1;
     cursor: pointer;
 }
-
 .mainResultat .partieDroite {
     padding-top: 2vh;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
 }
-
 .bonnesReponses {
     background-color: var(--rouge);
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     text-align: center;
     margin-bottom: 60px;
@@ -1771,25 +1490,20 @@ li .loginMenu {
     height: 200px;
     width: 200px;
 }
-
 .nbBonneReponse {
     color: white;
     font-size: 100px;
     margin: 0;
     font-weight: 300;
 }
-
 .txtBonnesReponses {
     color: white;
     margin: 0;
     font-size: 16px;
 }
-
 .mainResultat .partieDroite button {
-    display: flex;
     height: 90px;
     width: 250px;
-    justify-content: space-around;
     align-items: center;
     border-radius: 20px;
     border: none;
@@ -1797,11 +1511,9 @@ li .loginMenu {
     background-color: var(--orange);
     transition: 0.2s;
 }
-
 .mainResultat .partieDroite a {
     text-decoration: none;
 }
-
 .mainResultat .partieDroite button p {
     color: white;
     font-size: 30px;
@@ -1810,36 +1522,29 @@ li .loginMenu {
     padding-left: 10px;
     transition: 0.2s;
 }
-
 .mainResultat .partieDroite .replayImg {
     height: 60px;
     width: 60px;
     transform: rotate(90deg);
     transition: 0.2s;
 }
-
 .mainResultat .partieDroite button:hover p {
     font-weight: 500;
     transition: 0.3s ease;
 }
-
 .mainResultat .partieDroite button:hover .replayImg {
     transform: rotate(-90deg);
     transition: 0.3s ease;
 }
-
-/*************************************************STYLE ACCOUNT********************************/
-
+/******************************STYLE ACCOUNT********************************/
 .mainAccount {
     background: #292929;
     margin: 0;
     padding: 150px 50px 50px 50px;
-    display: flex;
     align-items: center;
     min-height: calc(100vh - 100px);
     color: white;
 }
-
 .mainAccount h1 {
     margin-top: 0;
     font-family: 'FuturaBold', sans-serif;
@@ -1847,7 +1552,6 @@ li .loginMenu {
     font-size: 50px;
     margin-bottom: 50px;
 }
-
 .mainAccount table {
     border: 3px solid white;
     width: 100%;
@@ -1855,18 +1559,15 @@ li .loginMenu {
     font-size: 30px;
     border-radius: 10px;
 }
-
 .mainAccount tr {
     border: 3px solid white;
     padding-top: 15px;
 }
-
 .mainAccount th {
     font-weight: normal;
     font-size: 30px;
     padding: 10px 50px 10px 50px;
 }
-
 .mainAccount td {
     text-align: center;
     font-size: 25px;
@@ -1874,37 +1575,29 @@ li .loginMenu {
     padding: 5px 20px 5px 20px;
     height: 100%;
 }
-
 .mainAccount td p {
     margin-left: 100px;
 }
-
 .mainAccount th:first-child,
 .mainAccount td:first-child {
     text-align: center;
 }
-
 .mainAccount th:last-child,
 .mainAccount td:last-child {
     text-align: right;
 }
-
 .mainAccount .vous {
     background: white;
 }
-
 .mainAccount td {
     color: var(--orange);
 }
-
 .mainAccount td:last-child {
     color: #fec65c;
 }
-
 .mainAccount td:first-child {
     color: var(--rouge);
 }
-
 .mainAccount figure {
     width: 60px;
     height: 60px;
@@ -1913,19 +1606,13 @@ li .loginMenu {
     margin: 5px 0px 0px 10px;
     overflow: hidden;
 }
-
 .mainAccount img {
     width: 100%;
 }
-
 .infoJoueur {
-    display: flex;
-    flex-direction: column;
     margin-right: 80px;
     font-size: 25px;
-    align-items: center;
 }
-
 .infoJoueur .nomJoueurAccount,
 .infoJoueur .prenomJoueurAccount,
 .infoJoueur .mailJoueurAccount {
@@ -1933,19 +1620,16 @@ li .loginMenu {
     padding-bottom: 10px;
     text-align: center;
 }
-
 .infoJoueur .figureImgJoueurAccount {
     margin: auto;
     width: 256px;
     height: 256px;
     border: 5px solid var(--rouge);
 }
-
 .infoJoueur .pseudoJoueurAccount {
     font-size: 50px;
     text-align: center;
 }
-
 .mainAccount .btnEdit,
 .mainAccount .btnAmis {
     background: none;
@@ -1956,44 +1640,35 @@ li .loginMenu {
     font-family: 'FuturaBold';
     transition: .2s;
 }
-
 .mainAccount .btnEdit:hover {
     border-color: var(--rouge);
     cursor: pointer;
     color: var(--rouge);
     transition: .2s;
 }
-
 .mainAccount .btnAmis {
     padding: 5px 10px;
     font-size: 20px;
     width: 40%;
     margin-right: 10px;
 }
-
 .badgesGagnes form {
-    display: flex;
     align-items: center;
-    justify-content: center;
     margin-bottom: 20px;
 }
-
 .mainAccount .submitAmis {
     background-color: transparent;
     border: 3px solid var(--jaune);
     transition: .2s;
 }
-
 .mainAccount .submitAmis img {
     width: 51px;
 }
-
 .mainAccount .submitAmis:hover {
     cursor: pointer;
     transform: scale(1.02);
     transition: .2s;
 }
-
 .badgesGagnes {
     border: 3px solid white;
     width: 500px;
@@ -2001,8 +1676,189 @@ li .loginMenu {
     height: 520px;
     font-size: 25px;
 }
-
+/*************************** INSCRIPTION SIGN UP ************************/
+.signUpPage {
+    background-color: var(--noir);
+    margin-top: 0px;
+    color: var(--rouge);
+    font-size: 24;
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.signUpPage form {
+    width: 40%;
+    margin: auto;
+    margin-top: 3vh;
+    border: 5px solid white;
+    border-radius: 10px;
+}
+.signUpPage form h1 {
+    text-align: center;
+    padding: 0;
+    margin-bottom: 0px;
+    color: var(--jaune);
+    font-family: 'FuturaBold';
+}
+.signUpPage fieldset {
+    border: none;
+}
+.signUpPage form div:not(.imagesProfil) {
+    margin: auto;
+    width: 60%;
+    justify-content: space-around;
+    align-items: left;
+}
+.signUpPage form div input:not([type="file"]) {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent;
+    width: 100%;
+    margin: 10px 0px 10px 0px;
+}
+.signUpPage form div input:not([type="file"])::placeholder {
+    color: #5d5d5d;
+    font-size: 18px;
+}
+.signUpPage form div input[type="file"] {
+    color: white;
+}
+.signUpPage form div input[type="file"]:hover {
+    cursor: pointer;
+}
+.labelIcone,
+.signUpPage p {
+    font-size: 18px;
+    color: white;
+    margin-bottom: 10px;
+}
+.signUpPage form button {
+    width: 20%;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: transparent;
+    color: white;
+    border: 3px solid var(--jaune);
+    font-size: 1.5vw;
+    padding: 10px;
+    transition: 0.2s;
+    font-weight: 700;
+    color: var(--jaune);
+}
+.signUpPage form button:hover {
+    cursor: pointer;
+    transition: 0.2s;
+    border: 3px solid var(--rouge);
+    color: var(--rouge);
+    width: 25%;
+}
+.imagesProfil {
+    padding-top: 10px;
+    width: 100%;
+    flex-wrap: wrap;
+    margin: 0px;
+}
+.imagesProfil img {
+    width: 100%;
+    transition: .2s;
+}
+.imagesProfil img:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: .2s;
+}
+.imagesProfil figure {
+    margin: 0;
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+/******************************* MODIFY SONG ********************************/
+.modifySong {
+    color: white;
+}
+.modifySong th {
+    font-family: 'FuturaBold';
+    padding: 20px 0;
+}
+.modiftSong table {
+    border-collapse: collapse;
+}
+.modifySong .nameSong,
+.modifySong th {
+    color: var(--jaune);
+}
+.suppSongBtn {
+    border: 2px solid var(--rouge);
+    color: var(--rouge);
+}
+.editSongBtn {
+    border: 2px solid #42f456;
+    color: #42f456;
+}
+.modifySong input {
+    background-color: transparent;
+    padding: 4px;
+    margin: 0 10px;
+}
+.modifySong input:hover {
+    transform: 0.2s linear;
+    color: var(--jaune);
+    border-color: var(--jaune);
+    cursor: pointer;
+}
+.modifySong td {
+    border: 1px solid #444444;
+    padding: 10px;
+}
+/***************************** MEDIA QUERIES ********************************/
 @media only screen and (max-device-width: 480px) {
+    .signUpPage form {
+        width: 80%;
+        margin-top: 200px;
+    }
+    .signUpPage form div:not(.imagesProfil) {
+        margin: auto;
+        width: 70%;
+    }
+    .signUpPage form h1 {
+        font-size: 60px;
+    }
+    .signUpPage form div {
+        width: 100%;
+    }
+    .signUpPage form button {
+        font-size: 40px;
+        width: 30%
+    }
+    .signUpPage form button:hover {
+        width: 40%;
+    }
+    .signUpPage form div input:not([type="file"]) {
+        font-size: 40px;
+        margin-bottom: 30px;
+    }
+    .signUpPage form div input:not([type="file"])::placeholder {
+        font-size: 35px;
+    }
+    .labelIcone {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    .signUpPage form div input[type="file"] {
+        font-size: 30px;
+    }
+    .signUpPage .choisirImageDefinis {
+        font-size: 30px;
+    }
+    
     .mainAccount {
         flex-direction: column;
         align-content: center;
@@ -2057,236 +1913,8 @@ li .loginMenu {
         width: 96px;
     }
 }
-
-
-/***************************************************
-********************* INSCRIPTION SIGN UP *********************
-***********************************************************/
-
-.signUpPage {
-    background-color: var(--noir);
-    margin-top: 0px;
-    color: var(--rouge);
-    font-size: 24;
-    text-align: center;
-    padding-top: 100px;
-    padding-bottom: 100px;
-}
-
-.signUpPage form {
-    width: 40%;
-    margin: auto;
-    margin-top: 3vh;
-    border: 5px solid white;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-}
-
-.signUpPage form h1 {
-    text-align: center;
-    padding: 0;
-    margin-bottom: 0px;
-    color: var(--jaune);
-    font-family: 'FuturaBold';
-}
-
-.signUpPage fieldset {
-    border: none;
-    display: flex;
-}
-
-.signUpPage form div:not(.imagesProfil) {
-    display: flex;
-    margin: auto;
-    width: 60%;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: left;
-}
-
-.signUpPage form div input:not([type="file"]) {
-    background-color: white;
-    color: black;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 20px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent;
-    width: 100%;
-    margin: 10px 0px 10px 0px;
-}
-
-.signUpPage form div input:not([type="file"])::placeholder {
-    color: #5d5d5d;
-    font-size: 18px;
-}
-
-.signUpPage form div input[type="file"] {
-    color: white;
-}
-
-.signUpPage form div input[type="file"]:hover {
-    cursor: pointer;
-}
-
-.labelIcone,
-.signUpPage p {
-    font-size: 18px;
-    color: white;
-    margin-bottom: 10px;
-}
-
-.signUpPage form button {
-    width: 20%;
-    margin: auto;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    background-color: transparent;
-    color: white;
-    border: 3px solid var(--jaune);
-    font-size: 1.5vw;
-    padding: 10px;
-    transition: 0.2s;
-    font-weight: 700;
-    color: var(--jaune);
-}
-
-.signUpPage form button:hover {
-    cursor: pointer;
-    transition: 0.2s;
-    border: 3px solid var(--rouge);
-    color: var(--rouge);
-    width: 25%;
-}
-
-.imagesProfil {
-    padding-top: 10px;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0px;
-    justify-content: space-between;
-}
-
-.imagesProfil img {
-    width: 100%;
-    transition: .2s;
-}
-
-.imagesProfil img:hover {
-    cursor: pointer;
-    transform: scale(1.05);
-    transition: .2s;
-}
-
-.imagesProfil figure {
-    margin: 0;
-    overflow: hidden;
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
-}
-
-
-/**************************************************** MODIFY SONG ********************************/
-
-.modifySong {
-    display: flex;
-    justify-content: center;
-    color: white;
-}
-
-.modifySong th {
-    font-family: 'FuturaBold';
-    padding: 20px 0;
-}
-
-.modiftSong table {
-    border-collapse: collapse;
-}
-
-.modifySong .nameSong,
-.modifySong th {
-    color: var(--jaune);
-}
-
-.suppSongBtn {
-    border: 2px solid var(--rouge);
-    color: var(--rouge);
-}
-
-.editSongBtn {
-    border: 2px solid #42f456;
-    color: #42f456;
-}
-
-.modifySong input {
-    background-color: transparent;
-    padding: 4px;
-    margin: 0 10px;
-}
-
-.modifySong input:hover {
-    transform: 0.2s linear;
-    color: var(--jaune);
-    border-color: var(--jaune);
-    cursor: pointer;
-}
-
-.modifySong td {
-    border: 1px solid #444444;
-    padding: 10px;
-}
-
-
-/***************************************************** MEDIA QUERIES ********************************/
-
-@media only screen and (max-device-width: 480px) {
-    .signUpPage form {
-        width: 80%;
-        margin-top: 200px;
-    }
-    .signUpPage form div:not(.imagesProfil) {
-        margin: auto;
-        width: 70%;
-    }
-    .signUpPage form h1 {
-        font-size: 60px;
-    }
-    .signUpPage form div {
-        width: 100%;
-    }
-    .signUpPage form button {
-        font-size: 40px;
-        width: 30%
-    }
-    .signUpPage form button:hover {
-        width: 40%;
-    }
-    .signUpPage form div input:not([type="file"]) {
-        font-size: 40px;
-        margin-bottom: 30px;
-    }
-    .signUpPage form div input:not([type="file"])::placeholder {
-        font-size: 35px;
-    }
-    .labelIcone {
-        font-size: 30px;
-        margin-bottom: 20px;
-    }
-    .signUpPage form div input[type="file"] {
-        font-size: 30px;
-    }
-    .signUpPage .choisirImageDefinis {
-        font-size: 30px;
-    }
-}
-
 @media (max-width: 1000px) {
     .rightHeader {
-        display: flex;
         align-items: flex-end;
         justify-content: center;
         flex-direction: column;
@@ -2302,16 +1930,7 @@ li .loginMenu {
         font-size: 3vh;
     }
 }
-
 @media only screen and (max-device-width: 480px) {
-    @keyframes spriteSlidingMedia {
-        from {
-            background-position: calc(-50vw * 24);
-        }
-        to {
-            background-position: 0;
-        }
-    }
     .indexLink::after {
         width: 50vw;
         height: 50vw;
