@@ -6,5 +6,5 @@
 	if(!defined("MYPASS"))
 		define("MYPASS","");
 	if(!defined("MYDB"))
-		define("MYDB","test");
+		define("MYDB","test3");
 ?>

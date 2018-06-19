@@ -15,6 +15,7 @@
     src: url("../fonts/ralewayRegular.ttf");
 }
 
+
 /***************************************** COULEURS ***********************************/
 
 html {
@@ -23,6 +24,7 @@ html {
     --orange: #F79754;
     --noir: #231F20;
 }
+
 
 /**************************************** PROPRIETES SUR TOUT *****************************************/
 
@@ -43,6 +45,14 @@ canvas {
 h1 {
     font-size: 50px;
 }
+
+select,
+button,
+input,
+textarea {
+    outline: none;
+}
+
 
 /*************************************** PAGE INDEX ***************************************************/
 
@@ -162,6 +172,7 @@ li .loginMenu:hover {
     border-color: var(--rouge);
 }
 
+
 /****************************************************** FOOTER ****************************************/
 
 .footer {
@@ -184,6 +195,7 @@ li .loginMenu:hover {
     transition: 0.2s;
 }
 
+
 /* Footer left */
 
 .footerGauche {
@@ -200,7 +212,6 @@ li .loginMenu:hover {
 
 .footer-links {
     color: var(--noir);
-    margin: 0;
     padding: 0;
     width: 40vw;
     text-align: center;
@@ -246,6 +257,7 @@ li .loginMenu:hover {
     margin: 0 20px;
 }
 
+
 /* Footer Right */
 
 .footerDroite {
@@ -261,6 +273,7 @@ li .loginMenu:hover {
     font-size: 1.8vw;
     color: var(--noir);
 }
+
 
 /* The contact form */
 
@@ -279,7 +292,6 @@ li .loginMenu:hover {
     box-sizing: border-box;
     border: 3px solid var(--rouge);
     resize: none;
-    outline: none;
     font-size: 2vh;
     color: black;
     width: 20vw;
@@ -316,7 +328,6 @@ li .loginMenu:hover {
     border: 3px solid var(--rouge);
     border-radius: 3px;
     color: var(--rouge);
-    outline: none;
     padding: 10px;
     float: right;
     cursor: pointer;
@@ -331,6 +342,7 @@ li .loginMenu:hover {
     border: 3px solid var(--orange);
     color: var(--orange);
 }
+
 
 /************************************************** ABOUT *************************************/
 
@@ -429,7 +441,6 @@ li .loginMenu:hover {
     margin-bottom: 10px;
     font-family: 'Raleway', sans-serif;
     resize: none;
-    outline: none;
     border-radius: 3px;
     font-size: 14px;
     box-sizing: border-box;
@@ -450,7 +461,6 @@ li .loginMenu:hover {
     margin-bottom: 10px;
     font-family: 'Raleway', sans-serif;
     font-size: 14px;
-    outline: none;
     border-radius: 3px;
     box-sizing: border-box;
     background-color: white;
@@ -467,7 +477,6 @@ li .loginMenu:hover {
     background-color: transparent;
     color: white;
     border: 2px solid white;
-    outline: none;
     padding: 10px;
     transition: 0.2s;
 }
@@ -509,6 +518,7 @@ li .loginMenu:hover {
     padding-top: 10px;
     font-weight: 300;
 }
+
 
 /********************************************* PAGES ADMIN ********************************************/
 
@@ -555,6 +565,7 @@ li .loginMenu:hover {
     font-size: 24px;
     color: white;
 }
+
 
 /****************************************** ADD SONG *********************************/
 
@@ -686,7 +697,6 @@ li .loginMenu:hover {
 .addSongForm select {
     border: 2px solid #555555;
     font-family: 'Raleway';
-    outline: none;
     border-radius: 5px;
     padding: 5px;
     background-color: transparent;
@@ -722,48 +732,60 @@ li .loginMenu:hover {
     border: 2px solid var(--jaune);
     color: var(--jaune);
 }
+
+
 /**************************************************** MODIFY SONG ********************************/
+
 .modifySong {
     display: flex;
     justify-content: center;
     font-family: 'Raleway';
     color: white;
 }
-.modifySong th{
+
+.modifySong th {
     font-family: 'FuturaBold';
     padding: 20px 0;
 }
-.modiftSong table{
+
+.modiftSong table {
     border-collapse: collapse;
 }
+
 .modifySong .nameSong,
-.modifySong th{
+.modifySong th {
     color: var(--jaune);
 }
-.suppSongBtn{
+
+.suppSongBtn {
     border: 2px solid var(--rouge);
     color: var(--rouge);
 }
-.editSongBtn{
+
+.editSongBtn {
     border: 2px solid #42f456;
     color: #42f456;
 }
-.modifySong input{
+
+.modifySong input {
     font-family: 'Raleway';
     background-color: transparent;
     padding: 4px;
     margin: 0 10px;
 }
-.modifySong input:hover{
+
+.modifySong input:hover {
     transform: 0.2s linear;
     color: var(--jaune);
     border-color: var(--jaune);
     cursor: pointer;
 }
-.modifySong td{
+
+.modifySong td {
     border: 2px solid #555555;
     padding: 10px;
 }
+
 
 /*************************************************** HEADER **************************************/
 
@@ -882,12 +904,14 @@ li .loginMenu:hover {
     background-repeat: no-repeat;
     padding-left: 45px;
 }
-.mainHeader .logoAccountHeader{
+
+.mainHeader .logoAccountHeader {
     background-image: url(../images/icon_account.png);
     background-size: contain;
     background-repeat: no-repeat;
     padding-left: 40px;
 }
+
 #fullScreenButton {
     cursor: pointer;
     transition: transform .2s;
@@ -991,6 +1015,7 @@ li .loginMenu {
     width: 100%;
 }
 
+
 /********************************************** POPUP CONNEXION **************************************/
 
 .popup,
@@ -1045,7 +1070,6 @@ li .loginMenu {
 
 .popup-content input {
     height: 10%;
-    outline: none;
     margin-bottom: 10%;
     border: 3px solid var(--orange);
     padding: 5px 10px 5px 10px;
@@ -1100,6 +1124,7 @@ li .loginMenu {
     list-style-image: url(images/list.png);
 }
 
+
 /*********************************************** PRE GAME PAGE ****************************************/
 
 .preGamePage {
@@ -1130,7 +1155,6 @@ li .loginMenu {
 .preGamePage fieldset {
     height: 30%;
     border: 3px solid white;
-    /*background-color: ##fec65c;*/
     color: white;
     font-size: 20px;
     padding: 20px;
@@ -1181,7 +1205,6 @@ li .loginMenu {
     font-family: inherit;
     font-size: 20px;
     transition: 0.2s;
-    outline: none;
     width: 120px;
     cursor: pointer;
 }
@@ -1232,7 +1255,6 @@ li .loginMenu {
     font-size: 40px;
     border: 3px solid white;
     font-weight: 300;
-    outline: none;
     padding: 5px 0px 5px 0px;
     border-radius: 3px;
     transition: 0.2s;
@@ -1253,7 +1275,6 @@ li .loginMenu {
     color: white;
     border: none;
     font-family: inherit;
-    outline: none;
     font-size: 18px;
     border-bottom: white 2px solid;
 }
@@ -1261,6 +1282,49 @@ li .loginMenu {
 .preGamePage select option {
     background-color: #2D2D2D;
 }
+
+@media only screen and (max-device-width: 480px) {
+    .preGamePage {
+        padding-top: 250px;
+    }
+    .preGamePage h1 {
+        font-size: 60px;
+    }
+    .preGamePage form {
+        max-width: 100%;
+    }
+    .preGamePage img {
+        max-width: 200px;
+    }
+    .preGamePage label {
+        font-size: 40px;
+    }
+    .preGamePage fieldset:first-child div {
+        margin: 0px 20px;
+    }
+    .preGamePage fieldset {
+        border-radius: 10px;
+        border-width: 7px;
+    }
+    .preGamePage button[type="button"] {
+        font-size: 50px;
+        width: 35%;
+        margin: 30px;
+    }
+    .preGamePage select {
+        font-size: 30px;
+    }
+    .preGamePage select option {
+        font-size: 18px;
+    }
+    .preGamePage button[type=submit] {
+        font-size: 100px;
+        width: 50%;
+        border-width: 7px;
+        font-weight: bold;
+    }
+}
+
 
 /*****************************************
 ***************** GAME SOLO JEU *********
@@ -1341,7 +1405,6 @@ li .loginMenu {
     border-radius: 100px;
     width: 36px;
     height: 36px;
-    outline: none;
     font-family: 'FuturaBold';
     font-size: 20px;
     color: var(--orange);
@@ -1462,6 +1525,7 @@ li .loginMenu {
     }
 }
 
+
 /******************************************************** RANK PAGE **********************************/
 
 .mainRank {
@@ -1554,6 +1618,7 @@ li .loginMenu {
     margin-top: 30px;
 }
 
+
 /***************************************************** STYLE RESULTAT *********************************/
 
 .mainResultat {
@@ -1613,7 +1678,6 @@ li .loginMenu {
     margin-top: 30px;
     font-size: 18px;
     border-radius: 10px;
-    outline: none;
     border: none;
     padding: 5px 10px 5px 10px;
     background-color: var(--orange);
@@ -1688,7 +1752,6 @@ li .loginMenu {
     align-items: center;
     border-radius: 20px;
     border: none;
-    outline: none;
     padding: 5px 20px 5px 20px;
     background-color: var(--orange);
     transition: 0.2s;
@@ -1696,7 +1759,6 @@ li .loginMenu {
 
 .mainResultat .partieDroite a {
     text-decoration: none;
-    outline: none;
 }
 
 .mainResultat .partieDroite button p {
@@ -1725,6 +1787,7 @@ li .loginMenu {
     transform: rotate(-90deg);
     transition: 0.3s ease;
 }
+
 
 /**************************************************** SELECT GAME PAGE ********************************/
 
@@ -1814,6 +1877,7 @@ li .loginMenu {
     font-weight: 300;
     font-family: 'Raleway', sans-serif;
 }
+
 
 /*************************************************STYLE ACCOUNT********************************/
 
@@ -1912,15 +1976,18 @@ li .loginMenu {
     flex-direction: column;
     margin-right: 80px;
     font-size: 25px;
+    align-items: center;
 }
+
 .infoJoueur .nomJoueurAccount,
 .infoJoueur .prenomJoueurAccount,
-.infoJoueur .mailJoueurAccount{
+.infoJoueur .mailJoueurAccount {
     margin: 0;
     padding-bottom: 10px;
     text-align: center;
 }
-.infoJoueur .figureImgJoueurAccount{
+
+.infoJoueur .figureImgJoueurAccount {
     margin: auto;
     width: 256px;
     height: 256px;
@@ -1932,16 +1999,52 @@ li .loginMenu {
     text-align: center;
 }
 
-.mainAccount input {
+.mainAccount .btnEdit,
+.mainAccount .btnAmis {
     background: none;
     border: 3px solid var(--jaune);
     width: 150px;
-    height: 50px;
     font-size: 25px;
     color: var(--jaune);
-    margin-top: 20px;
-    margin-left: 100px;
     font-family: 'FuturaBold';
+    transition: .2s;
+}
+
+.mainAccount .btnEdit:hover {
+    border-color: var(--rouge);
+    cursor: pointer;
+    color: var(--rouge);
+    transition: .2s;
+}
+
+.mainAccount .btnAmis {
+    padding: 5px 10px;
+    font-size: 20px;
+    width: 40%;
+    margin-right: 10px;
+}
+
+.badgesGagnes form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.mainAccount .submitAmis {
+    background-color: transparent;
+    border: 3px solid var(--jaune);
+    transition: .2s;
+}
+
+.mainAccount .submitAmis img {
+    width: 51px;
+}
+
+.mainAccount .submitAmis:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+    transition: .2s;
 }
 
 .badgesGagnes {
@@ -1951,58 +2054,72 @@ li .loginMenu {
     height: 520px;
     font-size: 25px;
 }
+
 @media only screen and (max-device-width: 480px) {
-    .mainAccount{
+    .mainAccount {
         flex-direction: column;
         align-content: center;
     }
-    .infoJoueur{
-        margin: 0; 
+    .infoJoueur {
+        margin: 0;
         align-items: center;
         margin-bottom: 20px;
+        margin-top: 100px;
     }
-    .infoJoueur .pseudoJoueurAccount{
+    .infoJoueur .pseudoJoueurAccount {
         margin: 0;
         margin-bottom: 10px;
     }
     .infoJoueur .nomJoueurAccount,
-.infoJoueur .prenomJoueurAccount,
-    .infoJoueur .mailJoueurAccount{
+    .infoJoueur .prenomJoueurAccount,
+    .infoJoueur .mailJoueurAccount {
         font-size: 35px;
     }
-    .infoJoueur .mailJoueurAccount{
+    .infoJoueur .mailJoueurAccount {
         margin-bottom: 10px;
     }
-    .infoJoueur input{
+    .infoJoueur input {
         margin: 0;
         font-size: 40px;
         width: 200px;
-    height: 80px;
+        height: 80px;
     }
     .mainAccount table {
-        margin-bottom: 30px;    
+        margin-bottom: 30px;
     }
-    .mainAccount th{
+    .mainAccount th {
         font-size: 40px;
     }
     .mainAccount td {
         font-size: 30px;
     }
     .badgesGagnes {
-        width: 80%;
+        width: 94%;
         height: auto;
         font-size: 35px;
         margin: 0;
     }
+    .mainAccount .btnAmis {
+        width: 60%;
+        font-size: 40px;
+    }
+    .mainAccount .badgesGagnes h2 {
+        margin: 20px;
+    }
+    .mainAccount .submitAmis img {
+        width: 96px;
+    }
 }
+
+
 /***************************************************
 ********************* INSCRIPTION SIGN UP *********************
 ***********************************************************/
 
-.signUpPage{
-     background-color:var(--noir);
+.signUpPage {
+    background-color: var(--noir);
     margin-top: 0px;
-    color:var(--rouge);
+    color: var(--rouge);
     font-size: 24;
     font-family: 'RaleWay';
     text-align: center;
@@ -2013,7 +2130,6 @@ li .loginMenu {
 .signUpPage form {
     width: 40%;
     margin: auto;
-    
     margin-top: 3vh;
     border: 5px solid white;
     border-radius: 10px;
@@ -2028,10 +2144,10 @@ li .loginMenu {
     color: var(--jaune);
     font-family: 'FuturaBold';
 }
-.signUpPage fieldset{
-    border:none;
-    display: flex;
 
+.signUpPage fieldset {
+    border: none;
+    display: flex;
 }
 
 .signUpPage form div:not(.imagesProfil) {
@@ -2041,8 +2157,6 @@ li .loginMenu {
     flex-direction: column;
     justify-content: space-around;
     align-items: left;
-
-
 }
 
 .signUpPage form div input:not([type="file"]) {
@@ -2055,10 +2169,8 @@ li .loginMenu {
     border-width: 5px;
     border-style: solid;
     border-color: transparent;
-    outline: none;
     width: 100%;
     margin: 10px 0px 10px 0px;
-
 }
 
 .signUpPage form div input:not([type="file"])::placeholder {
@@ -2095,7 +2207,6 @@ li .loginMenu {
     font-size: 1.5vw;
     padding: 10px;
     transition: 0.2s;
-    outline: none;
     font-family: 'RaleWay';
     font-weight: 700;
     color: var(--jaune);
@@ -2118,10 +2229,9 @@ li .loginMenu {
     justify-content: space-between;
 }
 
-.imagesProfil img{
+.imagesProfil img {
     width: 100%;
     transition: .2s;
-
 }
 
 .imagesProfil img:hover {
@@ -2137,48 +2247,60 @@ li .loginMenu {
     height: 50px;
     border-radius: 100%;
 }
+
+
 /**************************************************** MODIFY SONG ********************************/
+
 .modifySong {
     display: flex;
     justify-content: center;
     font-family: 'Raleway';
     color: white;
 }
-.modifySong th{
+
+.modifySong th {
     font-family: 'FuturaBold';
     padding: 20px 0;
 }
-.modiftSong table{
+
+.modiftSong table {
     border-collapse: collapse;
 }
+
 .modifySong .nameSong,
-.modifySong th{
+.modifySong th {
     color: var(--jaune);
 }
-.suppSongBtn{
+
+.suppSongBtn {
     border: 2px solid var(--rouge);
     color: var(--rouge);
 }
-.editSongBtn{
+
+.editSongBtn {
     border: 2px solid #42f456;
     color: #42f456;
 }
-.modifySong input{
+
+.modifySong input {
     font-family: 'Raleway';
     background-color: transparent;
     padding: 4px;
     margin: 0 10px;
 }
-.modifySong input:hover{
+
+.modifySong input:hover {
     transform: 0.2s linear;
     color: var(--jaune);
     border-color: var(--jaune);
     cursor: pointer;
 }
-.modifySong td{
+
+.modifySong td {
     border: 1px solid #444444;
     padding: 10px;
 }
+
 
 /***************************************************** MEDIA QUERIES ********************************/
 
@@ -2187,7 +2309,7 @@ li .loginMenu {
         width: 80%;
         margin-top: 200px;
     }
-    .signUpPage form div:not(.imagesProfil){
+    .signUpPage form div:not(.imagesProfil) {
         margin: auto;
         width: 70%;
     }
@@ -2197,7 +2319,6 @@ li .loginMenu {
     .signUpPage form div {
         width: 100%;
     }
-    
     .signUpPage form button {
         font-size: 40px;
         width: 30%
@@ -2219,10 +2340,11 @@ li .loginMenu {
     .signUpPage form div input[type="file"] {
         font-size: 30px;
     }
-    .signUpPage .choisirImageDefinis{
+    .signUpPage .choisirImageDefinis {
         font-size: 30px;
     }
 }
+
 @media (max-width: 1000px) {
     .rightHeader {
         display: flex;
@@ -2256,7 +2378,6 @@ li .loginMenu {
         height: 50vw;
         top: calc(50vh - 25vw);
         left: calc(50vw - 25vw);
-
         animation: spriteSlidingMedia 0.7s steps(24, start) infinite, spriteSliding;
         animation-play-state: running, paused;
     }
@@ -2264,10 +2385,15 @@ li .loginMenu {
         font-size: 15vw;
         top: calc(20vh - 10vw);
     }
-    .menuShown .loginMenu{
+    .menuShown .loginMenu,
+    .menuHidden .loginMenu {
         font-size: 80px;
     }
-    .mainHeader li:nth-child(1),.mainHeader li:nth-child(2),.mainHeader li:nth-child(3),.mainHeader li:nth-child(4) p{
+    .mainHeader li:nth-child(1),
+    .mainHeader li:nth-child(2),
+    .mainHeader li:nth-child(3),
+    .mainHeader li:nth-child(4) p,
+    .mainHeader .logoAccountHeader {
         padding-left: 120px;
     }
     .indexLink a {
@@ -2306,7 +2432,7 @@ li .loginMenu {
     .footerReseaux img {
         width: 5vw;
     }
-    .footerReseaux a{
+    .footerReseaux a {
         margin-left: 0;
     }
     .mainIndex h1 {
@@ -2316,11 +2442,12 @@ li .loginMenu {
     .rightHeader {
         z-index: 1;
     }
-    .rightHeader p, .rightHeader a{
+    .rightHeader p,
+    .rightHeader a {
         font-size: 30px;
         padding-bottom: 20px;
     }
-    .rightHeader #fullScreenButton svg{
+    .rightHeader #fullScreenButton svg {
         width: 50px;
         height: 50px;
     }
@@ -2375,34 +2502,34 @@ li .loginMenu {
     .equipe h2 {
         font-size: 10vw;
     }
-    .mainSelect h1{
+    .mainSelect h1 {
         font-size: 80px;
     }
-    .mainSelect p{
+    .mainSelect p {
         font-size: 50px;
         padding-bottom: 20px
     }
-    .mainSelect a{
+    .mainSelect a {
         margin-top: 50px;
         font-size: 60px;
     }
-    .mainSelect .buttonSolo a{
+    .mainSelect .buttonSolo a {
         width: 220px;
     }
-    .mainAbout .equipe .lesPhotos{
+    .mainAbout .equipe .lesPhotos {
         margin: auto;
         max-width: 90%;
     }
-    .mainAbout .equipe .lesPhotos .unePhoto{
+    .mainAbout .equipe .lesPhotos .unePhoto {
         max-width: 30%;
         margin: 50px;
     }
-    .mainAbout .equipe .lesPhotos .unePhoto h3{
+    .mainAbout .equipe .lesPhotos .unePhoto h3 {
         font-size: 40px;
     }
-    #formContact2 input, #formContact2 button{
+    #formContact2 input,
+    #formContact2 button {
         font-size: 30px;
         margin-top: 30px;
     }
 }
-
