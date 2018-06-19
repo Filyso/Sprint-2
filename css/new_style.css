@@ -43,6 +43,9 @@ canvas {
 h1 {
     font-size: 50px;
 }
+h2 {
+    font-family: "FuturaBold";
+}
 
 /*************************************** PAGE INDEX ***************************************************/
 
@@ -112,7 +115,6 @@ h1 {
 
 .welcomeIndex h2 {
     text-align: center;
-    font-family: "FuturaBold";
     font-size: 6vh;
 }
 
@@ -169,7 +171,7 @@ li .loginMenu:hover {
     overflow: hidden;
     display: flex;
     justify-content: center;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-items: center;
     font-family: "FuturaBold";
     background-color: white;
@@ -197,7 +199,14 @@ li .loginMenu:hover {
 .logo {
     max-height: 15vw;
 }
-
+.legal{
+    font-size: 2vh;
+    font-family: "Raleway";
+}
+.legal a{
+    color: var(--rouge);
+    text-decoration: none;
+}
 .footer-links {
     color: var(--noir);
     margin: 0;
@@ -349,7 +358,6 @@ li .loginMenu:hover {
 .equipe h2 {
     font-size: 5vw;
     color: white;
-    font-family: 'FuturaBold';
 }
 
 .lesPhotos {
@@ -415,7 +423,6 @@ li .loginMenu:hover {
     margin: 0;
     font-weight: 500;
     color: white;
-    font-family: 'FuturaBold';
 }
 
 .BoiteAIdee p {
@@ -493,7 +500,6 @@ li .loginMenu:hover {
     font-weight: normal;
     margin: 0;
     font-weight: 500;
-    font-family: 'FuturaBold';
 }
 
 .AVenir p {
@@ -509,8 +515,30 @@ li .loginMenu:hover {
     padding-top: 10px;
     font-weight: 300;
 }
-
-/********************************************* PAGES ADMIN ********************************************/
+/********************************** MENTIONS LEGALES *****************************************/
+.mainMentions{
+    font-family: "Raleway";
+    background-color: var(--noir);
+    color: white;
+    text-align: justify;
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+}
+.mainMentions section{
+    width: 70vw;
+}
+.mainMentions h2{
+    color: var(--jaune);
+}
+.mainMentions h3{
+    color: var(--orange);
+}
+.mainMentions a{
+    color: var(--rouge);
+    text-decoration: none;
+}
+/************************************* PAGES ADMIN ********************************************/
 
 .headerAdmin {
     display: flex;
@@ -525,7 +553,6 @@ li .loginMenu:hover {
 
 .headerAdmin h2 {
     color: white;
-    font-family: "FuturaBold";
     font-size: 28px;
 }
 
@@ -1038,7 +1065,6 @@ li .loginMenu {
 .popup-content_regle h2 {
     padding-top: 10%;
     margin: 0;
-    font-family: 'FuturaBold';
     font-size: 28px;
     color: var(--orange);
 }
