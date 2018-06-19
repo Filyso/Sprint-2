@@ -2,6 +2,12 @@
     session_start();
 	header("Content-type: text/html; charset: UTF-8");
 ?>
+    <head>
+        <meta charset="utf-8">
+        <title>Jeu en Solo</title>
+        <meta name="description" content="Le jeu SOLO ! Jouez seul contre l'ordinateur. Amusement garanti !">
+        <script type="text/javascript" src="../javascript/rm_user.js"></script>
+    </head>
 
     <section class="selectMulti">
         <h1>Gestion utilisateur</h1>
@@ -38,19 +44,19 @@
                             $ligne = $statement->fetch(PDO::FETCH_ASSOC);
                             while($ligne != false) {
                     ?>
-                                <tr>
+                                <tr class="mbr">
                                     <td>
                                         <?php echo($ligne["pseudo"])?>
                                     </td>
                                     <td>
-                                        <select>
-                                            <option value="normal" <?php echo($ligne[ "role"]=='' ? "selected": "") ?>>normal</option>
-                                            <option value="moderateur" <?php echo($ligne[ "role"]=='modo' ? "selected": "") ?>> modérateur</option>
-                                            <option value="administrateur" <?php echo($ligne[ "role"]=='admin' ? "selected": "") ?>>administrateur</option>
+                                        <select class="roleMbr">
+                                            <option name="role" value="normal" <?php echo($ligne[ "role"]=='' ? "selected": "") ?>>normal</option>
+                                            <option name="role" value="moderateur" <?php echo($ligne[ "role"]=='modo' ? "selected": "") ?>> modérateur</option>
+                                            <option name="role" value="administrateur" <?php echo($ligne[ "role"]=='admin' ? "selected": "") ?>>administrateur</option>
                                         </select>
                                     </td>
                                     <td>
-                                        <select>
+                                        <select class="statutMbr">
                                             <option name="statut" value="attente" <?php echo($ligne[ "statut"]=='0' ? "selected": "") ?>>En attente</option>
                                             <option name="statut" value="actif" <?php echo($ligne[ "statut"]=='1' ? "selected": "") ?>> Enregistré</option>
                                             <option name="statut" value="banni" <?php echo($ligne[ "statut"]=='2' ? "selected": "") ?>>Banni</option>
