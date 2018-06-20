@@ -85,7 +85,7 @@
         <h3>AJOUTER UNE CHANSON</h3>
 
         <form action="add_song_admin.php" method="post" id="addSongForm" class="addSongForm">
-            <fieldset id="chansonForm">
+            <fieldset class="chansonForm">
                 <legend>Chanson</legend>
                 <div>
                     <label for="song">Nom de la chanson</label>

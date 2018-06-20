@@ -11,6 +11,7 @@
         <title>Jeu en Solo</title>
         <meta name="description" content="Le jeu SOLO ! Jouez seul contre l'ordinateur. Amusement garanti !">
         <link rel="stylesheet" type="text/css" href="../css/new_style.css" />
+        <link rel="shortcut icon" href="../images/favicon.png" />
     </head>
 
     <body>

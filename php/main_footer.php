@@ -6,7 +6,7 @@
     <a href="./index.php"><img class="logo" src="../images/logo_texte_sans_fond.png" alt="logo"></a>
     <div class="footerGauche">
 
-        <div class="footer-links">
+        <div class="footerLinks">
             <a href="./about.php#equipe">L'ÉQUIPE</a>
             <a href="./about.php#idee">BOÎTE À IDÉES</a>
             <a href="./about.php#avenir">À VENIR</a>
@@ -29,7 +29,7 @@
 
             <input id="formContactSujet1" type="text" name="text" placeholder="Sujet" required />
             <textarea id="formContactMsg1" name="message" placeholder="Message" required></textarea>
-            <button id="formContactSub1">Envoyer</button>
+            <button id="formContactSub1">ENVOYER</button>
 
         </form>
 

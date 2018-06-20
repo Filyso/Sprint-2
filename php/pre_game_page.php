@@ -11,7 +11,7 @@
     <title>Choix des options de jeu</title>
     <meta name="description" content="Choisissez vos options de jeu et lancez votre partie ! Sur cette page vous pouvez choisir la catégorie de chanson sur laquelle vous voulez être testé.">
     <link rel="stylesheet" type="text/css" href="../css/new_style.css" />
-    
+    <link rel="shortcut icon" href="../images/favicon.png" />
 </head>
 <body>
     <?php include("./main_header.php"); ?>
@@ -23,19 +23,19 @@
             <fieldset class="section">
                 <div>
                     <input type="radio" name="langue" id="français" value="fr" class="inputRadio" required />
-                    <label for="français"><img src="../images/FR.png" alt="drapeau français"></label>
+                    <label for="français"><img src="../images/fr.png" alt="drapeau français"></label>
                 </div>
 
                 <div>
 
                     <input type="radio" name="langue" id="anglais" value="en" class="inputRadio" />
-                    <label for="anglais"><img src="../images/UK.png" alt="drapeau anglais"></label>
+                    <label for="anglais"><img src="../images/uk.png" alt="drapeau anglais"></label>
                 </div>
 
                 <div>
 
                     <input type="radio" name="langue" id="bilingue" value="bilingue" class="inputRadio" checked/>
-                    <label for="bilingue"><img src="../images/FRUK.png" alt="drapeau bilingue"></label>
+                    <label for="bilingue"><img src="../images/fr_uk.png" alt="drapeau bilingue"></label>
                 </div>
             </fieldset>
 

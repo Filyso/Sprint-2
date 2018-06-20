@@ -11,6 +11,7 @@
         <title></title>
         <meta name="" content="">
         <link rel="stylesheet" href="../css/new_style.css">
+        <link rel="shortcut icon" href="../images/favicon.png" />
     </head>
 
     <body>

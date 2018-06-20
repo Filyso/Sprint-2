@@ -10,6 +10,7 @@
         <title>Filyso - Sélectionnez le mode de jeu</title>
         <meta name="description" content="Sélectionnez votre mode de jeu ! Jouez seul avec le mode SOLO ou affrontez d'autres joueurs en duel avec le mode MULTI.">
         <link rel="stylesheet" href="../css/new_style.css">
+        <link rel="shortcut icon" href="../images/favicon.png" />
     </head>
 
     <body>

@@ -10,6 +10,7 @@
         <title>Page d'administration</title>
         <meta name="description" content="Bienvenuee sur la page d'administration de Filyso. Ici vous pourrez consulter la liste des membres et des chansons. Vous pourrez ajouter ou modifier de chansons, et supprimer des utilisateurs si nécessaire.">
         <link rel="stylesheet" type="text/css" href="../css/new_style.css" />
+        <link rel="shortcut icon" href="../images/favicon.png" />
     </head>
 
     <body>

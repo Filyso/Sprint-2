@@ -17,6 +17,7 @@
         <title>Espace mon compte</title>
         <meta name="description" content="Bienvenue dans votre espace personnel de compte. Ici vous pourrez consulter les données relatives à votre compte et votre activité sur le site Filyso.">
         <link rel="stylesheet" href="../css/new_style.css" />
+        <link rel="shortcut icon" href="../images/favicon.png" />
     </head>
 
     <body>

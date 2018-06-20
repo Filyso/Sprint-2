@@ -2,29 +2,31 @@
     session_start();
 	header("Content-type: text/html; charset: UTF-8");
 ?>
-<!DOCTYPE html>
-<html lang="fr">
+    <!DOCTYPE html>
+    <html lang="fr">
+
     <head>
-        <meta charset="utf-8"/>
+        <meta charset="utf-8" />
         <title>Bienvenue sur Filyso</title>
         <meta name="description" content="Bienvenue sur Filyso! Ce site vous propose des jeux musicaux totalement inédits et très divertissants. Vous pouvez jouer seul ou contre d'autres joueurs, alors n'attendez plus !">
-        <link rel="stylesheet" href="../css/new_style.css"/>
+        <link rel="stylesheet" href="../css/new_style.css" />
         <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        <link rel="shortcut icon" href="../images/favicon.png" />
     </head>
 
     <body class="indexColor">
         <?php include("./main_header.php") ?>
 
-        <main class="mainIndex" >
+        <main class="mainIndex">
             <h1>FILYSO</h1>
-            
+            <h2 class="slogan">Listen, Find, Enjoy !</h2>
             <section class="indexLink" id="particle">
                 <a href="./select_game.php">JOUER</a>
             </section>
 
-            <section class="welcomeIndex" >
-                <h2>Qu'est-ce que Filyso ?</h2>
-                <p>Filyso est né dans le cadre d'un <strong>projet étudiant en 2018</strong>. Il s'agit d'un site vous proposant quelques <strong>jeux basés sur les paroles de chansons</strong>. Les jeux sont répartis en modes de jeu, en <strong>solo ou en multijoueur</strong>.<br/> Notre application est développée au département MMI de l'IUT de Laval, en France.</p>
+            <section class="welcomeIndex">
+                <h2>Bienvenue sur le site Filyso !</h2>
+                <p>Prenez part à la compétition en rejoignant une communauté réunie autour de l’amour de la musique. Affrontez des joueurs et des amis à travers des séries de quiz, où vous devrez retrouver les paroles de vos chansons préférées à travers de nombreux thèmes musicaux. <br>Défiez les plus grands, et tentez de devenir le grand champion ! Besoin de vous faire la main avant d’entrer dans l’arène ?<br> Envie de vous tester sur un niveau de difficulté ?<br> Notre mode solo est là pour ça ! <br>Pour gagner en expérience, étoffez votre culture musicale, prenez du galon, enchaînez les exploits, collectionnez les badges, débloquez des émoticônes et hissez vous en tête du classement ! <strong>Et rappelez-vous : on ne gagne pas sans s’amuser !</strong> <br>Pour en savoir plus sur notre équipe, <a href="about.php" class="lienAbout">cliquez ici...</a></p>
             </section>
 
         </main>
@@ -33,4 +35,4 @@
         <script type="text/javascript" src="../javascript/jsAnimParticules.js"></script>
     </body>
 
-</html>
+    </html>
