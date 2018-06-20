@@ -52,32 +52,34 @@
                         $previousPlace = $currentPosition;
                         $previousScore = $ligne->score;
                             
-                        if($ligne->score == ""){
+                        if($ligne->score == "" || $ligne->score == "0"){
                             $previousScore = 0;
                         }    
                             
                         while($ligne->idMbr != $_SESSION["id"] && $ligne != false){
                             
                             $currentPosition += 1;
-                            $previousScore = $ligne->score;
+
                             
                             $ligne = $statement->fetch(PDO::FETCH_OBJ);
                             
                             
                             if($ligne != false){
                                 
-                                if($ligne->score == ""){
-                                    $previousScore = 0;
-                                }
-                                
                                 if($ligne->score != $previousScore){
+
                                     $previousScore=$ligne->score;
                                     $previousPlace=$currentPosition;
+                                }
+                                if($ligne->score == "" || $ligne->score == "0"){
+                                    $previousScore = 0;
                                     
                                 }
                                 
                             }
-                            
+                                                   
+
+
                         }
                        
                     ?>
@@ -175,12 +177,13 @@
                             $ligne2 = $statement2->fetch(PDO::FETCH_OBJ);
                             
                             if($ligne2 != false){
-                                if($ligne2->score == ""){
-                                    $previousScore = 0;   
-                                } 
                                 if($ligne2->score != $previousScore){
+
                                     $previousScore=$ligne2->score;
                                     $previousPlace=$currentPosition;
+                                }
+                                if($ligne2->score == "" || $ligne2->score == "0"){
+                                    $previousScore = 0;
                                     
                                 }
                                 
@@ -188,14 +191,7 @@
                             }
                             
                             
-                            
-//                            if($i < 9){
-//                                if($ligne2->score == $previousScore){
-//                                    $currentPosition -= 1;
-//
-//                                }
-//                                $previousScore = $ligne2->score;
-//                            }
+
                             }
                     
                             //Fin boucle
