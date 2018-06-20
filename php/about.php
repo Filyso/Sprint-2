@@ -16,7 +16,7 @@
         <?php include("./main_header.php"); ?>
         <main class="mainAbout">
             <div class="equipe" id="equipe">
-                <h2>Notre équipe</h2>
+                <h1>Notre équipe</h1>
                 <div class="lesPhotos">
                     <figure class="unePhoto">
                         <img src="../images/avatar.png" alt="Photo de Yoan">
@@ -33,19 +33,19 @@
                     <figure class="unePhoto">
                         <img src="../images/avatar.png" alt="Photo de Tristan">
                         <figcaption>
-                            <h3>Tristan</h3> Le Graphiste Fou
+                            <h3>Tristan</h3> Le graphiste fou
                         </figcaption>
                     </figure>
                     <figure class="unePhoto">
                         <img src="../images/avatar.png" alt="Photo de Clément">
                         <figcaption>
-                            <h3>Clément</h3> Le maître CSS... qui marche moyen
+                            <h3>Clément</h3> Le génie du CSS
                         </figcaption>
                     </figure>
                     <figure class="unePhoto">
                         <img src="../images/avatar.png" alt="Photo de Justine">
                         <figcaption>
-                            <h3>Justine</h3> Elle aime les chats
+                            <h3>Justine</h3> La graphiste folle des chats
                         </figcaption>
                     </figure>
                     <figure class="unePhoto">
@@ -63,7 +63,7 @@
                     <form id="formContact2" method="post">
                         <input id="formContactSujet2" type="text" name="sujet" placeholder="Sujet" required/>
                         <textarea id="formContactMsg2" rows=5 name="message" placeholder="Votre idée de génie" required></textarea>
-                        <button id="formContactSub2">Envoyer</button>
+                        <button id="formContactSub2">ENVOYER</button>
                     </form>
 
                 </div>
@@ -71,11 +71,11 @@
                     <h2>Prochainement sur Filyso</h2>
                     <p>Quelques événements à venir sur Filyso :</p>
                     <ul>
-                        <li>2 avocats (pelés et avec les noyaux retirés)</li>
-                        <li>le jus d'un citron</li>
-                        <li>¼ de concombre, coupé grossièrement</li>
-                        <li>1 petite tomate, coupée</li>
-                        <li>le jus d'un autre citron</li>
+                        <li>Intégration du système de badges</li>
+                        <li>Site responsive pour pouvoir jouer partout !</li>
+                        <li>Un nouveau mode de jeu : le "Limite Lyrics"</li>
+                        <li>Mise en ligne officielle</li>
+                        <li>En continu : ajout de plein de chansons !</li>
                     </ul>
                 </div>
             </div>

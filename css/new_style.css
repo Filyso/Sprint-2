@@ -38,6 +38,8 @@ canvas {
 }
 h1 {
     font-size: 50px;
+    font-family: 'FuturaBold';
+    color: white;
 }
 h2 {
     font-family: "FuturaBold";
@@ -302,8 +304,6 @@ li .loginMenu:hover {
 .mainSelect h1 {
     text-align: center;
     margin-bottom: 100px;
-    color: white;
-    font-family: "FuturaBold", sans-serif;
     padding-top: 20vh;
     margin-top: 0px;
 }
@@ -326,8 +326,6 @@ li .loginMenu:hover {
     padding: 20px;
     background-color: #2D2D2D;
     border-radius: 20px;
-    color: white;
-    font-weight: 300;
 }
 /*********************************** PRE GAME PAGE ***************************/
 .preGamePage {
@@ -339,9 +337,7 @@ li .loginMenu:hover {
 }
 .preGamePage h1 {
     margin-bottom: 50px;
-    font-weight: 500;
     color: white;
-    font-family: "FuturaBold";
 }
 .preGamePage form {
     margin: auto;
@@ -557,17 +553,13 @@ li .loginMenu:hover {
 /*********************************** ABOUT *********************************/
 .mainAbout {
     background: #292929;
+    padding-top: 5vh;
 }
 .equipe {
     padding-top: 6vh;
     text-align: center;
-    font-family: 'FuturaBold';
     color: #2D2D2D;
     margin-top: 5vh;
-}
-.equipe h2 {
-    font-size: 5vw;
-    color: white;
 }
 .lesPhotos {
     flex-wrap: wrap;
@@ -591,10 +583,12 @@ li .loginMenu:hover {
     margin: 0;
     padding: 0;
 }
-.unePhoto figcaption h3 {
+.unePhoto h3 {
     margin: 10px;
     font-weight: normal;
     font-weight: 500;
+    font-family: 'FuturaBold';
+    color: var(--jaune);
 }
 .unePhoto figcaption {
     color: white;
@@ -614,15 +608,11 @@ li .loginMenu:hover {
     border: 3px solid white;
     width: 50vw;
 }
-.boiteAIdee h2 {
+.mainAbout h2 {
     font-weight: normal;
     margin: 0;
     font-weight: 500;
-    color: white;
-}
-.boiteAIdee p {
-    color: white;
-    font-weight: 300;
+    color: var(--jaune);
 }
 .boiteAIdee form textarea {
     display: block;
@@ -660,19 +650,6 @@ li .loginMenu:hover {
     border-radius: 5px;
     border: 3px solid white;
     margin-top: 50px;
-}
-.aVenir h2 {
-    color: white;
-    font-weight: normal;
-    margin: 0;
-    font-weight: 500;
-}
-.aVenir p {
-    font-weight: 500;
-}
-.aVenir p,
-.aVenir ul {
-    color: white;
 }
 .aVenir li {
     padding-top: 10px;

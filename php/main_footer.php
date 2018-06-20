@@ -29,7 +29,7 @@
 
             <input id="formContactSujet1" type="text" name="text" placeholder="Sujet" required />
             <textarea id="formContactMsg1" name="message" placeholder="Message" required></textarea>
-            <button id="formContactSub1">Envoyer</button>
+            <button id="formContactSub1">ENVOYER</button>
 
         </form>
 
