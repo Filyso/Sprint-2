@@ -19,7 +19,7 @@
 
         <main class="mainIndex">
             <h1>FILYSO</h1>
-            <h2 class="slogan">Find the Lyrics, enjoy !</h2>
+            <h2 class="slogan">Listen, Find, Enjoy !</h2>
             <section class="indexLink" id="particle">
                 <a href="./select_game.php">JOUER</a>
             </section>
