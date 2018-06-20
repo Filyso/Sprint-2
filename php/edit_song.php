@@ -111,7 +111,7 @@
         <h3>MODIFIER UNE CHANSON</h3>
 
         <form action="edit_song.php" method="post" id="addSongForm" class="addSongForm">
-            <fieldset id="chansonForm">
+            <fieldset class="chansonForm">
                 <legend>Chanson</legend>
                 <div>
                     <label for="song">Nom de la chanson</label>

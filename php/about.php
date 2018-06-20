@@ -56,7 +56,7 @@
                 </div>
             </div>
             <div class="enDessous">
-                <div class="BoiteAIdee" id="idee">
+                <div class="boiteAIdee" id="idee">
                     <h2>Boîte à idées</h2>
                     <p>Une idée ? Un bug ? Une amélioration ? Dites le nous !</p>
                     <form id="formContact2" method="post">
@@ -66,7 +66,7 @@
                     </form>
 
                 </div>
-                <div class="AVenir" id="avenir">
+                <div class="aVenir" id="avenir">
                     <h2>Prochainement sur Filyso</h2>
                     <p>Quelques événements à venir sur Filyso :</p>
                     <ul>
