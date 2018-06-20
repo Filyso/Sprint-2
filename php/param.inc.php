@@ -4,7 +4,7 @@
 	if(!defined("MYUSER"))
 		define("MYUSER","root");
 	if(!defined("MYPASS"))
-		define("MYPASS","root");
+		define("MYPASS","");
 	if(!defined("MYDB"))
-		define("MYDB","test4");
+		define("MYDB","test");
 ?>
