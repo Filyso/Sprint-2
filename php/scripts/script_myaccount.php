@@ -320,18 +320,12 @@
 
                         }else{
                             
-                            if($compteur == 3){
+                            
                                 $pret = true;
                                 $compteur = 0;
                                 $finboucle2 = true;
                                 $currentPosition += -5;
-                            }
-                            if($compteur == 2){
-                                $pret = true;
-                                $compteur = 0;
-                                $finboucle2 = true;
-                                $currentPosition += -5;
-                            }                  
+                                 
                         }
 
                         
