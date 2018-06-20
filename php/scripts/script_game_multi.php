@@ -183,6 +183,10 @@ function getTimeCode($tabTimeCode) {
                                            
 }
 
+function setScore($idTimeCode, $score) {
+    
+}
+
 function arePlayersReady() {
     try {
         require("../param.inc.php");
