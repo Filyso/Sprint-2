@@ -10,6 +10,7 @@
         <title>À propos de Filyso</title <meta>
         <meta name="description" content="Bienvenue dans la section À propos, dans laquelle vous pourrez en apprendre plus sur l'équipe de développement et l'avenir de l'application. Vous pouvez aussi nous proposer vos idées." />
         <link rel="stylesheet" href="../css/new_style.css" type="text/css" media="screen" />
+        <link rel="shortcut icon" href="../images/favicon.png" />
     </head>
     <body>
         <?php include("./main_header.php"); ?>

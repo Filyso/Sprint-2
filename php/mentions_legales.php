@@ -10,6 +10,7 @@
         <title>Mentions légales Filyso</title <meta>
         <meta name="description" content="Consultez les mentions légales de notre application Filyso." />
         <link rel="stylesheet" href="../css/new_style.css" type="text/css" media="screen" />
+        <link rel="shortcut icon" href="../images/favicon.png" />
     </head>
 
     <body>

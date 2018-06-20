@@ -10,6 +10,7 @@
         <meta name="description" content="Bienvenue sur Filyso! Ce site vous propose des jeux musicaux totalement inédits et très divertissants. Vous pouvez jouer seul ou contre d'autres joueurs, alors n'attendez plus !">
         <link rel="stylesheet" href="../css/new_style.css"/>
         <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        <link rel="shortcut icon" href="../images/favicon.png" />
     </head>
 
     <body class="indexColor">

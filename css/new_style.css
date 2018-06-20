@@ -241,7 +241,7 @@ textarea {
     top: 15vh;
     left: calc(50vw - 35vh);
     z-index: 1;
-    background-image: url(../images/sprite_1.png);
+    background-image: url(../images/sprite.png);
     background-repeat: no-repeat;
     background-size: auto 100%;
     overflow: hidden;

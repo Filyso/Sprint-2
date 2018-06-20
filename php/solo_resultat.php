@@ -7,8 +7,9 @@
     <head>
         <meta charset="UTF-8" />
         <title>Résultats de la partie SOLO</title>
-        <meta name="description" content="Le jeu est terminé ! vous pouvez consulter les résultats et statistiques de votre partie en SOLO !"
+        <meta name="description" content="Le jeu est terminé ! vous pouvez consulter les résultats et statistiques de votre partie en SOLO !"/>
         <link rel="stylesheet" href="../css/new_style.css" type="text/css" media="screen" />
+        <link rel="shortcut icon" href="../images/favicon.png" />
     </head>
 
     <body>
@@ -22,8 +23,8 @@
                         <button type="button" class="btnSaveScore">Enregistrer</button>
                     </div>
                     <div class="partageReseaux">
-                        <img src="../images/share-on-facebook.png" alt="partager sur facebook">
-                        <img src="../images/share-twitter.png" alt="partager sur twitter">
+                        <img src="../images/share_facebook.png" alt="partager sur facebook">
+                        <img src="../images/share_twitter.png" alt="partager sur twitter">
                     </div>
                 </div>
                 <div class="partieDroite">
@@ -32,10 +33,6 @@
                         <p class="txtBonnesReponses">bonnes réponses</p>
                     </div>
                     <a href="pre_game_page.php"><button type="button" class="btnRejouer"><img src="../images/fleche.png" alt="fleche pour rejouer" class="imgReplay"><p>Rejouer</p></button></a>
-                    <div class="badgesObtenus">
-                        <img src="../images/tropheeexemple.png" alt="exemples de badges gagnés">
-                        <p>Badges obtenus</p>
-                    </div>
                 </div>
             </div>
         </main>

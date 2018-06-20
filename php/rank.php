@@ -12,6 +12,7 @@
         <title>Classement des joueurs</title>
         <meta name="description" content="Bienvenue sur la page de classement de Filyso. Vous pouvez consulter votre propre classement et celui des autres joueurs. C'est l'esprit de compétition !">
         <link rel="stylesheet" href="../css/new_style.css">
+        <link rel="shortcut icon" href="../images/favicon.png" />
     </head>
 
     <body>
