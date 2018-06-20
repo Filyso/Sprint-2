@@ -26,6 +26,9 @@ var milli;
 var timerMilli;
 var timerSec;
 
+var timerWait;
+var wait;
+
 // Variables Game
 var niv;
 var score = 0;
@@ -367,7 +370,7 @@ function verifierReps(evt) {
         document.getElementsByClassName("divTimer")[0].style.borderColor = "red";
     }
 
-    setTimeout(afterVerif, 2000);
+    setTimeout(wait, 2000);
 }
 
 function verifierType(evt) {
@@ -388,7 +391,9 @@ function verifierType(evt) {
                 calculScore();
                 afficherScore();
                 document.getElementsByClassName("barScore")[0].style.height = Math.round(scoreGeneralPourcent) + "%";
-                setTimeout(afterVerif, 2000);
+
+                setTimeout(wait, 2000);
+
             } else {
                 repInput.style.borderColor = "red";
             }
@@ -397,23 +402,35 @@ function verifierType(evt) {
     );
 }
 
-function afterVerif(evt) {
-    var wait = true;
-    while (wait) {
-        $.post('../php/scripts/script_game_multi.php', {
-            function: 'arePlayersReady',
-        },
-        function (data) {
-            wait = data.playersAreReady;
-        },
-        'json');
-    }
-
-
+function wait() {
     $.post('../php/scripts/script_game_multi.php', {
         function: 'playerIsReady',
         playerIsReady: 'true'
     });
+
+    wait = true;
+    timerWait = setInterval(function () {
+        $.post('../php/scripts/script_game_multi.php', {
+                function: 'arePlayersReady',
+            },
+            function (data) {
+                wait = !data.playersAreReady;
+            },
+            'json');
+        console.log(wait);
+        if (!wait) {
+            afterVerif();
+            $.post('../php/scripts/script_game_multi.php', {
+                function: 'playerIsReady',
+                playerIsReady: 'false'
+            });
+            window.clearInterval(timerWait);
+        }
+    }, 1000);
+}
+
+function afterVerif(evt) {
+
     if (document.getElementById("currentScore") != null) {
         document.getElementById("currentScore").remove();
     }
@@ -567,7 +584,7 @@ function decrement(evt) {
             if (numQuest < 6) {
                 verifierReps();
             } else {
-                afterVerif();
+                wait();
             }
         }
     }

@@ -198,12 +198,13 @@ function arePlayersReady() {
 
         $playersAreReady = false;
         
-        if ($ligne["waitingP1"] == 1 && $ligne["waitingP2"] == 1) {
+        if ($ligne["waitingP1"] == "1" && $ligne["waitingP2"] == "1") {
             $playersAreReady = true;
         }
         
         $retour = array('playersAreReady' => $playersAreReady);
         
+        echo json_encode($retour);
     // ETAPE 3 : Déconnecter du serveur                        
         $pdo = null;
         
