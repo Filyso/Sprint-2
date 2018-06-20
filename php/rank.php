@@ -42,7 +42,7 @@
 
                
 
-                        $statement = $pdo->query($requeteSQL) ;
+                        $statement = $pdo->query($requeteSQL);
            
                         // Etape 3 : traite les données
                     
@@ -63,13 +63,16 @@
                             
                             if($ligne != false){
                                 
-                                if($ligne->score != $previousScore){
-                                    $previousScore=$ligne->score;
-                                    $previousPlace=$currentPosition;
-                                }
                                 if($ligne->score == ""){
                                     $previousScore = 0;
                                 }
+                                
+                                if($ligne->score != $previousScore){
+                                    $previousScore=$ligne->score;
+                                    $previousPlace=$currentPosition;
+                                    
+                                }
+                                
                             }
                             
                         }
@@ -167,14 +170,16 @@
                             $ligne2 = $statement2->fetch(PDO::FETCH_OBJ);
                             
                             if($ligne2 != false){
+                                if($ligne2->score == ""){
+                                    $previousScore = 0;   
+                                } 
                                 if($ligne2->score != $previousScore){
                                     $previousScore=$ligne2->score;
                                     $previousPlace=$currentPosition;
                                     
                                 }
-                                if($ligne2->score == ""){
-                                        $previousScore = 0;
-                                } 
+                                
+                                
                             }
                             
                             
