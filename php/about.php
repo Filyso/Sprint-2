@@ -20,37 +20,37 @@
                     <figure class="unePhoto">
                         <img src="../images/avatar.png" alt="Photo de Yoan">
                         <figcaption>
-                            <h3>Yoan</h3> une bonne description
+                            <h3>Yoan</h3> Le maître du développement
                         </figcaption>
                     </figure>
                     <figure class="unePhoto">
                         <img src="../images/avatar.png" alt="Photo de Vincent">
                         <figcaption>
-                            <h3>Vincent</h3> blablabla
+                            <h3>Vincent</h3> The Jack of All Trades
                         </figcaption>
                     </figure>
                     <figure class="unePhoto">
                         <img src="../images/avatar.png" alt="Photo de Tristan">
                         <figcaption>
-                            <h3>Tristan</h3> le graphiste fou
+                            <h3>Tristan</h3> Le Graphiste Fou
                         </figcaption>
                     </figure>
                     <figure class="unePhoto">
                         <img src="../images/avatar.png" alt="Photo de Clément">
                         <figcaption>
-                            <h3>Clément</h3> j'écris un truc plutôt long pour voir si ça dépasse ... apparament non
+                            <h3>Clément</h3> Le maître CSS... qui marche moyen
                         </figcaption>
                     </figure>
                     <figure class="unePhoto">
                         <img src="../images/avatar.png" alt="Photo de Justine">
                         <figcaption>
-                            <h3>Justine</h3> blablabla
+                            <h3>Justine</h3> Elle aime les chats
                         </figcaption>
                     </figure>
                     <figure class="unePhoto">
                         <img src="../images/avatar.png" alt="Photo de Maxime">
                         <figcaption>
-                            <h3>Maxime</h3> blablabla
+                            <h3>Maxime</h3> Le Bodybuilder du PHP
                         </figcaption>
                     </figure>
                 </div>

@@ -139,7 +139,7 @@ textarea {
     justify-content: space-between;
 }
 /************************* BOUTONS ****************************/
-.mainIndex a,
+.indexLink a,
 .buttonSolo a,
 .boiteAIdee button,
 .buttonMulti a,
@@ -156,7 +156,7 @@ textarea {
     z-index: 1;
     cursor: pointer;
 }
-.mainIndex a {
+.indexLink a {
     position: absolute;
     top: 85vh;
     font-size: 30px;
@@ -193,7 +193,7 @@ textarea {
 .boiteAIdee button {
     padding: 10px;
 }
-.mainIndex a:hover,
+.indexLink a:hover,
 .buttonSolo a:hover,
 .buttonMulti a:hover,
 .boiteAIdee button:hover,
@@ -203,7 +203,7 @@ textarea {
     color: var(--rouge);
     border-color: var(--rouge);
 }
-.mainIndex a:hover {
+.indexLink a:hover {
     padding: 15px 40px;
 }
 .buttonSolo a:hover {
@@ -284,6 +284,14 @@ li .loginMenu:hover {
     color: var(--jaune);
     font-size: 10vw;
     margin-top: 0;
+}
+.lienAbout{
+    text-decoration: none;
+    color: var(--jaune);
+    font-size: 3vh;
+}
+.lienAbout:hover{
+    color: white;
 }
 /*************************** SELECT GAME PAGE ********************************/
 .mainSelect {
