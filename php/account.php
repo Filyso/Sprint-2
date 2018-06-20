@@ -22,6 +22,7 @@
     <body>
         <?php include("./main_header.php");?>
         <?php
+        
 if(isset($_GET["pseudoFriend"])){
     
     $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
@@ -52,6 +53,7 @@ if(isset($_GET["pseudoFriend"])){
     
 }else{
     include("./scripts/script_myaccount.php");
+    
 }
     
         
