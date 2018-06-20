@@ -53,7 +53,7 @@ textarea {
 /********************************** KEYFRAMES **************************/
 @keyframes spriteSliding {
     from {
-        background-position: calc(-69vh * 24);
+        background-position: calc(-60vh * 24);
     }
     to {
         background-position: 0;
@@ -237,11 +237,11 @@ textarea {
 .indexLink::after {
     content: '';
     display: block;
-    width: 69vh;
-    height: 69vh;
+    width: 60vh;
+    height: 60vh;
     position: absolute;
-    top: 15vh;
-    left: calc(50vw - 35vh);
+    top: 25vh;
+    left: calc(50vw - 30vh);
     z-index: 1;
     background-image: url(../images/sprite.png);
     background-repeat: no-repeat;
@@ -269,7 +269,7 @@ textarea {
 }
 .welcomeIndex strong {
     font-weight: 1500;
-    font-size: 2.8vh;
+    font-size: 3vh;
 }
 li .loginMenu {
     color: white;
@@ -286,6 +286,12 @@ li .loginMenu:hover {
     color: var(--jaune);
     font-size: 10vw;
     margin-top: 0;
+}
+.slogan{
+    font-size: 3vw;
+    color: var(--jaune);
+    position: absolute;
+    top: calc(25vh - 3vw);
 }
 .lienAbout{
     text-decoration: none;
