@@ -10,6 +10,9 @@ if (isset($_POST["function"])) {
         case "checkQueue":
             checkQueue();
             break;
+        case "getEnemyScore":
+            getEnemyScore();
+            break;
         case "getTimeCode":
             if (isset($_POST["forbiddenTimeCode"])) {
                 getTimeCode(json_decode($_POST['forbiddenTimeCode']));
@@ -18,6 +21,11 @@ if (isset($_POST["function"])) {
         case "playerIsReady":
             if (isset($_POST["playerIsReady"])) {
                 playerIsReady($_POST["playerIsReady"]);
+            };
+            break;
+        case "setScore":
+            if (isset($_POST["idTimeCode"]) && isset($_POST["score"])) {
+                setScore($_POST["idTimeCode"], $_POST["score"]);
             };
             break;
         case "setSessionIdLobby":
@@ -63,6 +71,48 @@ function checkQueue() {
                 $statement2 = $pdo->query($requeteSQL2);
                 
                 $_SESSION["idLobby"] = $ligne2["idLobby"];
+                
+                $categorie = $ligne["idCat"];
+                $lang = $ligne["lang"];
+                $tabTimeCode = array();
+                for ($i = 1; $i <= 7; $i++) {
+                    $conditionSQL = "";
+                    for($i = 0; $i < count($tabTimeCode); $i++) {
+                        $conditionSQL = $conditionSQL . " AND TIMECODES.idTimeCode != " . $tabTimeCode[$i];
+                    }
+                    
+                    if($categorie != 0 && $lang != "all"){
+                    // cas où la catégorie est choisie et la langue est choisie
+                    $requeteSQL = "SELECT APPARTIENT_A_UNE.idCat, CHANSONS.lang, CHANSONS.nameSong, ARTISTES.nameArtist, CHANSONS.linkVideo, TIMECODES.idTimeCode, TIMECODES.startTimeCode, TIMECODES.timeCode, TIMECODES.previousLyrics, TIMECODES.trueRep, TIMECODES.falseRep1, TIMECODES.falseRep2, TIMECODES.falseRep3 FROM CHANSONS INNER JOIN APPARTIENT_A_UNE ON CHANSONS.idSong = APPARTIENT_A_UNE.idSong INNER JOIN TIMECODES ON CHANSONS.idSong = TIMECODES.idSong INNER JOIN A_UN ON CHANSONS.idSong = A_UN.idSong INNER JOIN ARTISTES ON A_UN.idArtist = ARTISTES.idArtist WHERE lang =:paramLangue and idCat=:paramCategorie".$conditionSQL." ORDER BY RAND() LIMIT 1";
+                    $statement = $pdo->prepare($requeteSQL);
+                    $statement->execute(array(":paramLangue" => $lang,
+                                              ":paramCategorie" => $categorie));
+
+                    } else if($categorie == 0 && $lang != "all") { 
+                        // cas où la catégorie n'est pas choisie et la langue est choisie
+                        $requeteSQL = "SELECT CHANSONS.lang, CHANSONS.nameSong, ARTISTES.nameArtist, CHANSONS.linkVideo, TIMECODES.idTimeCode, TIMECODES.startTimeCode, TIMECODES.timeCode, TIMECODES.previousLyrics, TIMECODES.trueRep, TIMECODES.falseRep1, TIMECODES.falseRep2, TIMECODES.falseRep3 FROM CHANSONS INNER JOIN APPARTIENT_A_UNE ON CHANSONS.idSong = APPARTIENT_A_UNE.idSong INNER JOIN TIMECODES ON CHANSONS.idSong = TIMECODES.idSong INNER JOIN A_UN ON CHANSONS.idSong = A_UN.idSong INNER JOIN ARTISTES ON A_UN.idArtist = ARTISTES.idArtist WHERE lang =:paramLangue".$conditionSQL." ORDER BY RAND() LIMIT 1";
+                        $statement = $pdo->prepare($requeteSQL);
+                        $statement->execute(array(":paramLangue" => $lang));
+
+                    } else if($categorie == 0 && $lang == "all"){
+                        // cas où la catégorie n'est pas choisie et la langue n'est pas choisie
+                        $requeteSQL = "SELECT CHANSONS.nameSong, ARTISTES.nameArtist, CHANSONS.linkVideo, TIMECODES.idTimeCode, TIMECODES.startTimeCode, TIMECODES.timeCode, TIMECODES.previousLyrics FROM CHANSONS INNER JOIN TIMECODES ON CHANSONS.idSong = TIMECODES.idSong INNER JOIN A_UN ON CHANSONS.idSong = A_UN.idSong INNER JOIN ARTISTES ON A_UN.idArtist = ARTISTES.idArtist WHERE 1=1".$conditionSQL." ORDER BY RAND() LIMIT 1";
+                        $statement = $pdo->query($requeteSQL);
+
+                    } else if ($categorie != 0 && $lang == "all"){
+                        // cas où la catégorie est choisie et la langue n'est pas choisie
+                        $requeteSQL = "SELECT APPARTIENT_A_UNE.idCat, CHANSONS.nameSong, ARTISTES.nameArtist, CHANSONS.linkVideo, TIMECODES.idTimeCode, TIMECODES.startTimeCode, TIMECODES.timeCode, TIMECODES.previousLyrics FROM CHANSONS INNER JOIN APPARTIENT_A_UNE ON CHANSONS.idSong = APPARTIENT_A_UNE.idSong INNER JOIN TIMECODES ON CHANSONS.idSong = TIMECODES.idSong INNER JOIN A_UN ON CHANSONS.idSong = A_UN.idSong INNER JOIN ARTISTES ON A_UN.idArtist = ARTISTES.idArtist WHERE idCat=:paramCategorie".$conditionSQL." ORDER BY RAND() LIMIT 1";
+                        $statement = $pdo->prepare($requeteSQL);
+                        $statement->execute(array(":paramCategorie" => $categorie));
+                    }
+
+                    $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+                    
+                    $tabTimeCode[] = $ligne["idTimeCode"];
+
+                    $requeteSQL = "UPDATE LOBBY SET idTC" . $i . "=" . $ligne["idTimeCode"] . " WHERE idLobby = " . $_SESSION["idLobby"];
+                    $statement = $pdo->query($requeteSQL);
+                }
 
                 $retour = array('competitorFind' => false,
                                'requete' => $requeteSQL3);
@@ -176,15 +226,72 @@ function getTimeCode($tabTimeCode) {
     //ETAPE 3 : Déconnecter du serveur                        
         $pdo = null;
         
-        // Envoi du retour (on renvoi le tableau $retour encodé en JSON)
+        // Envoi du retour (on renvoie le tableau $retour encodé en JSON)
         echo json_encode($retour);
     } catch (Exception $e) {
     }
                                            
 }
 
+function getEnemyScore() {
+    try {
+        require("../param.inc.php");
+        $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
+        $pdo->query("SET NAMES utf8");
+        $pdo->query("SET CHARACTER SET 'utf8'");
+        
+    // ETAPE 2 : Envoyer une requête SQL
+        // conditions pour l'envoi de la requête en fonction du choix du joueur
+        $requeteSQL = "SELECT score P" . ($_SESSION["playerNumber"]) . " FROM LOBBY WHERE idLobby = " . $_SESSION["idLobby"];
+        $statement = $pdo->prepare($requeteSQL);
+        $statement->execute(array(":paramScore" => $score,
+                                 ":paramIdTimeCode" => $idTimeCode,
+                                 ":paramIdMbr" => $_SESSION["id"]));
+        $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        $retour = array('enemyScore' => $ligne["enemyScore"]);
+
+    // ETAPE 3 : Déconnecter du serveur                        
+        $pdo = null;
+        
+        // Envoi du retour (on renvoie le tableau $retour encodé en JSON)
+        echo json_encode($retour);
+    } catch (Exception $e) {
+    }
+}
+
 function setScore($idTimeCode, $score) {
-    
+    try {
+        require("../param.inc.php");
+        $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
+        $pdo->query("SET NAMES utf8");
+        $pdo->query("SET CHARACTER SET 'utf8'");
+        
+    // ETAPE 2 : Envoyer une requête SQL
+        // conditions pour l'envoi de la requête en fonction du choix du joueur
+        $requeteSQL = "INSERT INTO JOUE (score,idTimeCode,idMbr) VALUES (:paramScore, :paramIdTimeCode, :paramIdMbr)";
+        $statement = $pdo->prepare($requeteSQL);
+        $statement->execute(array(":paramScore" => $score,
+                                 ":paramIdTimeCode" => $idTimeCode,
+                                 ":paramIdMbr" => $_SESSION["id"]));
+        
+        $requeteSQL = "SELECT scoreP" . $_SESSION["playerNumber"] . " AS currentScore FROM LOBBY WHERE idLobby = " . $_SESSION["idLobby"];
+        $statement = $pdo->query($requeteSQL);
+        $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        $score = $score + ($ligne["currentScore"] == NULL ? 0 : $ligne["currentScore"]);
+        
+        $requeteSQL = "UPDATE LOBBY SET scoreP" . $_SESSION["playerNumber"] . " = " . $score . " WHERE idLobby = " . $_SESSION["idLobby"];
+        $statement = $pdo->query($requeteSQL);
+        
+        $retour = array('requete' => $requeteSQL);
+        
+        echo json_encode($retour);
+    // ETAPE 3 : Déconnecter du serveur                        
+        $pdo = null;
+        
+    } catch (Exception $e) {
+    }
 }
 
 function arePlayersReady() {

@@ -362,15 +362,16 @@ function verifierReps(evt) {
                     stopTimer();
                     btnThis.style.backgroundColor = "red";
                 }
+                setTimeout(wait, 2000);
             },
             'json'
         );
     } else {
         afficherScore(0);
         document.getElementsByClassName("divTimer")[0].style.borderColor = "red";
+        setTimeout(wait, 2000);
     }
 
-    setTimeout(wait, 2000);
 }
 
 function verifierType(evt) {
@@ -630,4 +631,16 @@ function afficherScore(setScore) {
     spanScore.style.left = "50%";
 
     document.querySelector(".contenu").appendChild(spanScore);
+    
+    console.log(tabTimeCode[numQuest]);
+    console.log(scoreReponse);
+    $.post('../php/scripts/script_game_multi.php', {
+            function: 'setScore',
+            idTimeCode: tabTimeCode[currentSong],
+            score: scoreReponse
+        }, function (data) {
+            console.log(data.requete);
+        },
+        'json'
+    );
 }
