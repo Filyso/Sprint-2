@@ -51,7 +51,10 @@
                         $currentPosition = 1;
                         $previousPlace = $currentPosition;
                         $previousScore = $ligne->score;
-
+                            
+                        if($ligne->score == ""){
+                            $previousScore = 0;
+                        }    
                             
                         while($ligne->idMbr != $_SESSION["id"] && $ligne != false){
                             
@@ -134,7 +137,9 @@
                         $previousScore=$ligne2->score;
                         $previousPlace=$currentPosition;
                         //Boucle sur chaque membre (BDD)
-
+                        if($ligne2->score == ""){
+                            $previousScore = 0;
+                        }
                         while($currentPosition<=10 && $ligne2 != false){
                             
             

@@ -63,7 +63,7 @@
         //premier
         $ligne = $statement->fetch(PDO::FETCH_ASSOC);
         $currentPosition = 1;
-        
+        $previousPlace = 0;
                     
         $pseudoPlayer[$currentPosition] = $ligne["pseudo"];
         $iconPlayer[$currentPosition] = $ligne["icon"];
@@ -133,7 +133,7 @@
             $iconPlayer[$currentPosition] = $ligne["icon"];
             $scorePlayer[$currentPosition] = $ligne["score"];
             $placePlayer[$currentPosition] = $currentPosition;
-            
+            $previousPlace = 0;
             
             $fin = false;
             $idTrouvee = false;
@@ -173,7 +173,8 @@
                             $placePlayer[$currentPosition] = $previousPlace;
 
 
-                        }   
+                        }  
+                        echo("1er ".$placePlayer[$currentPosition]."</br>");
                     }
                     while($idTrouvee && !$finboucle2){
 
@@ -207,7 +208,7 @@
                             $finboucle2 = true;
                             $currentPosition += -4;
                         }
-
+                        echo("2eme ".$placePlayer[$currentPosition]."</br>");
                     }
 
                     while($pret && !$fin){
@@ -244,7 +245,7 @@
             $compteur = 1;
             $pret = false;
             $previousScore =  $ligne["score"]; 
-            
+            $previousPlace = 0;
             $pseudoPlayer[$currentPosition] = $ligne["pseudo"];
             $iconPlayer[$currentPosition] = $ligne["icon"];
             $scorePlayer[$currentPosition] = $ligne["score"];
