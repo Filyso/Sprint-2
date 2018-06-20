@@ -3,6 +3,12 @@
 	header("Content-type: text/html; charset: UTF-8");
     
     if(isset($_POST["arrayData"])) {
+        
+        require("./param.inc.php");
+            $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
+            $pdo->query("SET NAMES utf8");
+            $pdo->query("SET CHARACTER SET 'utf8'");
+        
         $arrayData = json_decode($_POST["arrayData"], true);
         //On récupère les clés associatives du tableau (les pseudos sur lesquels les changements sont appliqués)
         $keyArrayData = array_keys($arrayData);
@@ -16,25 +22,25 @@
                 
                 $requeteSQL = "UPDATE MEMBRES ".
                             "SET MEMBRES.isVerif = '1' ".
-                            "WHERE MEMBRES.pseudoMbr = '".$keyArrayData[$i]."';";
+                            "WHERE MEMBRES.pseudoMbr = ':paramPseudoMbr';";
                 $statement = $pdo->prepare($requeteSQL);
-                $statement->execute(array());
+                $statement->execute(array(":paramPseudoMbr" => $keyArrayData[$i]));
                 
             }else if($arrayData["$keyArrayData[$i]"][1]=="attente"){
                 
                 $requeteSQL = "UPDATE MEMBRES ".
                             "SET MEMBRES.isVerif = '0' ".
-                            "WHERE MEMBRES.pseudoMbr = '".$keyArrayData[$i]."';";
+                            "WHERE MEMBRES.pseudoMbr = ':paramPseudoMbr';";
                 $statement = $pdo->prepare($requeteSQL);
-                $statement->execute(array());
+                $statement->execute(array(":paramPseudoMbr" => $keyArrayData[$i]));
                 
             }else if($arrayData["$keyArrayData[$i]"][1]=="banni"){
                 
                 $requeteSQL = "UPDATE MEMBRES ".
                             "SET MEMBRES.isVerif = '2' ".
-                            "WHERE MEMBRES.pseudoMbr = '".$keyArrayData[$i]."';";
+                            "WHERE MEMBRES.pseudoMbr = ':paramPseudoMbr';";
                 $statement = $pdo->prepare($requeteSQL);
-                $statement->execute(array());
+                $statement->execute(array(":paramPseudoMbr" => $keyArrayData[$i]));
                 
             }
             if($arrayData["$keyArrayData[$i]"][0]=="normal"){
@@ -43,14 +49,15 @@
                     "FROM MEMBRES ".
                     "INNER JOIN ROLE ". 
                     "ON ROLE.idMbr = MEMBRES.idMbr ".
-                    "WHERE MEMBRES.pseudoMbr = '".$keyArrayData[$i]."';"
+                    "WHERE MEMBRES.pseudoMbr = '".$keyArrayData[$i]."';";
                 
                 $statement = $pdo->query($requeteSQL);
-
                 $ligne = $statement->fetch(PDO::FETCH_ASSOC);
                     
                 $requeteSQLbis ="DELETE FROM ROLE ".
-                    "WHERE ROLE.idMbr ='".$ligne["id"]."';"
+                    "WHERE ROLE.idMbr =':paramIDMbr';";
+                $statement = $pdo->prepare($requeteSQLbis);
+                $statement->execute(array(":paramIDMbr" => $ligne["id"]));
                  
             }else if($arrayData["$keyArrayData[$i]"][0]=="moderateur"){
                 //update ou insert
@@ -58,22 +65,51 @@
                     "FROM MEMBRES ".
                     "INNER JOIN ROLE ".
                     "ON ROLE.idMbr = MEMBRES.idMbr ".
-                    "WHERE MEMBRES.pseudoMbr = '".$keyArrayData[$i]."';"
+                    "WHERE MEMBRES.pseudoMbr = '".$keyArrayData[$i]."';";
                 
                 $statement = $pdo->query($requeteSQL);
 
                 $ligne = $statement->fetch(PDO::FETCH_ASSOC);
                 
                 if($ligne["oldRole"]=="admin"){
-                    $requeteSQLbis=""
+                    $requeteSQLbis="UPDATE ROLE ".
+                        "SET ROLE.roleMbr = 'modo' ".
+                        "WHERE ROLE.idMbr = ':paramIDMbr';"; 
+                    $statement = $pdo->prepare($requeteSQLbis);
+                    $statement->execute(array(":paramIDMbr" => $ligne["id"]));
+                    
                 }else if($ligne["oldRole"]==false){
-                    $requeteSQLbis=""
+                    $requeteSQLbis="INSERT INTO ROLE ".
+                        "VALUES ('modo',':paramIDMbr')";
+                    $statement = $pdo->prepare($requeteSQLbis);
+                    $statement->execute(array(":paramIDMbr" => $ligne["id"]));
                 }
                 
-               
-                
             }else if($arrayData["$keyArrayData[$i]"][0]=="administrateur"){
-                //insert ou update
+                //update ou insert
+                $requeteSQL="SELECT MEMBRES.idMbr AS 'id', ROLE.roleMbr AS 'oldRole' ".
+                    "FROM MEMBRES ".
+                    "INNER JOIN ROLE ".
+                    "ON ROLE.idMbr = MEMBRES.idMbr ".
+                    "WHERE MEMBRES.pseudoMbr = '".$keyArrayData[$i]."';";
+                
+                $statement = $pdo->query($requeteSQL);
+
+                $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+                
+                if($ligne["oldRole"]=="modo"){
+                    $requeteSQLbis="UPDATE ROLE ".
+                        "SET ROLE.roleMbr = 'modo' ".
+                        "WHERE ROLE.idMbr = ':paramIDMbr';";
+                    $statement = $pdo->prepare($requeteSQLbis);
+                    $statement->execute(array(":paramIDMbr" => $ligne["id"]));
+                    
+                }else if($ligne["oldRole"]==false){
+                    $requeteSQLbis="INSERT INTO ROLE ".
+                        "VALUES ('admin',':paramIDMbr');";
+                    $statement = $pdo->prepare($requeteSQLbis);
+                    $statement->execute(array(":paramIDMbr" => $ligne["id"]));
+                }
             }
         }
     }
