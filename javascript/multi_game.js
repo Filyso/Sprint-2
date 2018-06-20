@@ -55,14 +55,12 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var player;
 
 function onYouTubePlayerAPIReady() {
-    console.log(JSON.stringify(tabTimeCode));
     $.post(
         '../php/scripts/script_game_multi.php', {
             function: 'getTimeCode',
             forbiddenTimeCode: JSON.stringify(tabTimeCode)
         },
         function (data) {
-            console.log(data.requete);
             currentSong = data;
             tabTimeCode.push(data.idTimeCode);
             player = new YT.Player('ytplayer', {
@@ -99,7 +97,6 @@ function onYouTubePlayerAPIReady() {
 
 function initialiser(evt) {
     window.addEventListener('beforeunload', function (event) {
-        console.log('I am the 1st one.');
         $.post(
             '../php/scripts/script_game_multi.php', {
                 function: 'delLobby'
@@ -377,7 +374,6 @@ function verifierType(evt) {
     var repInput = this;
     var thisLabels = this.parentElement.querySelectorAll("label");
     var answer = thisLabels[0].textContent + this.value + thisLabels[1].textContent;
-    console.log(answer);
     $.post(
         '../php/scripts/script_musique.php', {
             function: 'checkAnswer',
@@ -402,6 +398,22 @@ function verifierType(evt) {
 }
 
 function afterVerif(evt) {
+    var wait = true;
+    while (wait) {
+        $.post('../php/scripts/script_game_multi.php', {
+            function: 'arePlayersReady',
+        },
+        function (data) {
+            wait = data.playersAreReady;
+        },
+        'json');
+    }
+
+
+    $.post('../php/scripts/script_game_multi.php', {
+        function: 'playerIsReady',
+        playerIsReady: 'true'
+    });
     if (document.getElementById("currentScore") != null) {
         document.getElementById("currentScore").remove();
     }

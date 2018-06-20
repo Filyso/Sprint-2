@@ -45,14 +45,6 @@
                     </figure>
 
                 </div>
-                
-                <div class="score">
-
-                    <figure>
-                        <img alt="Photo de profil" src="<?php echo(Membre::isLogged() ? $_SESSION[" icon "] : "../images/icons/default/mercury.jpg ")?>" />
-                    </figure>
-
-                </div>
 
             </section>
 
@@ -60,6 +52,7 @@
 
         <?php include("./main_footer.php")?>
         <script src="../javascript/multi_game.js"></script>
+        <script type="text/javascript" src="../javascript/popup_regles.js"></script>
     </body>
 
     </html>

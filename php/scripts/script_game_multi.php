@@ -4,11 +4,21 @@ header('Content-type: application/json');
 
 if (isset($_POST["function"])) {
     switch ($_POST["function"]) {
+        case "arePlayersReady":
+            arePlayersReady();
+            break;
         case "checkQueue":
             checkQueue();
             break;
         case "getTimeCode":
-            getTimeCode(json_decode($_POST['forbiddenTimeCode']));
+            if (isset($_POST["forbiddenTimeCode"])) {
+                getTimeCode(json_decode($_POST['forbiddenTimeCode']));
+            };
+            break;
+        case "playerIsReady":
+            if (isset($_POST["playerIsReady"])) {
+                playerIsReady($_POST["playerIsReady"]);
+            };
             break;
         case "setSessionIdLobby":
             setSessionIdLobby();
@@ -173,6 +183,54 @@ function getTimeCode($tabTimeCode) {
                                            
 }
 
+function arePlayersReady() {
+    try {
+        require("../param.inc.php");
+        $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
+        $pdo->query("SET NAMES utf8");
+        $pdo->query("SET CHARACTER SET 'utf8'");
+        
+    // ETAPE 2 : Envoyer une requête SQL
+        // conditions pour l'envoi de la requête en fonction du choix du joueur
+        $requeteSQL = "SELECT waitingP1, waitingP2 FROM LOBBY WHERE idLobby = " . $_SESSION["idLobby"];
+        $statement = $pdo->query($requeteSQL);
+        $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+
+        $playersAreReady = false;
+        
+        if ($ligne["waitingP1"] == 1 && $ligne["waitingP2"] == 1) {
+            $playersAreReady = true;
+        }
+        
+        $retour = array('playersAreReady' => $playersAreReady);
+        
+    // ETAPE 3 : Déconnecter du serveur                        
+        $pdo = null;
+        
+    } catch (Exception $e) {
+    }
+}
+
+function playerIsReady($bool) {
+    try {
+        require("../param.inc.php");
+        $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
+        $pdo->query("SET NAMES utf8");
+        $pdo->query("SET CHARACTER SET 'utf8'");
+        
+    // ETAPE 2 : Envoyer une requête SQL
+        // conditions pour l'envoi de la requête en fonction du choix du joueur
+        $requeteSQL = "UPDATE LOBBY SET waitingP" . $_SESSION["playerNumber"] . " = " . ($bool ? "1":"0") . " WHERE idLobby = " . $_SESSION["idLobby"];
+        $statement = $pdo->query($requeteSQL);
+        $_SESSION["playerNumber"] = 1;
+        
+    // ETAPE 3 : Déconnecter du serveur                        
+        $pdo = null;
+        
+    } catch (Exception $e) {
+    }
+}
+
 function setPlayerNumber() {
     try {
         require("../param.inc.php");
@@ -182,11 +240,19 @@ function setPlayerNumber() {
         
     // ETAPE 2 : Envoyer une requête SQL
         // conditions pour l'envoi de la requête en fonction du choix du joueur        
-        $requeteSQL = "SELECT MEMBRES.idLobby FROM MEMBRES WHERE MEMBRES.idMbr = " . $_SESSION["id"];
+        $requeteSQL = "SELECT LOBBY.waitingP1 FROM LOBBY WHERE Lobby.idLobby = " . $_SESSION["idLobby"];
         $statement = $pdo->query($requeteSQL);
         $ligne = $statement->fetch(PDO::FETCH_ASSOC);
         
-        $_SESSION["playerNumber"] = 1;
+        if ($ligne["waitingP1"] == 0) {
+            $requeteSQL = "UPDATE LOBBY SET waitingP1 = 1 WHERE idLobby = " . $_SESSION["idLobby"];
+            $statement = $pdo->query($requeteSQL);
+            $_SESSION["playerNumber"] = 1;
+        } else {
+            $requeteSQL = "UPDATE LOBBY SET waitingP1 = 0 WHERE idLobby = " . $_SESSION["idLobby"];
+            $statement = $pdo->query($requeteSQL);
+            $_SESSION["playerNumber"] = 2;
+        }
         
     // ETAPE 3 : Déconnecter du serveur                        
         $pdo = null;
@@ -209,6 +275,8 @@ function setSessionIdLobby() {
         $ligne = $statement->fetch(PDO::FETCH_ASSOC);
         
         $_SESSION["idLobby"] = $ligne["idLobby"];
+        
+        setPlayerNumber();
         
     // ETAPE 3 : Déconnecter du serveur                        
         $pdo = null;
