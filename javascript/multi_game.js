@@ -55,12 +55,14 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var player;
 
 function onYouTubePlayerAPIReady() {
+    console.log(JSON.stringify(tabTimeCode));
     $.post(
         '../php/scripts/script_game_multi.php', {
             function: 'getTimeCode',
             forbiddenTimeCode: JSON.stringify(tabTimeCode)
         },
         function (data) {
+            console.log(data.requete);
             currentSong = data;
             tabTimeCode.push(data.idTimeCode);
             player = new YT.Player('ytplayer', {
@@ -104,9 +106,11 @@ function initialiser(evt) {
             }
         );
     });
-    
-    $.post('../php/scripts/script_game_multi.php', {function: 'setSessionIdLobby'});
-    
+
+    $.post('../php/scripts/script_game_multi.php', {
+        function: 'setSessionIdLobby'
+    });
+
     // Création de la barre de score
     var barScoreMax = document.createElement("div");
     barScoreMax.classList.add("barScoreMax");
@@ -407,10 +411,8 @@ function afterVerif(evt) {
         document.getElementById("ytplayer").style.display = "block";
 
         $.post(
-            '../php/scripts/script_musique.php', {
-                function: 'getMusique',
-                categorie: $_GET["categorie"] == undefined ? "0" : $_GET["categorie"],
-                lang: $_GET["langue"] == undefined ? "bilingue" : $_GET["langue"],
+            '../php/scripts/script_game_multi.php', {
+                function: 'getTimeCode',
                 forbiddenTimeCode: JSON.stringify(tabTimeCode)
             },
             function (data) {
@@ -546,11 +548,15 @@ function decrement(evt) {
         timer.textContent = "" + timerSec + "." + timerMilli;
     }
 
-    if (timerSec < 1 && timerMilli < 1 && numQuest < 6) {
+    if (timerSec < 1 && timerMilli < 1) {
         clearInterval(encours);
         if (timer.textContent = "0.0") {
             timeOut = true;
-            verifierReps();
+            if (numQuest < 6) {
+                verifierReps();
+            } else {
+                afterVerif();
+            }
         }
     }
 }

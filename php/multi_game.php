@@ -45,6 +45,14 @@
                     </figure>
 
                 </div>
+                
+                <div class="score">
+
+                    <figure>
+                        <img alt="Photo de profil" src="<?php echo(Membre::isLogged() ? $_SESSION[" icon "] : "../images/icons/default/mercury.jpg ")?>" />
+                    </figure>
+
+                </div>
 
             </section>
 

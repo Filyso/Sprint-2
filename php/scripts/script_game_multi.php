@@ -8,9 +8,7 @@ if (isset($_POST["function"])) {
             checkQueue();
             break;
         case "getTimeCode":
-            if (isset($_POST["idTimeCode"])) {
-                getTimeCode($_POST["idTimeCode"]);
-            }
+            getTimeCode(json_decode($_POST['forbiddenTimeCode']));
             break;
         case "setSessionIdLobby":
             setSessionIdLobby();
@@ -85,9 +83,10 @@ function getTimeCode($tabTimeCode) {
         $pdo->query("SET NAMES utf8");
         $pdo->query("SET CHARACTER SET 'utf8'");
         
-        $requeteSQL = "SELECT idTC" . count($tabTimeCode) . " AS 'idTC', lang, idCat FROM LOBBY WHERE idLobby = " . $_SESSION("idLobby");
+        $requeteSQL = "SELECT idTC" . (count($tabTimeCode) + 1) . " AS 'idTC', lang, idCat FROM LOBBY WHERE idLobby = " . $_SESSION["idLobby"];
         $statement = $pdo->query($requeteSQL);
         $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+        $retour = array('requete' => $requeteSQL);
         
         $categorie = ($ligne["idCat"] == NULL ? "0" : $ligne["idCat"]);
         $lang = $ligne["lang"];
@@ -128,7 +127,7 @@ function getTimeCode($tabTimeCode) {
             
             $ligne = $statement->fetch(PDO::FETCH_ASSOC);
             
-            $requeteSQL = "UPDATE LOBBY SET idTC" . count($tabTimeCode) . "=" . $ligne["idTimeCode"] . " WHERE idLobby = " . $_SESSION["idLobby"];
+            $requeteSQL = "UPDATE LOBBY SET idTC" . (count($tabTimeCode) + 1) . "=" . $ligne["idTimeCode"] . " WHERE idLobby = " . $_SESSION["idLobby"];
             $statement = $pdo->query($requeteSQL);
             
         } else {
@@ -164,7 +163,7 @@ function getTimeCode($tabTimeCode) {
                         'timeCodeEnd'    => $endTime,
                         'previousLyrics' => stripslashes($ligne["previousLyrics"]));
             
-    // ETAPE 3 : Déconnecter du serveur                        
+    //ETAPE 3 : Déconnecter du serveur                        
         $pdo = null;
         
         // Envoi du retour (on renvoi le tableau $retour encodé en JSON)
@@ -172,6 +171,28 @@ function getTimeCode($tabTimeCode) {
     } catch (Exception $e) {
     }
                                            
+}
+
+function setPlayerNumber() {
+    try {
+        require("../param.inc.php");
+        $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
+        $pdo->query("SET NAMES utf8");
+        $pdo->query("SET CHARACTER SET 'utf8'");
+        
+    // ETAPE 2 : Envoyer une requête SQL
+        // conditions pour l'envoi de la requête en fonction du choix du joueur        
+        $requeteSQL = "SELECT MEMBRES.idLobby FROM MEMBRES WHERE MEMBRES.idMbr = " . $_SESSION["id"];
+        $statement = $pdo->query($requeteSQL);
+        $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        $_SESSION["playerNumber"] = 1;
+        
+    // ETAPE 3 : Déconnecter du serveur                        
+        $pdo = null;
+        
+    } catch (Exception $e) {
+    }
 }
 
 function setSessionIdLobby() {
