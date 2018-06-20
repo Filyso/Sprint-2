@@ -1105,6 +1105,9 @@ li .loginMenu {
     font-size: 28px;
     color: var(--orange);
 }
+.popup-content_regle li>p{
+    color:black;
+}
 .popup-content input {
     height: 10%;
     margin-bottom: 10%;
@@ -1872,6 +1875,24 @@ li .loginMenu {
 }
 /***************************** MEDIA QUERIES ********************************/
 @media only screen and (max-device-width: 480px) {
+    .sectionSolo .reponses .sousReponses .reponseBtn{
+        font-size: 25px;
+        padding: 10px;
+        width: 30vw;
+        margin:0  5vw
+    }
+    .sectionSolo .reponses .divTimer .timer{
+        font-size: 50px;
+    }
+    .mainJeuSolo{
+        margin-top: 200px;
+    }
+    .mainJeuSolo .sectionSolo .barScoreMax{
+        height: 70vh;
+    }
+    .mainJeuSolo .numEtTuto .nomEtArtiste{
+        font-size: 50px;
+    }
     .signUpPage form {
         width: 80%;
         margin-top: 200px;
@@ -1967,10 +1988,17 @@ li .loginMenu {
 }
 @media (max-width: 1000px) {
     .rightHeader {
-        align-items: flex-end;
-        justify-content: center;
-        flex-direction: column;
+        align-items:flex-end;
+        justify-content:flex-end;
+        flex-wrap: wrap;
         padding: 0 30px;
+    }
+    .rightHeader .connect{
+        width: 100%;
+        text-align: right;
+    }
+    .rightHeader figure{
+        margin: 0px;
     }
     .rightHeader div {
         padding: 10px;
@@ -2141,5 +2169,12 @@ li .loginMenu {
     #formContact2 button {
         font-size: 30px;
         margin-top: 30px;
+    }
+    .mainAbout .enDessous .BoiteAIdee{
+        width: 100%;
+    }
+    .mainAbout .enDessous .BoiteAIdee textarea,.mainAbout .enDessous .BoiteAIdee input{
+        font-size: 30px;
+        font-family:'Raleway'
     }
 }
