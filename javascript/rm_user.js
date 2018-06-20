@@ -1,10 +1,16 @@
 (function () {
+    
     "use strict";
     document.addEventListener("DOMContentLoaded", initialiser);
 
     var obj = {};
-    
+    var json;
+    var hiddenInput;
+
     function initialiser(evt) {
+        
+        json = JSON.stringify(obj);
+        hiddenInput = document.getElementById("arrayData");
 
         var mbr = document.querySelectorAll(".mbr");
 
@@ -20,14 +26,22 @@
 
     function changerRole(evt) {
         var newRole = this.value;
+        var actualStatut = this.parentElement.nextElementSibling.firstElementChild.value;
         var nomMbr = this.parentElement.previousElementSibling.innerHTML;
+        obj[nomMbr] = [newRole, actualStatut];
+        //console.log(obj);
+        var json = JSON.stringify(obj);
+        hiddenInput.value = json;
     }
-    
+
     function changerStatut(evt) {
         var newStatut = this.value;
+        var actualRole = this.parentElement.previousElementSibling.firstElementChild.value;
         var nomMbr = this.parentElement.previousElementSibling.previousElementSibling.innerHTML;
-        obj = Object.assign({nomMbr:[newStatut]});
-        console.log(obj);
+        obj[nomMbr] = [actualRole, newStatut];
+        //console.log(obj);
+        var json = JSON.stringify(obj);
+        hiddenInput.value = json;
     }
 
 }());

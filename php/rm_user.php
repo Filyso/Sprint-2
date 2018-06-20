@@ -1,6 +1,10 @@
 <?php
     session_start();
 	header("Content-type: text/html; charset: UTF-8");
+    
+    if(isset($_POST["arrayData"])) {
+        
+    }
 ?>
     <head>
         <meta charset="utf-8">
@@ -76,9 +80,9 @@
                         </tbody>
                     </table>
                 </fieldset>
-            <form action="edit_song.php" method="post" id="addSongForm" class="addSongForm">
+            <form action="rm_user.php" method="post" id="addSongForm" class="addSongForm">
                 <div>
-                   <input type="hidden"/>
+                    <input id="arrayData" type="hidden" value="" name="arrayData"/>
                     <input type="submit" value="APPLIQUER" />
                 </div>
             </form>
