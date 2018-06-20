@@ -3,9 +3,82 @@
 	header("Content-type: text/html; charset: UTF-8");
     
     if(isset($_POST["arrayData"])) {
+        $arrayData = json_decode($_POST["arrayData"], true);
+        //On récupère les clés associatives du tableau (les pseudos sur lesquels les changements sont appliqués)
+        $keyArrayData = array_keys($arrayData);
+        //On calcule la longueur du tableau (le nombre de pseudos sur lesquels les changements sont appliqués)
+        $sizeArrayData = sizeof($arrayData);
         
+        $i=0;
+        //Pour chaque membre, on ajoute les changements à la table de données
+        for($i; $i < $sizeArrayData; $i++){
+            if($arrayData["$keyArrayData[$i]"][1]=="enregistre"){
+                
+                $requeteSQL = "UPDATE MEMBRES ".
+                            "SET MEMBRES.isVerif = '1' ".
+                            "WHERE MEMBRES.pseudoMbr = '".$keyArrayData[$i]."';";
+                $statement = $pdo->prepare($requeteSQL);
+                $statement->execute(array());
+                
+            }else if($arrayData["$keyArrayData[$i]"][1]=="attente"){
+                
+                $requeteSQL = "UPDATE MEMBRES ".
+                            "SET MEMBRES.isVerif = '0' ".
+                            "WHERE MEMBRES.pseudoMbr = '".$keyArrayData[$i]."';";
+                $statement = $pdo->prepare($requeteSQL);
+                $statement->execute(array());
+                
+            }else if($arrayData["$keyArrayData[$i]"][1]=="banni"){
+                
+                $requeteSQL = "UPDATE MEMBRES ".
+                            "SET MEMBRES.isVerif = '2' ".
+                            "WHERE MEMBRES.pseudoMbr = '".$keyArrayData[$i]."';";
+                $statement = $pdo->prepare($requeteSQL);
+                $statement->execute(array());
+                
+            }
+            if($arrayData["$keyArrayData[$i]"][0]=="normal"){
+                //delete
+                $requeteSQL ="SELECT MEMBRES.idMbr AS 'id' ".
+                    "FROM MEMBRES ".
+                    "INNER JOIN ROLE ". 
+                    "ON ROLE.idMbr = MEMBRES.idMbr ".
+                    "WHERE MEMBRES.pseudoMbr = '".$keyArrayData[$i]."';"
+                
+                $statement = $pdo->query($requeteSQL);
+
+                $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+                    
+                $requeteSQLbis ="DELETE FROM ROLE ".
+                    "WHERE ROLE.idMbr ='".$ligne["id"]."';"
+                 
+            }else if($arrayData["$keyArrayData[$i]"][0]=="moderateur"){
+                //update ou insert
+                $requeteSQL="SELECT MEMBRES.idMbr AS 'id', ROLE.roleMbr AS 'oldRole' ".
+                    "FROM MEMBRES ".
+                    "INNER JOIN ROLE ".
+                    "ON ROLE.idMbr = MEMBRES.idMbr ".
+                    "WHERE MEMBRES.pseudoMbr = '".$keyArrayData[$i]."';"
+                
+                $statement = $pdo->query($requeteSQL);
+
+                $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+                
+                if($ligne["oldRole"]=="admin"){
+                    $requeteSQLbis=""
+                }else if($ligne["oldRole"]==false){
+                    $requeteSQLbis=""
+                }
+                
+               
+                
+            }else if($arrayData["$keyArrayData[$i]"][0]=="administrateur"){
+                //insert ou update
+            }
+        }
     }
 ?>
+   
     <head>
         <meta charset="utf-8">
         <title>Jeu en Solo</title>
