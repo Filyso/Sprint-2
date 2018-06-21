@@ -166,10 +166,10 @@
                     <span>Langue</span>
                     <div class="choixLangue">
                         <input type="radio" id="langSongFR" name="langSong" value="fr" required <?php echo($ligne2["langue"]=='fr'?"checked":"") ?>>
-                        <label for="langSongFR"><img src="../images/FR.png" alt="drapeau FR" /></label>
+                        <label for="langSongFR"><img src="../images/fr.png" alt="drapeau FR" /></label>
 
                         <input type="radio" id="langSongEN" name="langSong" value="en" <?php echo($ligne2["langue"]=='en'?"checked":"") ?>>
-                        <label for="langSongEN"><img src="../images/UK.png" alt="drapeau UK" /></label>
+                        <label for="langSongEN"><img src="../images/uk.png" alt="drapeau UK" /></label>
                     </div>
                 </div>
 
