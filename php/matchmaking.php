@@ -62,7 +62,7 @@
         ?>
         
         <main class="selectMulti">
-            <h1>Le jeu en multijoueur est encore en développement !</h1>
+            <h1>En attente d'adversaire ...</h1>
         </main>
 
         <?php include("./main_footer.php")?>
