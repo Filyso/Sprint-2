@@ -518,7 +518,7 @@ function setPlayerNumber() {
         
     // ETAPE 2 : Envoyer une requête SQL
         // conditions pour l'envoi de la requête en fonction du choix du joueur        
-        $requeteSQL = "SELECT LOBBY.waitingP1 FROM LOBBY WHERE Lobby.idLobby = " . $_SESSION["idLobby"];
+        $requeteSQL = "SELECT LOBBY.waitingP1 FROM LOBBY WHERE LOBBY.idLobby = " . $_SESSION["idLobby"];
         $statement = $pdo->query($requeteSQL);
         $ligne = $statement->fetch(PDO::FETCH_ASSOC);
         
