@@ -53,7 +53,7 @@ textarea {
 /********************************** KEYFRAMES **************************/
 @keyframes spriteSliding {
     from {
-        background-position: calc(-60vh * 24);
+        background-position: calc(-61vh * 24);
     }
     to {
         background-position: 0;
@@ -103,7 +103,7 @@ textarea {
 .addSongForm fieldset,
 .mainHeader ul,
 .popupContent,
-.popupContentRegle,
+.popup-content_regle,
 .popupContent form,
 .sectionSolo .score,
 .sectionSolo .contenu,
@@ -250,7 +250,7 @@ textarea {
     content: '';
     display: block;
     width: 60vh;
-    height: 60vh;
+    height: 61vh;
     position: absolute;
     top: 25vh;
     left: calc(50vw - 30vh);
@@ -482,7 +482,7 @@ li .loginMenu:hover {
     text-decoration: none;
     color: inherit;
     font-weight: 300;
-    font-size: 4vh;
+    font-size: 3vh;
     margin-bottom: 20px;
 }
 .footerLinks a:hover {
@@ -490,7 +490,7 @@ li .loginMenu:hover {
     transition: 0.2s;
 }
 .footerReseaux img {
-    width: 4vw;
+    width: 2vw;
     padding: 5px;
 }
 .footerReseaux img:hover {
@@ -1073,7 +1073,7 @@ li .loginMenu {
 }
 /********************* POPUP CONNEXION ******************************/
 .popup,
-.popupRegle {
+.popup_regle {
     display: block;
     opacity: 0;
     transition: opacity linear .2s;
@@ -1091,7 +1091,7 @@ li .loginMenu {
     opacity: 1;
 }
 .popupContent,
-.popupContentRegle {
+.popup-content_regle {
     background-color: #fefefe;
     margin: 15% auto;
     width: 40%;
@@ -1106,13 +1106,13 @@ li .loginMenu {
     width: 60%;
 }
 .popupContent h2,
-.popupContentRegle h2 {
+.popup-content_regle h2 {
     padding-top: 10%;
     margin: 0;
     font-size: 28px;
     color: var(--orange);
 }
-.popupContentRegle p{
+.popup-content_regle p{
     color:black;
 }
 .popupContent input {
@@ -1123,7 +1123,7 @@ li .loginMenu {
     font-size: 15px;
 }
 .close,
-.closeRegle {
+.close_regle {
     color: var(--orange);
     font-size: 28px;
     font-weight: bold;
@@ -1133,13 +1133,13 @@ li .loginMenu {
 }
 .close:hover,
 .close:focus,
-.closeRegle:hover,
-.closeRegle:focus {
+.close_regle:hover,
+.close_regle:focus {
     color: #784199;
     text-decoration: none;
     cursor: pointer;
 }
-.popupContentRegle ul {
+.popup-content_regle ul {
     font-size: 25px;
     font-weight: 300;
     list-style-image: url(images/list.png);
@@ -1195,7 +1195,7 @@ li .loginMenu {
 .sectionSolo .ytplayer {
     flex: 0.9;
     width: 100%;
-/*    pointer-events: none;*/
+    pointer-events: neeone;
     align-self: center;
 }
 .sectionSolo .score {
@@ -1714,22 +1714,24 @@ li .loginMenu {
     height: 50px;
     width: 100px;
 }
+.badgesGagnes .pastille{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.badgesGagnes .btnFriendConnected{
+    margin: 0;
+    padding: 0;
+    width: 20px;
+    padding-top: 20px;
+    
+}
 .mainAccount .btnRetour:hover{
     transform: scale(1.02);
     cursor: pointer;
 }
-/** Pastille qui montre les amis connectés **/
-.pastille<td{
-    min-height: 20px;
-}
-figure.pastille{
-    width: 20px;
-    height: 20px;
-}
-figure.pastille img{
-    width: 100%;
-    height: 100%;
-}
+
+
 /*************************** INSCRIPTION SIGN UP ************************/
 .signUpPage {
     background-color: var(--noir);
@@ -2197,4 +2199,12 @@ figure.pastille img{
         font-size: 30px;
         font-family:'Raleway'
     }
+    .slogan{
+    font-size: 3vw;
+    top: calc(33vh - 3vw);
+    }
+    .welcomeIndex p, .welcomeIndex strong, .welcomeIndex a{
+        font-size: 35px;
+    }
+    
 }
