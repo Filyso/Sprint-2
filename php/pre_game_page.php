@@ -18,7 +18,7 @@
 
     <main class="preGamePage">
         <h1>Sélectionnez la langue et la catégorie</h1>
-        <form action="<?php echo(isset($_GET['mod']) && $_GET['mod'] == multi ? "./matchmaking.php" : "./solo_game.php")?>" method="get">
+        <form action="<?php echo(isset($_GET['mod']) && $_GET['mod'] == "multi" ? "./matchmaking.php" : "./solo_game.php")?>" method="get">
 
             <fieldset class="section">
                 <div>

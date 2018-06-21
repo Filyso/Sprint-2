@@ -29,7 +29,7 @@ if(Membre::isLogged()){
         <main class="mainSelect">
             <h1>Choisir le mode de jeu</h1>
             <div class="buttonMulti">
-                <a href=<?php echo($destination); ?>>MULTI</a>
+                <a href="<?php echo($destination); ?>">MULTI</a>
                 <p>Jouez en ligne contre d'autres personnes.</p>
             </div>
             <div class="buttonSolo">
