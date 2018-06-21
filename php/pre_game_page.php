@@ -18,8 +18,8 @@
 
     <main class="preGamePage">
         <h1>Sélectionnez la langue et la catégorie</h1>
-        <form action="<?php echo(isset($_GET['mod']) && $_GET['mod'] == "multi" ? "./matchmaking.php" : "./solo_game.php")?>" method="get">
-
+        <form action="<?php echo(isset($_GET['mod']) && $_GET['mod'] == "multi" ? "./matchmaking.php" : "./solo_game.php")?>" method="<?php echo(isset($_GET['mod']) && $_GET['mod'] == "multi" ? "post" : "get")?>">
+            <input type="hidden" name="autorisation" value="true"/>
             <fieldset class="section">
                 <div>
                     <input type="radio" name="langue" id="français" value="fr" class="inputRadio" required />
