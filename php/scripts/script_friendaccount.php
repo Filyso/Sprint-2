@@ -242,8 +242,8 @@ FROM MEMBRES INNER JOIN AMIS ON MEMBRES.idMbr = AMIS.idMbr_Ami1 OR MEMBRES.idMbr
                             if($ligne["isConnect"] == 1){
                             
                             ?>
-                            <figure>
-                                <img src="../images/list.png" alt="<?php echo($ligne["pseudoMbr"]); ?> est connecté"/>
+                            <figure class="pastille">
+                                <img src="../images/pastille.png" alt="<?php echo($ligne["pseudoMbr"]); ?> est connecté"/>
                             </figure>
                             <?php
                             }

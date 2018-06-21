@@ -1721,7 +1721,18 @@ li .loginMenu {
     transform: scale(1.02);
     cursor: pointer;
 }
-
+/** Pastille qui montre les amis connectés **/
+.pastille<td{
+    min-height: 20px;
+}
+figure.pastille{
+    width: 20px;
+    height: 20px;
+}
+figure.pastille img{
+    width: 100%;
+    height: 100%;
+}
 /*************************** INSCRIPTION SIGN UP ************************/
 .signUpPage {
     background-color: var(--noir);
