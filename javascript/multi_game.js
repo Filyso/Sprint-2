@@ -109,7 +109,9 @@ function initialiser(evt) {
 
     $.post('../php/scripts/script_game_multi.php', {
         function: 'setSessionIdLobby'
-    });
+    }, function (data) {
+        console.log(data.idLobby + "\n" + data.playerNumber)
+    }, 'json');
 
     // Création de la barre de score
     var barScoreMax = document.createElement("div");
@@ -225,6 +227,23 @@ function initialiser(evt) {
         evt.preventDefault();
     });
     document.getElementById("reponse7Input").parentElement.style.display = "none";
+
+    $.post(
+        '../php/scripts/script_game_multi.php', {
+            function: 'getEnemyImgLink'
+        },
+        function (data) {
+            var enemyScore = document.querySelectorAll(".score")[1];
+            var cloneBarScoreMax = barScoreMax.cloneNode();
+            var cloneBarScore = barScore.cloneNode();
+            cloneBarScoreMax.appendChild(cloneBarScore);
+            enemyScore.querySelector("img").src = data.linkIconEnemy;
+            enemyScore.appendChild(cloneBarScoreMax);
+            enemyScore.style.left = "calc(100% - 13vw)";
+        },
+        'json'
+    );
+
 }
 
 // ******************* //
@@ -362,14 +381,14 @@ function verifierReps(evt) {
                     stopTimer();
                     btnThis.style.backgroundColor = "red";
                 }
-                setTimeout(wait, 2000);
+                setTimeout(waitFct, 2000);
             },
             'json'
         );
     } else {
         afficherScore(0);
         document.getElementsByClassName("divTimer")[0].style.borderColor = "red";
-        setTimeout(wait, 2000);
+        setTimeout(waitFct, 2000);
     }
 
 }
@@ -386,14 +405,14 @@ function verifierType(evt) {
         },
         function (data) {
             if (data.answerIsGood) {
+                document.getElementById("reponse7Input").removeEventListener("keyup", verifierType);
                 nbGoodAnswer = nbGoodAnswer + 1;
                 repInput.style.borderColor = "#3df22d";
                 stopTimer();
                 calculScore();
                 afficherScore();
                 document.getElementsByClassName("barScore")[0].style.height = Math.round(scoreGeneralPourcent) + "%";
-
-                setTimeout(wait, 2000);
+                setTimeout(waitFct, 2000);
 
             } else {
                 repInput.style.borderColor = "red";
@@ -403,10 +422,10 @@ function verifierType(evt) {
     );
 }
 
-function wait() {
+function waitFct() {
     $.post('../php/scripts/script_game_multi.php', {
         function: 'playerIsReady',
-        playerIsReady: 'true'
+        playerIsReady: '1'
     });
 
     wait = true;
@@ -423,7 +442,7 @@ function wait() {
             afterVerif();
             $.post('../php/scripts/script_game_multi.php', {
                 function: 'playerIsReady',
-                playerIsReady: 'false'
+                playerIsReady: '0'
             });
             window.clearInterval(timerWait);
         }
@@ -431,6 +450,16 @@ function wait() {
 }
 
 function afterVerif(evt) {
+    
+    $.post(
+            '../php/scripts/script_game_multi.php', {
+                function: 'getEnemyScore',
+            },
+            function (data) {
+                document.getElementsByClassName("barScore")[1].style.height = Math.round(data.enemyScore * 100 / 160) + "%";
+            },
+            'json'
+        );
 
     if (document.getElementById("currentScore") != null) {
         document.getElementById("currentScore").remove();
@@ -519,7 +548,7 @@ function afterVerif(evt) {
         bonnesReponses.appendChild(txtBonnesReponses);
         // Création lien Rejouer
         var replayLink = document.createElement("a");
-        replayLink.setAttribute("href", "pre_game_page.php");
+        replayLink.setAttribute("href", "pre_game_page.php?mod=multi");
         partieDroite.appendChild(replayLink);
         // Création bouton rejouer
         var replayBtn = document.createElement("button");
@@ -615,11 +644,11 @@ function calculScore() {
 }
 
 function afficherScore(setScore) {
-
     var spanScore = document.createElement("span");
 
     if (setScore != undefined) {
         spanScore.textContent = "+" + setScore;
+        scoreReponse = setScore;
     } else {
         spanScore.textContent = "+" + scoreReponse;
     }
@@ -631,16 +660,12 @@ function afficherScore(setScore) {
     spanScore.style.left = "50%";
 
     document.querySelector(".contenu").appendChild(spanScore);
-    
-    console.log(tabTimeCode[numQuest]);
-    console.log(scoreReponse);
-    $.post('../php/scripts/script_game_multi.php', {
+
+    $.post(
+        '../php/scripts/script_game_multi.php', {
             function: 'setScore',
-            idTimeCode: tabTimeCode[currentSong],
+            idTimeCode: tabTimeCode[numQuest],
             score: scoreReponse
-        }, function (data) {
-            console.log(data.requete);
-        },
-        'json'
+        }
     );
 }

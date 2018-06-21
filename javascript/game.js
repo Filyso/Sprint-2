@@ -373,6 +373,7 @@ function verifierType(evt) {
         },
         function (data) {
             if (data.answerIsGood) {
+                document.getElementById("reponse7Input").removeEventListener("keyup", verifierType);
                 nbGoodAnswer = nbGoodAnswer + 1;
                 repInput.style.borderColor = "#3df22d";
                 stopTimer();

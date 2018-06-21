@@ -10,6 +10,9 @@ if (isset($_POST["function"])) {
         case "checkQueue":
             checkQueue();
             break;
+        case "getEnemyImgLink":
+            getEnemyImgLink();
+            break;
         case "getEnemyScore":
             getEnemyScore();
             break;
@@ -233,6 +236,32 @@ function getTimeCode($tabTimeCode) {
                                            
 }
 
+function getEnemyImgLink() {
+    try {
+        require("../param.inc.php");
+        $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
+        $pdo->query("SET NAMES utf8");
+        $pdo->query("SET CHARACTER SET 'utf8'");
+        
+    // ETAPE 2 : Envoyer une requête SQL
+        // conditions pour l'envoi de la requête en fonction du choix du joueur
+        $requeteSQL = "SELECT linkIconMbr FROM MEMBRES WHERE idLobby = :paramIdLobby AND idMbr <> :paramIdMbr";
+        $statement = $pdo->prepare($requeteSQL);
+        $statement->execute(array(":paramIdLobby" => $_SESSION["idLobby"],
+                                 ":paramIdMbr" => $_SESSION["id"]));
+        $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        $retour = array('linkIconEnemy' => $ligne["linkIconMbr"]);
+
+    // ETAPE 3 : Déconnecter du serveur                        
+        $pdo = null;
+        
+        // Envoi du retour (on renvoie le tableau $retour encodé en JSON)
+        echo json_encode($retour);
+    } catch (Exception $e) {
+    }
+}
+
 function getEnemyScore() {
     try {
         require("../param.inc.php");
@@ -242,11 +271,8 @@ function getEnemyScore() {
         
     // ETAPE 2 : Envoyer une requête SQL
         // conditions pour l'envoi de la requête en fonction du choix du joueur
-        $requeteSQL = "SELECT score P" . ($_SESSION["playerNumber"]) . " FROM LOBBY WHERE idLobby = " . $_SESSION["idLobby"];
-        $statement = $pdo->prepare($requeteSQL);
-        $statement->execute(array(":paramScore" => $score,
-                                 ":paramIdTimeCode" => $idTimeCode,
-                                 ":paramIdMbr" => $_SESSION["id"]));
+        $requeteSQL = "SELECT scoreP" . ($_SESSION["playerNumber"] == 1 ? 2 : 1) . " AS 'enemyScore' FROM LOBBY WHERE idLobby = " . $_SESSION["idLobby"];
+        $statement = $pdo->query($requeteSQL);
         $ligne = $statement->fetch(PDO::FETCH_ASSOC);
         
         $retour = array('enemyScore' => $ligne["enemyScore"]);
@@ -279,12 +305,43 @@ function setScore($idTimeCode, $score) {
         $statement = $pdo->query($requeteSQL);
         $ligne = $statement->fetch(PDO::FETCH_ASSOC);
         
-        $score = $score + ($ligne["currentScore"] == NULL ? 0 : $ligne["currentScore"]);
+        $score = $score + ($ligne["currentScore"] == NULL ? "0" : $ligne["currentScore"]);
         
         $requeteSQL = "UPDATE LOBBY SET scoreP" . $_SESSION["playerNumber"] . " = " . $score . " WHERE idLobby = " . $_SESSION["idLobby"];
         $statement = $pdo->query($requeteSQL);
         
         $retour = array('requete' => $requeteSQL);
+        
+        echo json_encode($retour);
+    // ETAPE 3 : Déconnecter du serveur                        
+        $pdo = null;
+        
+    } catch (Exception $e) {
+    }
+}
+
+function isPlayerWinner () {
+    try {
+        require("../param.inc.php");
+        $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
+        $pdo->query("SET NAMES utf8");
+        $pdo->query("SET CHARACTER SET 'utf8'");
+        
+    // ETAPE 2 : Envoyer une requête SQL
+        // conditions pour l'envoi de la requête en fonction du choix du joueur
+        $requeteSQL = "SELECT scoreP1, scoreP2 FROM LOBBY WHERE idLobby = " . $_SESSION["idLobby"];
+        $statement = $pdo->query($requeteSQL);
+        $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        if ($ligne["scoreP" . $_SESSION["playerNumber"]] > $ligne["scoreP" . ($_SESSION["playerNumber"] == 1 ? 2 : 1)] ) {
+            $playerIsWinner = "Vous avez gagné !";
+        } else if ($ligne["scoreP1"] == $ligne["scoreP2"]){
+            $playerIsWinner = "Egalité !";
+        } else {
+            $playerIsWinner = "Vous avez perdu !";
+        }
+        
+        $retour = array('playerIsWinner' => $playerIsWinner);
         
         echo json_encode($retour);
     // ETAPE 3 : Déconnecter du serveur                        
@@ -332,9 +389,8 @@ function playerIsReady($bool) {
         
     // ETAPE 2 : Envoyer une requête SQL
         // conditions pour l'envoi de la requête en fonction du choix du joueur
-        $requeteSQL = "UPDATE LOBBY SET waitingP" . $_SESSION["playerNumber"] . " = " . ($bool ? "1":"0") . " WHERE idLobby = " . $_SESSION["idLobby"];
+        $requeteSQL = "UPDATE LOBBY SET waitingP" . $_SESSION["playerNumber"] . " = " . $bool . " WHERE idLobby = " . $_SESSION["idLobby"];
         $statement = $pdo->query($requeteSQL);
-        $_SESSION["playerNumber"] = 1;
         
     // ETAPE 3 : Déconnecter du serveur                        
         $pdo = null;
@@ -390,6 +446,9 @@ function setSessionIdLobby() {
         
         setPlayerNumber();
         
+        $retour = array('idLobby' => $_SESSION["idLobby"],
+                       'playerNumber' => $_SESSION["playerNumber"]);
+        
     // ETAPE 3 : Déconnecter du serveur                        
         $pdo = null;
         
@@ -416,8 +475,6 @@ function delLobby() {
     // ETAPE 3 : Déconnecter du serveur                        
         $pdo = null;
         
-        // Envoi du retour (on renvoi le tableau $retour encodé en JSON)
-        echo json_encode($retour);
     } catch (Exception $e) {
     }
 }
