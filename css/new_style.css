@@ -2033,6 +2033,12 @@ li .loginMenu {
     }
 }
 @media only screen and (max-device-width: 480px) {
+    .loaderMulti .loading-label{
+        font-size: 50px;
+    }
+    .selectMulti .loaderMulti{
+        height: 20vh;
+    }
     .indexLink::after {
         width: 50vw;
         height: 50vw;
@@ -2207,4 +2213,54 @@ li .loginMenu {
         font-size: 35px;
     }
     
+}
+/***************************** LOADER MATCH-MAKING ********************************/
+
+
+.loaderMulti{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 30vw;
+    height: 15vh;
+    justify-content: space-between;
+    margin-top: 40vh;
+    min-width: 500px;
+    align-items: center;
+}
+.loading-block {
+  width: 10px;
+  height: 80px;
+  background: var(--rouge);
+  margin-left: 8px;
+  float: left;
+  border-radius: 10px;
+  border: 1px solid #9C4F78;
+}
+
+.loading-block:first-child {
+  -webkit-animation: block-animation .6s ease-out 0.2s infinite alternate;
+}
+
+.loading-block:nth-child(2) {
+  -webkit-animation: block-animation .6s ease-out 0.4s infinite alternate;
+}
+
+.loading-block:nth-child(3) {
+  -webkit-animation: block-animation .6s ease-out 0.6s infinite alternate;
+}
+
+
+@-webkit-keyframes block-animation {
+    0% { opacity: 1; height: 70px; margin-top:0px  }
+    50% { opacity: .5; }
+    100% { opacity: .4; height: 20px; margin-top:20px }
+}
+
+.loading-label {
+  font-family: 'FuturaBold';
+  color: var(--rouge);
+text-align: center;
+  font-size: 24px;
+  
 }

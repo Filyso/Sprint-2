@@ -30,7 +30,7 @@
                 $requeteSQL = "SELECT idLA FROM LISTE_ATTENTE WHERE lang = '" . $lang . "' AND idCat ".($_GET["categorie"] == "0" ? "IS NULL" : ("= " . addslashes($_GET["categorie"])));
                 $statement = $pdo->query($requeteSQL);
 
-                echo($requeteSQL);
+
             // ETAPE 3 : Traiter les données retourner
                 $ligne = $statement->fetch(PDO::FETCH_ASSOC);
                 
@@ -62,7 +62,19 @@
         ?>
         
         <main class="selectMulti">
-            <h1>En attente d'adversaire ...</h1>
+            
+           <div class="loaderMulti">
+                <div class="loading">
+           
+                    <div class="loading-block"></div>
+                    <div class="loading-block"></div>
+                    <div class="loading-block"></div>       
+                    
+                </div>
+                
+                <p class="loading-label">EN ATTENTE D'ADVERSAIRES</p>
+            </div>
+                
         </main>
 
         <?php include("./main_footer.php")?>
