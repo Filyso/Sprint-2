@@ -39,12 +39,12 @@ if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"])){
                     $statement->execute(array(":pseudo" => $_POST["pseudo"]));
                     
                     
-                    $msg .= "Le pseudo a bien été modifié \r\n ";
+                    $msg .= "Le pseudo a bien été modifié.    ";
                 }else{
                     if(!empty($ligne["pseudoMbr"])){
-                        $msg .= "Le pseudo est déjà utilisé \r\n ";
+                        $msg .= "Le pseudo est déjà utilisé.    ";
                     }else{
-                        $msg .= "Le pseudo n'est pas conforme (entre 4 et 16 caractères) \r\n ";
+                        $msg .= "Le pseudo n'est pas conforme (entre 4 et 16 caractères).    ";
                     }
                     
                 }
@@ -61,9 +61,9 @@ if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"])){
                     
                     
                     $_SESSION["nom"] = $_POST["nom"];
-                    $msg .= "Le nom a bien été modifié \r\n ";
+                    $msg .= "Le nom a bien été modifié.    ";
             }else{
-                    $msg .= "Le nom ne doit pas dépasser 25 caractères et contenir de chiffres \r\n ";
+                    $msg .= "Le nom ne doit pas dépasser 25 caractères et contenir de chiffres.    ";
             }
             
         }
@@ -75,9 +75,9 @@ if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"])){
                     $statement = $pdo->prepare($requeteSQL);
                     $statement->execute(array(":prenom" => $_POST["prenom"]));
                     $_SESSION["prenom"] = $_POST["prenom"];
-                    $msg .= "Le prénom a bien été modifié \r\n ";
+                    $msg .= "Le prénom a bien été modifié.    ";
             }else{
-                    $msg .= "Le prénom ne doit pas dépasser 25 caractères et contenir de chiffres \r\n ";
+                    $msg .= "Le prénom ne doit pas dépasser 25 caractères et contenir de chiffres.    ";
             }
             
         }
