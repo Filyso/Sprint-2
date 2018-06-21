@@ -1198,7 +1198,7 @@ li .loginMenu {
 .sectionSolo .ytplayer {
     flex: 0.9;
     width: 100%;
-    pointer-events: neeone;
+    pointer-events: none;
     align-self: center;
 }
 .sectionSolo .score {

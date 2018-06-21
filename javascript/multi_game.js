@@ -19,6 +19,8 @@ if (document.location.toString().indexOf('?') !== -1) {
 // Variables Song
 var currentSong;
 var tabTimeCode = [];
+var forceSwap = false;
+var forceSwapTimer;
 
 // Variables Timer
 var encours;
@@ -92,6 +94,9 @@ function onYouTubePlayerAPIReady() {
                     'onStateChange': swap
                 }
             });
+            forceSwapTimer = setTimeout(function () {
+                forceSwap = true
+            }, ((3 + currentSong.timeCodeEnd - currentSong.timeCodeStart) * 1000));
             document.getElementById("nomEtArtiste").textContent = data.nameSong + " - " + data.nameArtist;
         },
         'json'
@@ -258,7 +263,9 @@ function swap(evt) {
         }
     }
 
-    if (evt.data == YT.PlayerState.ENDED && verifMemory) {
+    if ((evt.data == YT.PlayerState.ENDED && verifMemory) || forceSwap) {
+        forceSwap = false;
+        window.clearTimeout(forceSwapTimer);
         stateChangeTamponMemory = [];
         verifMemory = false;
         document.getElementById("ytplayer").style.display = "none";
@@ -427,14 +434,14 @@ function waitFct() {
             function: 'checkLobbyExist',
         },
         function (data) {
-            if(!data.lobbyExist) {
+            if (!data.lobbyExist) {
                 window.alert("Votre adversaire s'est déconnecté, vous allez être redirigé vers la sélection d'options de jeu.");
                 document.location.href = "../php/pre_game_page.php?mod=multi";
             }
         },
         'json'
     );
-    
+
     $.post('../php/scripts/script_game_multi.php', {
         function: 'playerIsReady',
         playerIsReady: '1'
@@ -503,6 +510,11 @@ function afterVerif(evt) {
                 reps[1].style.backgroundColor = "transparent";
                 reps[2].style.backgroundColor = "transparent";
                 reps[3].style.backgroundColor = "transparent";
+
+                forceSwapTimer = setTimeout(function () {
+                    forceSwap = true
+                }, ((3 + currentSong.timeCodeEnd - currentSong.timeCodeStart) * 1000));
+
             },
             'json'
         );
