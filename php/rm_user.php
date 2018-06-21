@@ -1,7 +1,4 @@
-<?php
-    session_start();
-	header("Content-type: text/html; charset: UTF-8");
-    
+<?php 
     if(isset($_POST["arrayData"])) {
         
         require("./param.inc.php");
@@ -9,13 +6,14 @@
         $pdo->query("SET NAMES utf8");
         $pdo->query("SET CHARACTER SET 'utf8'");
         
+        //Récupération du tableau
         $arrayData = json_decode($_POST["arrayData"], true);
         
-        print_r($arrayData);
-        
         //On récupère les clés associatives du tableau (les PSEUDOS sur lesquels les changements sont appliqués)
-        $keyArrayData = array_keys($arrayData);
-        //On calcule la longueur du tableau (le NOMBRE de pseudos sur lesquels les changements sont appliqués)
+        if(!empty($arrayData)){
+            $keyArrayData = array_keys($arrayData);
+        }
+        //On calcule la longueur du tableau (le NOMBRE de pseu;dos sur lesquels les changements sont appliqués)
         $sizeArrayData = sizeof($arrayData);
         
         $i=0;
@@ -23,35 +21,38 @@
         for($i; $i < $sizeArrayData; $i++){
             
             //CAS DU STATUT
-            if($arrayData["$keyArrayData[$i]"][1]=="enregistre"){
+            if($arrayData[$keyArrayData[$i]][1]=="enregistre"){
                 //update
+                
                 $requeteSQL = "UPDATE MEMBRES ".
                             "SET MEMBRES.isVerif = '1' ".
-                            "WHERE MEMBRES.pseudoMbr = ':paramPseudoMbr';";
+                            "WHERE MEMBRES.pseudoMbr = :paramPseudoMbr;";
                 $statement = $pdo->prepare($requeteSQL);
                 $statement->execute(array(":paramPseudoMbr" => $keyArrayData[$i]));
                 
-            }else if($arrayData["$keyArrayData[$i]"][1]=="attente"){
+            }else if($arrayData[$keyArrayData[$i]][1]=="attente"){
                 //update
+                
                 $requeteSQL = "UPDATE MEMBRES ".
                             "SET MEMBRES.isVerif = '0' ".
-                            "WHERE MEMBRES.pseudoMbr = ':paramPseudoMbr';";
+                            "WHERE MEMBRES.pseudoMbr = :paramPseudoMbr;";
                 $statement = $pdo->prepare($requeteSQL);
                 $statement->execute(array(":paramPseudoMbr" => $keyArrayData[$i]));
                 
-            }else if($arrayData["$keyArrayData[$i]"][1]=="banni"){
+            }else if($arrayData[$keyArrayData[$i]][1]=="banni"){
                 //update
+                
                 $requeteSQL = "UPDATE MEMBRES ".
                             "SET MEMBRES.isVerif = '2' ".
-                            "WHERE MEMBRES.pseudoMbr = ':paramPseudoMbr';";
+                            "WHERE MEMBRES.pseudoMbr = :paramPseudoMbr;";
                 $statement = $pdo->prepare($requeteSQL);
                 $statement->execute(array(":paramPseudoMbr" => $keyArrayData[$i]));
                 
             }
             
             //CAS DU ROLE
-            if($arrayData["$keyArrayData[$i]"][0]=="normal"){
-                //delete
+            if($arrayData[$keyArrayData[$i]][0]=="normal"){
+                
                 $requeteSQL ="SELECT MEMBRES.idMbr AS 'id' ".
                     "FROM MEMBRES ".
                     "INNER JOIN ROLE ". 
@@ -60,14 +61,19 @@
                 
                 $statement = $pdo->query($requeteSQL);
                 $ligne = $statement->fetch(PDO::FETCH_ASSOC);
-                    
-                $requeteSQLbis ="DELETE FROM ROLE ".
-                    "WHERE ROLE.idMbr =':paramIDMbr';";
-                $statement = $pdo->prepare($requeteSQLbis);
-                $statement->execute(array(":paramIDMbr" => $ligne["id"]));
+                
+                //Si le membre existe dans la table ROLE (et donc qu'il est admin ou modo)
+                //delete
+                if($ligne["id"] != false){    
+                    $requeteSQLbis ="DELETE FROM ROLE ".
+                        "WHERE ROLE.idMbr =:paramIDMbr;";
+                    $statement = $pdo->prepare($requeteSQLbis);
+                    $statement->execute(array(":paramIDMbr" => $ligne["id"]));
+                }
                  
-            }else if($arrayData["$keyArrayData[$i]"][0]=="moderateur"){
+            }else if($arrayData[$keyArrayData[$i]][0]=="moderateur"){
                 //update ou insert
+                
                 $requeteSQL="SELECT MEMBRES.idMbr AS 'id', ROLE.roleMbr AS 'oldRole' ".
                     "FROM MEMBRES ".
                     "INNER JOIN ROLE ".
@@ -81,19 +87,30 @@
                 if($ligne["oldRole"]=="admin"){
                     $requeteSQLbis="UPDATE ROLE ".
                         "SET ROLE.roleMbr = 'modo' ".
-                        "WHERE ROLE.idMbr = ':paramIDMbr';"; 
+                        "WHERE ROLE.idMbr = :paramIDMbr;"; 
                     $statement = $pdo->prepare($requeteSQLbis);
                     $statement->execute(array(":paramIDMbr" => $ligne["id"]));
                     
-                }else if($ligne["oldRole"]==false){
-                    $requeteSQLbis="INSERT INTO ROLE ".
-                        "VALUES ('modo',':paramIDMbr')";
+                }else if($ligne == false){
+                    
+                    $requeteSQL="SELECT MEMBRES.idMbr AS 'id' ".
+                        "FROM MEMBRES ".
+                        "WHERE MEMBRES.pseudoMbr = '".$keyArrayData[$i]."';";
+
+                    $statement = $pdo->query($requeteSQL);
+
+                    $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+                    
+                    $requeteSQLbis="INSERT INTO ROLE (roleMbr, idMbr) ".
+                        "VALUES ('modo', :paramIDMbr )";
+
                     $statement = $pdo->prepare($requeteSQLbis);
                     $statement->execute(array(":paramIDMbr" => $ligne["id"]));
                 }
                 
-            }else if($arrayData["$keyArrayData[$i]"][0]=="administrateur"){
+            }else if($arrayData[$keyArrayData[$i]][0]=="administrateur"){
                 //update ou insert
+                
                 $requeteSQL="SELECT MEMBRES.idMbr AS 'id', ROLE.roleMbr AS 'oldRole' ".
                     "FROM MEMBRES ".
                     "INNER JOIN ROLE ".
@@ -104,16 +121,27 @@
 
                 $ligne = $statement->fetch(PDO::FETCH_ASSOC);
                 
+                
                 if($ligne["oldRole"]=="modo"){
                     $requeteSQLbis="UPDATE ROLE ".
                         "SET ROLE.roleMbr = 'admin' ".
-                        "WHERE ROLE.idMbr = ':paramIDMbr';";
+                        "WHERE ROLE.idMbr = :paramIDMbr;";
                     $statement = $pdo->prepare($requeteSQLbis);
                     $statement->execute(array(":paramIDMbr" => $ligne["id"]));
                     
-                }else if($ligne["oldRole"]==false){
+                }else if($ligne == false){
+                    
+                    $requeteSQL="SELECT MEMBRES.idMbr AS 'id' ".
+                        "FROM MEMBRES ".
+                        "WHERE MEMBRES.pseudoMbr = '".$keyArrayData[$i]."';";
+
+                    $statement = $pdo->query($requeteSQL);
+
+                    $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+                    
                     $requeteSQLbis="INSERT INTO ROLE ".
-                        "VALUES ('admin',':paramIDMbr');";
+                        "VALUES ('admin', :paramIDMbr );";
+
                     $statement = $pdo->prepare($requeteSQLbis);
                     $statement->execute(array(":paramIDMbr" => $ligne["id"]));
                 }
@@ -121,13 +149,6 @@
         }
     }
 ?>
-   
-    <head>
-        <meta charset="utf-8">
-        <title>Jeu en Solo</title>
-        <meta name="description" content="Le jeu SOLO ! Jouez seul contre l'ordinateur. Amusement garanti !">
-        <script type="text/javascript" src="../javascript/rm_user.js"></script>
-    </head>
 
     <section class="selectMulti">
         <h1>Gestion utilisateur</h1>
@@ -147,7 +168,9 @@
                             <?php
                         try {
                         // ETAPE 1 : Se connecter au serveur de base de données
-                            require("./param.inc.php");
+                            if(!isset($_POST["arrayData"])) {
+                                require("./param.inc.php");
+                            }
                             $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
                             $pdo->query("SET NAMES utf8");
                             $pdo->query("SET CHARACTER SET 'utf8'");
@@ -170,16 +193,16 @@
                                     </td>
                                     <td>
                                         <select class="roleMbr">
-                                            <option name="role" value="normal" <?php echo($ligne[ "role"]=='' ? "selected": "") ?>>normal</option>
-                                            <option name="role" value="moderateur" <?php echo($ligne[ "role"]=='modo' ? "selected": "") ?>> modérateur</option>
-                                            <option name="role" value="administrateur" <?php echo($ligne[ "role"]=='admin' ? "selected": "") ?>>administrateur</option>
+                                            <option name="role" value="normal" <?php echo($ligne["role"]=='' ? "selected": "") ?>>normal</option>
+                                            <option name="role" value="moderateur" <?php echo($ligne["role"]=='modo' ? "selected": "") ?>> modérateur</option>
+                                            <option name="role" value="administrateur" <?php echo($ligne["role"]=='admin' ? "selected": "") ?>>administrateur</option>
                                         </select>
                                     </td>
                                     <td>
                                         <select class="statutMbr">
-                                            <option name="statut" value="attente" <?php echo($ligne[ "statut"]=='0' ? "selected": "") ?>>En attente</option>
-                                            <option name="statut" value="enregistre" <?php echo($ligne[ "statut"]=='1' ? "selected": "") ?>> Enregistré</option>
-                                            <option name="statut" value="banni" <?php echo($ligne[ "statut"]=='2' ? "selected": "") ?>>Banni</option>
+                                            <option name="statut" value="attente" <?php echo($ligne["statut"]=='0' ? "selected": "") ?>>En attente</option>
+                                            <option name="statut" value="enregistre" <?php echo($ligne["statut"]=='1' ? "selected": "") ?>> Enregistré</option>
+                                            <option name="statut" value="banni" <?php echo($ligne["statut"]=='2' ? "selected": "") ?>>Banni</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -205,3 +228,4 @@
         </section>
         <script type="text/javascript" src="../javascript/modify_song.js"></script>
     </section>
+    <script type="text/javascript" src="../javascript/rm_user.js"></script>
