@@ -10,6 +10,9 @@ if (isset($_POST["function"])) {
         case "checkQueue":
             checkQueue();
             break;
+        case "checkLobbyExist":
+            checkLobbyExist();
+            break;
         case "isPlayerWinner":
             isPlayerWinner();
             break;
@@ -163,6 +166,38 @@ function checkQueue() {
     }
 }
 
+function checkLobbyExist() {
+    // ETAPE 1 : Se connecter au serveur de base de données
+    try {
+        require("../param.inc.php");
+        $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
+        $pdo->query("SET NAMES utf8");
+        $pdo->query("SET CHARACTER SET 'utf8'");
+        
+    // ETAPE 2 : Envoyer une requête SQL
+        // conditions pour l'envoi de la requête en fonction du choix du joueur
+        
+        $requeteSQL = "SELECT idLobby FROM LOBBY WHERE LOBBY.idLobby=:paramIdLobby";
+        
+        $statement = $pdo->prepare($requeteSQL);
+        $statement->execute(array(":paramIdLobby" => $_SESSION["idLobby"]));
+        $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        if ($ligne["idLobby"] != false) {
+            $retour = array('lobbyExist' => true);
+        } else {
+            $retour = array('lobbyExist' => false);
+        }
+        
+    // ETAPE 3 : Déconnecter du serveur                        
+        $pdo = null;
+        
+        // Envoi du retour (on renvoi le tableau $retour encodé en JSON)
+        echo json_encode($retour);
+    } catch (Exception $e) {
+    }
+}
+
 function getQuestion7($idTimeCode) {
     // ETAPE 1 : Se connecter au serveur de base de données
     try {
@@ -198,7 +233,7 @@ function getQuestion7($idTimeCode) {
         $leftStr = "";
         for ($i = $wordIndex + 1; $i < count($tabWords); $i++) {
             $leftStr = $leftStr  . " " . $tabWords[$i];
-        }    
+        }
             
         $retour = array('rightStr' => $rightStr,
                        'leftStr' => $leftStr);

@@ -424,6 +424,18 @@ function verifierType(evt) {
 
 function waitFct() {
     $.post('../php/scripts/script_game_multi.php', {
+            function: 'checkLobbyExist',
+        },
+        function (data) {
+            if(!data.lobbyExist) {
+                window.alert("Votre adversaire s'est déconnecté, vous allez être redirigé vers la sélection d'options de jeu.");
+                document.location.href = "../php/pre_game_page.php?mod=multi";
+            }
+        },
+        'json'
+    );
+    
+    $.post('../php/scripts/script_game_multi.php', {
         function: 'playerIsReady',
         playerIsReady: '1'
     });
@@ -450,16 +462,14 @@ function waitFct() {
 }
 
 function afterVerif(evt) {
-    
-    $.post(
-            '../php/scripts/script_game_multi.php', {
-                function: 'getEnemyScore',
-            },
-            function (data) {
-                document.getElementsByClassName("barScore")[1].style.height = Math.round(data.enemyScore * 100 / 160) + "%";
-            },
-            'json'
-        );
+    $.post('../php/scripts/script_game_multi.php', {
+            function: 'getEnemyScore',
+        },
+        function (data) {
+            document.getElementsByClassName("barScore")[1].style.height = Math.round(data.enemyScore * 100 / 160) + "%";
+        },
+        'json'
+    );
 
     if (document.getElementById("currentScore") != null) {
         document.getElementById("currentScore").remove();
