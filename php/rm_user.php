@@ -150,22 +150,18 @@
     }
 ?>
 
-    <section class="selectMulti">
-        <h1>Gestion utilisateur</h1>
-        <section class="selectMulti">
-            
-                <fieldset id="chansonForm">
-                    <legend>Utilisateurs</legend>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Pseudos</th>
-                                <th>Rôle</th>
-                                <th>Statut</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
+<section class="rmUser">
+    <fieldset class="tableauUsers">
+        <table>
+            <thead>
+                <tr>
+                    <th>Pseudos</th>
+                    <th>Rôle</th>
+                    <th>Statut</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
                         try {
                         // ETAPE 1 : Se connecter au serveur de base de données
                             if(!isset($_POST["arrayData"])) {
@@ -187,26 +183,26 @@
                             $ligne = $statement->fetch(PDO::FETCH_ASSOC);
                             while($ligne != false) {
                     ?>
-                                <tr class="mbr">
-                                    <td>
-                                        <?php echo($ligne["pseudo"])?>
-                                    </td>
-                                    <td>
-                                        <select class="roleMbr">
+                    <tr class="mbr">
+                        <td>
+                            <?php echo($ligne["pseudo"])?>
+                        </td>
+                        <td>
+                            <select class="roleMbr">
                                             <option name="role" value="normal" <?php echo($ligne["role"]=='' ? "selected": "") ?>>normal</option>
                                             <option name="role" value="moderateur" <?php echo($ligne["role"]=='modo' ? "selected": "") ?>> modérateur</option>
                                             <option name="role" value="administrateur" <?php echo($ligne["role"]=='admin' ? "selected": "") ?>>administrateur</option>
                                         </select>
-                                    </td>
-                                    <td>
-                                        <select class="statutMbr">
+                        </td>
+                        <td>
+                            <select class="statutMbr">
                                             <option name="statut" value="attente" <?php echo($ligne["statut"]=='0' ? "selected": "") ?>>En attente</option>
                                             <option name="statut" value="enregistre" <?php echo($ligne["statut"]=='1' ? "selected": "") ?>> Enregistré</option>
                                             <option name="statut" value="banni" <?php echo($ligne["statut"]=='2' ? "selected": "") ?>>Banni</option>
                                         </select>
-                                    </td>
-                                </tr>
-                                <?php
+                        </td>
+                    </tr>
+                    <?php
                                 $ligne = $statement->fetch(PDO::FETCH_ASSOC);
                             }
                             // Fin de la boucle
@@ -216,16 +212,14 @@
                                 echo($e);
                             }
                     ?>
-                        </tbody>
-                    </table>
-                </fieldset>
-            <form action="rm_user.php" method="post" id="addSongForm" class="addSongForm">
-                <div>
-                    <input id="arrayData" type="hidden" value="" name="arrayData"/>
-                    <input type="submit" value="APPLIQUER" />
-                </div>
-            </form>
-        </section>
-        <script type="text/javascript" src="../javascript/modify_song.js"></script>
-    </section>
-    <script type="text/javascript" src="../javascript/rm_user.js"></script>
+            </tbody>
+        </table>
+    </fieldset>
+    <form action="rm_user.php" method="post" id="rm_user" class="addSongForm">
+        <div>
+            <input id="arrayData" type="hidden" value="" name="arrayData" />
+            <input type="submit" value="APPLIQUER" />
+        </div>
+    </form>
+</section>
+<script type="text/javascript" src="../javascript/rm_user.js"></script>

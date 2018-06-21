@@ -151,7 +151,7 @@
 
         </div>
         <div class="popup">
-            <div class="popup-content">
+            <div class="popupContent">
                 <span class="close">&times;</span>
                 <h2>CONNECTEZ-VOUS</h2>
                 <a href="sign_up.php">inscrivez-vous</a>
