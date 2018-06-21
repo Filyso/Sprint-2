@@ -6,7 +6,7 @@ session_start();
 
 
 
-if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["name"]) && isset($_POST["emailSignUp"]) && isset($_POST["passSignUp"]) && isset($_POST["passverif"]) && isset($_POST["icon"]) && isset($_FILES["iconChoisie"])){
+if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["name"]) && isset($_POST["emailSignUp"]) && isset($_POST["passSignUp"]) && isset($_POST["passVerifSU"]) && isset($_POST["icon"]) && isset($_FILES["iconChoisie"])){
 
     
     
@@ -71,9 +71,9 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
     
     
     
+
     
-    
-    if(!empty($ligne["pseudoMbr"]) || !empty($ligne["mailMbr"]) || $_FILES["iconChoisie"]["name"] == ".htaccess.txt" || $_FILES["iconChoisie"]["size"] > 2000000 || !$mdpConforme || !$pseudoConforme || !($password == $_POST["passverif"]) || strlen($_POST["lastname"]) > 25 || strlen($_POST["name"]) > 25 || strlen($_POST["emailSignUp"]) > 50 || $_POST["icon"] == "" || !$extConforme){
+    if(!empty($ligne["pseudoMbr"]) || !empty($ligne["mailMbr"]) || $_FILES["iconChoisie"]["name"] == ".htaccess.txt" || $_FILES["iconChoisie"]["size"] > 2000000 || !$mdpConforme || !$pseudoConforme || !($password == $_POST["passVerifSU"]) || strlen($_POST["lastname"]) > 25 || strlen($_POST["name"]) > 25 || strlen($_POST["emailSignUp"]) > 50 || $_POST["icon"] == "" || !$extConforme){
         
         //inscription invalide
         if(strlen($_POST["lastname"]) > 25){
@@ -106,7 +106,7 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
         if(!($_FILES["iconChoisie"]["name"] == "") && $_FILES["iconChoisie"]["name"] == ".htaccess.txt"){
             $erreur = $erreur."Pas de fichier .htaccess (on tient au bon fonctionnement du site)"."<br/>";
         }
-        if($password != $_POST["passverif"]){
+        if($password != $_POST["passVerifSU"]){
             $erreur = $erreur."La vérification mot de passe n'est pas valide"."<br/>";
         }
         if($_POST["icon"] == "" && $_FILES["iconChoisie"]["name"] == ""){
@@ -162,6 +162,8 @@ if(isset($_POST["pseudoSignUp"]) && isset($_POST["lastname"]) && isset($_POST["n
         
     } 
     
+}else if(isset($_POST["pseudoSignUp"])){
+        echo(" caca");
 }
 
 function sendMail($destinataire, $sujet, $msg) {
@@ -276,12 +278,12 @@ function convertirImage256x256PNG($nomFichierAConvertir, $nomFichierConverti) {
     <?php include("./main_header.php"); ?>
     <main class="signUpPage">
         <form id="signUpForm" action="./sign_up.php" method="post" enctype="multipart/form-data">
+            <h1>Inscription</h1>
             <?php 
             if($erreur != ""){ 
-                echo($erreur);
+                echo("<p>".$erreur."</p>");
             } 
             ?>
-            <h1>Inscription</h1>
             <fieldset>
                 <div>
                     <label for="pseudoSignUp" ></label>
@@ -300,7 +302,7 @@ function convertirImage256x256PNG($nomFichierAConvertir, $nomFichierConverti) {
                     <input placeholder="Mot de passe" name="passSignUp" type="password" id="passSignUp" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,42}$"/>
     
                     <label for="passverif"></label>
-                    <input placeholder="Confirmer le mot de passe" name="passVerif" type="password" id="passverif" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,42}$"/>
+                    <input placeholder="Confirmer le mot de passe" name="passVerifSU" type="password" id="passverif" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,42}$"/>
 
 <!--                    <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />-->
 

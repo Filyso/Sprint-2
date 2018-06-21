@@ -95,7 +95,7 @@
             },
             function(data){
                 var lemsg = data;
-                console.log(data);
+                
 
                 messagePass.text(lemsg);
                 
