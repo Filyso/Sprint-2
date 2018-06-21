@@ -287,9 +287,9 @@ function swap(evt) {
             reps[2].style.display = "none";
             reps[3].style.display = "none";
             $.post(
-                '../php/scripts/script_musique.php', {
+                '../php/scripts/script_game_multi.php', {
                     function: 'getQuestion7',
-                    idTimeCode: tabTimeCode[numQuest],
+                    idTimeCode: tabTimeCode[numQuest]
                 },
                 function (data) {
                     document.querySelectorAll("label[for=reponse7Input]")[0].textContent += data.rightStr;
@@ -527,6 +527,18 @@ function afterVerif(evt) {
         chiffreScoreResultat.classList.add("chiffreScoreResultat");
         chiffreScoreResultat.textContent = scoreGeneral;
         cercleScore.appendChild(chiffreScoreResultat);
+        $.post(
+            '../php/scripts/script_game_multi.php', {
+                function: 'isPlayerWinner',
+            },
+            function (data) {
+                var texteScoreResultat = document.createElement("p");
+                texteScoreResultat.classList.add("scoreResultat");
+                texteScoreResultat.textContent = data.playerIsWinner;
+                cercleScore.appendChild(texteScoreResultat);
+            },
+            'json'
+        );
         // Création partie droite
         var partieDroite = document.createElement("div");
         partieDroite.classList.add("partieDroite");
@@ -614,7 +626,7 @@ function decrement(evt) {
             if (numQuest < 6) {
                 verifierReps();
             } else {
-                wait();
+                waitFct();
             }
         }
     }

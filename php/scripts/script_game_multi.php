@@ -10,11 +10,19 @@ if (isset($_POST["function"])) {
         case "checkQueue":
             checkQueue();
             break;
+        case "isPlayerWinner":
+            isPlayerWinner();
+            break;
         case "getEnemyImgLink":
             getEnemyImgLink();
             break;
         case "getEnemyScore":
             getEnemyScore();
+            break;
+        case "getQuestion7":
+            if (isset($_POST["idTimeCode"])) {
+                getQuestion7($_POST["idTimeCode"]);
+            }
             break;
         case "getTimeCode":
             if (isset($_POST["forbiddenTimeCode"])) {
@@ -115,6 +123,24 @@ function checkQueue() {
 
                     $requeteSQL = "UPDATE LOBBY SET idTC" . $i . "=" . $ligne["idTimeCode"] . " WHERE idLobby = " . $_SESSION["idLobby"];
                     $statement = $pdo->query($requeteSQL);
+                    
+                    if($i == 7) {
+                        $requeteSQL = "SELECT trueRep FROM TIMECODES WHERE TIMECODES.idTimeCode=:paramIdTimeCode";
+            
+                        $statement = $pdo->prepare($requeteSQL);
+                        $statement->execute(array(":paramIdTimeCode" => $tabTimeCode[6]));
+                        $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+
+                        $str = stripslashes($ligne["trueRep"]);
+                        $tabWords = explode(" ", $str);
+                        $wordIndex = rand(0, count($tabWords) - 1);
+                        while ($tabWords[$wordIndex] == "!" || $tabWords[$wordIndex] == "?" || $tabWords[$wordIndex] == ".") {
+                            $wordIndex = rand(0, count($tabWords) - 1);
+                        }
+                        
+                        $requeteSQL = "UPDATE LOBBY SET indexWord7 = " . $wordIndex . " WHERE idLobby = " . $_SESSION["idLobby"];
+                        $statement = $pdo->query($requeteSQL);
+                    }
                 }
 
                 $retour = array('competitorFind' => false,
@@ -127,6 +153,55 @@ function checkQueue() {
             $_SESSION["idLobby"] = $ligne["idLobby"];
             $retour = array('competitorFind' => true);
         }
+        
+    // ETAPE 3 : Déconnecter du serveur                        
+        $pdo = null;
+        
+        // Envoi du retour (on renvoi le tableau $retour encodé en JSON)
+        echo json_encode($retour);
+    } catch (Exception $e) {
+    }
+}
+
+function getQuestion7($idTimeCode) {
+    // ETAPE 1 : Se connecter au serveur de base de données
+    try {
+        require("../param.inc.php");
+        $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
+        $pdo->query("SET NAMES utf8");
+        $pdo->query("SET CHARACTER SET 'utf8'");
+        
+    // ETAPE 2 : Envoyer une requête SQL
+        // conditions pour l'envoi de la requête en fonction du choix du joueur
+        
+        $requeteSQL = "SELECT trueRep FROM TIMECODES WHERE TIMECODES.idTimeCode=:paramIdTimeCode";
+        
+        $statement = $pdo->prepare($requeteSQL);
+        $statement->execute(array(":paramIdTimeCode" => $idTimeCode));
+        $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        $str = stripslashes($ligne["trueRep"]);
+        $tabWords = explode(" ", $str);
+        
+        $requeteSQL = "SELECT indexWord7 FROM LOBBY WHERE LOBBY.idLobby=:paramIdLobby";
+        $statement = $pdo->prepare($requeteSQL);
+        $statement->execute(array(":paramIdLobby" => $_SESSION["idLobby"]));
+        $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        $wordIndex = $ligne["indexWord7"];
+        
+        $rightStr = "";
+        for ($i = 0; $i < $wordIndex; $i++) {
+            $rightStr = $rightStr . $tabWords[$i] . " ";
+        }
+        
+        $leftStr = "";
+        for ($i = $wordIndex + 1; $i < count($tabWords); $i++) {
+            $leftStr = $leftStr  . " " . $tabWords[$i];
+        }    
+            
+        $retour = array('rightStr' => $rightStr,
+                       'leftStr' => $leftStr);
         
     // ETAPE 3 : Déconnecter du serveur                        
         $pdo = null;
@@ -334,11 +409,11 @@ function isPlayerWinner () {
         $ligne = $statement->fetch(PDO::FETCH_ASSOC);
         
         if ($ligne["scoreP" . $_SESSION["playerNumber"]] > $ligne["scoreP" . ($_SESSION["playerNumber"] == 1 ? 2 : 1)] ) {
-            $playerIsWinner = "Vous avez gagné !";
+            $playerIsWinner = "Vous avez\ngagné !";
         } else if ($ligne["scoreP1"] == $ligne["scoreP2"]){
             $playerIsWinner = "Egalité !";
         } else {
-            $playerIsWinner = "Vous avez perdu !";
+            $playerIsWinner = "Vous avez\nperdu !";
         }
         
         $retour = array('playerIsWinner' => $playerIsWinner);
