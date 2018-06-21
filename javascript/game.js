@@ -373,6 +373,7 @@ function verifierType(evt) {
         },
         function (data) {
             if (data.answerIsGood) {
+                document.getElementById("reponse7Input").removeEventListener("keyup", verifierType);
                 nbGoodAnswer = nbGoodAnswer + 1;
                 repInput.style.borderColor = "#3df22d";
                 stopTimer();
@@ -537,11 +538,15 @@ function decrement(evt) {
         timer.textContent = "" + timerSec + "." + timerMilli;
     }
 
-    if (timerSec < 1 && timerMilli < 1 && numQuest < 6) {
+    if (timerSec < 1 && timerMilli < 1) {
         clearInterval(encours);
         if (timer.textContent = "0.0") {
             timeOut = true;
-            verifierReps();
+            if (numQuest < 6) {
+                verifierReps();
+            } else {
+                afterVerif();
+            }
         }
     }
 }
@@ -554,7 +559,7 @@ function calculScore() {
     var tempsCourant = timerSec + (timerMilli / 100);
 
     if (numQuest == 6) {
-        var tempsInitial = 30;
+        var tempsInitial = 15;
         var scoreMax = 40;
     } else {
         var tempsInitial = 10;
