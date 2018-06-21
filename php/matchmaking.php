@@ -1,6 +1,16 @@
 <?php
     session_start();
+    if($_POST["autorisation"] != true){
+        header("Location: index.php");
+    }
+
+
+
 	header("Content-type: text/html; charset: UTF-8");
+
+
+
+
 ?>
     <!DOCTYPE html>
     <html lang="fr">
@@ -19,7 +29,7 @@
         
         <?php
             try {
-                $lang = $_GET["langue"] == "bilingue" ? "all" : $_GET["langue"];
+                $lang = $_POST["langue"] == "bilingue" ? "all" : $_POST["langue"];
             // ETAPE 1 : Se connecter au serveur de base de données
                 require("./param.inc.php");
                 $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
@@ -27,7 +37,7 @@
                 $pdo->query("SET CHARACTER SET 'utf8'");
 
             // ETAPE 2 : Envoyer une requête SQL (demander la liste des données)
-                $requeteSQL = "SELECT idLA FROM LISTE_ATTENTE WHERE lang = '" . $lang . "' AND idCat ".($_GET["categorie"] == "0" ? "IS NULL" : ("= " . addslashes($_GET["categorie"])));
+                $requeteSQL = "SELECT idLA FROM LISTE_ATTENTE WHERE lang = '" . $lang . "' AND idCat ".($_POST["categorie"] == "0" ? "IS NULL" : ("= " . addslashes($_POST["categorie"])));
                 $statement = $pdo->query($requeteSQL);
 
 
@@ -38,7 +48,7 @@
                     $requeteSQL2 = "INSERT INTO LISTE_ATTENTE (lang, idCat) VALUES (:paramLang, :paramIdCat)";
                     $statement2 = $pdo->prepare($requeteSQL2);
                     $statement2->execute(array(":paramLang" => $lang,
-                                              ":paramIdCat" => $_GET["categorie"] == "0" ? NULL : $_GET["categorie"]));
+                                              ":paramIdCat" => $_POST["categorie"] == "0" ? NULL : $_POST["categorie"]));
                     
                     $requeteSQL3 = "SELECT LAST_INSERT_ID() AS idLA";
                     $statement3 = $pdo->query($requeteSQL3);
