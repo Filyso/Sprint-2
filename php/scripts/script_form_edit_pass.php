@@ -60,7 +60,7 @@ if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"])){
 
                         if($_POST["pass"] != $_POST["passVerif"]){
                         // vérification mdp incorrect
-                            $msg .= "La vérifiacation du mot de passe est erronée.    ";
+                            $msg .= "La vérification du mot de passe est erronée.    ";
                         }
                     
                     
