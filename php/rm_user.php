@@ -5,21 +5,26 @@
     if(isset($_POST["arrayData"])) {
         
         require("./param.inc.php");
-            $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
-            $pdo->query("SET NAMES utf8");
-            $pdo->query("SET CHARACTER SET 'utf8'");
+        $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
+        $pdo->query("SET NAMES utf8");
+        $pdo->query("SET CHARACTER SET 'utf8'");
         
         $arrayData = json_decode($_POST["arrayData"], true);
-        //On récupère les clés associatives du tableau (les pseudos sur lesquels les changements sont appliqués)
+        
+        print_r($arrayData);
+        
+        //On récupère les clés associatives du tableau (les PSEUDOS sur lesquels les changements sont appliqués)
         $keyArrayData = array_keys($arrayData);
-        //On calcule la longueur du tableau (le nombre de pseudos sur lesquels les changements sont appliqués)
+        //On calcule la longueur du tableau (le NOMBRE de pseudos sur lesquels les changements sont appliqués)
         $sizeArrayData = sizeof($arrayData);
         
         $i=0;
-        //Pour chaque membre, on ajoute les changements à la table de données
+        //Pour chaque membre, on ajoute les CHANGEMENTS à la BDD
         for($i; $i < $sizeArrayData; $i++){
+            
+            //CAS DU STATUT
             if($arrayData["$keyArrayData[$i]"][1]=="enregistre"){
-                
+                //update
                 $requeteSQL = "UPDATE MEMBRES ".
                             "SET MEMBRES.isVerif = '1' ".
                             "WHERE MEMBRES.pseudoMbr = ':paramPseudoMbr';";
@@ -27,7 +32,7 @@
                 $statement->execute(array(":paramPseudoMbr" => $keyArrayData[$i]));
                 
             }else if($arrayData["$keyArrayData[$i]"][1]=="attente"){
-                
+                //update
                 $requeteSQL = "UPDATE MEMBRES ".
                             "SET MEMBRES.isVerif = '0' ".
                             "WHERE MEMBRES.pseudoMbr = ':paramPseudoMbr';";
@@ -35,7 +40,7 @@
                 $statement->execute(array(":paramPseudoMbr" => $keyArrayData[$i]));
                 
             }else if($arrayData["$keyArrayData[$i]"][1]=="banni"){
-                
+                //update
                 $requeteSQL = "UPDATE MEMBRES ".
                             "SET MEMBRES.isVerif = '2' ".
                             "WHERE MEMBRES.pseudoMbr = ':paramPseudoMbr';";
@@ -43,6 +48,8 @@
                 $statement->execute(array(":paramPseudoMbr" => $keyArrayData[$i]));
                 
             }
+            
+            //CAS DU ROLE
             if($arrayData["$keyArrayData[$i]"][0]=="normal"){
                 //delete
                 $requeteSQL ="SELECT MEMBRES.idMbr AS 'id' ".
@@ -99,7 +106,7 @@
                 
                 if($ligne["oldRole"]=="modo"){
                     $requeteSQLbis="UPDATE ROLE ".
-                        "SET ROLE.roleMbr = 'modo' ".
+                        "SET ROLE.roleMbr = 'admin' ".
                         "WHERE ROLE.idMbr = ':paramIDMbr';";
                     $statement = $pdo->prepare($requeteSQLbis);
                     $statement->execute(array(":paramIDMbr" => $ligne["id"]));

@@ -9,7 +9,6 @@
 
     function initialiser(evt) {
         
-        json = JSON.stringify(obj);
         hiddenInput = document.getElementById("arrayData");
 
         var mbr = document.querySelectorAll(".mbr");
@@ -40,6 +39,7 @@
         var actualRole = this.parentElement.previousElementSibling.firstElementChild.value;
         var pseudoMbr = this.parentElement.previousElementSibling.previousElementSibling.innerHTML.trim();
         obj[pseudoMbr] = [actualRole, newStatut];
+        console.log(obj);
         var json = JSON.stringify(obj);
         hiddenInput.value = json;
     }
