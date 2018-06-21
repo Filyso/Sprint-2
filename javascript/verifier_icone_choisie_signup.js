@@ -55,8 +55,7 @@
         iconChoisie.val("");
             
 
-        console.log(hiddenBtn.val());
-        
+      
         
         
     }
@@ -74,7 +73,7 @@
             
         hiddenBtn.val(chemin[0]);
              
-        console.log(hiddenBtn.val());
+      
     }
     
     function selectIconDefaultEd(evt){
@@ -92,7 +91,7 @@
         iconChoisieEd.val("");
             
 
-        console.log(hiddenBtnEd.val());
+    
         
         
         
@@ -110,8 +109,7 @@ function selectIconChoisieEd(evt){
 
             
         hiddenBtnEd.val(cheminEd[0]);
-             
-        console.log(hiddenBtnEd.val());
+
     }
     
 

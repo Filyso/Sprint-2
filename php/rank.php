@@ -34,28 +34,55 @@
                     
                         if (Membre::isLogged()){
 
-                        $requeteSQL="SELECT MEMBRES.idMbr, MEMBRES.pseudoMbr AS 'nom', MEMBRES.linkIconMbr AS 'lien', COUNT(JOUE.score) AS 'score' ".
+                        $requeteSQL="SELECT MEMBRES.idMbr, MEMBRES.pseudoMbr AS 'nom', MEMBRES.linkIconMbr AS 'lien', SUM(JOUE.score) AS 'score' ".
                                     "FROM MEMBRES ".
-                                    "INNER JOIN JOUE ".
+                                    "LEFT OUTER JOIN JOUE ".
                                     "ON MEMBRES.idMbr = JOUE.idMbr ".
-                                    "ORDER BY JOUE.score DESC";
+                                    "GROUP BY MEMBRES.idMbr ".
+                                    "ORDER BY SUM(JOUE.score) DESC";
 
-                        $tabParam = array();
+               
 
-                        $statement = $pdo->prepare($requeteSQL) ;
-                        $statement->execute($tabParam);
-
+                        $statement = $pdo->query($requeteSQL);
+           
                         // Etape 3 : traite les données
                     
                         $ligne = $statement->fetch(PDO::FETCH_OBJ);
-                            
+
                         $currentPosition = 1;
+                        $previousPlace = $currentPosition;
+                        $previousScore = $ligne->score;
+                            
+                        if($ligne->score == "" || $ligne->score == "0"){
+                            $previousScore = 0;
+                        }    
                             
                         while($ligne->idMbr != $_SESSION["id"] && $ligne != false){
+                            
                             $currentPosition += 1;
-                            $ligne = $statement->fetch(PDO::FETCH_OBJ);
-                        }
 
+                            
+                            $ligne = $statement->fetch(PDO::FETCH_OBJ);
+                            
+                            
+                            if($ligne != false){
+                                
+                                if($ligne->score != $previousScore){
+
+                                    $previousScore=$ligne->score;
+                                    $previousPlace=$currentPosition;
+                                }
+                                if($ligne->score == "" || $ligne->score == "0"){
+                                    $previousScore = 0;
+                                    
+                                }
+                                
+                            }
+                                                   
+
+
+                        }
+                       
                     ?>
 
                         <tr>
@@ -68,10 +95,10 @@
                                 </p>
                             </td>
                             <td>
-                                <?php echo($ligne->score) ?>
+                                <?php echo($previousScore) ?>
                             </td>
                             <td>
-                                <?php echo($currentPosition) ?>
+                                <?php echo($previousPlace) ?>
                             </td>
                         </tr>
 
@@ -91,17 +118,17 @@
                         
                         //Envoie de la seconde requête SQL au serveur
     
-                        $requeteSQL2="SELECT MEMBRES.pseudoMbr AS 'nom', MEMBRES.linkIconMbr AS 'lien', COUNT(JOUE.score) AS 'score' ".
+                        $requeteSQL2="SELECT MEMBRES.pseudoMbr AS 'nom', MEMBRES.linkIconMbr AS 'lien', SUM(JOUE.score) AS 'score' ".
                                     "FROM MEMBRES ".
-                                    "INNER JOIN JOUE ".
+                                    "LEFT OUTER JOIN JOUE ".
                                     "ON MEMBRES.idMbr = JOUE.idMbr ".
-                                    "LIMIT 10 ".
-                                    "ORDER BY JOUE.score DESC";
+                                    "GROUP BY MEMBRES.idMbr ".
+                                    "ORDER BY SUM(JOUE.score) DESC ".
+                                    "LIMIT 10";
 
-                        $tabParam2 = array();
+  
 
-                        $statement2 = $pdo->prepare($requeteSQL2) ;
-                        $statement2->execute($tabParam2);
+                        $statement2 = $pdo->query($requeteSQL2) ;
 
                         // Etape 3 : traite les données
                         
@@ -109,25 +136,37 @@
                     
                         //Premier membre
                         $ligne2 = $statement2->fetch(PDO::FETCH_OBJ);
-
+                    
+                        $previousScore=$ligne2->score;
+                        $previousPlace=$currentPosition;
                         //Boucle sur chaque membre (BDD)
-                        while($ligne2 != false){
+                        if($ligne2->score == ""){
+                            $previousScore = 0;
+                        }
+                        while($currentPosition<=10 && $ligne2 != false){
+                            
+            
+                            
+                            
+                            
+                            
+                            
 	               ?>
 
                         <tr>
                             <td>
                                 <figure>
-                                    <img alt="Photo de profil joueur" src="<?php echo($ligne2->lien) ?>" />
+                                    <img alt="Photo de profil joueur" src="<?php echo($ligne2->lien); ?>" />
                                 </figure>
                                 <p>
-                                    <?php echo($ligne2->nom) ?>
+                                    <?php echo("<p>".$ligne2->nom."</p>"); ?>
                                 </p>
                             </td>
                             <td>
-                                <?php echo($ligne2->score) ?>
+                                <?php echo("<p>".$previousScore."</p>"); ?>
                             </td>
                             <td>
-                                <?php echo($currentPosition) ?>
+                                <?php echo("<p>".$previousPlace."</p>"); ?>
                             </td>
                         </tr>
 
@@ -137,6 +176,23 @@
                             $currentPosition += 1; 
                             
                             $ligne2 = $statement2->fetch(PDO::FETCH_OBJ);
+                            
+                            if($ligne2 != false){
+                                if($ligne2->score != $previousScore){
+
+                                    $previousScore=$ligne2->score;
+                                    $previousPlace=$currentPosition;
+                                }
+                                if($ligne2->score == "" || $ligne2->score == "0"){
+                                    $previousScore = 0;
+                                    
+                                }
+                                
+                                
+                            }
+                            
+                            
+
                             }
                     
                             //Fin boucle

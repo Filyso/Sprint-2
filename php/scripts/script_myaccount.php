@@ -1,9 +1,12 @@
 <?php 
+    
+    $pdo=new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS) ;
+    $pdo->query("SET NAMES utf8");
+    $pdo->query("SET CHARACTER SET 'utf8'");
+
     if(isset($_POST["amiSup"])){
                             
-        $pdo = new PDO("mysql:host=".MYHOST.";dbname=".MYDB, MYUSER, MYPASS);
-        $pdo->query("SET NAMES utf8");
-        $pdo->query("SET CHARACTER SET 'utf8'");
+
                             
         $requeteSQL = "SELECT idMbr FROM MEMBRES WHERE pseudoMbr='".$_POST["amiSup"]."'";
         $statement = $pdo->query($requeteSQL);
@@ -14,7 +17,13 @@
                            
                             
     }
+    
+
+    //Etape 2 : envoie de la première requête SQL au serveur
+                    
+    
         ?>
+
         <main class="mainAccount">
             <div class="infoJoueur">
                 <figure class="figureImgJoueurAccount">
@@ -33,56 +42,186 @@
                         <th>Score</th>
                         <th>Classement</th>
                     </tr>
-                    <tr>
-                        <td>
-                            <figure>
-                                <img src="../images/chat.jpg" alt="Photo de profil joueur"/>
-                            </figure>
-                            <p>Michel</p>
-                        </td>
-                        <td>10.000</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <figure>
-                                <img src="../images/chat.jpg" alt="Photo de profil joueur"/>
-                            </figure>
-                            <p>Samuel</p>
-                        </td>
-                        <td>9.000</td>
-                        <td>2</td>
-                    </tr>
-                    <tr class="vous">
-                        <td>
-                            <figure>
-                                <img src="<?php echo($_SESSION["icon"]); ?>" alt="Photo de profil joueur"/>
-                            </figure>
-                            <p>Vous</p>
-                        </td>
-                        <td>8.000</td>
-                        <td>3</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <figure>
-                                <img src="../images/chat.jpg" alt="Photo de profil joueur"/>
-                            </figure>
-                            <p>Antonin54</p>
-                        </td>
-                        <td>7.000</td>
-                        <td>4</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <figure>
-                                <img src="../images/chat.jpg" alt="Photo de profil joueur"/>
-                            </figure>
-                            <p>ElRodriguo</p>
-                        </td>
-                        <td>6.000</td>
-                        <td>5</td>
-                    </tr>
+                    
+<?php
+  
+
+
+        $requeteSQL="SELECT MEMBRES.idMbr, MEMBRES.pseudoMbr AS 'pseudo', MEMBRES.linkIconMbr AS 'icon', SUM(JOUE.score) AS 'score' ".
+                                    "FROM MEMBRES ".
+                                    "LEFT OUTER JOIN JOUE ".
+                                    "ON MEMBRES.idMbr = JOUE.idMbr ".
+                                    "GROUP BY MEMBRES.idMbr ".
+                                    "ORDER BY SUM(JOUE.score) DESC";
+
+               
+
+        $statement = $pdo->query($requeteSQL);
+           
+       
+
+            //troisième
+            $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+            $currentPosition = 1;
+            $compteur = 1;
+            $pret = false;
+            $previousScore =  $ligne["score"]; 
+            $previousPlace = 0;
+            $pseudoPlayer[$currentPosition] = $ligne["pseudo"];
+            $iconPlayer[$currentPosition] = $ligne["icon"];
+            $scorePlayer[$currentPosition] = $ligne["score"];
+            $placePlayer[$currentPosition] = $currentPosition;
+         
+            $fin = false;
+            $idTrouvee = false;
+            $finboucle2 = false;
+                
+                
+            
+                while(!$idTrouvee){
+
+                        if($pseudoPlayer[$currentPosition] == $_SESSION["pseudo"]){
+                            $idTrouvee = true;
+                        }else{
+
+
+
+                            $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+                            $currentPosition += 1;
+
+                            if($ligne != false){
+                                
+                                if($ligne["score"] != $previousScore){
+
+                                    $previousScore=$ligne["score"];
+                                    $previousPlace=$currentPosition;
+                                }
+                                if($ligne["score"] == "" || $ligne["score"] == "0"){
+                                    $previousScore = 0;
+                                    
+                                }
+
+                            }
+                            
+
+                            $pseudoPlayer[$currentPosition] = $ligne["pseudo"];
+                            $iconPlayer[$currentPosition] = $ligne["icon"];
+                            $scorePlayer[$currentPosition] = $previousScore;
+                            $placePlayer[$currentPosition] = $previousPlace;
+
+                        }   
+                    }
+                    
+                    if($placePlayer[$currentPosition] == 1){
+                        //1er 
+                        $nbTour = 6;
+                    }else if($placePlayer[$currentPosition] == 2){
+                        //2eme 
+                        $nbTour = 5;
+                    }else{
+                        //reste 
+                        $nbTour = 4;
+                    }
+                    
+                    
+                    while($idTrouvee && !$finboucle2){
+
+                        $ligne = $statement->fetch(PDO::FETCH_ASSOC);
+                        $currentPosition += 1;
+
+                        if($ligne != false){
+
+                                if($ligne["score"] != $previousScore){
+
+                                    $previousScore=$ligne["score"];
+                                    $previousPlace=$currentPosition;
+                                }
+                                if($ligne["score"] == "" || $ligne["score"] == "0"){
+                                    $previousScore = 0;
+                                    
+                                }
+                            $pseudoPlayer[$currentPosition] = $ligne["pseudo"];
+                            $iconPlayer[$currentPosition] = $ligne["icon"];
+                            $scorePlayer[$currentPosition] = $previousScore;
+                            $placePlayer[$currentPosition] = $previousPlace;
+
+                            $compteur +=1;
+                            if($compteur == $nbTour){
+                                $pret = true;
+                                $compteur = 0;
+                                $finboucle2 = true;
+                                $currentPosition += -5;
+                            }
+
+                        }else{
+                            
+                            
+                                $pret = true;
+                                $compteur = 0;
+                                $finboucle2 = true;
+                                $currentPosition += -5;
+                                 
+                        }
+
+                        
+
+                    }
+
+                $avantDernier = false;
+                $dernier = false;
+                    while($pret && !$fin && !$avantDernier && !$dernier){
+                        
+
+    ?>
+                        <tr class="<?php if($pseudoPlayer[$currentPosition] == $_SESSION["pseudo"]){echo("vous");} ?>">
+                            <td>
+                                <figure>
+                                    <img src="<?php echo($iconPlayer[$currentPosition]); ?>" alt="Photo de profil de <?php echo($pseudoPlayer[$currentPosition]); ?>"/>
+                                </figure>
+                                <p><?php echo($pseudoPlayer[$currentPosition]); ?></p>
+                            </td>
+                            <td><?php echo($scorePlayer[$currentPosition]); ?></td>
+                            <td><?php echo($placePlayer[$currentPosition]); ?></td>
+                        </tr>                 
+    <?php               
+                        
+                        
+                        
+                        $currentPosition += 1;
+                        $compteur += 1;
+                        if($compteur>=5){
+                            $fin = true;
+                        }
+
+
+                    }
+                
+
+      
+                    
+?>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                 </table>
             </div>
             <div class="badgesGagnes">

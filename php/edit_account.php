@@ -206,16 +206,16 @@ function convertirImage256x256PNG($nomFichierAConvertir, $nomFichierConverti) {
             <fieldset>
                 <div>
                     <label for="pseudoEdit" ></label>
-                    <input id="pseudoSignUp" placeholder="Pseudo" name="pseudoEdit" type="text" id="pseudoEdit" required="required" size="16" minlength="4" maxlength="16" title="Le pseudo doit être compris entre 4 et 16 caractères" pattern="^([0-9a-zA-Z]{4,16})$" value="<?php echo($ligne["pseudoMbr"]); ?>"/>
+                    <input placeholder="Pseudo" name="pseudoEdit" type="text" id="pseudoEdit" required="required" size="16" minlength="4" maxlength="16" title="Le pseudo doit être compris entre 4 et 16 caractères" pattern="^([0-9a-zA-Z]{4,16})$" value="<?php echo($ligne["pseudoMbr"]); ?>"/>
                 
                     <label for="lastnameEdit"></label>
-                    <input id="lastname" placeholder="Nom" name="lastnameEdit" type="text" id="lastnameEdit" required="required" size="25" minlength="1" maxlength="25" title="Le nom ne doit pas dépasser 25 caractères" pattern="^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{1,25})$" value="<?php echo($ligne["nameMbr"]); ?>"/>
+                    <input placeholder="Nom" name="lastnameEdit" type="text" id="lastnameEdit" required="required" size="25" minlength="1" maxlength="25" title="Le nom ne doit pas dépasser 25 caractères" pattern="^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{1,25})$" value="<?php echo($ligne["nameMbr"]); ?>"/>
             
                     <label for="nameEdit"></label>
-                    <input id="name" placeholder="Prénom" name="nameEdit" type="text" id="nameEdit" required="required" size="25" minlength="1" maxlength="25" title="Le prénom ne doit pas dépasser 25 caractères" pattern="^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{1,25})$" value="<?php echo($ligne["prenomMbr"]); ?>"/>
+                    <input placeholder="Prénom" name="nameEdit" type="text" id="nameEdit" required="required" size="25" minlength="1" maxlength="25" title="Le prénom ne doit pas dépasser 25 caractères" pattern="^([a-zA-Z'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{1,25})$" value="<?php echo($ligne["prenomMbr"]); ?>"/>
         
                     <label for="emailEdit"></label>
-                    <input id="emailSignUp" placeholder="Adresse mail" name="emailEdit" type="email" id="emailEdit" required="required" pattern="^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$" disabled value="<?php echo($ligne["mailMbr"]); ?>"/>
+                    <input placeholder="Adresse mail" name="emailEdit" type="email" id="emailEdit" required="required" pattern="^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$" disabled value="<?php echo($ligne["mailMbr"]); ?>"/>
                 </div>
             </fieldset>
             <button id="editSubmitPerso" type="submit">Editer</button>
@@ -229,10 +229,10 @@ function convertirImage256x256PNG($nomFichierAConvertir, $nomFichierConverti) {
                     <input placeholder="Ancien mot de passe" name="oldPass" type="password" id="oldPass" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,42}$"/>
                     
                     <label for="passEdit"></label>
-                    <input id="passSignUp" placeholder="Nouveau mot de passe" name="passEdit" type="password" id="passEdit" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,42}$"/>
+                    <input placeholder="Nouveau mot de passe" name="passEdit" type="password" id="passEdit" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,42}$"/>
     
                     <label for="passverifEdit"></label>
-                    <input id="passverif" placeholder="Confirmer le mot de passe" name="passverifEdit" type="password" id="passverifEdit" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,42}$"/>
+                    <input placeholder="Confirmer le mot de passe" name="passverifEdit" type="password" id="passverifEdit" required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,42}$"/>
                 </div>
             </fieldset>
             <button id="editSubmitPass" type="submit">Editer</button>

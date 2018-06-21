@@ -54,7 +54,7 @@ if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"])){
         
         if($_POST["nom"] != $nom){
             
-            if(strlen($_POST["nom"]) <= 25){
+            if(strlen($_POST["nom"]) <= 25 && preg_match('#^([a-zA-Z\'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{1,25})$#', $_POST["nom"])){
                     $requeteSQL = "UPDATE `MEMBRES` SET `nameMbr` = :nom WHERE idMbr='".$_SESSION["id"]."'";
                     $statement = $pdo->prepare($requeteSQL);
                     $statement->execute(array(":nom" => $_POST["nom"]));
@@ -63,21 +63,21 @@ if(isset($_SESSION["id"]) && isset($_SESSION["pseudo"])){
                     $_SESSION["nom"] = $_POST["nom"];
                     $msg .= "Le nom a bien été modifié \r\n ";
             }else{
-                    $msg .= "Le nom ne doit pas dépasser 25 caractères \r\n ";
+                    $msg .= "Le nom ne doit pas dépasser 25 caractères et contenir de chiffres \r\n ";
             }
             
         }
         
         if($_POST["prenom"] != $prenom){
             
-            if(strlen($_POST["prenom"]) <= 25){
+            if(strlen($_POST["prenom"]) <= 25 && preg_match('#^([a-zA-Z\'àâéèêôùûçÀÂÉÈÔÙÛÇ-]{1,25})$#', $_POST["prenom"])){
                     $requeteSQL = "UPDATE `MEMBRES` SET `prenomMbr` = :prenom WHERE idMbr='".$_SESSION["id"]."'";
                     $statement = $pdo->prepare($requeteSQL);
                     $statement->execute(array(":prenom" => $_POST["prenom"]));
                     $_SESSION["prenom"] = $_POST["prenom"];
                     $msg .= "Le prénom a bien été modifié \r\n ";
             }else{
-                    $msg .= "Le prénom ne doit pas dépasser 25 caractères \r\n ";
+                    $msg .= "Le prénom ne doit pas dépasser 25 caractères et contenir de chiffres \r\n ";
             }
             
         }
