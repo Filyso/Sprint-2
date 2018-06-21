@@ -151,7 +151,7 @@
 
         </div>
         <div class="popup">
-            <div class="popup-content">
+            <div class="popupContent">
                 <span class="close">&times;</span>
                 <h2>CONNECTEZ-VOUS</h2>
                 <form action="<?php echo($_SERVER["SCRIPT_NAME"]);?>" method="post">

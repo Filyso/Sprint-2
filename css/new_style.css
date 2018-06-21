@@ -102,9 +102,9 @@ textarea {
 .addSongForm,
 .addSongForm fieldset,
 .mainHeader ul,
-.popup-content,
-.popup-content_regle,
-.popup-content form,
+.popupContent,
+.popupContentRegle,
+.popupContent form,
 .sectionSolo .score,
 .sectionSolo .contenu,
 .sectionSolo .reponses,
@@ -116,7 +116,8 @@ textarea {
 .bonnesReponses,
 .infoJoueur,
 .signUpPage form,
-.signUpPage form div:not(.imagesProfil) {
+.signUpPage form div:not(.imagesProfil),
+.rmUser{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -146,7 +147,8 @@ textarea {
 .boiteAIdee button,
 .buttonMulti a,
 .preGamePage button[type="button"],
-.preGamePage button[type=submit] {
+.preGamePage button[type=submit],
+#connexionBtn{
     border: 3px solid white;
     font-family: "FuturaBold";
     color: white;
@@ -195,12 +197,19 @@ textarea {
 .boiteAIdee button {
     padding: 10px;
 }
+#connexionBtn{
+    color: var(--jaune);
+    border: 3px solid var(--jaune);
+    font-size: 18px;
+    padding: 10px;
+}
 .indexLink a:hover,
 .buttonSolo a:hover,
 .buttonMulti a:hover,
 .boiteAIdee button:hover,
 .preGamePage button[type="button"]:hover,
-.preGamePage button[type=submit]:hover {
+.preGamePage button[type=submit]:hover,
+#connexionBtn:hover{
     transition: .2s;
     color: var(--rouge);
     border-color: var(--rouge);
@@ -222,6 +231,9 @@ textarea {
 }
 .boiteAIdee button:hover {
     padding: 10px 25px;
+}
+#connexionBtn:hover {
+    padding: 10px 30px;
 }
 /************************************* PAGE INDEX *********************/
 .mainIndex {
@@ -1058,7 +1070,7 @@ li .loginMenu {
 }
 /********************* POPUP CONNEXION ******************************/
 .popup,
-.popup_regle {
+.popupRegle {
     display: block;
     opacity: 0;
     transition: opacity linear .2s;
@@ -1070,12 +1082,13 @@ li .loginMenu {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
     animation-play-state: running;
+    color: var(--noir);
 }
 .is-open {
     opacity: 1;
 }
-.popup-content,
-.popup-content_regle {
+.popupContent,
+.popupContentRegle {
     background-color: #fefefe;
     margin: 15% auto;
     width: 40%;
@@ -1084,49 +1097,30 @@ li .loginMenu {
     position: relative;
     justify-content: space-around;
 }
-.popup-content form {
+.popupContent form {
     height: 100%;
     justify-content: center;
-    width: 50%;
+    width: 60%;
 }
-.popup-content h2,
-.popup-content_regle h2 {
+.popupContent h2,
+.popupContentRegle h2 {
     padding-top: 10%;
     margin: 0;
     font-size: 28px;
     color: var(--orange);
 }
-.popup-content_regle li>p{
+.popupContentRegle p{
     color:black;
 }
-.popup-content input {
-    height: 10%;
+.popupContent input {
+    height: 15%;
     margin-bottom: 10%;
     border: 3px solid var(--orange);
     padding: 5px 10px 5px 10px;
     font-size: 15px;
 }
-.popup-content button {
-    height: 15%;
-    width: 50%;
-    border: 3px solid var(--rouge);
-    align-self: center;
-    font-family: 'FuturaBold';
-    font-size: 18px;
-    cursor: pointer;
-    color: var(--rouge);
-    transition: 0.2s;
-    background-color: white;
-}
-.popup-content button:hover {
-    transform-origin: center;
-    width: 60%;
-    border-color: var(--jaune);
-    color: var(--jaune);
-    transition: 0.2s;
-}
 .close,
-.close_regle {
+.closeRegle {
     color: var(--orange);
     font-size: 28px;
     font-weight: bold;
@@ -1136,13 +1130,13 @@ li .loginMenu {
 }
 .close:hover,
 .close:focus,
-.close_regle:hover,
-.close_regle:focus {
+.closeRegle:hover,
+.closeRegle:focus {
     color: #784199;
     text-decoration: none;
     cursor: pointer;
 }
-.popup-content_regle ul {
+.popupContentRegle ul {
     font-size: 25px;
     font-weight: 300;
     list-style-image: url(images/list.png);
@@ -1874,6 +1868,27 @@ figure.pastille img{
 .modifySong td {
     border: 1px solid #444444;
     padding: 10px;
+}
+/**************************** RM USER *************************************/
+.tableauUsers{
+    margin: 20px;
+    border: 2px solid #444444;
+}
+.tableauUsers th{
+    font-family: "FuturaBold";
+    color: var(--jaune);
+}
+.mbr td:first-child{
+    color: var(--jaune);
+}
+.mbr td{
+    padding: 10px 20px;
+    border: 1px solid #444444;
+}
+.mbr select{
+    background-color: transparent;
+    border: 2px solid var(--rouge);
+    color: var(--rouge);
 }
 /***************************** MEDIA QUERIES ********************************/
 @media only screen and (max-device-width: 480px) {
