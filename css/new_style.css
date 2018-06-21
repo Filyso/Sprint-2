@@ -515,6 +515,9 @@ li .loginMenu:hover {
     font-size: 1.8vw;
     color: var(--noir);
 }
+.footer p{
+    color: black;
+}
 .footer form {
     justify-content: center;
     align-items: flex-start;
