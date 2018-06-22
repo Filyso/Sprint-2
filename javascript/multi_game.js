@@ -256,11 +256,12 @@ function initialiser(evt) {
 // *** Gestion Jeu *** //
 // ******************* //
 function swap(evt) {
-
-    stateChangeTamponMemory.push(evt.data);
-    for (var z = 0; z < stateChangeTamponMemory.length; z++) {
-        if (stateChangeTamponMemory[z] == 3) {
-            verifMemory = true;
+    if (typeof evt.data !== 'undefined') {
+        stateChangeTamponMemory.push(evt.data);
+        for (var z = 0; z < stateChangeTamponMemory.length; z++) {
+            if (stateChangeTamponMemory[z] == 3) {
+                verifMemory = true;
+            }
         }
     }
 
