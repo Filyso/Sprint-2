@@ -94,7 +94,8 @@ function onYouTubePlayerAPIReady() {
                 }
             });
             forceSwapTimer = setTimeout(function () {
-                forceSwap = true
+                forceSwap = true;
+                forceSwapFct();
             }, ((3 + currentSong.timeCodeEnd - currentSong.timeCodeStart) * 1000));
             document.getElementById("nomEtArtiste").textContent = data.nameSong + " - " + data.nameArtist;
         },
@@ -231,6 +232,60 @@ function swap(evt) {
     }
 
     if ((evt.data == YT.PlayerState.ENDED && verifMemory) || forceSwap) {
+        forceSwap = false;
+        window.clearTimeout(forceSwapTimer);
+        stateChangeTamponMemory = [];
+        verifMemory = false;
+        document.getElementById("ytplayer").style.display = "none";
+
+        document.getElementById("rep").style.display = "block";
+        timerStart();
+        document.getElementById("phraseACompleter").textContent = currentSong.previousLyrics;
+
+        reps = document.querySelectorAll(".reponses button");
+
+        melangerReps();
+
+        if (numQuest < 2) {
+            reps[2].style.display = "none";
+            reps[3].style.display = "none";
+        } else if (numQuest < 4) {
+            reps[2].style.display = "block";
+            reps[3].style.display = "none";
+            reps[2].style.marginTop = "10px";
+        } else if (numQuest < 6) {
+            reps[2].style.marginTop = "10px";
+            reps[3].style.display = "block";
+        } else {
+            reps[0].style.display = "none";
+            reps[1].style.display = "none";
+            reps[2].style.display = "none";
+            reps[3].style.display = "none";
+            $.post(
+                '../php/scripts/script_musique.php', {
+                    function: 'getQuestion7',
+                    idTimeCode: tabTimeCode[numQuest],
+                },
+                function (data) {
+                    document.querySelectorAll("label[for=reponse7Input]")[0].textContent += data.rightStr;
+                    document.querySelectorAll("label[for=reponse7Input]")[1].textContent += data.leftStr;
+                },
+                'json'
+            );
+            document.getElementById("reponse7Input").autofocus;
+            document.getElementById("reponse7Input").parentElement.style.display = "block";
+            document.getElementById("reponse7Input").addEventListener("keyup", verifierType);
+        }
+
+        // Ajout de l'eventListener sur les boutons
+        for (var rep of reps) {
+            rep.addEventListener("click", verifierReps);
+        }
+    }
+}
+
+function forceSwapFct(evt) {
+    if (forceSwap) {
         forceSwap = false;
         window.clearTimeout(forceSwapTimer);
         stateChangeTamponMemory = [];
@@ -432,7 +487,8 @@ function afterVerif(evt) {
                 reps[3].style.backgroundColor = "transparent";
 
                 forceSwapTimer = setTimeout(function () {
-                    forceSwap = true
+                    forceSwap = true;
+                    forceSwapFct();
                 }, ((3 + currentSong.timeCodeEnd - currentSong.timeCodeStart) * 1000));
 
             },
