@@ -215,7 +215,7 @@
             </tbody>
         </table>
     </fieldset>
-    <form action="rm_user.php" method="post" id="rm_user" class="addSongForm">
+    <form action="admin.php?admin=Gérer les utilisateurs" method="post" id="rm_user" class="addSongForm">
         <div>
             <input id="arrayData" type="hidden" value="" name="arrayData" />
             <input type="submit" value="APPLIQUER" />

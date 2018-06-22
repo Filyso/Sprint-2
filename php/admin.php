@@ -44,7 +44,7 @@
                     <div>
                         <h2>GESTION D'UTILISATEURS</h2>
                         <form action="./admin.php" method="get">
-                            <input type="submit" value="Suppression d'utilisateurs" name="admin" />
+                            <input type="submit" value="Gérer les utilisateurs" name="admin" />
                         </form>
                     </div>
                     <?php
@@ -53,7 +53,7 @@
             </header>
             <?php 
                 if (isset($_GET["admin"])) {
-                    if ($_GET["admin"] == "Suppression d'utilisateurs") {
+                    if ($_GET["admin"] == "Gérer les utilisateurs") {
                         include("./rm_user.php");
                     } else if ($_GET["admin"] == "Modification/Suppression de chansons" || $_GET["admin"] == "Modifier" || $_GET["admin"] == "Supprimer") {
                         include("./modify_song_admin.php");
