@@ -160,6 +160,7 @@
                     <button id="connexionBtn" type="submit">SE CONNECTER</button>
                 </form>
             </div>
+        </div>
 
         </header>
 

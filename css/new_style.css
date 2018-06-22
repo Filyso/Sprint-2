@@ -1121,6 +1121,7 @@ li .loginMenu {
 .popupContent input {
     height: 15%;
     margin-bottom: 10%;
+    width: 80%;
     border: 3px solid var(--orange);
     padding: 5px 10px 5px 10px;
     font-size: 15px;
@@ -1148,6 +1149,19 @@ li .loginMenu {
     list-style-image: url(images/list.png);
 }
 @media only screen and (max-device-width: 480px) {
+    .popupContent{
+        width: 80%;
+        margin-top: 20vh;
+        height: 40vh;
+    }
+    .popupContent h2{
+        font-size: 50px;
+    }
+    .popupContent form input{
+        font-size: 40px;
+        font-family: 'Raleway';
+        border-radius: 5px;   
+    }
     .preGamePage {
         padding-top: 250px;
     }
@@ -1747,6 +1761,7 @@ li .loginMenu {
 }
 .signUpPage form {
     width: 40%;
+    min-width: 480px;
     margin: auto;
     margin-top: 3vh;
     border: 5px solid white;
@@ -1764,7 +1779,7 @@ li .loginMenu {
 }
 .signUpPage form div:not(.imagesProfil) {
     margin: auto;
-    width: 60%;
+    width: 100%;
     justify-content: space-around;
     align-items: left;
 }
