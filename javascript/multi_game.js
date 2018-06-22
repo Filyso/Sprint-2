@@ -95,7 +95,8 @@ function onYouTubePlayerAPIReady() {
                 }
             });
             forceSwapTimer = setTimeout(function () {
-                forceSwap = true
+                forceSwap = true;
+                swap();
             }, ((3 + currentSong.timeCodeEnd - currentSong.timeCodeStart) * 1000));
             document.getElementById("nomEtArtiste").textContent = data.nameSong + " - " + data.nameArtist;
         },
@@ -512,7 +513,8 @@ function afterVerif(evt) {
                 reps[3].style.backgroundColor = "transparent";
 
                 forceSwapTimer = setTimeout(function () {
-                    forceSwap = true
+                    forceSwap = true;
+                    swap();
                 }, ((3 + currentSong.timeCodeEnd - currentSong.timeCodeStart) * 1000));
 
             },
