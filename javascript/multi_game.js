@@ -246,6 +246,23 @@ function initialiser(evt) {
             enemyScore.querySelector("img").src = data.linkIconEnemy;
             enemyScore.appendChild(cloneBarScoreMax);
             enemyScore.style.left = "calc(100% - 13vw)";
+            
+            var pseudoEnemy = document.createElement("span");
+
+            enemyScore.appendChild(pseudoEnemy);
+            pseudoEnemy.textContent = data.pseudoEnemy;
+            pseudoEnemy.style.position = "absolute";
+            pseudoEnemy.style.top = "calc(10vw + 15px)";
+            pseudoEnemy.style.left = "calc(0)";
+            
+            var pseudoMbr = document.createElement("span");
+            
+            document.querySelectorAll(".score")[0].appendChild(pseudoMbr);
+            pseudoMbr.textContent = data.pseudoMbr;
+            pseudoMbr.style.position = "absolute";
+            pseudoMbr.style.top = "calc(10vw + 15px)";
+            pseudoMbr.style.left = "calc(0)";
+            
         },
         'json'
     );

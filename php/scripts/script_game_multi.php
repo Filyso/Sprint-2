@@ -355,13 +355,15 @@ function getEnemyImgLink() {
         
     // ETAPE 2 : Envoyer une requête SQL
         // conditions pour l'envoi de la requête en fonction du choix du joueur
-        $requeteSQL = "SELECT linkIconMbr FROM MEMBRES WHERE idLobby = :paramIdLobby AND idMbr <> :paramIdMbr";
+        $requeteSQL = "SELECT pseudoMbr, linkIconMbr FROM MEMBRES WHERE idLobby = :paramIdLobby AND idMbr <> :paramIdMbr";
         $statement = $pdo->prepare($requeteSQL);
         $statement->execute(array(":paramIdLobby" => $_SESSION["idLobby"],
                                  ":paramIdMbr" => $_SESSION["id"]));
         $ligne = $statement->fetch(PDO::FETCH_ASSOC);
         
-        $retour = array('linkIconEnemy' => $ligne["linkIconMbr"]);
+        $retour = array('linkIconEnemy' => $ligne["linkIconMbr"],
+                          'pseudoEnemy' => $ligne["pseudoMbr"],
+                            'pseudoMbr' => $_SESSION["pseudo"]);
 
     // ETAPE 3 : Déconnecter du serveur                        
         $pdo = null;
