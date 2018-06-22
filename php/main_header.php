@@ -1,5 +1,5 @@
 <?php
-	header("Content-type: text/html; charset: UTF-8");
+	header("Content-type: text/html; charset= UTF-8");
     require("src/Membre.php");
    
     if(isset($_POST) && !empty($_POST['pseudo']) && !empty($_POST['pass'])){
