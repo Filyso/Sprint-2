@@ -1,5 +1,5 @@
 
-<script type="text/javascript" src="../javascript/ajax_form_contact.js"></script>
+<script  src="../javascript/ajax_form_contact.js"></script>
 <link rel="stylesheet" href="../css/new_style.css" type="text/css" />
 <footer class="footer">
     <a href="./index.php"><img class="logo" src="../images/logo_texte_sans_fond.png" alt="logo"></a>

@@ -74,7 +74,7 @@
             $msg = "Erreur de connexion à la base de donnée";
         }
         
-        echo '<script type="text/javascript">alert("' . $msg . '")</script>';
+        echo '<script >alert("' . $msg . '")</script>';
         header("Location: admin.php?admin=Modification%2FSuppression+de+chansons");
     }
 
@@ -104,7 +104,7 @@
 
       
 ?>
-    <script type="text/javascript" src="../javascript/add_Song.js"></script>
+    <script  src="../javascript/add_Song.js"></script>
     <section class="addSongSection">
 
         <h3>MODIFIER UNE CHANSON</h3>

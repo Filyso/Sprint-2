@@ -193,7 +193,7 @@ function convertirImage256x256PNG($nomFichierAConvertir, $nomFichierConverti) {
     <meta name="description" content="Editez votre compte."/>
     <title>Editez votre compte</title>
     <link rel="stylesheet" type="text/css" href="../css/new_style.css" />
-    <script type="text/javascript" src="../javascript/verification_inscription.js"></script>
+    <script  src="../javascript/verification_inscription.js"></script>
     
 </head>
 
@@ -271,11 +271,11 @@ function convertirImage256x256PNG($nomFichierAConvertir, $nomFichierConverti) {
     <?php include("./main_footer.php"); ?>
     
 <!--
-    <script type="text/javascript" src="../javascript/verification_inscription.js"></script>
+    <script  src="../javascript/verification_inscription.js"></script>
 -->
-    <script type="text/javascript" src="../javascript/verifier_icone_choisie_signup.js"></script>
+    <script  src="../javascript/verifier_icone_choisie_signup.js"></script>
 
-    <script type="text/javascript" src="../javascript/edit_account.js"></script>
+    <script  src="../javascript/edit_account.js"></script>
 </body>
 
 </html>

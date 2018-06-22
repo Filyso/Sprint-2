@@ -222,4 +222,4 @@
         </div>
     </form>
 </section>
-<script type="text/javascript" src="../javascript/rm_user.js"></script>
+<script  src="../javascript/rm_user.js"></script>

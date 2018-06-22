@@ -57,7 +57,7 @@
 
         <?php include("./main_footer.php")?>
         <script src="../javascript/multi_game.js"></script>
-        <script type="text/javascript" src="../javascript/popup_regles.js"></script>
+        <script  src="../javascript/popup_regles.js"></script>
     </body>
 
     </html>

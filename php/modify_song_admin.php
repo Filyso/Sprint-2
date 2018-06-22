@@ -80,4 +80,4 @@
         </table>
         <input type="hidden" value="0" name="song" />
     </section>
-    <script type="text/javascript" src="../javascript/modify_song.js"></script>
+    <script  src="../javascript/modify_song.js"></script>
