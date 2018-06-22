@@ -5,7 +5,7 @@
         $pdo->query("SET NAMES utf8");
         $pdo->query("SET CHARACTER SET 'utf8'");
                             
-        $requeteSQL = "SELECT idMbr, pseudoMbr, linkIconMbr FROM MEMBRES WHERE pseudoMbr='".$_GET["pseudoFriend"]."'";
+        $requeteSQL = "SELECT isVerif, idMbr, pseudoMbr, linkIconMbr FROM MEMBRES WHERE pseudoMbr='".$_GET["pseudoFriend"]."'";
         $statement = $pdo->query($requeteSQL);
         $ligne = $statement->fetch(PDO::FETCH_ASSOC);
 
@@ -34,8 +34,12 @@
                     
 <?php
         $pseudoAmi = $ligne["pseudoMbr"];
-
-
+        if($ligne["isVerif"] != 1){
+                echo("<td></td>");
+                echo("<td>Les joueurs bannis ne sont pas classés</td>");
+                echo("<td></td>");
+        }else{
+        
         $requeteSQL="SELECT MEMBRES.idMbr, MEMBRES.pseudoMbr AS 'pseudo', MEMBRES.linkIconMbr AS 'icon', SUM(JOUE.score) AS 'score' ".
                                     "FROM MEMBRES ".
                                     "LEFT OUTER JOIN JOUE ".
@@ -185,7 +189,7 @@
 
                     }
                 
-
+        }
       
                     
 ?>
