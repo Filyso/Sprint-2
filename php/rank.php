@@ -36,6 +36,7 @@
                                     "FROM MEMBRES ".
                                     "LEFT OUTER JOIN JOUE ".
                                     "ON MEMBRES.idMbr = JOUE.idMbr ".
+                                    "WHERE MEMBRES.isVerif = 1 ".
                                     "GROUP BY MEMBRES.idMbr ".
                                     "ORDER BY SUM(JOUE.score) DESC";
 
@@ -120,6 +121,7 @@
                                     "FROM MEMBRES ".
                                     "LEFT OUTER JOIN JOUE ".
                                     "ON MEMBRES.idMbr = JOUE.idMbr ".
+                                    "WHERE MEMBRES.isVerif = 1 ".
                                     "GROUP BY MEMBRES.idMbr ".
                                     "ORDER BY SUM(JOUE.score) DESC ".
                                     "LIMIT 10";
