@@ -1596,16 +1596,16 @@ li .loginMenu {
 .mainAccount td:last-child {
     text-align: right;
 }
-.mainAccount .vous {
+.vous {
     background: white;
 }
-.mainAccount td {
+ td {
     color: var(--orange);
 }
-.mainAccount td:last-child {
+ td:last-child {
     color: #fec65c;
 }
-.mainAccount td:first-child {
+ td:first-child {
     color: var(--rouge);
     
 }

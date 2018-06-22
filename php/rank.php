@@ -84,7 +84,7 @@
                        
                     ?>
 
-                        <tr>
+                        <tr class="vous">
                             <td>
                                 <figure>
                                     <img alt="Photo de profil joueur" src="<?php echo($ligne->lien) ?>" />
@@ -153,7 +153,7 @@
                             
 	               ?>
 
-                        <tr>
+                        <tr class="<?php if($ligne2->nom == $_SESSION["pseudo"]){echo("vous");} ?>">
                             <td>
                                 <figure>
                                     <img alt="Photo de profil joueur" src="<?php echo($ligne2->lien); ?>" />
