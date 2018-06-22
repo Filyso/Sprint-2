@@ -7,7 +7,6 @@
     <head>
 
         <meta charset="utf-8">
-        <meta http-equiv="" content="">
         <title>Classement des joueurs</title>
         <meta name="description" content="Bienvenue sur la page de classement de Filyso. Vous pouvez consulter votre propre classement et celui des autres joueurs. C'est l'esprit de compétition !">
         <link rel="stylesheet" href="../css/new_style.css">
@@ -158,7 +157,7 @@
                                     <img alt="Photo de profil joueur" src="<?php echo($ligne2->lien); ?>" />
                                 </figure>
                                 <p>
-                                    <?php echo("<p>".$ligne2->nom."</p>"); ?>
+                                    <?php echo($ligne2->nom); ?>
                                 </p>
                             </td>
                             <td>

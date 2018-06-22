@@ -243,7 +243,7 @@ FROM MEMBRES INNER JOIN AMIS ON MEMBRES.idMbr = AMIS.idMbr_Ami1 OR MEMBRES.idMbr
                             
                             ?>
                             <figure class="pastille">
-                                <img class="btnFriendConnected"src="../images/pastille.png" alt="<?php echo($ligne["pseudoMbr"]); ?> est connecté"/>
+                                <img class="btnFriendConnected" src="../images/pastille.png" alt="<?php echo($ligne["pseudoMbr"]); ?> est connecté"/>
                             </figure>
                             <?php
                             }
