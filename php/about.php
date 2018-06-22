@@ -19,37 +19,37 @@
                 <h1>Notre équipe</h1>
                 <div class="lesPhotos">
                     <figure class="unePhoto">
-                        <img src="../images/avatar.png" alt="Photo de Clément">
+                        <img src="../images/equipe/clement.jpg" alt="Photo de Clément">
                         <figcaption>
                             <h3>Clément</h3> Le génie du CSS
                         </figcaption>
                     </figure>
                     <figure class="unePhoto">
-                        <img src="../images/avatar.png" alt="Photo de Justine">
+                        <img src="../images/equipe/justine.jpg" alt="Photo de Justine">
                         <figcaption>
                             <h3>Justine</h3> La graphiste folle des chats
                         </figcaption>
                     </figure>
                     <figure class="unePhoto">
-                        <img src="../images/avatar.png" alt="Photo de Maxime">
+                        <img src="../images/equipe/maxime.jpg" alt="Photo de Maxime">
                         <figcaption>
                             <h3>Maxime</h3> Le Bodybuilder du PHP
                         </figcaption>
                     </figure>
                     <figure class="unePhoto">
-                        <img src="../images/avatar.png" alt="Photo de Tristan">
+                        <img src="../images/equipe/tristan.jpg" alt="Photo de Tristan">
                         <figcaption>
                             <h3>Tristan</h3> Le graphiste fou
                         </figcaption>
                     </figure>
                     <figure class="unePhoto">
-                        <img src="../images/avatar.png" alt="Photo de Vincent">
+                        <img src="../images/equipe/vincent.jpg" alt="Photo de Vincent">
                         <figcaption>
                             <h3>Vincent</h3> The Jack of All Trades
                         </figcaption>
                     </figure>
                     <figure class="unePhoto">
-                        <img src="../images/avatar.png" alt="Photo de Yoan">
+                        <img src="../images/equipe/yoan.jpg" alt="Photo de Yoan">
                         <figcaption>
                             <h3>Yoan</h3> Le maître du développement
                         </figcaption>
