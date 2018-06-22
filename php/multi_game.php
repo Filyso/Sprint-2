@@ -5,7 +5,7 @@
     <html lang="fr">
 
     <head>
-        <meta http-equiv="" content="">
+        <meta charset="utf-8">
         <title>Jeux multijoueur Filyso</title>
         <meta name="description" content="Bienvenue sur le jeu multijoueur de Filyso. Vous pourrez affronter d'autres joueurs en duel pour encore plus de fun !">
         <link rel="stylesheet" href="../css/new_style.css">
