@@ -19,6 +19,8 @@ if (document.location.toString().indexOf('?') !== -1) {
 // Variables Song
 var currentSong;
 var tabTimeCode = [];
+var forceSwap = false;
+var forceSwapTimer;
 
 // Variables Timer
 var encours;
@@ -91,6 +93,9 @@ function onYouTubePlayerAPIReady() {
                     'onStateChange': swap
                 }
             });
+            forceSwapTimer = setTimeout(function () {
+                forceSwap = true
+            }, ((3 + currentSong.timeCodeEnd - currentSong.timeCodeStart) * 1000));
             document.getElementById("nomEtArtiste").textContent = data.nameSong + " - " + data.nameArtist;
         },
         'json'
@@ -207,7 +212,7 @@ function initialiser(evt) {
     var label2 = document.createElement("label");
     label2.setAttribute("for", "reponse7Input");
     form.appendChild(label2);
-    
+
     document.getElementById("reponse7Input").parentElement.addEventListener("submit", function (evt) {
         evt.preventDefault();
     });
@@ -218,7 +223,6 @@ function initialiser(evt) {
 // *** Gestion Jeu *** //
 // ******************* //
 function swap(evt) {
-
     stateChangeTamponMemory.push(evt.data);
     for (var z = 0; z < stateChangeTamponMemory.length; z++) {
         if (stateChangeTamponMemory[z] == 3) {
@@ -226,7 +230,9 @@ function swap(evt) {
         }
     }
 
-    if (evt.data == YT.PlayerState.ENDED && verifMemory) {
+    if ((evt.data == YT.PlayerState.ENDED && verifMemory) || forceSwap) {
+        forceSwap = false;
+        window.clearTimeout(forceSwapTimer);
         stateChangeTamponMemory = [];
         verifMemory = false;
         document.getElementById("ytplayer").style.display = "none";
@@ -424,6 +430,11 @@ function afterVerif(evt) {
                 reps[1].style.backgroundColor = "transparent";
                 reps[2].style.backgroundColor = "transparent";
                 reps[3].style.backgroundColor = "transparent";
+
+                forceSwapTimer = setTimeout(function () {
+                    forceSwap = true
+                }, ((3 + currentSong.timeCodeEnd - currentSong.timeCodeStart) * 1000));
+
             },
             'json'
         );
