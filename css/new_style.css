@@ -376,19 +376,19 @@ li .loginMenu:hover {
     max-width: 50px;
     vertical-align: center;
 }
-.preGamePage fieldset:first-child div {
+.preGamePage .section div {
     max-width: 200px;
     display: inline-block;
 }
-.preGamePage fieldset:first-child div input {
+.preGamePage .section div input {
     vertical-align: middle;
     margin: 0;
     margin-top: 7px;
 }
-.preGamePage fieldset:first-child div img {
+.preGamePage .section div img {
     vertical-align: middle;
 }
-.preGamePage fieldset:first-child div img:hover {
+.preGamePage .section div img:hover {
     cursor: pointer;
     transform: scale(1.05);
     transition: 0.2s;
@@ -1158,7 +1158,7 @@ li .loginMenu {
         max-width: 100%;
     }
     .preGamePage img {
-        max-width: 200px;
+        max-width: 150px;
     }
     .preGamePage label {
         font-size: 40px;
@@ -1171,7 +1171,7 @@ li .loginMenu {
         border-width: 7px;
     }
     .preGamePage button[type="button"] {
-        font-size: 50px;
+        font-size: 30px;
         width: 35%;
         margin: 30px;
     }
